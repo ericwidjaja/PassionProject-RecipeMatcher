@@ -33,7 +33,7 @@
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DFEE82D3236FADB6000FDE8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRecipesVC.swift; sourceTree = "<group>"; };
 		DFEE82D6236FADB6000FDE8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DFEE82D9236FADB6000FDE8B /* RecipeMatcher.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecipeMatcher.xcdatamodel; sourceTree = "<group>"; };
 		DFEE82DB236FADBF000FDE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,7 +86,7 @@
 			children = (
 				DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */,
 				DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */,
-				DFEE82D3236FADB6000FDE8B /* ViewController.swift */,
+				DFEE82F7236FBDB5000FDE8B /* Controllers */,
 				DFEE82D5236FADB6000FDE8B /* Main.storyboard */,
 				DFEE82DB236FADBF000FDE8B /* Assets.xcassets */,
 				DFEE82DD236FADBF000FDE8B /* LaunchScreen.storyboard */,
@@ -103,6 +103,15 @@
 				DFEE82EB236FADBF000FDE8B /* Info.plist */,
 			);
 			path = RecipeMatcherTests;
+			sourceTree = "<group>";
+		};
+		DFEE82F7236FBDB5000FDE8B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */,
+				DFEE82F4236FBD9F000FDE8B /* MainScreenVC.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,7 +215,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DFEE82D4236FADB6000FDE8B /* ViewController.swift in Sources */,
+				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
+				DFEE82F5236FBD9F000FDE8B /* MainScreenVC.swift in Sources */,
 				DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */,
 				DFEE82DA236FADB6000FDE8B /* RecipeMatcher.xcdatamodeld in Sources */,
 				DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */,
