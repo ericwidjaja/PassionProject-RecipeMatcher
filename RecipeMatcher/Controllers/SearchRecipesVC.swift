@@ -8,13 +8,18 @@
 
 import UIKit
 
-class SearchRecipesVC: UIViewController {
+class SearchRecipesVC : UIViewController {
+    
+    //MARK: - Objects
+    
+    var ingredientsSearchBar = UISearchBar()
     
     
-
+    
+//    MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         // Do any additional setup after loading the view.
     }
 

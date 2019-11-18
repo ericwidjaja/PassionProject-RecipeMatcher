@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainScreenVC: UIViewController {
+class MainScreenVC : UIViewController {
     
     lazy var backgroundImageView : UIImageView = {
         let mainImage = UIImageView()
@@ -27,9 +27,17 @@ class MainScreenVC: UIViewController {
         return mainTitle
     }()
     
+    lazy var createAcctButton : UIButton = {
+        let createAcct = UIButton()
+        createAcct.setTitle("Create Account", for: .normal)
+        createAcct.layer.cornerRadius = 20
+       
+        return createAcct
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor.darkGray
         configureBackgroundImageConstraints()
         configureMainTitleConstraints()
         // Do any additional setup after loading the view.
@@ -45,6 +53,5 @@ class MainScreenVC: UIViewController {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 350), titleLabel.heightAnchor.constraint(equalToConstant: 60), titleLabel.widthAnchor.constraint(equalToConstant: 350)])
-        
     }
 }

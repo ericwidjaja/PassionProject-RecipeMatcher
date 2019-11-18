@@ -15,12 +15,36 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let windowScene = (scene as? UIWindowScene) else { return }
+        guard let _ = (scene as? UIWindowScene) else { return }
+        UITabBar.appearance().tintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        guard let scene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.windowScene = windowScene
-        window?.rootViewController = MainScreenVC()
+        window = UIWindow(windowScene: scene)
+        window?.rootViewController = createMainTabBarController()
         window?.makeKeyAndVisible()
     }
+    
+
+//        window = UIWindow(frame: UIScreen.main.bounds)
+//        window?.windowScene = windowScene
+//        window?.rootViewController = MainScreenVC()
+//        window?.makeKeyAndVisible()
+//    }
+    private func createMainTabBarController() -> UITabBarController {
+        let navController = UINavigationController(rootViewController: SearchRecipesVC())
+        
+        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
+
+        navController.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
+
+        navController2.tabBarItem = UITabBarItem(title: "COLLECTION", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 1)
+        
+        let tabVC = UITabBarController()
+        tabVC.setViewControllers([navController,navController2], animated: false)
+        return tabVC
+    }
+}
+
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
@@ -57,5 +81,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
 
-}
+
 

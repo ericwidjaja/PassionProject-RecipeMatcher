@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF28B29F2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */; };
+		DF28B2A02381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
 		DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */; };
@@ -30,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTabBarVC.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,9 +87,9 @@
 		DFEE82CE236FADB6000FDE8B /* RecipeMatcher */ = {
 			isa = PBXGroup;
 			children = (
+				DFEE82F7236FBDB5000FDE8B /* Controllers */,
 				DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */,
 				DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */,
-				DFEE82F7236FBDB5000FDE8B /* Controllers */,
 				DFEE82D5236FADB6000FDE8B /* Main.storyboard */,
 				DFEE82DB236FADBF000FDE8B /* Assets.xcassets */,
 				DFEE82DD236FADBF000FDE8B /* LaunchScreen.storyboard */,
@@ -108,8 +111,9 @@
 		DFEE82F7236FBDB5000FDE8B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */,
 				DFEE82F4236FBD9F000FDE8B /* MainScreenVC.swift */,
+				DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */,
+				DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -216,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
+				DF28B29F2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */,
 				DFEE82F5236FBD9F000FDE8B /* MainScreenVC.swift in Sources */,
 				DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */,
 				DFEE82DA236FADB6000FDE8B /* RecipeMatcher.xcdatamodeld in Sources */,
@@ -228,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFEE82EA236FADBF000FDE8B /* RecipeMatcherTests.swift in Sources */,
+				DF28B2A02381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */,
 				DFEE82F6236FBD9F000FDE8B /* MainScreenVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,6 +388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RecipeMatcher/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -399,6 +406,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = RecipeMatcher/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
