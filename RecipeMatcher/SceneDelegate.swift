@@ -31,7 +31,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        window?.makeKeyAndVisible()
 //    }
     private func createMainTabBarController() -> UITabBarController {
-        let navController = UINavigationController(rootViewController: SearchRecipesVC())
+        let navController = UINavigationController(rootViewController: MainScreenVC())
         
         let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
 

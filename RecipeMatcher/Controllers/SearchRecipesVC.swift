@@ -35,7 +35,9 @@ class SearchRecipesVC : UIViewController {
 //    MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        self.view.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        
+//        self.view.largeContentImage = #imageLiteral(resourceName: "SplashScreen")
         setDelegates()
         addViewsToSubView()
         setSearchBarsConstraints()
