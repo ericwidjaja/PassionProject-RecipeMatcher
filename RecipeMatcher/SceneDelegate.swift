@@ -15,22 +15,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let _ = (scene as? UIWindowScene) else { return }
-        UITabBar.appearance().tintColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
-        guard let scene = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
-        window = UIWindow(windowScene: scene)
-//        window?.rootViewController = createMainTabBarController()
+        window?.windowScene = windowScene
         window?.rootViewController = MainScreenVC ()
         window?.makeKeyAndVisible()
     }
-    
 
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.windowScene = windowScene
-//        window?.rootViewController = MainScreenVC()
-//        window?.makeKeyAndVisible()
-//    }
     private func createMainTabBarController() -> UITabBarController {
         let navController = UINavigationController(rootViewController: MainScreenVC())
         
