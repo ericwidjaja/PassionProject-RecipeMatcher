@@ -3,7 +3,7 @@
     {
       "size" : "20x20",
       "idiom" : "iphone",
-      "filename" : "icons8-chef-hat-50.png",
+      "filename" : "icons8-hamburger-50.png",
       "scale" : "2x"
     },
     {
@@ -22,9 +22,8 @@
       "scale" : "3x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "icons8-chef-hat-51.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {
