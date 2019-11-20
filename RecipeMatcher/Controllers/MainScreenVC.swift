@@ -71,6 +71,16 @@ class MainScreenVC : UIViewController {
         return createAcct
     }()
     
+    //to use app without signing in
+    lazy var skipButton: UIButton = {
+        let skip = UIButton()
+        skip.setTitle("use app without personalization", for: .normal)
+        skip.layer.cornerRadius = 10
+        skip.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
+        skip.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        return skip
+    }()
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +95,7 @@ class MainScreenVC : UIViewController {
         passwordConstraints()
         signInConstraints()
         createAccountConstraints()
+        skipButtonConstraints()
     }
     
     private func backGroundImageConstraints() {
@@ -123,5 +134,11 @@ class MainScreenVC : UIViewController {
         createAcctButton.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([createAcctButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 10), createAcctButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), createAcctButton.heightAnchor.constraint(equalToConstant: 30), createAcctButton.widthAnchor.constraint(equalToConstant: 150)])
+    }
+    private func skipButtonConstraints() {
+        view.addSubview(skipButton)
+        skipButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([skipButton.topAnchor.constraint(equalTo: createAcctButton.bottomAnchor, constant: 15), skipButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), skipButton.heightAnchor.constraint(equalToConstant: 20), skipButton.widthAnchor.constraint(equalToConstant: 300)])
     }
 }
