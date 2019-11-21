@@ -106,8 +106,7 @@ class MainScreenVC : UIViewController {
     private func mainTitleConstraints() {
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60), titleLabel.heightAnchor.constraint(equalToConstant: 70), titleLabel.widthAnchor.constraint(equalToConstant: 350)])
+    NSLayoutConstraint.activate([titleLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60), titleLabel.heightAnchor.constraint(equalToConstant: 70), titleLabel.widthAnchor.constraint(equalToConstant: 350)])
     }
     
     private func loginIdConstraints() {
@@ -119,26 +118,24 @@ class MainScreenVC : UIViewController {
     private func passwordConstraints() {
         view.addSubview(passwordTextField)
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([passwordTextField.topAnchor.constraint(equalTo: loginIdTextField.bottomAnchor, constant: 10), passwordTextField.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), passwordTextField.heightAnchor.constraint(equalToConstant: 35), passwordTextField.widthAnchor.constraint(equalToConstant: 250)])
+        NSLayoutConstraint.activate([passwordTextField.topAnchor.constraint(equalTo: loginIdTextField.bottomAnchor, constant: 11), passwordTextField.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), passwordTextField.heightAnchor.constraint(equalToConstant: 35), passwordTextField.widthAnchor.constraint(equalToConstant: 250)])
     }
     
     private func signInConstraints() {
         view.addSubview(signInButton)
         signInButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([signInButton.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 450), signInButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), signInButton.heightAnchor.constraint(equalToConstant: 30), signInButton.widthAnchor.constraint(equalToConstant: 150)])
+    NSLayoutConstraint.activate([signInButton.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -85), signInButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), signInButton.heightAnchor.constraint(equalToConstant: 25), signInButton.widthAnchor.constraint(equalToConstant: 150)])
     }
     
     private func createAccountConstraints() {
         view.addSubview(createAcctButton)
         createAcctButton.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([createAcctButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 10), createAcctButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), createAcctButton.heightAnchor.constraint(equalToConstant: 30), createAcctButton.widthAnchor.constraint(equalToConstant: 150)])
+        NSLayoutConstraint.activate([createAcctButton.bottomAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -54), createAcctButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), createAcctButton.heightAnchor.constraint(equalToConstant: 25), createAcctButton.widthAnchor.constraint(equalToConstant: 150)])
     }
     private func skipButtonConstraints() {
         view.addSubview(skipButton)
         skipButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        NSLayoutConstraint.activate([skipButton.topAnchor.constraint(equalTo: createAcctButton.bottomAnchor, constant: 15), skipButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), skipButton.heightAnchor.constraint(equalToConstant: 20), skipButton.widthAnchor.constraint(equalToConstant: 300)])
+        NSLayoutConstraint.activate([skipButton.topAnchor.constraint(lessThanOrEqualTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -40), skipButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor), skipButton.heightAnchor.constraint(equalToConstant: 20), skipButton.widthAnchor.constraint(equalToConstant: 300)])
     }
 }
