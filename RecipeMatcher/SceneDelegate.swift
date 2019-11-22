@@ -22,19 +22,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
     }
 
-    private func createMainTabBarController() -> UITabBarController {
-        let navController = UINavigationController(rootViewController: MainScreenVC())
-        
-        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
-
-        navController.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
-
-        navController2.tabBarItem = UITabBarItem(title: "COLLECTION", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 1)
-        
-        let tabVC = UITabBarController()
-        tabVC.setViewControllers([navController,navController2], animated: false)
-        return tabVC
-    }
+//    private func createMainTabBarController() -> UITabBarController {
+//        let navController = UINavigationController(rootViewController: MainScreenVC())
+//        
+//        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
+//
+//        navController.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
+//
+//        navController2.tabBarItem = UITabBarItem(title: "COLLECTION", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 1)
+//        
+//        let tabVC = UITabBarController()
+//        tabVC.setViewControllers([navController,navController2], animated: false)
+//        return tabVC
+//    }
 }
 
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.

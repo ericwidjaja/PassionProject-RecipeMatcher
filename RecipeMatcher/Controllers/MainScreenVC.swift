@@ -77,9 +77,39 @@ class MainScreenVC : UIViewController {
         skip.setTitle("use app without personalization", for: .normal)
         skip.layer.cornerRadius = 10
         skip.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        skip.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        skip.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        skip.addTarget(self, action: #selector(skipButtonPressed), for: .touchUpInside)
         return skip
     }()
+    
+    private func createMainTabBarController() -> UITabBarController {
+        let navController = UINavigationController(rootViewController: MainScreenVC())
+        
+        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
+
+        navController.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
+
+        navController2.tabBarItem = UITabBarItem(title: "COLLECTION", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 1)
+        
+        let tabVC = UITabBarController()
+        tabVC.setViewControllers([navController,navController2], animated: false)
+        return tabVC
+    }
+    
+    @objc func skipButtonPressed() {
+        //complete implementation
+       let destination = RecipesTabBar()
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+            else {
+                
+                return
+        }
+    
+        window.rootViewController = destination 
+    }
+    
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
