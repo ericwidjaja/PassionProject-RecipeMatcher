@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        if FirebaseAuthService.manager.currentUser != nil {
             window?.rootViewController = RecipesTabBar()
 //        } else {
-//            window?.rootViewController = MainScreenVC()
+            window?.rootViewController = MainScreenVC()
             window?.makeKeyAndVisible()
 //        }
     }
