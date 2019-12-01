@@ -32,8 +32,8 @@ class SearchRecipesVC : UIViewController {
         }
         
         private func updateUI() {
-            searchRecipeButton.layer.cornerRadius = 15
-            fridgeTableView.layer.cornerRadius = 10
+//            searchRecipeButton.layer.cornerRadius = 15
+//            fridgeTableView.layer.cornerRadius = 10
         }
         
         @IBAction func searchButtonPressed(_ sender: UIButton) {
