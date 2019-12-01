@@ -1,10 +1,8 @@
-//
 //  SceneDelegate.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 11/3/19.
 //  Copyright © 2019 Eric W. All rights reserved.
-//
+
 
 import UIKit
 
@@ -14,32 +12,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
-        window?.rootViewController = MainScreenVC ()
-        window?.makeKeyAndVisible()
+        //For returning user
+//        if FirebaseAuthService.manager.currentUser != nil {
+            window?.rootViewController = RecipesTabBar()
+//        } else {
+//            window?.rootViewController = MainScreenVC()
+            window?.makeKeyAndVisible()
+//        }
     }
-
-//    private func createMainTabBarController() -> UITabBarController {
-//        let navController = UINavigationController(rootViewController: MainScreenVC())
-//        
-//        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
-//
-//        navController.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
-//
-//        navController2.tabBarItem = UITabBarItem(title: "COLLECTION", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 1)
-//        
-//        let tabVC = UITabBarController()
-//        tabVC.setViewControllers([navController,navController2], animated: false)
-//        return tabVC
-//    }
-}
-
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -67,10 +51,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Called as the scene transitions from the foreground to the background.
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
-
-        // Save changes in the application's managed object context when the application transitions to the background.
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+//
+//        // Save changes in the application's managed object context when the application transitions to the background.
+//        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
+}
 
 
 
