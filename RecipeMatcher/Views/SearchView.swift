@@ -1,10 +1,5 @@
-//
 //  SearchView.swift
 //  RecipeMatcher
-//
-//  Created by Eric Widjaja on 12/1/19.
-//  Copyright © 2019 Eric W. All rights reserved.
-//
 
 import UIKit
 

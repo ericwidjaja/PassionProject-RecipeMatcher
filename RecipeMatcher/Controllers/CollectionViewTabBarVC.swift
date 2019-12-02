@@ -1,10 +1,7 @@
-//
 //  CollectionViewTabBarVC.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 11/17/19.
-//  Copyright © 2019 Eric W. All rights reserved.
-//
+
 
 import UIKit
 

@@ -1,8 +1,6 @@
 //  Recipes.swift
 //  RecipeMatcher
-//  Created by Eric Widjaja on 11/30/19.
-//  Copyright © 2019 Eric W. All rights reserved.
-//
+
 
 import Foundation
 struct Recipe: Codable {
