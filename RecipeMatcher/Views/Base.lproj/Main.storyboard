@@ -101,6 +101,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XQC-vc-4vf"/>
                     </view>
+                    <navigationItem key="navigationItem" id="khV-kX-0Lo"/>
                     <connections>
                         <outlet property="fridgeTableView" destination="g0V-rT-tWG" id="BUa-cx-cOS"/>
                         <outlet property="fridgeTxtField" destination="gIw-52-H5Z" id="XrE-wF-GA1"/>
@@ -109,7 +110,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAB-G8-KTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="963.76811594202911" y="98.4375"/>
+            <point key="canvasLocation" x="961" y="113"/>
         </scene>
     </scenes>
     <resources>

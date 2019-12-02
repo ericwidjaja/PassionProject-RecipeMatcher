@@ -1,81 +1,12 @@
 import UIKit
 import Foundation
 
-class MainScreenVC : UIViewController {
+class LogInScreenVC : UIViewController {
     
-    lazy var backgroundImageView: UIImageView = {
-        let mainImage = UIImageView()
-        mainImage.image = #imageLiteral(resourceName: "SplashScreen")
-        mainImage.contentMode = .scaleAspectFill
-        mainImage.clipsToBounds = true
-        return mainImage
-    }()
-    
-    lazy var titleLabel: UILabel = {
-        let mainTitle = UILabel()
-        mainTitle.adjustsFontSizeToFitWidth = true
-        mainTitle.font = UIFont.init(name: "Noteworthy-Bold", size: 50)
-        mainTitle.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        mainTitle.text = " RECIPE   MATCHERS "
-        mainTitle.textAlignment = NSTextAlignment.center
-        return mainTitle
-    }()
-    
-    lazy var loginIdTextField: UITextField = {
-        let logIn = UITextField()
-        logIn.placeholder = "Enter Email"
-        logIn.font = UIFont(name: "Noteworthy", size: 18)
-        logIn.borderStyle = .roundedRect
-        logIn.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        logIn.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        logIn.autocorrectionType = .no
-//        logIn.addTarget(self, action: #selector(validateFields), for: .editingChanged)
-        return logIn
-    }()
-    
-    lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Enter Password"
-        textField.font = UIFont(name: "Noteworthy", size: 16)
-        textField.backgroundColor = .white
-        textField.borderStyle = .roundedRect
-        textField.autocorrectionType = .no
-        textField.isSecureTextEntry = true
-//        textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
-        return textField
-    }()
-    
-    lazy var signInButton: UIButton = {
-        let signIn = UIButton()
-        signIn.setTitle("Sign In", for: .normal)
-        signIn.layer.cornerRadius = 10
-        signIn.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        signIn.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        return signIn
-    }()
-    
-    lazy var createAcctButton: UIButton = {
-        let createAcct = UIButton()
-        createAcct.setTitle("Create Account", for: .normal)
-        createAcct.layer.cornerRadius = 10
-        createAcct.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        createAcct.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        return createAcct
-    }()
-    
-    //to use app without signing in
-    lazy var skipButton: UIButton = {
-        let skip = UIButton()
-        skip.setTitle("use app without personalization", for: .normal)
-        skip.layer.cornerRadius = 10
-        skip.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
-        skip.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        skip.addTarget(self, action: #selector(skipButtonPressed), for: .touchUpInside)
-        return skip
-    }()
+    var logInScreen = LogInScreenView()
     
     private func createMainTabBarController() -> UITabBarController {
-        let navController = UINavigationController(rootViewController: MainScreenVC())
+        let navController = UINavigationController(rootViewController: LogInScreenVC())
         
         let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
 
