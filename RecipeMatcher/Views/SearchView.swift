@@ -29,7 +29,7 @@ class SearchView: UIView {
     
     lazy var ingredientsTblView: UITableView = {
         let tableView = UITableView()
-//        tableView.register(UITableView.self, forCellReuseIdentifier: "ingredientCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         return tableView
     }()
     
