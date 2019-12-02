@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		DF28B29F2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */; };
 		DF28B2A02381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */; };
-		DF28B39823884A3300AA8CE0 /* RecipesTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipesTabBar.swift */; };
-		DF28B39923884A3300AA8CE0 /* RecipesTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipesTabBar.swift */; };
+		DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
+		DF28B39923884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
 		DF35F005239370C200638254 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35F004239370C200638254 /* Recipes.swift */; };
 		DF35F006239370C200638254 /* Recipes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35F004239370C200638254 /* Recipes.swift */; };
 		DF35F0082393725F00638254 /* RecipesJSON.json in Resources */ = {isa = PBXBuildFile; fileRef = DF35F0072393725F00638254 /* RecipesJSON.json */; };
@@ -29,6 +29,8 @@
 		DF66AC1F23948CFD005E36A7 /* LogInScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */; };
 		DF66AC2123948D61005E36A7 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC2023948D61005E36A7 /* LogInView.swift */; };
 		DF66AC2223948D61005E36A7 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC2023948D61005E36A7 /* LogInView.swift */; };
+		DF66AC242394AABF005E36A7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC232394AABF005E36A7 /* SearchView.swift */; };
+		DF66AC252394AABF005E36A7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC232394AABF005E36A7 /* SearchView.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
 		DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */; };
@@ -51,7 +53,7 @@
 
 /* Begin PBXFileReference section */
 		DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTabBarVC.swift; sourceTree = "<group>"; };
-		DF28B39723884A3300AA8CE0 /* RecipesTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesTabBar.swift; sourceTree = "<group>"; };
+		DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatchTabBar.swift; sourceTree = "<group>"; };
 		DF35F004239370C200638254 /* Recipes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipes.swift; sourceTree = "<group>"; };
 		DF35F0072393725F00638254 /* RecipesJSON.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = RecipesJSON.json; sourceTree = "<group>"; };
 		DF35F00E23946E3700638254 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 		DF35F01B239472A000638254 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreenVC.swift; sourceTree = "<group>"; };
 		DF66AC2023948D61005E36A7 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		DF66AC232394AABF005E36A7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 			children = (
 				DFEE82D5236FADB6000FDE8B /* Main.storyboard */,
 				DF66AC2023948D61005E36A7 /* LogInView.swift */,
+				DF66AC232394AABF005E36A7 /* SearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -171,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */,
-				DF28B39723884A3300AA8CE0 /* RecipesTabBar.swift */,
+				DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */,
 				DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */,
 				DF28B29E2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift */,
 			);
@@ -282,7 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
-				DF28B39823884A3300AA8CE0 /* RecipesTabBar.swift in Sources */,
+				DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
 				DF35F00F23946E3700638254 /* AppError.swift in Sources */,
 				DF28B29F2381FADA00AA8CE0 /* CollectionViewTabBarVC.swift in Sources */,
 				DF35F01323946EB300638254 /* NetworkManager.swift in Sources */,
@@ -291,6 +295,7 @@
 				DFEE82DA236FADB6000FDE8B /* RecipeMatcher.xcdatamodeld in Sources */,
 				DF66AC2123948D61005E36A7 /* LogInView.swift in Sources */,
 				DF35F01923946F5800638254 /* APIClient.swift in Sources */,
+				DF66AC242394AABF005E36A7 /* SearchView.swift in Sources */,
 				DF66AC1E23948CFD005E36A7 /* LogInScreenVC.swift in Sources */,
 				DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */,
 				DF35F01C239472A000638254 /* Secret.swift in Sources */,
@@ -306,8 +311,9 @@
 				DF35F01D239472A000638254 /* Secret.swift in Sources */,
 				DF35F01723946F0400638254 /* ImageHelper.swift in Sources */,
 				DF35F01A23946F5800638254 /* APIClient.swift in Sources */,
+				DF66AC252394AABF005E36A7 /* SearchView.swift in Sources */,
 				DFEE82EA236FADBF000FDE8B /* RecipeMatcherTests.swift in Sources */,
-				DF28B39923884A3300AA8CE0 /* RecipesTabBar.swift in Sources */,
+				DF28B39923884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
 				DF66AC1F23948CFD005E36A7 /* LogInScreenVC.swift in Sources */,
 				DF35F01423946EB300638254 /* NetworkManager.swift in Sources */,
 				DF66AC2223948D61005E36A7 /* LogInView.swift in Sources */,

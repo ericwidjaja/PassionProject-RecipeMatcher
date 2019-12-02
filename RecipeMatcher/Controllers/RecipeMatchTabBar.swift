@@ -3,7 +3,7 @@
 
 import UIKit
 
-class RecipesTabBar: UITabBarController {
+class RecipeMatchTabBar: UITabBarController {
     
     let navController1 = UINavigationController(rootViewController: SearchRecipesVC())
     

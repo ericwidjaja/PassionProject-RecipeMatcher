@@ -10,6 +10,7 @@ import UIKit
 
 class LogInView: UIView {
 
+//MARK: - Objects
 lazy var backgroundImageView: UIImageView = {
         let mainImage = UIImageView()
         mainImage.image = #imageLiteral(resourceName: "SplashScreen")

@@ -14,7 +14,7 @@ class LogInScreenVC : UIViewController {
     var logInScreen = LogInView()
     
     private func createMainTabBarController() -> UITabBarController {
-        let navController = UINavigationController(rootViewController: LogInScreenVC())
+        let navController = UINavigationController(rootViewController: SearchRecipesVC())
         
         let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
 
@@ -27,26 +27,41 @@ class LogInScreenVC : UIViewController {
         return tabVC
     }
     
+//    @objc func skipButtonPressed() {
+//        //complete implementation
+//       let destination = RecipeMatchTabBar()
+//        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+//            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+//            else {
+//                return
+//        }
+//        window.rootViewController = destination
+//    }
     @objc func skipButtonPressed() {
         //complete implementation
-       let destination = RecipesTabBar()
+//       let destination = RecipeMatchTabBar()
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
             let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
             else {
-                
-                return
-        }
-        window.rootViewController = destination
+                return }
+        window.rootViewController = {
+            let searchSetUpVC = RecipeMatchTabBar()
+                searchSetUpVC.selectedIndex = 0
+            return searchSetUpVC
+        }()
+
+
     }
     
     
     
-    //MARK: - Lifecycle
+//MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(logInScreen)
         logInEmail?.delegate = self
         logInPassword?.delegate = self
+        logInScreen.skipButton.addTarget(self, action: #selector(skipButtonPressed), for: .touchUpInside)
         
 //        logInScreen.signInButton.addTarget(self, action: #selector(signInButtonPressed), for: .touchUpInside)
         
