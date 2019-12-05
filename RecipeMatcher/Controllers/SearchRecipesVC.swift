@@ -44,8 +44,11 @@ class SearchRecipesVC : UIViewController {
 //    }
     
     @objc func findRecipeButtonPressed(_ sender: UIButton) {
-        let recipesVC = RecipesCollectionVC
+        
+        
     }
+    
+    
     private func loadSearchData() {
         
         searchIngredient.ingredientsTblView.dataSource = self
