@@ -42,6 +42,10 @@ class SearchRecipesVC : UIViewController {
 //        dismissKeyboard()
 //        searchButtonEnabled()
 //    }
+    
+    @objc func findRecipeButtonPressed(_ sender: UIButton) {
+        let recipesVC = RecipesCollectionVC
+    }
     private func loadSearchData() {
         
         searchIngredient.ingredientsTblView.dataSource = self
@@ -83,5 +87,14 @@ extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
         let cell = searchIngredient.ingredientsTblView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
         cell.textLabel?.text = ingredients[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deselect = UITableViewRowAction(style: .destructive, title: "X") { [weak self] (action, indexPath) in
+            self?.ingredients.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+        
+        return [deselect]
     }
 }
