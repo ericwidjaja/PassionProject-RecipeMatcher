@@ -7,7 +7,7 @@ class RecipeMatchTabBar: UITabBarController {
     
     let navController1 = UINavigationController(rootViewController: SearchRecipesVC())
     
-    let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
+    let navController2 = UINavigationController(rootViewController: RecipesCollResultsVC())
     
     override func viewDidLoad() {
         super.viewDidLoad()

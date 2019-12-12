@@ -13,7 +13,7 @@ class LogInScreenVC : UIViewController {
     private func createMainTabBarController() -> UITabBarController {
         let navController = UINavigationController(rootViewController: SearchRecipesVC())
         
-        let navController2 = UINavigationController(rootViewController: CollectionViewTabBarVC())
+        let navController2 = UINavigationController(rootViewController: RecipesCollResultsVC())
 
         navController.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
 

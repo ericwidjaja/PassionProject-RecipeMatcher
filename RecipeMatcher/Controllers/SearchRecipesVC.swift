@@ -5,81 +5,61 @@ import UIKit
 import Foundation
 
 class SearchRecipesVC : UIViewController {
-
-//MARK: - Properties
+    
+    //MARK: - Properties
     var recipes = [RecipeWrapper]()
-    var searchIngredient = SearchView()
+    var searchView = SearchView()
     var ingredients = [String]() {
         didSet {
             DispatchQueue.main.async {
-                self.searchIngredient.ingredientsTblView.reloadData()
+                self.searchView.ingredientsTblView.reloadData()
             }
         }
     }
     
-    
-    
-//MARK: - Functions
-
-//    func addIngredient() {
-//        if let ingredient = searchIngredient.ingredientTextField.text {
-//        let trimmedIngredient = ingredient.trim()
-//            if !trimmedIngredient.isEmpty {
-//                self.ingredients.append(trimmedIngredient)
-//                self.tableView.reloadData()
-//                self.textField.text = ""
-//                self.textField.placeholder = textFieldPlaceholder
-//                dismissKeyboard()
-//                searchButtonEnabled()
-//            }
-//        }
-//    }
-//
-//    func deleteIngredient(sender: UIButton) {
-//        let index: Int = (sender.layer.value(forKey: "index")) as! Int
-//        ingredients.remove(at: index)
-//        tableView.reloadData()
-//        dismissKeyboard()
-//        searchButtonEnabled()
-//    }
-    
     @objc func findRecipeButtonPressed(_ sender: UIButton) {
-        
+        //code here
+        let vcB = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
+        navigationController?.pushViewController(vcB, animated: true)
+        dump(ingredients)
         
     }
+    
     
     
     private func loadSearchData() {
         
-        searchIngredient.ingredientsTblView.dataSource = self
-        searchIngredient.ingredientsTblView.delegate = self
-        searchIngredient.ingredientTextField.delegate = self
+        searchView.ingredientsTblView.dataSource = self
+        searchView.ingredientsTblView.delegate = self
+        searchView.ingredientTextField.delegate = self
         
     }
-
-
-//MARK: - Lifecycle
+    
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(searchIngredient)
+        view.addSubview(searchView)
         loadSearchData()
-
+        searchView.findRecipesButton.addTarget(self, action: #selector(findRecipeButtonPressed), for: .touchUpInside)
     }
 }
 //MARK: - Extensions
 
 extension SearchRecipesVC: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        searchIngredient.ingredientTextField.clearsOnBeginEditing = true
+        searchView.ingredientTextField.clearsOnBeginEditing = true
         return true
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        searchIngredient.ingredientTextField.resignFirstResponder()
-        let ingredient = searchIngredient.ingredientTextField.text
+        searchView.ingredientTextField.resignFirstResponder()
+        let ingredient = searchView.ingredientTextField.text
         ingredients.append(ingredient ?? "Not Found")
-        searchIngredient.ingredientTextField.text = ""
+        searchView.ingredientTextField.text = ""
         return true
     }
+    
 }
 
 extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
@@ -87,7 +67,7 @@ extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
         return ingredients.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = searchIngredient.ingredientsTblView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
+        let cell = searchView.ingredientsTblView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
         cell.textLabel?.text = ingredients[indexPath.row]
         return cell
     }
@@ -97,7 +77,6 @@ extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
             self?.ingredients.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
-        
         return [deselect]
     }
 }
