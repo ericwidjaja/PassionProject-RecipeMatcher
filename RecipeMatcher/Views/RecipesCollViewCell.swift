@@ -40,11 +40,11 @@ class RecipesCollViewCell: UICollectionViewCell {
     
     var faveButton: UIButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 27, weight: .medium, scale: .small)
+        let config = UIImage.SymbolConfiguration(pointSize: 27, weight: .heavy, scale: .small)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.setBackgroundImage(heart, for: .normal)
-        button.imageView!.contentMode = UIView.ContentMode.scaleAspectFit
-        button.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.3043931935)
+        button.imageView!.contentMode = UIView.ContentMode.center
+        button.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.2004762414)
         button.tintColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
         return button
     }()
