@@ -19,8 +19,8 @@ class SearchRecipesVC : UIViewController {
     
     @objc func findRecipeButtonPressed(_ sender: UIButton) {
         //code here
-        let vcB = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
-        navigationController?.pushViewController(vcB, animated: true)
+        let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
+        navigationController?.pushViewController(findRecipeVC, animated: true)
         dump(ingredients)
         
     }

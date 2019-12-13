@@ -29,6 +29,7 @@ class SearchView: UIView {
     
     lazy var ingredientsTblView: UITableView = {
         let tableView = UITableView()
+        
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         return tableView
     }()
@@ -40,13 +41,14 @@ class SearchView: UIView {
         button.setTitle("Find Recipes", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 22)
+        
         return button
     }()
     
     lazy var objectsViewArray = [self.backgroundImageView, self.ingredientTextField, self.ingredientsTblView, self.findRecipesButton]
     
     
-//MARK:Add ViewsToSubviews
+//MARK: - Add ViewsToSubviews
     func addViewsToSubView() {
         for aView in objectsViewArray {
             self.addSubview(aView)
@@ -100,7 +102,4 @@ class SearchView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
-    
 }

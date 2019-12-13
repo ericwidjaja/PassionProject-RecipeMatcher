@@ -26,7 +26,6 @@ class RecipesCollResultsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)
-        view.backgroundColor = #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1)
         recipesCollView.recipeCollectionView.register(RecipesCollViewCell.self, forCellWithReuseIdentifier: "RecipeCell")
         recipesCollView.recipeCollectionView.dataSource = self
         recipesCollView.recipeCollectionView.delegate = self
@@ -62,7 +61,6 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell() }
         let recipeToSet = recipesResult[indexPath.row]
-        //        cell.recipeImage.kf.setImage(with: URL(string: recipeToSet.image),placeholder: UIImage(named: "plImage"))
         cell.recipeLabel.text = recipeToSet.label
         cell.sourceLabel.text = recipeToSet.source
         return cell

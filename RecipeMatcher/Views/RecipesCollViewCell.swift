@@ -9,101 +9,108 @@ class RecipesCollViewCell: UICollectionViewCell {
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
-        image.contentMode = .scaleAspectFill
-        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         return image
     }()
     
-    lazy var descriptionContainer: UIView = {
+    lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.95
-        view.translatesAutoresizingMaskIntoConstraints = false
+        view.alpha = 0.75
         return view
     }()
     
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
-        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = UIFont.init(name: "Rockwell", size: 18)
+        label.numberOfLines = 2
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
     lazy var sourceLabel: UILabel = {
         let label = UILabel()
         label.text = "Source Label"
-        label.font = UIFont.systemFont(ofSize: 12, weight: .light)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .gray
+        label.font = UIFont.init(name: "Rockwell", size: 14)
+        label.textColor = .darkGray
         return label
     }()
     
-    lazy var favoriteButton: UIButton = {
+    var faveButton: UIButton = {
         let button = UIButton()
-        button.setImage(UIImage(named: "emptyHeart"), for: .normal)
+        let config = UIImage.SymbolConfiguration(pointSize: 27, weight: .medium, scale: .small)
+        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        button.setBackgroundImage(heart, for: .normal)
         button.imageView!.contentMode = UIView.ContentMode.scaleAspectFit
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.3043931935)
+        button.tintColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
         return button
     }()
     
+    lazy var objectsViewArray = [self.addtDescView, self.recipeLabel, self.sourceLabel, self.faveButton, self.recipeImage]
+        
+    //MARK: - Add ViewsToSubviews
+        func addViewsToSubView() {
+            for aView in objectsViewArray {
+                self.addSubview(aView)
+                aView.translatesAutoresizingMaskIntoConstraints = false
+            }
+        }
+
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        commonInit()
+        setConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
-    }
-    
-    private func commonInit() {
         setConstraints()
-        setupDescriptionContainer()
-        setupDescriptionViewContent()
-    }
-    
-    private func setupDescriptionContainer() {
-        addSubview(descriptionContainer)
-        descriptionContainer.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            descriptionContainer.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
-            descriptionContainer.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            descriptionContainer.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
-        ])
-    }
-    
-    private func setupDescriptionViewContent() {
-        addSubview(recipeLabel)
-        addSubview(sourceLabel)
-        addSubview(favoriteButton)
-        NSLayoutConstraint.activate([
-            favoriteButton.trailingAnchor.constraint(equalTo: descriptionContainer.trailingAnchor, constant: -8),
-            favoriteButton.centerYAnchor.constraint(equalTo: descriptionContainer.centerYAnchor, constant: 0),
-            favoriteButton.topAnchor.constraint(greaterThanOrEqualTo: descriptionContainer.topAnchor),
-            favoriteButton.bottomAnchor.constraint(lessThanOrEqualTo: descriptionContainer.bottomAnchor),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 30),
-            favoriteButton.widthAnchor.constraint(equalToConstant: 30),
-            
-            recipeLabel.topAnchor.constraint(equalTo: descriptionContainer.topAnchor, constant: 8),
-            recipeLabel.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor, constant: 8),
-            recipeLabel.trailingAnchor.constraint(equalTo: favoriteButton.leadingAnchor, constant: -20),
-            
-            sourceLabel.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor , constant: 4),
-            sourceLabel.leadingAnchor.constraint(equalTo: descriptionContainer.leadingAnchor, constant: 8),
-            sourceLabel.bottomAnchor.constraint(equalTo: descriptionContainer.bottomAnchor, constant: -8),
-        ])
-        
     }
     
     private func setConstraints() {
-        addSubview(recipeImage)
+        addViewsToSubView()
+        collViewConstraints()
+        addtDescConstraints()
+        descriptionViewConstraints()
+    }
+    
+    private func addtDescConstraints() {
+        addSubview(addtDescView)
         NSLayoutConstraint.activate([
-            recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 0),
-            recipeImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 0),
-            recipeImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 0),
-            recipeImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0),
+            addtDescView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            addtDescView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            addtDescView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
         ])
+    }
+    
+    private func descriptionViewConstraints() {
+        addSubview(recipeLabel)
+        addSubview(sourceLabel)
+        addSubview(faveButton)
+        
+        NSLayoutConstraint.activate([
+            faveButton.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor),
+            faveButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
+            faveButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
+            faveButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
+            
+            recipeLabel.topAnchor.constraint(equalTo: addtDescView.topAnchor, constant: 8),
+            recipeLabel.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 8),
+            recipeLabel.heightAnchor.constraint(equalToConstant: 22),
+            recipeLabel.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -35),
+            
+            sourceLabel.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor , constant: 4),
+            sourceLabel.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 8),
+            sourceLabel.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor, constant: -4)])
+    }
+    
+    private func collViewConstraints() {
+        NSLayoutConstraint.activate([
+            recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            recipeImage.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            recipeImage.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            recipeImage.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
     }
 }

@@ -8,9 +8,9 @@ import Foundation
 class RecipeCollView: UIView {
     lazy var recipeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 390, height: 280)
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 1, bottom: 50, right: 1)
+        layout.itemSize = CGSize(width: 400, height: 300)
+        layout.scrollDirection = .horizontal
+        layout.sectionInset = UIEdgeInsets(top: 15, left: 2, bottom: 15, right: 2)
         let cellTable = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cellTable.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return cellTable
@@ -18,19 +18,15 @@ class RecipeCollView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
-        commonInit()
+        collViewConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        commonInit()
+        collViewConstraints()
     }
     
-    private func commonInit() {
-        setConstraints()
-    }
-    
-    private func setConstraints() {
+    private func collViewConstraints() {
         addSubview(recipeCollectionView)
         recipeCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -38,7 +34,6 @@ class RecipeCollView: UIView {
             recipeCollectionView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             recipeCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             recipeCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            recipeCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-        ])
+            recipeCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
     }
 }
