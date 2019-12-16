@@ -11,20 +11,21 @@ class RecipesCollViewCell: UICollectionViewCell {
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
+        image.layer.allowsGroupOpacity = true
         return image
     }()
     
     lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.75
+        view.alpha = 0.60
         return view
     }()
     
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell", size: 18)
+        label.font = UIFont.init(name: "Rockwell", size: 20)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -33,14 +34,14 @@ class RecipesCollViewCell: UICollectionViewCell {
     lazy var sourceLabel: UILabel = {
         let label = UILabel()
         label.text = "Source Label"
-        label.font = UIFont.init(name: "Rockwell", size: 14)
+        label.font = UIFont.init(name: "Rockwell", size: 15)
         label.textColor = .darkGray
         return label
     }()
     
     var faveButton: UIButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 27, weight: .heavy, scale: .small)
+        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .heavy, scale: .small)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.setBackgroundImage(heart, for: .normal)
         button.imageView!.contentMode = UIView.ContentMode.center
@@ -82,6 +83,7 @@ class RecipesCollViewCell: UICollectionViewCell {
             addtDescView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             addtDescView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             addtDescView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            addtDescView.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
@@ -98,12 +100,12 @@ class RecipesCollViewCell: UICollectionViewCell {
             
             recipeLabel.topAnchor.constraint(equalTo: addtDescView.topAnchor, constant: 8),
             recipeLabel.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 8),
-            recipeLabel.heightAnchor.constraint(equalToConstant: 22),
-            recipeLabel.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -35),
+            recipeLabel.heightAnchor.constraint(equalToConstant: 21),
+            recipeLabel.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -40),
             
-            sourceLabel.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor , constant: 4),
+            sourceLabel.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor , constant: 2),
             sourceLabel.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 8),
-            sourceLabel.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor, constant: -4)])
+            sourceLabel.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor, constant: 3)])
     }
     
     private func collViewConstraints() {
