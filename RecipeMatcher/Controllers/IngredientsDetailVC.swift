@@ -10,26 +10,28 @@ import UIKit
 
 class IngredientsDetailVC: UIViewController {
     
+    //MARK: - Properties
     var recipe: RecipeWrapper!
     var detailIngredients = DetailView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+    
+    
+    //MARK: Private Methods
+    private func setDetailRecipeView() {
+        view.addSubview(detailIngredients)
+        view.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         self.detailIngredients.loadingActivity.isHidden = false
         self.detailIngredients.loadingActivity.startAnimating()
-
+        
+        detailIngredients.recipeLabel.text = recipe.label
+        let lines = recipe.ingredientLines.map {$0.replacingOccurrences(of: ",", with: "")}
+            .map { $0 + "\n" }
+        let arrangedIngredients = lines.joined()
+        detailIngredients.ingredientsTxtView.text = arrangedIngredients
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setDetailRecipeView()
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
-
 }
