@@ -12,6 +12,7 @@ class IngredientsDetailVC: UIViewController {
     
     //MARK: - Properties
     var recipe: RecipeWrapper!
+    var cookingInstruction: RecipeWrapper!
     var detailIngredients = DetailView()
     
     

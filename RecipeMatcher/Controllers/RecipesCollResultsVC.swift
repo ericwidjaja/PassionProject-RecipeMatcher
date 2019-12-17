@@ -70,6 +70,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         
         let recipeDestinationVC = IngredientsDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
+//        recipeDestinationVC.cookingInstruction = recipesResult[indexPath.row].url
         present(recipeDestinationVC, animated: true)
         print("pass data to recipeDetailVC")
         
