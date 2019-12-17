@@ -68,10 +68,11 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-       let recipeDestinationVC = IngredientsDetailVC()
+        let recipeDestinationVC = IngredientsDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
         present(recipeDestinationVC, animated: true)
         print("pass data to recipeDetailVC")
+        
     }
     
 }

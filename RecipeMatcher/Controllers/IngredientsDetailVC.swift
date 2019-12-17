@@ -28,10 +28,16 @@ class IngredientsDetailVC: UIViewController {
         let arrangedIngredients = lines.joined()
         detailIngredients.ingredientsTxtView.text = arrangedIngredients
     }
+    @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
+        //code here to open in safari with url link
+        print("need to code url")
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
+        detailIngredients.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
 
     }
 }
