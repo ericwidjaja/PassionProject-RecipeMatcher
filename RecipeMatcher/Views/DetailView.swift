@@ -83,21 +83,34 @@ class DetailView: UIView {
     
     
     private func detailImageConstraints() {
-        
+        NSLayoutConstraint.activate([
+        recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+        recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+        recipeImage.heightAnchor.constraint(equalToConstant: 350),
+        recipeImage.widthAnchor.constraint(equalToConstant: 400)])
     }
     
     private func loadingActivityConstraints(){
-        
+        NSLayoutConstraint.activate([
+        loadingActivity.topAnchor.constraint(equalTo: recipeImage.topAnchor, constant: 150),
+        loadingActivity.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor),
+        loadingActivity.widthAnchor.constraint(equalToConstant: 100),
+        loadingActivity.heightAnchor.constraint(equalToConstant: 100)])
     }
     
     private func recipeLabelConstraints(){
-        
+        NSLayoutConstraint.activate([
+            recipeLabel.topAnchor.constraint(equalTo:
+                safeAreaLayoutGuide.topAnchor, constant: 400),
+            recipeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
+            recipeLabel.widthAnchor.constraint(equalToConstant: 320)])
     }
     
     private func ingredientTxtViewConstraints(){
-        
+        NSLayoutConstraint.activate([
+            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 40),
+            ingredientsTxtView.heightAnchor.constraint(equalToConstant: 300),
+            ingredientsTxtView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            ingredientsTxtView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -20)])
     }
-    
-    
-    
 }
