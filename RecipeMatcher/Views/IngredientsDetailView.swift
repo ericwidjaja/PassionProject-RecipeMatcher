@@ -12,8 +12,8 @@ class DetailView: UIView {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFill
-        image.layer.allowsGroupOpacity = true
-        image.clipsToBounds = true
+//        image.layer.allowsGroupOpacity = true
+        image.layer.cornerRadius = 15
         return image
     }()
     

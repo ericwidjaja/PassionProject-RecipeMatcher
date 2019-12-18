@@ -21,7 +21,9 @@ class IngredientsDetailVC: UIViewController {
         view.addSubview(detailIngredients)
         view.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         
+        detailIngredients.recipeImage.kf.indicatorType = .activity
         detailIngredients.recipeImage.kf.setImage(with: URL(string: recipe.image), placeholder: UIImage(named: "RecipeImgHolder"))
+        
         detailIngredients.recipeLabel.text = recipe.label
         let lines = recipe.ingredientLines.map {$0.replacingOccurrences(of: ",", with: "")}
             .map { $0 + "\n" }

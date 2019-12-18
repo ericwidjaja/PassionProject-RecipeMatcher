@@ -67,6 +67,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         let recipeToSet = recipesResult[indexPath.row]
         cell.recipeLabel.text = recipeToSet.label
         cell.sourceLabel.text = recipeToSet.source
+        cell.recipeImage.kf.indicatorType = .activity
         cell.recipeImage.kf.setImage(with: URL(string: recipeToSet.image), placeholder: UIImage(named: "RecipeImgHolder"))
         return cell
     }
