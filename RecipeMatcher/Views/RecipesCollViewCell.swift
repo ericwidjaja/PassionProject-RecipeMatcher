@@ -18,14 +18,14 @@ class RecipesCollViewCell: UICollectionViewCell {
     lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.60
+        view.alpha = 0.75
         return view
     }()
     
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell", size: 20)
+        label.font = UIFont.init(name: "Rockwell", size: 18)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -41,7 +41,7 @@ class RecipesCollViewCell: UICollectionViewCell {
     
     var faveButton: UIButton = {
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: .heavy, scale: .small)
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .small)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.setBackgroundImage(heart, for: .normal)
         button.imageView!.contentMode = UIView.ContentMode.center
@@ -83,7 +83,7 @@ class RecipesCollViewCell: UICollectionViewCell {
             addtDescView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             addtDescView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             addtDescView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            addtDescView.heightAnchor.constraint(equalToConstant: 50)
+            addtDescView.heightAnchor.constraint(equalToConstant: 70)
         ])
     }
     

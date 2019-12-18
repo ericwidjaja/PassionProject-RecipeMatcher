@@ -3,6 +3,9 @@
 
 import UIKit
 import Foundation
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class LogInScreenVC : UIViewController {
     
@@ -61,7 +64,7 @@ class LogInScreenVC : UIViewController {
         logInScreen.skipButton.addTarget(self, action: #selector(skipButtonPressed), for: .touchUpInside)
         
 //        logInScreen.signInButton.addTarget(self, action: #selector(signInButtonPressed), for: .touchUpInside)
-        
+//        
 //        logInScreen.createNewAcctButton.addTarget(self, action: #selector(createAcctForm), for: .touchUpInside)
     }
 }

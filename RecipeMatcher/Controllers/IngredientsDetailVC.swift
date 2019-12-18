@@ -20,9 +20,8 @@ class IngredientsDetailVC: UIViewController {
     private func setDetailRecipeView() {
         view.addSubview(detailIngredients)
         view.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
-        self.detailIngredients.loadingActivity.isHidden = false
-        self.detailIngredients.loadingActivity.startAnimating()
         
+        detailIngredients.recipeImage.kf.setImage(with: URL(string: recipe.image), placeholder: UIImage(named: "RecipeImgHolder"))
         detailIngredients.recipeLabel.text = recipe.label
         let lines = recipe.ingredientLines.map {$0.replacingOccurrences(of: ",", with: "")}
             .map { $0 + "\n" }
@@ -31,7 +30,7 @@ class IngredientsDetailVC: UIViewController {
     }
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
         //code here to open in safari with url link
-        print("need to code url")
+        print("need to code url link in safari")
         
     }
     

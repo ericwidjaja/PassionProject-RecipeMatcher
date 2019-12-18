@@ -11,24 +11,16 @@ class DetailView: UIView {
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
+        image.layer.allowsGroupOpacity = true
         image.clipsToBounds = true
         return image
-    }()
-    
-    lazy var loadingActivity: UIActivityIndicatorView = {
-        let loadingIndicator = UIActivityIndicatorView()
-        loadingIndicator.style = .large
-        loadingIndicator.color = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
-        loadingIndicator.isHidden = false
-        loadingIndicator.startAnimating()
-        return loadingIndicator
     }()
     
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell-Bold", size: 22)
+        label.font = UIFont.init(name: "Rockwell-Bold", size: 21)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -36,7 +28,7 @@ class DetailView: UIView {
     
     lazy var ingredientsTxtView: UITextView = {
         let txtView = UITextView()
-        txtView.font = UIFont.init(name: "Rockwell", size: 18)
+        txtView.font = UIFont.init(name: "Rockwell", size: 17)
         txtView.adjustsFontForContentSizeCategory = true
         txtView.isEditable = false
         txtView.textColor = .darkGray
@@ -53,13 +45,13 @@ class DetailView: UIView {
             button.layer.cornerRadius = 14
             button.setTitle("Cooking Instructions", for: .normal)
             button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 14)
+            button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 16)
             return button
         }()
         
     
     
-    lazy var objectsViewArray = [self.recipeImage, self.loadingActivity, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
+    lazy var objectsViewArray = [self.recipeImage, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
     
     //MARK: - Add ViewsToSubviews
         func addViewsToSubView() {
@@ -72,7 +64,6 @@ class DetailView: UIView {
     private func detailViewConstraints() {
         addViewsToSubView()
         detailImageConstraints()
-        loadingActivityConstraints()
         recipeLabelConstraints()
         ingredientTxtViewConstraints()
         instructionsLinkConstraints()
@@ -94,38 +85,30 @@ class DetailView: UIView {
         NSLayoutConstraint.activate([
         recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
         recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-        recipeImage.heightAnchor.constraint(equalToConstant: 320),
-        recipeImage.widthAnchor.constraint(equalToConstant: 400)])
-    }
-    
-    private func loadingActivityConstraints(){
-        NSLayoutConstraint.activate([
-        loadingActivity.topAnchor.constraint(equalTo: recipeImage.topAnchor, constant: 150),
-        loadingActivity.centerXAnchor.constraint(equalTo: recipeImage.centerXAnchor),
-        loadingActivity.widthAnchor.constraint(equalToConstant: 100),
-        loadingActivity.heightAnchor.constraint(equalToConstant: 100)])
+        recipeImage.heightAnchor.constraint(equalToConstant: 300),
+        recipeImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor)])
     }
     
     private func recipeLabelConstraints(){
         NSLayoutConstraint.activate([
             recipeLabel.topAnchor.constraint(equalTo:
-                safeAreaLayoutGuide.topAnchor, constant: 360),
-            recipeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 24),
-            recipeLabel.widthAnchor.constraint(equalToConstant: 360)])
+                safeAreaLayoutGuide.topAnchor, constant: 340),
+            recipeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            recipeLabel.widthAnchor.constraint(equalToConstant: 400)])
     }
     
     private func ingredientTxtViewConstraints(){
         NSLayoutConstraint.activate([
-            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 15),
-            ingredientsTxtView.heightAnchor.constraint(equalToConstant: 330),
-            ingredientsTxtView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
-            ingredientsTxtView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -15)])
+            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 10),
+            ingredientsTxtView.heightAnchor.constraint(equalToConstant: 380),
+            ingredientsTxtView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            ingredientsTxtView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -10)])
     }
     
     private func instructionsLinkConstraints() {
         NSLayoutConstraint.activate([
             urlButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 75),
-            urlButton.topAnchor.constraint(equalTo: ingredientsTxtView.bottomAnchor, constant: 10),
+            urlButton.topAnchor.constraint(equalTo: ingredientsTxtView.bottomAnchor, constant: 15),
             urlButton.heightAnchor.constraint(equalToConstant: 30),
             urlButton.widthAnchor.constraint(equalToConstant: 200)])
     }
