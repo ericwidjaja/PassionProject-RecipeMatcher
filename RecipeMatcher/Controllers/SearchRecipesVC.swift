@@ -3,6 +3,9 @@
 
 import UIKit
 import Foundation
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
 
 class SearchRecipesVC : UIViewController {
     

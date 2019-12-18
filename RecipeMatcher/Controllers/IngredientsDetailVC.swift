@@ -1,18 +1,18 @@
-//
 //  IngredientsDetailVC.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 12/16/19.
-//  Copyright © 2019 Eric W. All rights reserved.
-//
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseFirestore
+import Kingfisher
 
 class IngredientsDetailVC: UIViewController {
     
     //MARK: - Properties
     var recipe: RecipeWrapper!
-    var cookingInstruction: RecipeWrapper!
+//    var cookingInstruction: RecipeWrapper!
     var detailIngredients = DetailView()
     
     

@@ -1,22 +1,21 @@
 //  AppDelegate.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 11/3/19.
-//  Copyright © 2019 Eric W. All rights reserved.
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
         UINavigationBar.appearance().tintColor = UIColor(red: 255/255, green: 86/255, blue: 0/255, alpha: 1)
         UITabBar.appearance().tintColor = UIColor(red: 255/255, green: 86/255, blue: 0/255, alpha: 1)
         
-//        FirebaseApp.configure()
+        FirebaseApp.configure()
         return true
     }
 
