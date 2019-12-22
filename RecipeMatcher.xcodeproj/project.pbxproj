@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -40,6 +40,10 @@
 		DF66AC2223948D61005E36A7 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC2023948D61005E36A7 /* LogInView.swift */; };
 		DF66AC242394AABF005E36A7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC232394AABF005E36A7 /* SearchView.swift */; };
 		DF66AC252394AABF005E36A7 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC232394AABF005E36A7 /* SearchView.swift */; };
+		DF6C0CC923AEEF3E004BF388 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CC823AEEF3E004BF388 /* AppUser.swift */; };
+		DF6C0CCD23AF2012004BF388 /* FirebaseAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CCC23AF2012004BF388 /* FirebaseAuth.swift */; };
+		DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CCE23AF2056004BF388 /* FirebaseStorageService.swift */; };
+		DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
 		DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */; };
@@ -84,6 +88,10 @@
 		DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreenVC.swift; sourceTree = "<group>"; };
 		DF66AC2023948D61005E36A7 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		DF66AC232394AABF005E36A7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		DF6C0CC823AEEF3E004BF388 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		DF6C0CCC23AF2012004BF388 /* FirebaseAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuth.swift; sourceTree = "<group>"; };
+		DF6C0CCE23AF2056004BF388 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
+		DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -127,7 +135,6 @@
 				3189B0F4F47E8BAF6CAAC49F /* Pods-RecipeMatcherTests.debug.xcconfig */,
 				AF1321605642414F09096930 /* Pods-RecipeMatcherTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -158,6 +165,7 @@
 			children = (
 				DF35F004239370C200638254 /* Recipes.swift */,
 				DF35F0072393725F00638254 /* RecipesJSON.json */,
+				DF6C0CC823AEEF3E004BF388 /* AppUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -171,6 +179,35 @@
 				DF35F01823946F5800638254 /* APIClient.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		DF6C0CCA23AF1F94004BF388 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C0CCB23AF1FAC004BF388 /* Firebase */,
+				DF35F01123946E5300638254 /* Network */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		DF6C0CCB23AF1FAC004BF388 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				DF6C0CCC23AF2012004BF388 /* FirebaseAuth.swift */,
+				DF6C0CCE23AF2056004BF388 /* FirebaseStorageService.swift */,
+				DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		DF6C0CD223AF22E4004BF388 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */,
+				DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */,
+				DFEE82DD236FADBF000FDE8B /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		DFEE82C3236FADB6000FDE8B = {
@@ -199,14 +236,12 @@
 				DF35F00A239373E600638254 /* Model */,
 				DF28B39D23889B1B00AA8CE0 /* Views */,
 				DFEE82F7236FBDB5000FDE8B /* Controllers */,
-				DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */,
-				DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */,
+				DF6C0CD223AF22E4004BF388 /* Supporting Files */,
 				DFEE82DB236FADBF000FDE8B /* Assets.xcassets */,
-				DFEE82DD236FADBF000FDE8B /* LaunchScreen.storyboard */,
 				DF2F4E3B23A9C19A0002E8CC /* GoogleService-Info.plist */,
 				DFEE82E0236FADBF000FDE8B /* Info.plist */,
 				DFEE82D8236FADB6000FDE8B /* RecipeMatcher.xcdatamodeld */,
-				DF35F01123946E5300638254 /* Network */,
+				DF6C0CCA23AF1F94004BF388 /* Utilities */,
 				DF35F01B239472A000638254 /* Secret.swift */,
 			);
 			path = RecipeMatcher;
@@ -407,8 +442,10 @@
 			files = (
 				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
 				DF2F4E3823A83E890002E8CC /* IngredientsDetailView.swift in Sources */,
+				DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */,
 				DF2F4E3A23A84EFB0002E8CC /* IngredientsDetailVC.swift in Sources */,
 				DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
+				DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */,
 				DF35F00F23946E3700638254 /* AppError.swift in Sources */,
 				DF325B7E23A1766C00F112B5 /* RecipesCollViewCell.swift in Sources */,
 				DF35F01323946EB300638254 /* NetworkManager.swift in Sources */,
@@ -417,10 +454,12 @@
 				DFEE82DA236FADB6000FDE8B /* RecipeMatcher.xcdatamodeld in Sources */,
 				DF66AC2123948D61005E36A7 /* LogInView.swift in Sources */,
 				DF325B8423A1801F00F112B5 /* RecipesCollResultsVC.swift in Sources */,
+				DF6C0CCD23AF2012004BF388 /* FirebaseAuth.swift in Sources */,
 				DF35F01923946F5800638254 /* APIClient.swift in Sources */,
 				DF66AC242394AABF005E36A7 /* SearchView.swift in Sources */,
 				DF66AC1E23948CFD005E36A7 /* LogInScreenVC.swift in Sources */,
 				DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */,
+				DF6C0CC923AEEF3E004BF388 /* AppUser.swift in Sources */,
 				DF35F01C239472A000638254 /* Secret.swift in Sources */,
 				DF35F01623946F0400638254 /* ImageHelper.swift in Sources */,
 				DF325B8A23A1884000F112B5 /* RecipeCollView.swift in Sources */,

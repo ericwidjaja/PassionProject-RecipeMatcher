@@ -9,6 +9,7 @@ target 'RecipeMatcher' do
 		pod 'Firebase/Auth'
 		pod 'Firebase/Firestore'
 		pod 'Kingfisher'
+		pod 'Firebase/Storage'
 
   target 'RecipeMatcherTests' do
     inherit! :search_paths
