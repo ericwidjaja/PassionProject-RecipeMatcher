@@ -25,13 +25,11 @@ class SearchRecipesVC : UIViewController {
         let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
         navigationController?.pushViewController(findRecipeVC, animated: true)
         dump(ingredients)
-        
     }
     
     
     
     private func loadSearchData() {
-        
         searchView.ingredientsTblView.dataSource = self
         searchView.ingredientsTblView.delegate = self
         searchView.ingredientTextField.delegate = self

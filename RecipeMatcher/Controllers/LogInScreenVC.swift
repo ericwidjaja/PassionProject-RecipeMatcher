@@ -2,8 +2,6 @@
 //  RecipeMatcher
 
 import UIKit
-import Foundation
-import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
@@ -27,16 +25,6 @@ class LogInScreenVC : UIViewController {
         return tabVC
     }
     
-//    @objc func skipButtonPressed() {
-//        //complete implementation
-//       let destination = RecipeMatchTabBar()
-//        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-//            else {
-//                return
-//        }
-//        window.rootViewController = destination
-//    }
     @objc func skipButtonPressed() {
         //complete implementation
 //       let destination = RecipeMatchTabBar()
@@ -49,8 +37,6 @@ class LogInScreenVC : UIViewController {
                 searchSetUpVC.selectedIndex = 0
             return searchSetUpVC
         }()
-
-
     }
     
     

@@ -17,11 +17,11 @@ class SearchView: UIView {
     lazy var ingredientTextField: UITextField = {
         let ingredientTxtField = UITextField()
         ingredientTxtField.placeholder = "type your ingredient and press enter"
-        ingredientTxtField.font = UIFont(name: "Noteworthy", size: 18)
+        ingredientTxtField.font = UIFont(name: "Noteworthy", size: 20)
         ingredientTxtField.borderStyle = .roundedRect
         ingredientTxtField.textAlignment = .center
-        ingredientTxtField.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        ingredientTxtField.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        ingredientTxtField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        ingredientTxtField.backgroundColor = .clear
         ingredientTxtField.autocorrectionType = .yes
         return ingredientTxtField
         
@@ -29,7 +29,8 @@ class SearchView: UIView {
     
     lazy var ingredientsTblView: UITableView = {
         let tableView = UITableView()
-        
+        tableView.backgroundColor = UIColor(displayP3Red: 50/255, green: 30/255, blue: 50/255, alpha: 0.25)
+        tableView.layer.cornerRadius = 15
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         return tableView
     }()
@@ -41,7 +42,6 @@ class SearchView: UIView {
         button.setTitle("Find Recipes", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 22)
-        
         return button
     }()
     
