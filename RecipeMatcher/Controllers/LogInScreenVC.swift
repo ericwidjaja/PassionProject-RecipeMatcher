@@ -70,11 +70,41 @@ class LogInScreenVC: UIViewController {
     }
     
     @objc func createAcctPressed() {
-//        let createAcct = CreateAcctVC()
-//        createAcct.modalPresentationStyle = .currentContext
-//        present(createAcct, animated: true, completion: nil)
-    print("createAcctIsPressed")
+        let alert = UIAlertController(title: "Sign In", message: "Create an account", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancel" , style: .cancel)
+        let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) -> Void in
+            
+            guard let email = self.logInEmail?.text, !email.isEmpty, let password = self.logInPassword?.text, !password.isEmpty else {
+                self.showAlert(with: "Required", and: "Fill both fields")
+                return
+            }
+            FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { (result) in
+                switch result {
+                case .failure(let error):
+                    self.showAlert(with: "Couldn't create user", and: "Error: \(error)")
+                case .success(let newUser):
+                    FirestoreService.manager.createAppUser(user: AppUser.init(from: newUser)) { (result) in self.handleSignInResponse(with: result)
+                    }
+                }
+            }
+        }
+        alert.addAction(cancelAction)
+        alert.addAction(saveAction)
+        
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            textField.placeholder = "Enter email address"
+            self.logInEmail = textField
+        })
+        
+        alert.addTextField(configurationHandler: {(textField: UITextField!) in
+            textField.placeholder = "Enter password"
+            textField.isSecureTextEntry = true
+            self.logInPassword = textField
+        })
+        
+        self.present(alert, animated: true, completion: nil)
     }
+    
     
     @objc func skipButtonPressed() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

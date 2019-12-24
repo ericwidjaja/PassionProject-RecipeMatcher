@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,12 +28,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Ll3-if-wA9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="132" y="100"/>
+            <point key="canvasLocation" x="686.95652173913049" y="-248.4375"/>
         </scene>
-        <!--Search RecipesVC-->
+        <!--Item-->
         <scene sceneID="ZdG-hV-gTU">
             <objects>
                 <viewController id="ggM-EW-0g9" customClass="SearchRecipesVC" customModule="RecipeMatcher" customModuleProvider="target" sceneMemberID="viewController">
@@ -101,6 +102,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XQC-vc-4vf"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="GQI-jR-ILD"/>
                     <navigationItem key="navigationItem" id="khV-kX-0Lo"/>
                     <connections>
                         <outlet property="fridgeTableView" destination="g0V-rT-tWG" id="BUa-cx-cOS"/>
@@ -110,7 +112,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAB-G8-KTC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="906" y="100"/>
+            <point key="canvasLocation" x="1373.913043478261" y="-248.4375"/>
         </scene>
     </scenes>
     <resources>

@@ -5,9 +5,9 @@ import UIKit
 
 class RecipeMatchTabBar: UITabBarController {
     
-    let navController1 = UINavigationController(rootViewController: SearchRecipesVC())
+    lazy var navController1 = UINavigationController(rootViewController: SearchRecipesVC())
     
-    let navController2 = UINavigationController(rootViewController: RecipesCollResultsVC())
+    lazy var navController2 = UINavigationController(rootViewController: RecipesCollResultsVC())
     
     override func viewDidLoad() {
         super.viewDidLoad()
