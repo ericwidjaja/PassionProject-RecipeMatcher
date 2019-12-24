@@ -64,7 +64,6 @@ class LogInScreenVC: UIViewController {
                     let mainVC = RecipeMatchTabBar()
                     return mainVC
                 }()
-                
             }, completion: nil)
         }
     }

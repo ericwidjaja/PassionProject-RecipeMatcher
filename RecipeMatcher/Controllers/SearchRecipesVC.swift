@@ -28,8 +28,8 @@ class SearchRecipesVC : UIViewController {
     }
     
     @objc private func signOut() {
-      let alert = UIAlertController(title: "Sign Out?", message: nil, preferredStyle: .actionSheet)
-      let action = UIAlertAction.init(title: "Yeah", style: .destructive, handler: .some({ (action) in
+      let alert = UIAlertController(title: "Sign Out from this App?", message: nil, preferredStyle: .actionSheet)
+      let action = UIAlertAction.init(title: "Yes", style: .destructive, handler: .some({ (action) in
         DispatchQueue.main.async {
           FirebaseAuthService.manager.logoutUser()
           guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
@@ -37,7 +37,7 @@ class SearchRecipesVC : UIViewController {
             else {
               return
           }
-          UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+            UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: {
             window.rootViewController = LogInScreenVC()
           }, completion: nil)
         }
@@ -47,15 +47,10 @@ class SearchRecipesVC : UIViewController {
       alert.addAction(cancel)
       present(alert, animated:true)
     }
-
-    
-    
-    
     private func loadSearchData() {
         searchView.ingredientsTblView.dataSource = self
         searchView.ingredientsTblView.delegate = self
         searchView.ingredientTextField.delegate = self
-        
     }
     
     

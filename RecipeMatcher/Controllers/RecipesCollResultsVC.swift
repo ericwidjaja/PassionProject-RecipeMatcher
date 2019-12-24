@@ -1,6 +1,7 @@
 //  RecipesCollResultsVC.swift
 //  RecipeMatcher
 //  Created by Eric Widjaja on 12/11/19.
+
 import UIKit
 import Firebase
 import FirebaseAuth
@@ -50,6 +51,7 @@ class RecipesCollResultsVC: UIViewController {
             ingredient.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)})
             .joined(separator: "+")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateData()
