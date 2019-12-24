@@ -27,6 +27,28 @@ class SearchRecipesVC : UIViewController {
         dump(ingredients)
     }
     
+    @objc private func signOut() {
+      let alert = UIAlertController(title: "Sign Out?", message: nil, preferredStyle: .actionSheet)
+      let action = UIAlertAction.init(title: "Yeah", style: .destructive, handler: .some({ (action) in
+        DispatchQueue.main.async {
+          FirebaseAuthService.manager.logoutUser()
+          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+            else {
+              return
+          }
+          UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+            window.rootViewController = LogInScreenVC()
+          }, completion: nil)
+        }
+      }))
+      let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alert.addAction(action)
+      alert.addAction(cancel)
+      present(alert, animated:true)
+    }
+
+    
     
     
     private func loadSearchData() {
@@ -43,6 +65,7 @@ class SearchRecipesVC : UIViewController {
         view.addSubview(searchView)
         loadSearchData()
         searchView.findRecipesButton.addTarget(self, action: #selector(findRecipeButtonPressed), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
     }
 }
 //MARK: - Extensions
