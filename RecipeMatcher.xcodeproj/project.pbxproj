@@ -11,7 +11,6 @@
 		DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
 		DF28B39923884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
 		DF2F4E3823A83E890002E8CC /* IngredientsDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2F4E3723A83E890002E8CC /* IngredientsDetailView.swift */; };
-		DF2F4E3A23A84EFB0002E8CC /* IngredientsDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2F4E3923A84EFB0002E8CC /* IngredientsDetailVC.swift */; };
 		DF2F4E3C23A9C19A0002E8CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF2F4E3B23A9C19A0002E8CC /* GoogleService-Info.plist */; };
 		DF2F4E3D23A9C19A0002E8CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DF2F4E3B23A9C19A0002E8CC /* GoogleService-Info.plist */; };
 		DF325B7E23A1766C00F112B5 /* RecipesCollViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF325B7D23A1766C00F112B5 /* RecipesCollViewCell.swift */; };
@@ -55,6 +54,7 @@
 		DFEE82EA236FADBF000FDE8B /* RecipeMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82E9236FADBF000FDE8B /* RecipeMatcherTests.swift */; };
 		DFF5DC8023B1B7D600DB2B24 /* FavRecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5DC7F23B1B7D600DB2B24 /* FavRecipesVC.swift */; };
 		DFF5DC8223B2E3E300DB2B24 /* ButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5DC8123B2E3E300DB2B24 /* ButtonProtocol.swift */; };
+		DFF5DC8423B3DB2700DB2B24 /* RecipeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5DC8323B3DB2700DB2B24 /* RecipeDetailVC.swift */; };
 		E7F5253B93CA57B61D5CBD81 /* Pods_RecipeMatcherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9570315786E5183A8CDF89B /* Pods_RecipeMatcherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +76,6 @@
 		DBED1C097715BAB3CDC15FAE /* Pods-RecipeMatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMatcher.debug.xcconfig"; path = "Target Support Files/Pods-RecipeMatcher/Pods-RecipeMatcher.debug.xcconfig"; sourceTree = "<group>"; };
 		DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatchTabBar.swift; sourceTree = "<group>"; };
 		DF2F4E3723A83E890002E8CC /* IngredientsDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsDetailView.swift; sourceTree = "<group>"; };
-		DF2F4E3923A84EFB0002E8CC /* IngredientsDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsDetailVC.swift; sourceTree = "<group>"; };
 		DF2F4E3B23A9C19A0002E8CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DF325B7D23A1766C00F112B5 /* RecipesCollViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCollViewCell.swift; sourceTree = "<group>"; };
 		DF325B8323A1801F00F112B5 /* RecipesCollResultsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCollResultsVC.swift; sourceTree = "<group>"; };
@@ -110,6 +109,7 @@
 		DFEE82EB236FADBF000FDE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFF5DC7F23B1B7D600DB2B24 /* FavRecipesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRecipesVC.swift; sourceTree = "<group>"; };
 		DFF5DC8123B2E3E300DB2B24 /* ButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProtocol.swift; sourceTree = "<group>"; };
+		DFF5DC8323B3DB2700DB2B24 /* RecipeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailVC.swift; sourceTree = "<group>"; };
 		F82F50D2E713BB59271FD349 /* Pods_RecipeMatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeMatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -271,7 +271,7 @@
 				DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */,
 				DFEE82D3236FADB6000FDE8B /* SearchRecipesVC.swift */,
 				DF325B8323A1801F00F112B5 /* RecipesCollResultsVC.swift */,
-				DF2F4E3923A84EFB0002E8CC /* IngredientsDetailVC.swift */,
+				DFF5DC8323B3DB2700DB2B24 /* RecipeDetailVC.swift */,
 				DFF5DC7F23B1B7D600DB2B24 /* FavRecipesVC.swift */,
 			);
 			path = Controllers;
@@ -452,7 +452,6 @@
 				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
 				DF2F4E3823A83E890002E8CC /* IngredientsDetailView.swift in Sources */,
 				DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */,
-				DF2F4E3A23A84EFB0002E8CC /* IngredientsDetailVC.swift in Sources */,
 				DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
 				DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */,
 				DF35F00F23946E3700638254 /* AppError.swift in Sources */,
@@ -475,6 +474,7 @@
 				DFF5DC8023B1B7D600DB2B24 /* FavRecipesVC.swift in Sources */,
 				DF35F01623946F0400638254 /* ImageHelper.swift in Sources */,
 				DF325B8A23A1884000F112B5 /* RecipeCollView.swift in Sources */,
+				DFF5DC8423B3DB2700DB2B24 /* RecipeDetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -4,6 +4,7 @@
 
 
 import UIKit
+import SafariServices
 
 class DetailView: UIView {
 

@@ -81,10 +81,14 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        let recipeDestinationVC = IngredientsDetailVC()
+        let recipeDestinationVC = RecipeDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
+        
         //check the recipe url
         print(recipesResult[indexPath.row].url)
+//        let cookingInstructionUrl = IngredientsDetailVC()
+//        cookingInstructionUrl.recipe.url = recipesResult[indexPath.row].url
+//        
         //        recipeDestinationVC.cookingInstruction = recipesResult[indexPath.row].url
         present(recipeDestinationVC, animated: true)
         print("pass cell to recipeDetailVC")
@@ -92,12 +96,11 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         guard (collectionView.cellForItem(at: indexPath) as? RecipesCollViewCell) != nil else {return}
     }
 }
-extension SearchRecipesVC: buttonFunction {
+extension RecipesCollResultsVC: buttonFunction {
     func heartButtonPressed(tag: Int) {
         let selectedIndex = IndexPath(row: tag, section: 0)
-        let selectedRecipe =
-            searchView.ingredientsTblView.cellForRow(at: selectedIndex) as! RecipesCollViewCell
-        let singleRecipe = ingredients[tag]
+        let selectedRecipe = recipesCollView.recipeCollectionView.cellForItem(at: selectedIndex) as! RecipesCollViewCell
+        let singleRecipe = recipesResult[tag]
         //        FirestoreService.manager.storeItem(faveItem: Favorite()) { (result) in
         //            switch result {
         //            case .success:
@@ -107,7 +110,7 @@ extension SearchRecipesVC: buttonFunction {
         //                print(error)
         //            }
         //        }
-        print(singleRecipe.description)
+        print(singleRecipe.label)
         
         //MARK: TODO
         //Use firestoreservice to make a post/favorite on firebase.
