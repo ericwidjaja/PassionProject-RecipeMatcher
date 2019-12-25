@@ -1,27 +1,27 @@
-//  IngredientsDetailView.swift
+//  RecipeDetailView.swift
 //  RecipeMatcher
 //  Created by Eric Widjaja on 12/16/19.
 
 
 import UIKit
 import SafariServices
+import Kingfisher
 
-class DetailView: UIView {
-
-
+class RecipeDetailView: UIView {
+    
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFill
-//        image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 15
+        image.layer.allowsGroupOpacity = true
+        image.layer.cornerRadius = 20
         return image
     }()
     
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell-Bold", size: 21)
+        label.font = UIFont.init(name: "Rockwell-Bold", size: 22)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -34,7 +34,6 @@ class DetailView: UIView {
         txtView.isEditable = false
         txtView.textColor = .darkGray
         txtView.textAlignment = .left
-        // Make UITextView web links clickable
         txtView.isSelectable = true
         txtView.dataDetectorTypes = UIDataDetectorTypes.link
         return txtView
@@ -46,12 +45,10 @@ class DetailView: UIView {
             button.layer.cornerRadius = 14
             button.setTitle("Cooking Instructions", for: .normal)
             button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 16)
+            button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 18)
             return button
         }()
-        
-    
-    
+ 
     lazy var objectsViewArray = [self.recipeImage, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
     
     //MARK: - Add ViewsToSubviews
@@ -70,7 +67,6 @@ class DetailView: UIView {
         instructionsLinkConstraints()
     }
     
-    
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         detailViewConstraints()
@@ -79,31 +75,29 @@ class DetailView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
-    
-    
+ 
     private func detailImageConstraints() {
         NSLayoutConstraint.activate([
-        recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+        recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
         recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-        recipeImage.heightAnchor.constraint(equalToConstant: 300),
+        recipeImage.heightAnchor.constraint(equalToConstant: 270),
         recipeImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor)])
     }
     
     private func recipeLabelConstraints(){
         NSLayoutConstraint.activate([
             recipeLabel.topAnchor.constraint(equalTo:
-                safeAreaLayoutGuide.topAnchor, constant: 340),
+                recipeImage.bottomAnchor, constant: 50),
             recipeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
             recipeLabel.widthAnchor.constraint(equalToConstant: 400)])
     }
     
     private func ingredientTxtViewConstraints(){
         NSLayoutConstraint.activate([
-            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 10),
+            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 15),
             ingredientsTxtView.heightAnchor.constraint(equalToConstant: 380),
-            ingredientsTxtView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            ingredientsTxtView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -10)])
+            ingredientsTxtView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
+            ingredientsTxtView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -15)])
     }
     
     private func instructionsLinkConstraints() {

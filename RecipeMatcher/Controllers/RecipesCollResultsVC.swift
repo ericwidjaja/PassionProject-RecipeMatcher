@@ -84,16 +84,13 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         let recipeDestinationVC = RecipeDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
         
-        //check the recipe url
+        //mark the recipe url
         print(recipesResult[indexPath.row].url)
-//        let cookingInstructionUrl = IngredientsDetailVC()
-//        cookingInstructionUrl.recipe.url = recipesResult[indexPath.row].url
-//        
-        //        recipeDestinationVC.cookingInstruction = recipesResult[indexPath.row].url
+        
         present(recipeDestinationVC, animated: true)
         print("pass cell to recipeDetailVC")
         
-        guard (collectionView.cellForItem(at: indexPath) as? RecipesCollViewCell) != nil else {return}
+//        guard (collectionView.cellForItem(at: indexPath) as? RecipesCollViewCell) != nil else {return}
     }
 }
 extension RecipesCollResultsVC: buttonFunction {
