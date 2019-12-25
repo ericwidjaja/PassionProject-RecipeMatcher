@@ -54,6 +54,7 @@
 		DFEE82DF236FADBF000FDE8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DFEE82DD236FADBF000FDE8B /* LaunchScreen.storyboard */; };
 		DFEE82EA236FADBF000FDE8B /* RecipeMatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82E9236FADBF000FDE8B /* RecipeMatcherTests.swift */; };
 		DFF5DC8023B1B7D600DB2B24 /* FavRecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5DC7F23B1B7D600DB2B24 /* FavRecipesVC.swift */; };
+		DFF5DC8223B2E3E300DB2B24 /* ButtonProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF5DC8123B2E3E300DB2B24 /* ButtonProtocol.swift */; };
 		E7F5253B93CA57B61D5CBD81 /* Pods_RecipeMatcherTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9570315786E5183A8CDF89B /* Pods_RecipeMatcherTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -108,6 +109,7 @@
 		DFEE82E9236FADBF000FDE8B /* RecipeMatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatcherTests.swift; sourceTree = "<group>"; };
 		DFEE82EB236FADBF000FDE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DFF5DC7F23B1B7D600DB2B24 /* FavRecipesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRecipesVC.swift; sourceTree = "<group>"; };
+		DFF5DC8123B2E3E300DB2B24 /* ButtonProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonProtocol.swift; sourceTree = "<group>"; };
 		F82F50D2E713BB59271FD349 /* Pods_RecipeMatcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RecipeMatcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -191,6 +193,7 @@
 				DF6C0CCB23AF1FAC004BF388 /* Firebase */,
 				DF35F01123946E5300638254 /* Network */,
 				DF6C0CD523AF286C004BF388 /* String+Validation.swift */,
+				DFF5DC8123B2E3E300DB2B24 /* ButtonProtocol.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -461,6 +464,7 @@
 				DF66AC2123948D61005E36A7 /* LogInView.swift in Sources */,
 				DF325B8423A1801F00F112B5 /* RecipesCollResultsVC.swift in Sources */,
 				DF6C0CCD23AF2012004BF388 /* FirebaseAuth.swift in Sources */,
+				DFF5DC8223B2E3E300DB2B24 /* ButtonProtocol.swift in Sources */,
 				DF6C0CD623AF286C004BF388 /* String+Validation.swift in Sources */,
 				DF35F01923946F5800638254 /* APIClient.swift in Sources */,
 				DF66AC242394AABF005E36A7 /* SearchView.swift in Sources */,

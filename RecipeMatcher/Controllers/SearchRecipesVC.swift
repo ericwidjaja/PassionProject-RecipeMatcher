@@ -37,7 +37,8 @@ class SearchRecipesVC : UIViewController {
             else {
               return
           }
-            UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut, animations: {
+            UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut
+                , animations: {
             window.rootViewController = LogInScreenVC()
           }, completion: nil)
         }
@@ -82,9 +83,11 @@ extension SearchRecipesVC: UITextFieldDelegate {
 }
 
 extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ingredients.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = searchView.ingredientsTblView.dequeueReusableCell(withIdentifier: "IngredientCell", for: indexPath)
         cell.textLabel?.text = ingredients[indexPath.row]

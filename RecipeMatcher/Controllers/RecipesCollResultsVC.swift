@@ -18,6 +18,7 @@ class RecipesCollResultsVC: UIViewController {
     }
     
     //MARK: - Properties
+    
     var recipesCollView = RecipeCollView()
     var ingredients = [String]()
     var recipesResult = [RecipeWrapper]() {
@@ -34,9 +35,10 @@ class RecipesCollResultsVC: UIViewController {
         recipesCollView.recipeCollectionView.register(RecipesCollViewCell.self, forCellWithReuseIdentifier: "RecipeCell")
         recipesCollView.recipeCollectionView.dataSource = self
         recipesCollView.recipeCollectionView.delegate = self
-        
     }
+    
     private func updateData() {
+        
         RecipeAPIClient.searchRecipes(keyword: ingredientsQueryString()) { (error, recipe) in
             if let error =  error {
                 print(error)
@@ -58,15 +60,18 @@ class RecipesCollResultsVC: UIViewController {
     }
 }
 
-
-extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recipesResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell() }
+        
         let recipeToSet = recipesResult[indexPath.row]
+        cell.faveButton.tag = indexPath.row
+        //check tag #
+        print(cell.faveButton.tag)
         cell.recipeLabel.text = recipeToSet.label
         cell.sourceLabel.text = recipeToSet.source
         cell.recipeImage.kf.indicatorType = .activity
@@ -78,9 +83,38 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         
         let recipeDestinationVC = IngredientsDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
-//        recipeDestinationVC.cookingInstruction = recipesResult[indexPath.row].url
+        //check the recipe url
+        print(recipesResult[indexPath.row].url)
+        //        recipeDestinationVC.cookingInstruction = recipesResult[indexPath.row].url
         present(recipeDestinationVC, animated: true)
-        print("pass data to recipeDetailVC")
+        print("pass cell to recipeDetailVC")
         
+        guard (collectionView.cellForItem(at: indexPath) as? RecipesCollViewCell) != nil else {return}
     }
 }
+extension SearchRecipesVC: buttonFunction {
+    func heartButtonPressed(tag: Int) {
+        let selectedIndex = IndexPath(row: tag, section: 0)
+        let selectedRecipe =
+            searchView.ingredientsTblView.cellForRow(at: selectedIndex) as! RecipesCollViewCell
+        let singleRecipe = ingredients[tag]
+        //        FirestoreService.manager.storeItem(faveItem: Favorite()) { (result) in
+        //            switch result {
+        //            case .success:
+        //                print("good job")
+        //
+        //            case .failure (let error):
+        //                print(error)
+        //            }
+        //        }
+        print(singleRecipe.description)
+        
+        //MARK: TODO
+        //Use firestoreservice to make a post/favorite on firebase.
+        //To do this, you need to initialize a new favorite and give it the properties of the singleRecipe you clicked on.
+        //Example, say Favorite needs a title as an init. You can pass the title of the singleRecipe.title as:
+        //Favorite(title: singleRecipe.title)
+    }
+}
+
+

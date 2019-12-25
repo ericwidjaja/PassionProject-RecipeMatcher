@@ -3,9 +3,6 @@
 //  Created by Eric Widjaja on 12/16/19.
 
 import UIKit
-import Firebase
-import FirebaseAuth
-import FirebaseFirestore
 import Kingfisher
 
 class IngredientsDetailVC: UIViewController {

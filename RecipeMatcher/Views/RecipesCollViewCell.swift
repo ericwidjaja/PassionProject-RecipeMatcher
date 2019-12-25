@@ -5,7 +5,7 @@
 import UIKit
 
 class RecipesCollViewCell: UICollectionViewCell {
-    
+
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
@@ -40,10 +40,13 @@ class RecipesCollViewCell: UICollectionViewCell {
         return label
     }()
     
-    var faveButton: UIButton = {
+    var cellDelegate: buttonFunction?
+    
+    lazy var faveButton: UIButton = { [unowned self] in
         let button = UIButton()
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .small)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
+        button.addTarget(self, action: #selector(favButtonPressed(sender:)), for: .touchUpInside)
         button.setBackgroundImage(heart, for: .normal)
         button.imageView!.contentMode = UIView.ContentMode.center
         button.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.2004762414)
@@ -51,6 +54,10 @@ class RecipesCollViewCell: UICollectionViewCell {
         return button
     }()
     
+    @objc private func favButtonPressed(sender: UIButton){
+        cellDelegate?.heartButtonPressed(tag: sender.tag)
+    }
+     
     lazy var objectsViewArray = [self.addtDescView, self.recipeLabel, self.sourceLabel, self.faveButton, self.recipeImage]
         
     //MARK: - Add ViewsToSubviews
