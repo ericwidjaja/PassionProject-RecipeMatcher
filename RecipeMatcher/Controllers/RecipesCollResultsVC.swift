@@ -18,7 +18,6 @@ class RecipesCollResultsVC: UIViewController {
     }
     
     //MARK: - Properties
-    
     var recipesCollView = RecipeCollView()
     var ingredients = [String]()
     var recipesResult = [RecipeWrapper]() {
@@ -81,16 +80,12 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
+        //Passing cell's data into DetailVC
         let recipeDestinationVC = RecipeDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
-        
         //mark the recipe url
         print(recipesResult[indexPath.row].url)
-        
         present(recipeDestinationVC, animated: true)
-        print("pass cell to recipeDetailVC")
-        
-//        guard (collectionView.cellForItem(at: indexPath) as? RecipesCollViewCell) != nil else {return}
     }
 }
 extension RecipesCollResultsVC: buttonFunction {

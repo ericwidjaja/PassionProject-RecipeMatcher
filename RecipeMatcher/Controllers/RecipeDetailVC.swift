@@ -11,11 +11,11 @@ class RecipeDetailVC: UIViewController {
     //MARK: - Properties
     var recipe: RecipeWrapper!
     var detailRecipe = RecipeDetailView()
-
+        
     //MARK: Methods
     func setDetailRecipeView() {
         view.addSubview(detailRecipe)
-        view.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.9470610023, green: 0.8027674556, blue: 0.5816813707, alpha: 1)
         
         detailRecipe.recipeImage.kf.indicatorType = .activity
         detailRecipe.recipeImage.kf.setImage(with: URL(string: recipe.image), placeholder: UIImage(named: "RecipeImgHolder"))
@@ -47,6 +47,5 @@ class RecipeDetailVC: UIViewController {
         super.viewDidLoad()
         setDetailRecipeView()
         detailRecipe.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
-        
     }
 }

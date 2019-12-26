@@ -75,21 +75,21 @@ class SearchView: UIView {
     private func ingredientConstraints() {
         NSLayoutConstraint.activate([
             ingredientTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            ingredientTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 25),
-            ingredientTextField.heightAnchor.constraint(equalToConstant: 50),
-            ingredientTextField.widthAnchor.constraint(equalToConstant: 350)])
+            ingredientTextField.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 45),
+            ingredientTextField.heightAnchor.constraint(equalToConstant: 55),
+            ingredientTextField.widthAnchor.constraint(equalToConstant: 360)])
     }
     private func tableViewConstraints() {
         NSLayoutConstraint.activate([
             ingredientsTblView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            ingredientsTblView.topAnchor.constraint(equalTo: ingredientTextField.bottomAnchor, constant: 150),
-            ingredientsTblView.heightAnchor.constraint(equalToConstant: 325),
-            ingredientsTblView.widthAnchor.constraint(equalToConstant: 225)])
+            ingredientsTblView.topAnchor.constraint(equalTo: ingredientTextField.bottomAnchor, constant: 105),
+            ingredientsTblView.heightAnchor.constraint(equalToConstant: 350),
+            ingredientsTblView.widthAnchor.constraint(equalToConstant: 260)])
     }
     private func findRecipesConstraints() {
         NSLayoutConstraint.activate([
             findRecipesButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 100),
-            findRecipesButton.topAnchor.constraint(equalTo: ingredientsTblView.bottomAnchor, constant: 120),
+            findRecipesButton.topAnchor.constraint(equalTo: ingredientsTblView.bottomAnchor, constant: 110),
             findRecipesButton.heightAnchor.constraint(equalToConstant: 40),
             findRecipesButton.widthAnchor.constraint(equalToConstant: 150)])
     }
