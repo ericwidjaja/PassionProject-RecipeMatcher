@@ -6,14 +6,16 @@ import FirebaseAuth
 
 class FirebaseAuthService {
     
+    //MARK: -Static Properties
     static let manager = FirebaseAuthService()
     
+    //MARK: -Internal Properties
     private let auth = Auth.auth()
-    
     var currentUser: User? {
         return auth.currentUser
     }
     
+    //MARK: -Internal Functions
     func createNewUser(email: String, password: String, completion: @escaping (Result<User, Error>) -> ()) {
         auth.createUser(withEmail: email, password: password) { (result, error) in
             if let createdUser = result?.user {
@@ -61,7 +63,7 @@ class FirebaseAuthService {
         }
         
     }
-    
+    //MARK: -Private Initializers
     private init() {}
     
 }

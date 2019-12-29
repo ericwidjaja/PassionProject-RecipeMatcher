@@ -8,7 +8,6 @@ fileprivate enum FireStoreCollections: String {
     case users
     case favorites
     case addComments
-    
 }
 
 enum SortingCriteria: String {
@@ -46,12 +45,12 @@ class FirestoreService {
         }
         var updateFields = [String : Any]()
         if let status = newStatus {
-            updateFields["claimStatus"] = status
+            updateFields["favoriteRecipes"] = status
             updateFields["userID"] = userID
         }
-        let plate = db.collection("plates").document(uri)
+        let recipe = db.collection("recipes").document(uri)
         
-        plate.updateData(updateFields) { err in
+        recipe.updateData(updateFields) { err in
             if let err = err {
                 print("Error updating document: \(err)")
             } else {
@@ -59,158 +58,6 @@ class FirestoreService {
             }
         }
     }
-    //    func getAllPlates(completion: @escaping (Result<[Plate], Error>) -> ()) {
-    //        db.collection(FireStoreCollections.favorites.rawValue).getDocuments { (snapshot, error) in
-    //            if let error = error {
-    //                completion(.failure(error))
-    //            } else {
-    //                let plates = snapshot?.documents.compactMap({ (snapshot) -> Plate? in
-    //                    let plateID = snapshot.documentID
-    //                    let plate = Plate(from: snapshot.data(), id: uri)
-    //
-    //                    return plate
-    //                })
-    //                completion(.success(plates ?? []))
-    //            }
-    //        }
-    //    }
-    //    //    MARK: - Events
-    ////    func saveEvent(event: FavoriteEvent, completion: @escaping (Result <(), Error>) -> ()){
-    ////        var fields = event.fieldsDict
-    ////        fields["dateCreated"] = Date()
-    ////        db.collection(FireStoreCollections.events.rawValue).addDocument(data: fields) { (error) in
-    ////            if let error = error {
-    ////                completion(.failure(error))
-    ////            } else {
-    ////                completion(.success(()))
-    ////            }
-    ////        }
-    ////    }
-    ////
-    //   func getUserPlates(userID: String, completion: @escaping (Result <[Plate], Error>) -> ()) {
-    //        db.collection(FireStoreCollections.favorites.rawValue).whereField("userID", isEqualTo: userID).getDocuments { (snapshot, error) in
-    //            if let error = error {
-    //                completion(.failure(error))
-    //            } else {
-    //                let plates = snapshot?.documents.compactMap({ (snapshot) -> Plate? in
-    //                    let documentID = snapshot.documentID
-    //                    let plate = Plate(from: snapshot.data(), id: documentID)
-    //                    return plate
-    //                })
-    //                completion(.success(plates ?? []))
-    //            }
-    //        }
-    //    }
-    //
-    ////        let collection = db.collection(FireStoreCollections.events.rawValue)
-    ////        if let sortingCriteria = sortingCriteria {
-    ////            let query = collection.order(by: sortingCriteria.rawValue, descending: sortingCriteria.shouldSortDescending)
-    ////            query.getDocuments(completion: completionHandler)
-    ////        } else {
-    ////            collection.getDocuments(completion: completionHandler)
-    ////        }
-    ////    }
-    ////
-    //    func getAvailablePlates(claimStatus: Bool, completion: @escaping (Result <[Plate], Error>) -> ()) {
-    //        db.collection(FireStoreCollections.favorites.rawValue).whereField("claimStatus", isEqualTo: claimStatus).getDocuments { (snapshot, error) in
-    //            if let error = error {
-    //                completion(.failure(error))
-    //            } else {
-    //                let plates = snapshot?.documents.compactMap({ (snapshot) -> Plate? in
-    //                    let documentID = snapshot.documentID
-    //                    let plate = Plate(from: snapshot.data(), id: documentID)
-    //                    return plate
-    //                })
-    //                completion(.success(plates ?? []))
-    //            }
-    //        }
-    //    }
-    ////
-    ////    func deleteFavoriteEvent(forUserID: String, eventID: String, completion: @escaping (Result <(), Error>) -> ()) {
-    ////
-    ////        db.collection(FireStoreCollections.events.rawValue).whereField("creatorID", isEqualTo: forUserID).whereField("id", isEqualTo: eventID).getDocuments { (snapshot, error) in
-    ////            if let error = error {
-    ////                print("Error getting documents \(error)")
-    ////                completion(.failure(error))
-    ////            } else {
-    ////                for document in snapshot!.documents {
-    ////                    document.reference.delete()
-    ////                    completion(.success(()))
-    ////                }
-    ////            }
-    ////        }
-    ////
-    ////    }
-    ////
-    //////    MARK: - Art collection
-    ////
-    ////    func savePlate(plate: Plate, completion: @escaping (Result <(), Error>) -> ()){
-    ////        var fields = plate.fieldsDict
-    ////        fields["dateCreated"] = Date()
-    ////        db.collection(FireStoreCollections.userplates.rawValue).addDocument(data: fields) { (error) in
-    ////            if let error = error {
-    ////                completion(.failure(error))
-    ////            } else {
-    ////                completion(.success(()))
-    ////            }
-    ////        }
-    ////    }
-    ////
-    ////    func getUserArts(userID: String, sortingCriteria: SortingCriteria? = nil, completion: @escaping (Result <[Plate], Error>) -> ()) {
-    ////        let completionHandler: FIRQuerySnapshotBlock = {(snapshot, error) in
-    ////            if let error = error {
-    ////                completion(.failure(error))
-    ////            } else {
-    ////                let plates = snapshot?.documents.compactMap({ (snapshot) -> Plate? in
-    ////                    let plateID = snapshot.documentID
-    ////                    let plate = Plate(from: snapshot.data(), id: plateID)
-    ////                    return plate
-    ////                })
-    ////                completion(.success(plates ?? []))
-    ////            }
-    ////        }
-    ////
-    ////        let collection = db.collection(FireStoreCollections.plates.rawValue)
-    ////        if let sortingCriteria = sortingCriteria {
-    ////            let query = collection.order(by: sortingCriteria.rawValue, descending: sortingCriteria.shouldSortDescending)
-    ////
-    ////            query.whereField("userID", isEqualTo: userID).getDocuments(completion: completionHandler)
-    ////        } else {
-    ////            collection.getDocuments(completion: completionHandler)
-    ////        }
-    ////    }
-    ////
-    ////    func getArts(forUserID: String, completion: @escaping (Result <[FavoriteArt], Error>) -> ()) {
-    ////
-    ////
-    ////        db.collection(FireStoreCollections.arts.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
-    ////            if let error = error {
-    ////                completion(.failure(error))
-    ////            } else {
-    ////                let arts = snapshot?.documents.compactMap({ (snapshot) -> FavoriteArt? in
-    ////                    let artID = snapshot.documentID
-    ////                    let art = FavoriteArt(from: snapshot.data(), id: artID)
-    ////                    return art
-    ////                })
-    ////                completion(.success(arts ?? []))
-    ////            }
-    ////        }
-    ////    }
-    ////
-    ////     func deleteFavoriteArt(forUserID: String, artID: String, completion: @escaping (Result <(), Error>) -> ()) {
-    ////
-    ////           db.collection(FireStoreCollections.arts.rawValue).whereField("creatorID", isEqualTo: forUserID).whereField("id", isEqualTo: artID).getDocuments { (snapshot, error) in
-    ////               if let error = error {
-    ////                   print("Error getting arts \(error)")
-    ////                   completion(.failure(error))
-    ////               } else {
-    ////                   for document in snapshot!.documents {
-    ////                       document.reference.delete()
-    ////                       completion(.success(()))
-    ////                   }
-    ////               }
-    ////           }
-    ////    }
-    ////
+    
     private init() {}
 }
