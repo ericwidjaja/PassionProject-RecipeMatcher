@@ -27,6 +27,13 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
+    @objc func buttonTapped(_ sender:UIButton) {
+        let favRecipe = recipesResult[sender.tag]
+        let alert = UIAlertController(title: "Favorited!", message: "Saved in Firebase", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +44,6 @@ class RecipesCollResultsVC: UIViewController {
     }
     
     private func updateData() {
-        
         RecipeAPIClient.searchRecipes(keyword: ingredientsQueryString()) { (error, recipe) in
             if let error =  error {
                 print(error)
@@ -65,17 +71,28 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell() }
+        guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell()
+        }
         
-        let recipeToSet = recipesResult[indexPath.row]
+        cell.cellDelegate = self
         cell.faveButton.tag = indexPath.row
+        let recipeToSet = recipesResult[indexPath.row]
         //check tag #
         print(cell.faveButton.tag)
         cell.recipeLabel.text = recipeToSet.label
         cell.sourceLabel.text = recipeToSet.source
         cell.recipeImage.kf.indicatorType = .activity
         cell.recipeImage.kf.setImage(with: URL(string: recipeToSet.image), placeholder: UIImage(named: "RecipeImgHolder"))
-        return cell
+        
+        if cell.faveButton.isSelected {
+            let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .medium, scale: .large)
+                cell.faveButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: config), for: .normal)
+                print("fave'd" )
+            }else{
+                let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .medium, scale: .large)
+                cell.faveButton.setImage(UIImage(systemName: "heart", withConfiguration: config), for: .normal)}
+            cell.layoutSubviews()
+        return cell;
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
