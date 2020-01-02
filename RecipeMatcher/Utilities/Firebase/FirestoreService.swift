@@ -12,7 +12,7 @@ fileprivate enum FireStoreCollections: String {
 
 enum SortingCriteria: String {
     case fromNewestToOldest = "dateCreated"
-    var shouldSortDescending: Bool {
+    var shouldSortAscending: Bool {
         switch self {
         case .fromNewestToOldest:
             return true
@@ -23,41 +23,85 @@ enum SortingCriteria: String {
 class FirestoreService {
     
     static let manager = FirestoreService()
-    
     private let db = Firestore.firestore()
     
-    //        MARK: - AppUsers
-    
+    // MARK: - AppUsers
     func createAppUser(user: AppUser, completion: @escaping (Result<(), Error>) -> ()) {
         var fields: [String : Any] = user.fieldsDict
         fields["dateCreated"] = Date()
         db.collection(FireStoreCollections.users.rawValue).document(user.uid).setData(fields) { (error) in
             if let error = error {
                 completion(.failure(error))
+                print(error)
             }
             completion(.success(()))
         }
     }
-    
-    func updateFavoriteRecipes(newStatus: Bool?, uri: String, completion: @escaping (Result <(), Error>) -> ()) {
-        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {
-            return
-        }
-        var updateFields = [String : Any]()
-        if let status = newStatus {
-            updateFields["favoriteRecipes"] = status
-            updateFields["userID"] = userID
-        }
-        let recipe = db.collection("recipes").document(uri)
-        
-        recipe.updateData(updateFields) { err in
-            if let err = err {
-                print("Error updating document: \(err)")
+    //MARK: Favorites
+    func createFavorite(favd: Favorite, completion: @escaping (Result<(), Error>) -> ()) {
+        var fields = favd.fieldsDict
+        fields["dateCreated"] = Date()
+        db.collection(FireStoreCollections.favorites.rawValue).addDocument(data: fields) { (error) in
+            if let error = error {
+                completion(.failure(error))
             } else {
-                print("Document successfully updated")
+                completion(.success(()))
             }
         }
     }
+    
+    func getFavorites(forUserID: String, completion: @escaping (Result<[Favorite], Error>) -> ()) {
+        db.collection(FireStoreCollections.favorites.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+                
+            } else {
+                let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
+                    let faveID = snapshot.documentID
+                    let favorite = Favorite(from: snapshot.data(), id: faveID)
+                    return favorite
+                })
+                completion(.success(favorites ?? []))
+            }
+        }
+    }
+    
+    func getAllFavorites(sortingCriteria: SortingCriteria?, completion: @escaping (Result<[Favorite], Error>) -> ()) {
+        let completionHandler: FIRQuerySnapshotBlock = {
+            (snapshot, error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
+                    let faveID = snapshot.documentID
+                    let favorite = Favorite(from: snapshot.data(), id: faveID)
+                    return favorite
+                })
+                completion(.success(favorites ?? []))
+            }
+        }
+        db.collection(FireStoreCollections.favorites.rawValue).order(by: sortingCriteria?.rawValue ?? "dateCreated", descending: sortingCriteria?.shouldSortAscending ?? true).getDocuments(completion: completionHandler)
+    }
+    
+//    func updateFavoriteRecipes(newStatus: Bool?, uri: String, completion: @escaping (Result <(), Error>) -> ()) {
+//        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {
+//            return
+//        }
+//        var updateFields = [String : Any]()
+//        if let status = newStatus {
+//            updateFields["favoriteRecipes"] = status
+//            updateFields["userID"] = userID
+//        }
+//        let recipe = db.collection("recipes").document(uri)
+//
+//        recipe.updateData(updateFields) { err in
+//            if let err = err {
+//                print("Error updating document: \(err)")
+//            } else {
+//                print("Document successfully updated")
+//            }
+//        }
+//    }
     
     private init() {}
 }

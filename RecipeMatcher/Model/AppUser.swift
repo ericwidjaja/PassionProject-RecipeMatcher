@@ -8,30 +8,32 @@ import FirebaseAuth
 struct AppUser {
     let email: String?
     let uid: String
-    let userExperience: String?
+    let userName: String?
     let dateCreated: Date?
     
 //    MARK: - Init
-    
     init(from user: User) {
+        self.userName = user.displayName
         self.email = user.email
         self.uid = user.uid
-        self.userExperience = user.displayName
         self.dateCreated = user.metadata.creationDate
     }
     
     init?(from dict: [String: Any], id: String) {
-        guard let userExperience = dict["userExperience"] as? String,
+        guard let userName = dict["userName"] as? String,
         let email = dict["email"] as? String,
         let dateCreated = (dict["dateCreated"] as? Timestamp)?.dateValue() else {return nil}
         
-        self.userExperience = userExperience
+        self.userName = userName
         self.email = email
         self.dateCreated = dateCreated
         self.uid = id
     }
     
     var fieldsDict: [String: Any] {
-        return ["userExperience": self.userExperience ?? "", "email": self.email ?? ""]
+        return [
+            "userName": self.userName ?? "",
+            "email": self.email ?? ""
+        ]
     }
 }
