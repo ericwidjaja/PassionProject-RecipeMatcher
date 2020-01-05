@@ -6,7 +6,7 @@ import FirebaseStorage
 
 class FirebaseStorageService {
     
-    static let manager = FirebaseStorageService()
+    static var manager = FirebaseStorageService()
     
     private let storage: Storage!
     private let storageReference: StorageReference

@@ -1,4 +1,4 @@
-//  FirebaseAuth.swift
+//  FirebaseAuthService.swift
 //  RecipeMatcher
 
 import Foundation
@@ -28,20 +28,6 @@ class FirebaseAuthService {
         }
     }
     
-    func updateUserFields(experience: String? = nil, completion: @escaping (Result<(), Error>) -> ()) {
-        let changeRequest = auth.currentUser?.createProfileChangeRequest()
-        if let experience = experience {
-            changeRequest?.displayName = experience
-        }
-        
-        changeRequest?.commitChanges(completion: { (error) in
-            if let error = error {
-                completion(.failure(error))
-            } else {
-                completion(.success(()))
-            }
-        })
-    }
     
     func loginUser(email: String, password: String, completion: @escaping(Result<(), Error>) -> ()) {
         auth.signIn(withEmail: email, password: password) { (result, error) in
@@ -61,7 +47,6 @@ class FirebaseAuthService {
         } catch {
             print(error)
         }
-        
     }
     //MARK: -Private Initializers
     private init() {}

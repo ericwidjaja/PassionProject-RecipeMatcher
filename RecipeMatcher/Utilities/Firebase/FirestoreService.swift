@@ -82,26 +82,6 @@ class FirestoreService {
         }
         db.collection(FireStoreCollections.favorites.rawValue).order(by: sortingCriteria?.rawValue ?? "dateCreated", descending: sortingCriteria?.shouldSortAscending ?? true).getDocuments(completion: completionHandler)
     }
-    
-//    func updateFavoriteRecipes(newStatus: Bool?, uri: String, completion: @escaping (Result <(), Error>) -> ()) {
-//        guard let userID = FirebaseAuthService.manager.currentUser?.uid else {
-//            return
-//        }
-//        var updateFields = [String : Any]()
-//        if let status = newStatus {
-//            updateFields["favoriteRecipes"] = status
-//            updateFields["userID"] = userID
-//        }
-//        let recipe = db.collection("recipes").document(uri)
 //
-//        recipe.updateData(updateFields) { err in
-//            if let err = err {
-//                print("Error updating document: \(err)")
-//            } else {
-//                print("Document successfully updated")
-//            }
-//        }
-//    }
-    
-    private init() {}
+//    private init() {}
 }
