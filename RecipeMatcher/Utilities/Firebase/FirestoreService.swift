@@ -82,6 +82,4 @@ class FirestoreService {
         }
         db.collection(FireStoreCollections.favorites.rawValue).order(by: sortingCriteria?.rawValue ?? "dateCreated", descending: sortingCriteria?.shouldSortAscending ?? true).getDocuments(completion: completionHandler)
     }
-//
-//    private init() {}
 }

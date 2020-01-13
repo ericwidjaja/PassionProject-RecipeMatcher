@@ -1,8 +1,8 @@
 //  Recipes.swift
 //  RecipeMatcher
 
-
 import Foundation
+
 struct Recipe: Codable {
     struct Hits: Codable {
         let recipe: RecipeWrapper

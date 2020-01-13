@@ -1,60 +1,61 @@
-//  FavRecipesCollectionVC.swift
-//  RecipeMatcher
-//  Created by Eric Widjaja on 12/25/19.
+////  FavRecipesCollectionVC.swift
+////  RecipeMatcher
+////  Created by Eric Widjaja on 12/25/19.
 
-//import UIKit
-//import Kingfisher
-//
-//private let reuseIdentifier = "FavoriteCell"
-//
-//class FavRecipesCollectionVC: UICollectionViewController {
-//    //MARK: - Properties
-//    var faveRecipeView = FavRecipesView()
-//    var recipeResult = [RecipeWrapper]() {
-//        didSet {
-//            DispatchQueue.main.async {
-//                self.faveRecipeView.favoriteList.reloadData()
-//            }
-//        }
-//    }
-//    @objc private func signOut() {
-//      let alert = UIAlertController(title: "Sign Out from this App?", message: nil, preferredStyle: .actionSheet)
-//      let action = UIAlertAction.init(title: "Yes", style: .destructive, handler: .some({ (action) in
-//        DispatchQueue.main.async {
-//          FirebaseAuthService.manager.logoutUser()
-//          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-//            else {
-//              return
-//          }
-//            UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut
-//                , animations: {
-//            window.rootViewController = LogInScreenVC()
-//          }, completion: nil)
-//        }
-//      }))
-//      let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//      alert.addAction(action)
-//      alert.addAction(cancel)
-//      present(alert, animated:true)
-//    }
-//    
-//    
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        view.addSubview(faveRecipeView)
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-//
-//
-//        // Uncomment the following line to preserve selection between presentations
-//        // self.clearsSelectionOnViewWillAppear = false
-//
-//        // Register cell classes
-//        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-//
-//    }
-//
+import UIKit
+import Kingfisher
+
+
+class FavRecipesCollectionVC: UICollectionViewController {
+//    MARK: - Properties
+        var faveRecipeView = FavRecipesView()
+        var favedCell = RecipesCollViewCell()
+    var favorited = [Favorite]() {
+        didSet {
+            self.faveRecipeView.favoriteList.reloadData()
+        }
+    }
+
+private let reuseIdentifier = "FavoriteCell"
+
+    @objc private func signOut() {
+      let alert = UIAlertController(title: "Sign Out from this App?", message: nil, preferredStyle: .actionSheet)
+      let action = UIAlertAction.init(title: "Yes", style: .destructive, handler: .some({ (action) in
+        DispatchQueue.main.async {
+          FirebaseAuthService.manager.logoutUser()
+          guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+            else {
+              return
+          }
+            UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut
+                , animations: {
+            window.rootViewController = LogInScreenVC()
+          }, completion: nil)
+        }
+      }))
+      let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alert.addAction(action)
+      alert.addAction(cancel)
+      present(alert, animated:true)
+    }
+
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(faveRecipeView)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
+
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Register cell classes
+        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
+    }
+}
 //    /*
 //    // MARK: - Navigation
 //
@@ -80,7 +81,7 @@
 //
 //    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 //        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-//    
+//
 //        // Configure the cell
 //        let recipeCollection = recipeResult[indexPath.row]
 //        cell.isUserInteractionEnabled = false
@@ -91,7 +92,7 @@
 //        default:
 //            cell.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.2004762414)
 //        }
-//        
+//
 ////        cell.recipeLabel.text = recipeCollection.label
 ////        cell.sourceLabel.text = recipeCollection.source
 ////        cell.recipeImage.kf.indicatorType = .activity
@@ -126,7 +127,7 @@
 //    }
 //
 //    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-//    
+//
 //    }
 //    */
 //
