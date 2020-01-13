@@ -35,7 +35,6 @@ class FirebaseStorageService {
         }
     }
     
-    
     func getImage(url: String, completion: @escaping (Result<UIImage,Error>) -> ()) {
         imagesFolderReference.storage.reference(forURL: url).getData(maxSize: 2000000) { (data, error) in
             if let error = error {
@@ -45,5 +44,4 @@ class FirebaseStorageService {
             }
         }
     }
-    
 }

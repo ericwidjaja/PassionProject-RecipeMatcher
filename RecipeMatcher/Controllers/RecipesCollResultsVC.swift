@@ -28,20 +28,8 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
-    let ref = Database.database().reference(withPath: "favorite-recipes")
+//    let ref = Database.database().reference(withPath: "favorite-recipes")
     
-    @objc func buttonTapped(_ sender:UIButton) {
-        
-        let alert = UIAlertController(title: "Favorited!", message: "Saved in Firebase", preferredStyle: .alert)
-    }
-//        let saveAction = UIAlertAction(title: "SAVE", style: .default) { _ in
-//            guard let textField = alert.textFields?.first,
-//                let text = textfield.text else {return}
-//
-//            let favdRecipe = recipesResult[sender.tag]
-//            let favdRecipeRef = self.
-
-        
         override func viewDidLoad() {
             super.viewDidLoad()
             view.addSubview(recipesCollView)
@@ -112,6 +100,8 @@ class RecipesCollResultsVC: UIViewController {
             present(recipeDestinationVC, animated: true)
         }
     }
+
+//Use firestoreservice to make a post/favorite on firebase.
     extension RecipesCollResultsVC: buttonFunction {
         func heartButtonPressed(tag: Int) {
             let selectedIndex = IndexPath(row: tag, section: 0)
@@ -123,17 +113,10 @@ class RecipesCollResultsVC: UIViewController {
                         switch result {
                         case .success:
                             print("good job")
-            
                         case .failure (let error):
                             print(error)
                         }
                     }
             print(singleRecipe.label)
-            
-            //MARK: TODO
-            //Use firestoreservice to make a post/favorite on firebase.
-            //To do this, you need to initialize a new favorite and give it the properties of the singleRecipe you clicked on.
-            //Example, say Favorite needs a title as an init. You can pass the title of the singleRecipe.title as:
-            //Favorite(title: singleRecipe.title)
         }
     }

@@ -104,7 +104,6 @@ class LogInScreenVC: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    
     @objc func skipButtonPressed() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
             let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window

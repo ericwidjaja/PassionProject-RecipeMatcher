@@ -21,7 +21,4 @@ class RecipeMatchTabBar: UITabBarController {
         navController2.tabBarItem = UITabBarItem(title: "FAVORITES", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 1)
         self.viewControllers = [navController1, navController2]
     }
-    
-    
-    
 }

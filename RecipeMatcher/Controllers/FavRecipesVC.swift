@@ -19,9 +19,7 @@ class FavRecipesVC: UIViewController {
             }
         }
     }
-    
-    
-    
+
     @objc private func signOut() {
       let alert = UIAlertController(title: "Sign Out from this App?", message: nil, preferredStyle: .actionSheet)
       let action = UIAlertAction.init(title: "Yes", style: .destructive, handler: .some({ (action) in
@@ -43,8 +41,6 @@ class FavRecipesVC: UIViewController {
       alert.addAction(cancel)
       present(alert, animated:true)
     }
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

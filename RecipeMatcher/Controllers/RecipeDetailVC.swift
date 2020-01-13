@@ -42,7 +42,6 @@ class RecipeDetailVC: UIViewController {
         showSafariVC(for: "\(self.recipe.url)")
         print("\(self.recipe.url)")
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()

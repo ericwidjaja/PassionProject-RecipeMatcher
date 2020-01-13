@@ -79,7 +79,6 @@ extension SearchRecipesVC: UITextFieldDelegate {
         searchView.ingredientTextField.text = ""
         return true
     }
-    
 }
 
 extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {

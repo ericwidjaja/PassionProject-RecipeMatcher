@@ -37,6 +37,7 @@ class FirestoreService {
             completion(.success(()))
         }
     }
+    
     //MARK: Favorites
     func createFavorite(favd: Favorite, completion: @escaping (Result<(), Error>) -> ()) {
         var fields = favd.fieldsDict
@@ -54,7 +55,6 @@ class FirestoreService {
         db.collection(FireStoreCollections.favorites.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
             if let error = error {
                 completion(.failure(error))
-                
             } else {
                 let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
                     let faveID = snapshot.documentID

@@ -28,7 +28,6 @@ class FirebaseAuthService {
         }
     }
     
-    
     func loginUser(email: String, password: String, completion: @escaping(Result<(), Error>) -> ()) {
         auth.signIn(withEmail: email, password: password) { (result, error) in
             
