@@ -117,15 +117,17 @@ class RecipesCollResultsVC: UIViewController {
             let selectedIndex = IndexPath(row: tag, section: 0)
             let selectedRecipe = recipesCollView.recipeCollectionView.cellForItem(at: selectedIndex) as! RecipesCollViewCell
             let singleRecipe = recipesResult[tag]
-            //        FirestoreService.manager.storeItem(faveItem: Favorite()) { (result) in
-            //            switch result {
-            //            case .success:
-            //                print("good job")
-            //
-            //            case .failure (let error):
-            //                print(error)
-            //            }
-            //        }
+            let favorited = Favorite(imageUrl: singleRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "NA", dateCreated: Date())
+            
+            FirestoreService.manager.createFavorite(favd: favorited) { (result) in
+                        switch result {
+                        case .success:
+                            print("good job")
+            
+                        case .failure (let error):
+                            print(error)
+                        }
+                    }
             print(singleRecipe.label)
             
             //MARK: TODO
