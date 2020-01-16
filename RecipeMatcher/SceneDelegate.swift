@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         //For returning user
         if FirebaseAuthService.manager.currentUser != nil {
             window?.rootViewController = RecipeMatchTabBar()
-            print("current user")
+            print("returning user")
         } else {
             window?.rootViewController = LogInScreenVC()
             window?.makeKeyAndVisible()
