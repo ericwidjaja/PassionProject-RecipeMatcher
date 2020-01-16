@@ -6,16 +6,18 @@ import UIKit
 import Kingfisher
 import FirebaseFirestore
 import FirebaseStorage
+import FirebaseDatabase
 import FirebaseAuth
 
 class FavRecipesVC: UIViewController {
     
     //MARK: - Properties
-    var faveRecipe = FavRecipesView()
+    var faveRecipeView = FavRecipesView()
+    var favedCell = FavdRecipesCell()
     var favoriteRecipe = [Favorite]() {
         didSet {
             DispatchQueue.main.async {
-                self.faveRecipe.favoriteList.reloadData()
+                self.faveRecipeView.favoriteList.reloadData()
                 //checking if the recipes that user favorited are existed
                 dump(self.favoriteRecipe)
             }
@@ -56,12 +58,40 @@ class FavRecipesVC: UIViewController {
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.addSubview(faveRecipeView)
+        faveRecipeView.favoriteList.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
+        
+        faveRecipeView.favoriteList.delegate = self
+        faveRecipeView.favoriteList.dataSource = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
         view.backgroundColor = .red
         getUserFavorites()
-        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getUserFavorites()
+    }
+}
+
+extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return favoriteRecipe.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let favCell = faveRecipeView.favoriteList.dequeueReusableCell(withReuseIdentifier: "FavdCell", for: indexPath) as? FavdRecipesCell else {
+            return UICollectionViewCell()
+        }
+        let favdRecipeToSet = favoriteRecipe[indexPath.row]
+        favCell.favdRecipeLabel.text = favdRecipeToSet.label
+        favCell.favdRecipeImage.kf.indicatorType = .activity
+        favCell.favdRecipeImage.kf.setImage(with: URL(string: favdRecipeToSet.imageUrl!),
+                                            placeholder: UIImage(named: "RecipeImgHolder"))
+        return favCell;
+    }
+    
+    
+    
 }

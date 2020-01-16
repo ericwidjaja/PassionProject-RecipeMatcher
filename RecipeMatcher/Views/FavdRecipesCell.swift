@@ -13,14 +13,14 @@ class FavdRecipesCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 10
+        image.layer.cornerRadius = 6
         return image
     }()
     
     lazy var favdRecipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell", size: 10)
+        label.font = UIFont.init(name: "Rockwell", size: 12)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
