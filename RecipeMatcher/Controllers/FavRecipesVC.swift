@@ -87,15 +87,11 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         let favdRecipeToSet = favoriteRecipe[indexPath.row]
         favCell.favdRecipeLabel.text = favdRecipeToSet.label
         favCell.favdRecipeImage.kf.indicatorType = .activity
-        favCell.favdRecipeImage.kf.setImage(with: URL(string: favdRecipeToSet.imageUrl!),
-                                            placeholder: UIImage(named: "RecipeImgHolder"))
+        favCell.favdRecipeImage.kf.setImage(
+            with: URL(string: favdRecipeToSet.imageUrl!),
+            placeholder: UIImage(named: "RecipeImgHolder"),
+            options: [ .scaleFactor(UIScreen.main.scale),
+                       .transition(.flipFromRight(3))])
         return favCell;
     }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        //Passing cell's data into DetailVC
-//        let recipeDestinationVC = RecipeDetailVC()
-//        
-//        recipeDestinationVC.recipe = favoriteRecipe[indexPath.row]
-//        
-//    }
 }

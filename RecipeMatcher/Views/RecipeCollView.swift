@@ -8,9 +8,9 @@ import Foundation
 class RecipeCollView: UIView {
     lazy var recipeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 380, height: 450)
+        layout.itemSize = CGSize(width: 390, height: 450)
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         let cellTable = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cellTable.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         return cellTable

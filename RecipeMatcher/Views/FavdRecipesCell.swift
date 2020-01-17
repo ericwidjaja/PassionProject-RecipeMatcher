@@ -10,10 +10,10 @@ class FavdRecipesCell: UICollectionViewCell {
     lazy var favdRecipeImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
         image.image = UIImage(named: "RecipeImgHolder")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 12
+        image.layer.cornerRadius = 20
         return image
     }()
     

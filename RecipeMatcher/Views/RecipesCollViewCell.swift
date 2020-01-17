@@ -12,7 +12,7 @@ class RecipesCollViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 10
+        image.layer.cornerRadius = 25
         return image
     }()
     

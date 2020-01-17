@@ -76,7 +76,12 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         cell.recipeLabel.text = recipeToSet.label
         cell.sourceLabel.text = recipeToSet.source
         cell.recipeImage.kf.indicatorType = .activity
-        cell.recipeImage.kf.setImage(with: URL(string: recipeToSet.image), placeholder: UIImage(named: "RecipeImgHolder"))
+        cell.recipeImage.kf.setImage(
+            with: URL(string: recipeToSet.image),
+            placeholder: UIImage(named: "RecipeImgHolder"),
+            options: [
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(2))])
         
         if cell.faveButton.isSelected {
             let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .medium, scale: .large)
