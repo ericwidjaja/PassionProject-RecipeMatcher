@@ -8,19 +8,19 @@ import UIKit
 class FavdRecipesCell: UICollectionViewCell {
     
     lazy var favdRecipeImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 160))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 6
+        image.layer.cornerRadius = 12
         return image
     }()
     
     lazy var favdRecipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell", size: 12)
+        label.font = UIFont.init(name: "Rockwell", size: 14)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -50,7 +50,7 @@ class FavdRecipesCell: UICollectionViewCell {
     }
     
     func favCollViewConstraints() {
-        NSLayoutConstraint.activate([favdRecipeImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+        NSLayoutConstraint.activate([
         favdRecipeImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
         favdRecipeImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         favdRecipeImage.widthAnchor.constraint(equalToConstant: favdRecipeImage.frame.width),
@@ -59,6 +59,6 @@ class FavdRecipesCell: UICollectionViewCell {
         favdRecipeLabel.topAnchor.constraint(equalTo: favdRecipeImage.bottomAnchor),
         favdRecipeLabel.leadingAnchor.constraint(equalTo: favdRecipeImage.leadingAnchor),
         favdRecipeLabel.trailingAnchor.constraint(equalTo: favdRecipeImage.trailingAnchor),
-        favdRecipeLabel.heightAnchor.constraint(equalToConstant: 40)])
+        favdRecipeLabel.heightAnchor.constraint(equalToConstant: 50)])
     }
 }

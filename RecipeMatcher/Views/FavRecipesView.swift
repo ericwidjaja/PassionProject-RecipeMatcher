@@ -9,9 +9,9 @@ class FavRecipesView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 200, height: 200)
         layout.scrollDirection = .vertical
-//        layout.sectionInset = UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 1, bottom: 2, right: 1)
         let cellTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cellTable.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        cellTable.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         return cellTable
     }()
     

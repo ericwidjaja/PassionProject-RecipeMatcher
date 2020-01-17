@@ -66,7 +66,7 @@ class FavRecipesVC: UIViewController {
         faveRecipeView.favoriteList.delegate = self
         faveRecipeView.favoriteList.dataSource = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-        view.backgroundColor = .red
+        view.backgroundColor = .lightGray
         getUserFavorites()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -75,7 +75,7 @@ class FavRecipesVC: UIViewController {
     }
 }
 
-extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate {
+extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favoriteRecipe.count
     }
@@ -91,7 +91,11 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate {
                                             placeholder: UIImage(named: "RecipeImgHolder"))
         return favCell;
     }
-    
-    
-    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        //Passing cell's data into DetailVC
+//        let recipeDestinationVC = RecipeDetailVC()
+//        
+//        recipeDestinationVC.recipe = favoriteRecipe[indexPath.row]
+//        
+//    }
 }
