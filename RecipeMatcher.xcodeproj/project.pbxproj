@@ -283,6 +283,7 @@
 				DF325B8323A1801F00F112B5 /* RecipesCollResultsVC.swift */,
 				DFF5DC8323B3DB2700DB2B24 /* RecipeDetailVC.swift */,
 				DFF5DC8B23B43B5900DB2B24 /* FavRecipesVC.swift */,
+				DF262D9023D69BEC009B4806 /* FavRecipeDetailVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -459,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
+				DF262D9123D69BEC009B4806 /* FavRecipeDetailVC.swift in Sources */,
 				DF2F4E3823A83E890002E8CC /* RecipeDetailView.swift in Sources */,
 				DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */,
 				DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */,

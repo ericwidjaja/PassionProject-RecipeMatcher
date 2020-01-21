@@ -111,7 +111,7 @@ extension RecipesCollResultsVC: buttonFunction {
         let selectedIndex = IndexPath(row: tag, section: 0)
         let selectedRecipe = recipesCollView.recipeCollectionView.cellForItem(at: selectedIndex) as! RecipesCollViewCell
         let singleRecipe = recipesResult[tag]
-        let favorited = Favorite(imageUrl: singleRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "NA", dateCreated: Date(), recipeTitle: singleRecipe.label)
+        let favorited = Favorite(imageUrl: singleRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "NA", dateCreated: Date(), recipeTitle: singleRecipe.label, urlCookInst: singleRecipe.url)
         
         FirestoreService.manager.createFavorite(favd: favorited) { (result) in
             switch result {
