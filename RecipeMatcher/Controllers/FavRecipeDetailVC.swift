@@ -7,7 +7,7 @@ import SafariServices
 import Kingfisher
 
 class FavRecipeDetailVC: UIViewController {
-
+    
     //MARK: - Properties
     var selectedRecipe: Favorite!
     var favDetailRecipe = RecipeDetailView()
@@ -19,10 +19,19 @@ class FavRecipeDetailVC: UIViewController {
         
         favDetailRecipe.recipeImage.kf.indicatorType = .activity
         favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedRecipe.imageUrl!), placeholder: UIImage(named: "RecipeImgHolder"), options: [
-        .scaleFactor(UIScreen.main.scale),
-        .transition(.fade(2))])
+            .scaleFactor(UIScreen.main.scale),
+            .transition(.fade(2))])
         
         favDetailRecipe.recipeLabel.text = selectedRecipe.label
+        
+        let linesFavDVC = selectedRecipe.ingredientLines.map{$0.replacingOccurrences(of: ",", with: "")}
+            .map { $0 + "\n"}
+        
+        let arrangedIngredients = linesFavDVC.joined()
+        favDetailRecipe.ingredientsTxtView.text = arrangedIngredients
+        
+        
+        //code start here to open in safari with url link
         
         let cookingInstUrl = selectedRecipe.url
         
