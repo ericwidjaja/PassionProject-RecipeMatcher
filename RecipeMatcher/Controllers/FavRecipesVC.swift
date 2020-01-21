@@ -94,4 +94,12 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
                        .transition(.flipFromRight(3))])
         return favCell;
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        //Passing selected FavRecipe into DetailVC
+        let showFavRecipeToDetailVC = FavRecipeDetailVC()
+        showFavRecipeToDetailVC.selectedRecipe = favoriteRecipe[indexPath.row]
+        print(favoriteRecipe[indexPath.row].url)
+        present(showFavRecipeToDetailVC, animated: true)
+    }
+    
 }

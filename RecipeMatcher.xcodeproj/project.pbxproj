@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7DC3600960E770AA5D28E9E0 /* Pods_RecipeMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F50D2E713BB59271FD349 /* Pods_RecipeMatcher.framework */; };
 		DF262D8F23D0C067009B4806 /* FavdRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF262D8E23D0C067009B4806 /* FavdRecipesCell.swift */; };
+		DF262D9123D69BEC009B4806 /* FavRecipeDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF262D9023D69BEC009B4806 /* FavRecipeDetailVC.swift */; };
 		DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
 		DF28B39923884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
 		DF2F4E3823A83E890002E8CC /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2F4E3723A83E890002E8CC /* RecipeDetailView.swift */; };
@@ -77,6 +78,7 @@
 		AF1321605642414F09096930 /* Pods-RecipeMatcherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMatcherTests.release.xcconfig"; path = "Target Support Files/Pods-RecipeMatcherTests/Pods-RecipeMatcherTests.release.xcconfig"; sourceTree = "<group>"; };
 		DBED1C097715BAB3CDC15FAE /* Pods-RecipeMatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMatcher.debug.xcconfig"; path = "Target Support Files/Pods-RecipeMatcher/Pods-RecipeMatcher.debug.xcconfig"; sourceTree = "<group>"; };
 		DF262D8E23D0C067009B4806 /* FavdRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavdRecipesCell.swift; sourceTree = "<group>"; };
+		DF262D9023D69BEC009B4806 /* FavRecipeDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRecipeDetailVC.swift; sourceTree = "<group>"; };
 		DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatchTabBar.swift; sourceTree = "<group>"; };
 		DF2F4E3723A83E890002E8CC /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
 		DF325B7D23A1766C00F112B5 /* RecipesCollViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesCollViewCell.swift; sourceTree = "<group>"; };
