@@ -44,18 +44,26 @@ class RecipesCollViewCell: UICollectionViewCell {
     
     lazy var faveButton: UIButton = { [unowned self] in
         let button = UIButton()
-        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: .heavy, scale: .small)
+        let config = UIImage.SymbolConfiguration(pointSize: 35, weight: .medium, scale: .medium)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.addTarget(self, action: #selector(favButtonPressed(sender:)), for: .touchUpInside)
         button.setBackgroundImage(heart, for: .normal)
         button.imageView!.contentMode = UIView.ContentMode.center
-        button.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.2004762414)
-        button.tintColor = #colorLiteral(red: 0.3176470697, green: 0.07450980693, blue: 0.02745098062, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.9961728454, green: 0.9902502894, blue: 1, alpha: 0.09934182359)
+        button.tintColor = #colorLiteral(red: 0.4473546743, green: 0.01570944674, blue: 0.1842742264, alpha: 0.8538634418)
         return button
     }()
     
     @objc private func favButtonPressed(sender: UIButton){
         cellDelegate?.heartButtonPressed(tag: sender.tag)
+        let config = UIImage.SymbolConfiguration(pointSize: 35, weight: .medium, scale: .medium)
+        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
+        faveButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: config), for: .normal)
+        faveButton.setBackgroundImage(heart, for: .normal)
+        faveButton.imageView!.contentMode = UIView.ContentMode.center
+        faveButton.backgroundColor = .clear
+        faveButton.tintColor = #colorLiteral(red: 0.4473546743, green: 0.01570944674, blue: 0.1842742264, alpha: 0.8538634418)
+        print("Favorited")
     }
      
     lazy var objectsViewArray = [self.addtDescView, self.recipeLabel, self.sourceLabel, self.faveButton, self.recipeImage]

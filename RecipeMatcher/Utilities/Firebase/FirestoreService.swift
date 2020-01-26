@@ -50,22 +50,7 @@ class FirestoreService {
             }
         }
     }
-//    
-//    func getFavorites(forUserID: String, completion: @escaping (Result<[Favorite], Error>) -> ()) {
-//        db.collection(FireStoreCollections.favorites.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
-//            if let error = error {
-//                completion(.failure(error))
-//            } else {
-//                let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
-//                    let faveID = snapshot.documentID
-//                    let favorite = Favorite(from: snapshot.data(), id: faveID)
-//                    return favorite
-//                })
-//                completion(.success(favorites ?? []))
-//            }
-//        }
-//    }
-//    
+
     func getAllFavorites(sortingCriteria: SortingCriteria?, completion: @escaping (Result<[Favorite], Error>) -> ()) {
         let completionHandler: FIRQuerySnapshotBlock = {
             (snapshot, error) in

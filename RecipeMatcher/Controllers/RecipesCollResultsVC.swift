@@ -45,6 +45,8 @@ class RecipesCollResultsVC: UIViewController {
                 self.recipesResult = recipe
             }
         }
+        
+        
     }
     
     private func ingredientsQueryString() -> String {
@@ -56,6 +58,8 @@ class RecipesCollResultsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateData()
+        
+        
     }
 }
 
@@ -67,7 +71,6 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell()
         }
-        
         cell.cellDelegate = self
         cell.faveButton.tag = indexPath.row
         let recipeToSet = recipesResult[indexPath.row]
@@ -81,16 +84,8 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
             placeholder: UIImage(named: "RecipeImgHolder"),
             options: [
                 .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(2))])
-        
-        if cell.faveButton.isSelected {
-            let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .medium, scale: .large)
-            cell.faveButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: config), for: .normal)
-            print("fave'd" )
-        }else{
-            let config = UIImage.SymbolConfiguration(pointSize: 45, weight: .medium, scale: .large)
-            cell.faveButton.setImage(UIImage(systemName: "heart", withConfiguration: config), for: .normal)}
-        cell.layoutSubviews()
+                .transition(.fade(1.5))])
+
         return cell;
     }
     
