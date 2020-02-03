@@ -21,6 +21,7 @@ class RecipesCollResultsVC: UIViewController {
     //MARK: - Properties
     var recipesCollView = RecipeCollView()
     var ingredients = [String]()
+    
     var recipesResult = [RecipeWrapper]() {
         didSet {
             DispatchQueue.main.async {
@@ -28,7 +29,7 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)
@@ -44,9 +45,7 @@ class RecipesCollResultsVC: UIViewController {
             } else if let recipe = recipe {
                 self.recipesResult = recipe
             }
-        }
-        
-        
+        }  
     }
     
     private func ingredientsQueryString() -> String {
@@ -58,8 +57,6 @@ class RecipesCollResultsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateData()
-        
-        
     }
 }
 
@@ -85,7 +82,6 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
             options: [
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(1.5))])
-
         return cell;
     }
     

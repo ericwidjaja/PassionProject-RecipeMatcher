@@ -61,11 +61,10 @@ class RecipesCollViewCell: UICollectionViewCell {
         faveButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: config), for: .normal)
         faveButton.setBackgroundImage(heart, for: .normal)
         faveButton.imageView!.contentMode = UIView.ContentMode.center
-        faveButton.backgroundColor = .clear
         faveButton.tintColor = #colorLiteral(red: 0.4473546743, green: 0.01570944674, blue: 0.1842742264, alpha: 0.8538634418)
         print("Favorited")
     }
-     
+
     lazy var objectsViewArray = [self.addtDescView, self.recipeLabel, self.sourceLabel, self.faveButton, self.recipeImage]
         
     //MARK: - Add ViewsToSubviews
