@@ -39,10 +39,24 @@ class FirestoreService {
     }
     
     //MARK: Favorites
-    func createFavorite(favd: Favorite, completion: @escaping (Result<(), Error>) -> ()) {
+//    func createFavorite(favd: Favorite, completion: @escaping (Result<(), Error>) -> ()) {
+//        var fields = favd.fieldsDict
+//        fields["dateCreated"] = Date()
+//        db.collection(FireStoreCollections.favorites.rawValue).addDocument(data: fields) { (error) in
+//            if let error = error {
+//                completion(.failure(error))
+//            } else {
+//                completion(.success(()))
+//            }
+//        }
+//    }
+    
+    func createFavoriteTest(favd: Favorite, recipeTitle: String, completion: @escaping (Result<(), Error>) -> ()) {
         var fields = favd.fieldsDict
         fields["dateCreated"] = Date()
-        db.collection(FireStoreCollections.favorites.rawValue).addDocument(data: fields) { (error) in
+        let userID = FirebaseAuthService.manager.currentUser?.uid
+        let uniqueID = userID! + recipeTitle
+        db.collection(FireStoreCollections.favorites.rawValue).document(uniqueID).setData(fields) { (error) in
             if let error = error {
                 completion(.failure(error))
             } else {
@@ -50,7 +64,8 @@ class FirestoreService {
             }
         }
     }
-
+    
+    
     func getAllFavorites(sortingCriteria: SortingCriteria?, completion: @escaping (Result<[Favorite], Error>) -> ()) {
         let completionHandler: FIRQuerySnapshotBlock = {
             (snapshot, error) in
@@ -66,5 +81,21 @@ class FirestoreService {
             }
         }
         db.collection(FireStoreCollections.favorites.rawValue).order(by: sortingCriteria?.rawValue ?? "dateCreated", descending: sortingCriteria?.shouldSortAscending ?? true).getDocuments(completion: completionHandler)
+    }
+    
+    func getUserFavorites(completion: @escaping (Result<[Favorite],Error>) ->()) {
+        let userID = FirebaseAuthService.manager.currentUser?.uid
+        db.collection(FireStoreCollections.favorites.rawValue).whereField("creatorID", isEqualTo: userID).getDocuments { (snapshot, error) in
+            if let error = error{
+                completion(.failure(error))
+            }else {
+                let posts = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
+                    let postID = snapshot.documentID
+                    let post = Favorite(from: snapshot.data(), id: postID)
+                    return post
+                })
+                completion(.success(posts ?? []))
+            }
+        }
     }
 }

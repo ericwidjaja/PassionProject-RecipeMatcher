@@ -14,7 +14,7 @@ class RecipesCollResultsVC: UIViewController {
     static func fromSearchVC(ingredients: [String]) -> RecipesCollResultsVC {
         let resultVC = RecipesCollResultsVC()
         resultVC.ingredients = ingredients
-        print(ingredients)
+//        print(ingredients)
         return resultVC
     }
     
@@ -29,7 +29,36 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
-
+    
+    func getFavoritesAndSetHeart(cell: RecipesCollViewCell, recipe: RecipeWrapper) {
+        var favorites = [Favorite]()
+        let creatorID = FirebaseAuthService.manager.currentUser!.uid
+        DispatchQueue.global(qos: .userInitiated).async {
+            [weak self] in FirestoreService.manager.getUserFavorites { (result) in
+                switch result {
+                case .success(let userFavorites):
+                    favorites = userFavorites
+                    
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
+      
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            print(creatorID + recipe.label)
+            
+            if favorites.contains(where: {$0.id! == creatorID + recipe.label} ) {
+                cell.faveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                self.recipesCollView.recipeCollectionView.reloadData()
+            } else {
+                cell.faveButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)
@@ -68,11 +97,12 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell()
         }
+        
         cell.cellDelegate = self
         cell.faveButton.tag = indexPath.row
         let recipeToSet = recipesResult[indexPath.row]
-        //check tag #
-        print(cell.faveButton.tag)
+        getFavoritesAndSetHeart(cell: cell, recipe: recipeToSet)
+       
         cell.recipeLabel.text = recipeToSet.label
         cell.sourceLabel.text = recipeToSet.source
         cell.recipeImage.kf.indicatorType = .activity
@@ -90,13 +120,11 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         //Passing cell's data into DetailVC
         let recipeDestinationVC = RecipeDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
-        //mark the recipe url
-        print(recipesResult[indexPath.row].url)
         present(recipeDestinationVC, animated: true)
     }
 }
 
-//Use firestoreservice to make a post/favorite on firebase.
+//Use firestoreservice to make a favorite on firebase.
 extension RecipesCollResultsVC: buttonFunction {
     func heartButtonPressed(tag: Int) {
         let selectedIndex = IndexPath(row: tag, section: 0)
@@ -104,14 +132,15 @@ extension RecipesCollResultsVC: buttonFunction {
         let singleRecipe = recipesResult[tag]
         let favorited = Favorite(imageUrl: singleRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "NA", dateCreated: Date(), recipeTitle: singleRecipe.label, urlCookInst: singleRecipe.url, ingredientLinesArr: singleRecipe.ingredientLines)
         
-        FirestoreService.manager.createFavorite(favd: favorited) { (result) in
+        FirestoreService.manager.createFavoriteTest(favd: favorited, recipeTitle: singleRecipe.label) { (result) in
             switch result {
             case .success:
                 print("successfully written in Firestore")
+                self.recipesCollView.recipeCollectionView.reloadData()
             case .failure (let error):
                 print(error)
             }
         }
-        print(singleRecipe.label)
+//        print(singleRecipe.label)
     }
 }

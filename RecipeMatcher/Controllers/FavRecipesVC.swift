@@ -98,7 +98,7 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         //Passing selected FavRecipe into DetailVC
         let showFavRecipeToDetailVC = FavRecipeDetailVC()
         showFavRecipeToDetailVC.selectedRecipe = favoriteRecipe[indexPath.row]
-        print(favoriteRecipe[indexPath.row].url)
+//        print(favoriteRecipe[indexPath.row].url)
         present(showFavRecipeToDetailVC, animated: true)
     }
     
