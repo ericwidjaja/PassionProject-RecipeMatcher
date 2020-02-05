@@ -47,7 +47,7 @@ class RecipesCollResultsVC: UIViewController {
         
       
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            print(creatorID + recipe.label)
+//            print(creatorID + recipe.label)
             
             if favorites.contains(where: {$0.id! == creatorID + recipe.label} ) {
                 cell.faveButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
@@ -111,7 +111,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
             placeholder: UIImage(named: "RecipeImgHolder"),
             options: [
                 .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1.5))])
+                .transition(.fade(1.0))])
         return cell;
     }
     
