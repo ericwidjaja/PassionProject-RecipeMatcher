@@ -39,19 +39,8 @@ class FirestoreService {
     }
     
     //MARK: Favorites
-//    func createFavorite(favd: Favorite, completion: @escaping (Result<(), Error>) -> ()) {
-//        var fields = favd.fieldsDict
-//        fields["dateCreated"] = Date()
-//        db.collection(FireStoreCollections.favorites.rawValue).addDocument(data: fields) { (error) in
-//            if let error = error {
-//                completion(.failure(error))
-//            } else {
-//                completion(.success(()))
-//            }
-//        }
-//    }
     
-    func createFavoriteTest(favd: Favorite, recipeTitle: String, completion: @escaping (Result<(), Error>) -> ()) {
+    func createFavorites(favd: Favorite, recipeTitle: String, completion: @escaping (Result<(), Error>) -> ()) {
         var fields = favd.fieldsDict
         fields["dateCreated"] = Date()
         let userID = FirebaseAuthService.manager.currentUser?.uid
@@ -64,8 +53,7 @@ class FirestoreService {
             }
         }
     }
-    
-    
+
     func getAllFavorites(sortingCriteria: SortingCriteria?, completion: @escaping (Result<[Favorite], Error>) -> ()) {
         let completionHandler: FIRQuerySnapshotBlock = {
             (snapshot, error) in

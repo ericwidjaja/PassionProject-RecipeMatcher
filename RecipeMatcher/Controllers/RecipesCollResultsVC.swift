@@ -45,7 +45,6 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
         
-      
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
 //            print(creatorID + recipe.label)
             
@@ -57,8 +56,7 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)
@@ -111,7 +109,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
             placeholder: UIImage(named: "RecipeImgHolder"),
             options: [
                 .scaleFactor(UIScreen.main.scale),
-                .transition(.fade(1.0))])
+                .transition(.fade(0.80))])
         return cell;
     }
     
@@ -132,7 +130,7 @@ extension RecipesCollResultsVC: buttonFunction {
         let singleRecipe = recipesResult[tag]
         let favorited = Favorite(imageUrl: singleRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "NA", dateCreated: Date(), recipeTitle: singleRecipe.label, urlCookInst: singleRecipe.url, ingredientLinesArr: singleRecipe.ingredientLines)
         
-        FirestoreService.manager.createFavoriteTest(favd: favorited, recipeTitle: singleRecipe.label) { (result) in
+        FirestoreService.manager.createFavorites(favd: favorited, recipeTitle: singleRecipe.label) { (result) in
             switch result {
             case .success:
                 print("successfully written in Firestore")
