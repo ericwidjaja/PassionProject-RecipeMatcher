@@ -33,7 +33,8 @@ class RecipeDetailView: UIView {
         txtView.textColor = .darkGray
         txtView.textAlignment = .left
         txtView.isSelectable = true
-        txtView.dataDetectorTypes = UIDataDetectorTypes.link
+        txtView.textContainerInset = UIEdgeInsets(top: 25, left: 15, bottom: 25, right: 15)
+//        txtView.dataDetectorTypes = UIDataDetectorTypes.link
         return txtView
     }()
     
@@ -76,9 +77,9 @@ class RecipeDetailView: UIView {
  
     private func detailImageConstraints() {
         NSLayoutConstraint.activate([
-        recipeImage.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 15),
+        recipeImage.topAnchor.constraint(equalTo: topAnchor),
         recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-        recipeImage.heightAnchor.constraint(equalToConstant: 270),
+        recipeImage.heightAnchor.constraint(equalToConstant: 450),
         recipeImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor)])
     }
     

@@ -101,5 +101,4 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
 //        print(favoriteRecipe[indexPath.row].url)
         present(showFavRecipeToDetailVC, animated: true)
     }
-    
 }
