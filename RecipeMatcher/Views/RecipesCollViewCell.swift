@@ -12,14 +12,14 @@ class RecipesCollViewCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 25
+        image.layer.cornerRadius = 30
         return image
     }()
     
     lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.75
+        view.alpha = 0.65
         return view
     }()
     

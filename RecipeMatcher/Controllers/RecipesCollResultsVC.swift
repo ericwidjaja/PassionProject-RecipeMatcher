@@ -60,6 +60,7 @@ class RecipesCollResultsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)
+        
         recipesCollView.recipeCollectionView.register(RecipesCollViewCell.self, forCellWithReuseIdentifier: "RecipeCell")
         recipesCollView.recipeCollectionView.dataSource = self
         recipesCollView.recipeCollectionView.delegate = self

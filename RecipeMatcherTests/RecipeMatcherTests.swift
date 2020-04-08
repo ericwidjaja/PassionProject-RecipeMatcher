@@ -1,34 +1,34 @@
-//
 //  RecipeMatcherTests.swift
 //  RecipeMatcherTests
-//
 //  Created by Eric Widjaja on 11/3/19.
 //  Copyright © 2019 Eric W. All rights reserved.
-//
+
 
 import XCTest
-@testable import RecipeMatcher
+//@testable import RecipeMatcher
 
 class RecipeMatcherTests: XCTestCase {
-
-    override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
+    
+//    func testLoadRecipeData() {
+//        //Arrange
+//        let recipeData = getTestRecipeJSONData()
+//        
+//        //Act
+//        var allRecipes = [RecipeWrapper]()
+//        
+//        //Assert
+//        XCTAssertTrue(allRecipes.count == 10, "Expected 10 weather structs, but received \(allRecipes.count)")
+//    }
+//        
+//        func getTestRecipeJSONData() -> Data {
+//            guard let pathToJSONData = Bundle.main.path(forResource: "Recipes", ofType: "json") else
+//            { fatalError("Could not find Recipes.json")}
+//        let internalUrl = URL(fileURLWithPath: pathToJSONData)
+//            do {
+//                let data = try Data(contentsOf: internalUrl)
+//                return data
+//            }catch{
+//                fatalError("This error occured: \(error)")
+//        }
+//    }
 }
