@@ -19,7 +19,7 @@ class RecipeDetailView: UIView {
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
-        label.font = UIFont.init(name: "Rockwell-Bold", size: 22)
+        label.font = UIFont.init(name: "Rockwell-Bold", size: 24)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -27,13 +27,13 @@ class RecipeDetailView: UIView {
     
     lazy var ingredientsTxtView: UITextView = {
         let txtView = UITextView()
-        txtView.font = UIFont.init(name: "Rockwell", size: 17)
+        txtView.font = UIFont.init(name: "Rockwell", size: 18)
         txtView.adjustsFontForContentSizeCategory = true
         txtView.isEditable = false
         txtView.textColor = .darkGray
         txtView.textAlignment = .left
         txtView.isSelectable = true
-        txtView.textContainerInset = UIEdgeInsets(top: 25, left: 15, bottom: 25, right: 15)
+        txtView.textContainerInset = UIEdgeInsets(top: 25, left: 20, bottom: 25, right: 20)
         return txtView
     }()
     
@@ -78,22 +78,23 @@ class RecipeDetailView: UIView {
         NSLayoutConstraint.activate([
         recipeImage.topAnchor.constraint(equalTo: topAnchor),
         recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-        recipeImage.heightAnchor.constraint(equalToConstant: 325),
+        recipeImage.heightAnchor.constraint(equalToConstant: 320),
         recipeImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor)])
     }
     
     private func recipeLabelConstraints(){
         NSLayoutConstraint.activate([
             recipeLabel.topAnchor.constraint(equalTo:
-                recipeImage.bottomAnchor, constant: 50),
+                recipeImage.bottomAnchor, constant: 60),
             recipeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
+            recipeLabel.heightAnchor.constraint(equalToConstant: 50),
             recipeLabel.widthAnchor.constraint(equalToConstant: 400)])
     }
     
     private func ingredientTxtViewConstraints(){
         NSLayoutConstraint.activate([
-            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 15),
-            ingredientsTxtView.heightAnchor.constraint(equalToConstant: 380),
+            ingredientsTxtView.topAnchor.constraint(equalTo: recipeLabel.bottomAnchor, constant: 10),
+            ingredientsTxtView.heightAnchor.constraint(equalToConstant: 350),
             ingredientsTxtView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 15),
             ingredientsTxtView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor,constant: -15)])
     }
