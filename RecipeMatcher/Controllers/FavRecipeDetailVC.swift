@@ -15,7 +15,7 @@ class FavRecipeDetailVC: UIViewController {
     //MARK: - Methods
     func setDetailRecipeView() {
         view.addSubview(favDetailRecipe)
-        view.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         favDetailRecipe.recipeImage.kf.indicatorType = .activity
         favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedRecipe.imageUrl!), placeholder: UIImage(named: "RecipeImgHolder"), options: [

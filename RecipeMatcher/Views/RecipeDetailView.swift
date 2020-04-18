@@ -19,6 +19,7 @@ class RecipeDetailView: UIView {
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
+        label.textColor = .white
         label.font = UIFont.init(name: "Rockwell-Bold", size: 24)
         label.numberOfLines = 2
         label.adjustsFontSizeToFitWidth = true

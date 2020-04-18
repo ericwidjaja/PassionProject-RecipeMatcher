@@ -15,7 +15,7 @@ class RecipeDetailVC: UIViewController {
     //MARK: - Methods
     func setDetailRecipeView() {
         view.addSubview(detailRecipe)
-        view.backgroundColor = #colorLiteral(red: 0.9470610023, green: 0.8027674556, blue: 0.5816813707, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         //https://cocoapods.org/pods/Kingfisher
         detailRecipe.recipeImage.kf.indicatorType = .activity
         detailRecipe.recipeImage.kf.setImage(
