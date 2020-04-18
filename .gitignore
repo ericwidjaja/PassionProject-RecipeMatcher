@@ -23,10 +23,6 @@ DerivedData/
 !default.perspectivev3
 
 
-## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
-*.xccheckout
-*.xcscmblueprint
-
 ## Obj-C/Swift specific
 *.hmap
 
