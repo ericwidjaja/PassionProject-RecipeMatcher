@@ -12,8 +12,8 @@ struct AppUser {
     let dateCreated: Date?
     
 //    MARK: - Init
-    init(from user: User) {
-        self.userName = user.displayName
+    init(from user: User, userName: String) {
+        self.userName = userName
         self.email = user.email
         self.uid = user.uid
         self.dateCreated = user.metadata.creationDate
