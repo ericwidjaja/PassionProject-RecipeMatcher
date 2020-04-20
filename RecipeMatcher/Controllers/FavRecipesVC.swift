@@ -45,18 +45,7 @@ class FavRecipesVC: UIViewController {
         alert.addAction(cancel)
         present(alert, animated:true)
     }
-    
-//    private func getUserFavorites() {
-//        FirestoreService.manager.getAllFavorites(sortingCriteria: .fromNewestToOldest)
-//        {(result) in
-//            switch result {
-//            case .success(let favorites):
-//                self.favoriteRecipe = favorites
-//            case .failure(let error):
-//                print("error getting fave recipes \(error)")
-//            }
-//        }
-//    }
+
     private func getUserFavorites() {
         FirestoreService.manager.getAllFavorites(sortingCriteria: .fromNewestToOldest)
         {(result) in
