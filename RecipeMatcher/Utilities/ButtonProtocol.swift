@@ -4,6 +4,7 @@
 
 import Foundation
 
-protocol buttonFunction: AnyObject {
-    func heartButtonPressed(tag: Int)
+protocol HeartButtonDelegate {
+    func saveToPersistance(tag: Int)
+    func deleteFromPersistance(tag: Int)
 }

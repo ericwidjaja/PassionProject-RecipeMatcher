@@ -3,10 +3,11 @@
 
 import Foundation
 import FirebaseFirestore
+import Firebase
 
 fileprivate enum FireStoreCollections: String {
     case users
-    case favorites
+    case favoriteRecipes
     case addComments
 }
 
@@ -45,7 +46,7 @@ class FirestoreService {
         fields["dateCreated"] = Date()
         let userID = FirebaseAuthService.manager.currentUser?.uid
         let uniqueID = userID! + recipeTitle
-        db.collection(FireStoreCollections.favorites.rawValue).document(uniqueID).setData(fields) { (error) in
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(uniqueID).setData(fields) { (error) in
             if let error = error {
                 completion(.failure(error))
             } else {
@@ -68,12 +69,12 @@ class FirestoreService {
                 completion(.success(favorites ?? []))
             }
         }
-        db.collection(FireStoreCollections.favorites.rawValue).order(by: sortingCriteria?.rawValue ?? "dateCreated", descending: sortingCriteria?.shouldSortAscending ?? true).getDocuments(completion: completionHandler)
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).order(by: sortingCriteria?.rawValue ?? "dateCreated", descending: sortingCriteria?.shouldSortAscending ?? true).getDocuments(completion: completionHandler)
     }
     
-    func getUserFavorites(completion: @escaping (Result<[Favorite],Error>) ->()) {
+    func getUserFavorites(userID: String, completion: @escaping (Result<[Favorite],Error>) ->()) {
         let userID = FirebaseAuthService.manager.currentUser?.uid
-        db.collection(FireStoreCollections.favorites.rawValue).whereField("creatorID", isEqualTo: userID).getDocuments { (snapshot, error) in
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID!).getDocuments { (snapshot, error) in
             if let error = error{
                 completion(.failure(error))
             }else {
