@@ -3,6 +3,8 @@
 //  Created by Eric Widjaja on 12/11/19.
 
 import UIKit
+import Kingfisher
+
 
 class RecipesCollResultsVC: UIViewController {
     
@@ -76,7 +78,8 @@ class RecipesCollResultsVC: UIViewController {
     //MARK: Firestore
     private func saveFaveRecipeToFirestore(_ tag: Int) {
         let favedRecipe = recipesResult[tag]
-        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe.label, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines)
+        let newFirestoreRecipe = Favorite(imageUrl: favedRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, recipeTitle: favedRecipe.label, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines)
+        
         FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
             switch result {
             case .success:

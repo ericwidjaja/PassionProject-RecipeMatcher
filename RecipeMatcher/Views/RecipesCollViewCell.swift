@@ -52,13 +52,13 @@ class RecipesCollViewCell: UICollectionViewCell {
         let button = UIButton()
         button.tintColor = .red
         button.isUserInteractionEnabled = true
-        let config = UIImage.SymbolConfiguration(pointSize: 30, weight: UIImage.SymbolWeight.medium)
+        let config = UIImage.SymbolConfiguration(pointSize: 50, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.setImage(heart, for: .normal)
         //heart.fill
         var newFrame = button.frame.size
-        newFrame.width = 70
-        newFrame.height = 70
+        newFrame.width = 50
+        newFrame.height = 50
         button.frame.size = newFrame
         return button
     }()
@@ -126,14 +126,14 @@ class RecipesCollViewCell: UICollectionViewCell {
         }
     }
     func makeHeartFill() {
-        let config = UIImage.SymbolConfiguration(pointSize: 60, weight: UIImage.SymbolWeight.medium)
+        let config = UIImage.SymbolConfiguration(pointSize: 50, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
         heartButton.setImage(heart, for: .normal)
         heartStatus = .filled
     }
     
     func makeHeartEmpty() {
-        let config = UIImage.SymbolConfiguration(pointSize: 60, weight: UIImage.SymbolWeight.medium)
+        let config = UIImage.SymbolConfiguration(pointSize: 50, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         heartButton.setImage(heart, for: .normal)
         heartStatus = .notFilled
