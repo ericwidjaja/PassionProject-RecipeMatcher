@@ -22,19 +22,18 @@ class RecipesCollResultsVC: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.recipesCollView.recipeCollectionView.reloadData()
-                
             }
         }
     }
-    //MARK: - Functions
     
+    //MARK: - Functions
     private func ingredientsQueryString() -> String {
         return ingredients.compactMap({ ingredient in
             ingredient.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)})
             .joined(separator: "+")
     }
     
-    private func updateData() {
+    private func loadSearchQuery() {
         RecipeAPIClient.searchRecipes(keyword: ingredientsQueryString()) { (error, recipe) in
             if let error =  error {
                 print(error)
@@ -44,7 +43,7 @@ class RecipesCollResultsVC: UIViewController {
         }
     }
     
-    private func updateRecipesFavorite(uri: String, cell: RecipesCollViewCell) {
+    private func updateRecipeHearts(uri: String, cell: RecipesCollViewCell) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
             switch result {
             case .failure(let error):
@@ -66,7 +65,7 @@ class RecipesCollResultsVC: UIViewController {
         cell.sourceLabel.text = filteredRecipes.source
         cell.heartButton.tag = indexPath.row
         cell.delegate = self
-        updateRecipesFavorite(uri: filteredRecipes.uri, cell: cell)
+        updateRecipeHearts(uri: filteredRecipes.uri, cell: cell)
         cell.recipeImage.kf.indicatorType = .activity
         cell.recipeImage.kf.setImage(
             with: URL(string: filteredRecipes.image),
@@ -75,6 +74,7 @@ class RecipesCollResultsVC: UIViewController {
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(0.80))])
     }
+    
     //MARK: Firestore
     private func saveFaveRecipeToFirestore(_ tag: Int) {
         let favedRecipe = recipesResult[tag]
@@ -93,14 +93,14 @@ class RecipesCollResultsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)
-        
         recipesCollView.recipeCollectionView.register(RecipesCollViewCell.self, forCellWithReuseIdentifier: "RecipeCell")
         recipesCollView.recipeCollectionView.dataSource = self
         recipesCollView.recipeCollectionView.delegate = self
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        updateData()
+        loadSearchQuery()
         self.navigationController?.navigationBar.isHidden = true
     }
 }
@@ -114,21 +114,8 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell()
         }
         updateCellWithFilteredRecipes(indexPath, cell)
-//        cell.cellDelegate = self
-//        cell.heartButton.tag = indexPath.row
-//        let recipeToSet = recipesResult[indexPath.row]
-//        //        getFavoritesAndSetHeart(cell: cell, recipe: recipeToSet)
-//
-//        cell.recipeLabel.text = recipeToSet.label
-//        cell.sourceLabel.text = recipeToSet.source
-//        cell.recipeImage.kf.indicatorType = .activity
-//        cell.recipeImage.kf.setImage(
-//            with: URL(string: recipeToSet.image),
-//            placeholder: UIImage(named: "RecipeImgHolder"),
-//            options: [
-//                .scaleFactor(UIScreen.main.scale),
-//                .transition(.fade(0.80))])
-        return cell;
+
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

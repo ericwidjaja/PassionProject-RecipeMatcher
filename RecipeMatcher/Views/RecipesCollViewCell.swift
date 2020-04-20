@@ -48,17 +48,18 @@ class RecipesCollViewCell: UICollectionViewCell {
         label.textColor = .darkGray
         return label
     }()
+    
     var heartButton: UIButton = {
         let button = UIButton()
         button.tintColor = .red
         button.isUserInteractionEnabled = true
-        let config = UIImage.SymbolConfiguration(pointSize: 50, weight: UIImage.SymbolWeight.medium)
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.setImage(heart, for: .normal)
         //heart.fill
         var newFrame = button.frame.size
-        newFrame.width = 50
-        newFrame.height = 50
+        newFrame.width = 40
+        newFrame.height = 40
         button.frame.size = newFrame
         return button
     }()
@@ -126,14 +127,14 @@ class RecipesCollViewCell: UICollectionViewCell {
         }
     }
     func makeHeartFill() {
-        let config = UIImage.SymbolConfiguration(pointSize: 50, weight: UIImage.SymbolWeight.medium)
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
         heartButton.setImage(heart, for: .normal)
         heartStatus = .filled
     }
     
     func makeHeartEmpty() {
-        let config = UIImage.SymbolConfiguration(pointSize: 50, weight: UIImage.SymbolWeight.medium)
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         heartButton.setImage(heart, for: .normal)
         heartStatus = .notFilled
@@ -152,7 +153,7 @@ class RecipesCollViewCell: UICollectionViewCell {
             addtDescView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             addtDescView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             addtDescView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            addtDescView.heightAnchor.constraint(equalToConstant: 70)
+            addtDescView.heightAnchor.constraint(equalToConstant: 80)
         ])
     }
     

@@ -2,6 +2,8 @@
 //  RecipeMatcher
 
 import Foundation
+import FirebaseAuth
+import FirebaseFirestore
 import FirebaseStorage
 
 class FirebaseStorageService {

@@ -5,7 +5,6 @@
 import UIKit
 import Kingfisher
 
-
 class FavRecipesVC: UIViewController {
     
     //MARK: - Properties
@@ -68,8 +67,9 @@ class FavRecipesVC: UIViewController {
             placeholder: UIImage(named: "RecipeImgHolder"),
             options: [ .scaleFactor(UIScreen.main.scale),
                        .transition(.flipFromRight(3))])
-        
     }
+
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,13 +79,13 @@ class FavRecipesVC: UIViewController {
         faveRecipeView.favoriteList.delegate = self
         faveRecipeView.favoriteList.dataSource = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-        view.backgroundColor = .lightGray
+        view.backgroundColor = .systemTeal
         getUserFavorites()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getUserFavorites()
-    
+        
     }
 }
 //MARK: - Extensions -#########################################################
@@ -128,8 +128,7 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
             return UICollectionViewCell()
         }
         updateCellsWithFaveRecipes(indexPath, favCell)
-        dump(updateCellsWithFaveRecipes)
-        //
+        
         //        let favdRecipeToSet = favoriteRecipe[indexPath.row]
         //        favCell.favdRecipeLabel.text = favdRecipeToSet.label
         //        favCell.favdRecipeImage.kf.indicatorType = .activity

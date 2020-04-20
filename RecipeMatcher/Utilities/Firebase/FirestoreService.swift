@@ -2,6 +2,7 @@
 //  RecipeMatcher
 
 import Foundation
+import FirebaseAuth
 import FirebaseFirestore
 import Firebase
 
@@ -49,6 +50,7 @@ class FirestoreService {
         db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(uniqueID).setData(fields) { (error) in
             if let error = error {
                 completion(.failure(error))
+                print(error)
             } else {
                 completion(.success(()))
             }
@@ -77,7 +79,7 @@ class FirestoreService {
         db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID!).getDocuments { (snapshot, error) in
             if let error = error{
                 completion(.failure(error))
-            }else {
+            } else {
                 let posts = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
                     let postID = snapshot.documentID
                     let post = Favorite(from: snapshot.data(), id: postID)
