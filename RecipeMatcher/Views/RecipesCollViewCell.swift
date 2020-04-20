@@ -157,6 +157,7 @@ class RecipesCollViewCell: UICollectionViewCell {
     }
     
     private func descriptionViewConstraints() {
+        heartButton.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
         addSubview(recipeLabel)
         addSubview(sourceLabel)
         addSubview(heartButton)
