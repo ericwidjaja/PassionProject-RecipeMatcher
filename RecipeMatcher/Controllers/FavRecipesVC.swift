@@ -74,6 +74,7 @@ class FavRecipesVC: UIViewController {
         getUserFavorites()
     }
 }
+//MARK: - Extensions
 
 extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -102,3 +103,14 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         present(showFavRecipeToDetailVC, animated: true)
     }
 }
+extension FavRecipesVC : HeartButtonDelegate {
+    func saveToPersistance(tag: Int) {
+    }
+    
+    func deleteFromPersistance(tag: Int) {
+
+    }
+    
+    
+}
+

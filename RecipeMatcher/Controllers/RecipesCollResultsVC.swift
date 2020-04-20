@@ -73,7 +73,19 @@ class RecipesCollResultsVC: UIViewController {
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(0.80))])
     }
-    
+    //MARK: Firestore
+    private func saveFaveRecipeToFirestore(_ tag: Int) {
+        let favedRecipe = recipesResult[tag]
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe.label, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines)
+        FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
+            switch result {
+            case .success:
+                print("Saved in firestore")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,7 +125,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
 //            options: [
 //                .scaleFactor(UIScreen.main.scale),
 //                .transition(.fade(0.80))])
-//        return cell;
+        return cell;
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -127,11 +139,11 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
 //MARK: HeartButton
 extension RecipesCollResultsVC: HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
-        save
+        saveFaveRecipeToFirestore(tag)
     }
     
     func deleteFromPersistance(tag: Int) {
-        <#code#>
+//        <#code#>
     }
     
     
