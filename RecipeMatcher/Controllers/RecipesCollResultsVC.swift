@@ -4,6 +4,8 @@
 
 import UIKit
 import Kingfisher
+import FirebaseAuth
+import FirebaseFirestore
 
 
 class RecipesCollResultsVC: UIViewController {

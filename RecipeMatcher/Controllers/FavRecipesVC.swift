@@ -4,6 +4,8 @@
 
 import UIKit
 import Kingfisher
+import FirebaseFirestore
+import FirebaseAuth
 
 class FavRecipesVC: UIViewController {
     

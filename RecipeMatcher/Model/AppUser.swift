@@ -32,8 +32,9 @@ struct AppUser {
     
     var fieldsDict: [String: Any] {
         return [
-            "userName": self.userName ?? "",
-            "email": self.email ?? ""
+            "userName": self.userName ?? "n/a",
+            "email": self.email ?? "",
+            "dateCreated": self.dateCreated ?? ""
         ]
     }
 }
