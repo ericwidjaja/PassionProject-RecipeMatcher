@@ -45,13 +45,13 @@ class RecipesCollResultsVC: UIViewController {
         }
     }
     
-    private func updateRecipeHearts(uri: String, cell: RecipesCollViewCell) {
+    private func updateRecipeHearts(url: String, cell: RecipesCollViewCell) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let favedRecipes):
-                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.id == uri
+                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.url == url
                 }) {
                     cell.makeHeartFill()
                 } else {
@@ -67,7 +67,7 @@ class RecipesCollResultsVC: UIViewController {
         cell.sourceLabel.text = filteredRecipes.source
         cell.heartButton.tag = indexPath.row
         cell.delegate = self
-        updateRecipeHearts(uri: filteredRecipes.uri, cell: cell)
+        updateRecipeHearts(url: filteredRecipes.url, cell: cell)
         cell.recipeImage.kf.indicatorType = .activity
         cell.recipeImage.kf.setImage(
             with: URL(string: filteredRecipes.image),

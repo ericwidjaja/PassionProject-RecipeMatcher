@@ -3,4 +3,54 @@
    uuid = "CB45E506-3784-4337-91AE-C0B6CB046679"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B0FB909B-58D4-400A-BCD8-4B330FF992CC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "updateRecipeHearts(url:cell:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B0FB909B-58D4-400A-BCD8-4B330FF992CC - de06cab3c32af62a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Swift.Array&lt;RecipeMatcher.Favorite&gt;, Swift.Error&gt;) -&gt; () in RecipeMatcher.RecipesCollResultsVC.(updateRecipeHearts in _89AFE674794C1F9DF9177B3D6FCDE9D0)(url: Swift.String, cell: RecipeMatcher.RecipesCollViewCell) -&gt; ()"
+                  moduleName = "RecipeMatcher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ericwidjaja/Desktop/UNIT5/Project/PassionProject-RecipeMatcher/RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "643">
+               </Location>
+               <Location
+                  uuid = "B0FB909B-58D4-400A-BCD8-4B330FF992CC - b34564a21dd05de"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RecipeMatcher.Favorite) -&gt; Swift.Bool in closure #1 (Swift.Result&lt;Swift.Array&lt;RecipeMatcher.Favorite&gt;, Swift.Error&gt;) -&gt; () in RecipeMatcher.RecipesCollResultsVC.(updateRecipeHearts in _89AFE674794C1F9DF9177B3D6FCDE9D0)(url: Swift.String, cell: RecipeMatcher.RecipesCollViewCell) -&gt; ()"
+                  moduleName = "RecipeMatcher"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ericwidjaja/Desktop/UNIT5/Project/PassionProject-RecipeMatcher/RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "43">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
