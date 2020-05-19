@@ -80,7 +80,12 @@ class RecipesCollResultsVC: UIViewController {
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
         let favedRecipe = recipesResult[tag]
-        let newFirestoreRecipe = Favorite(imageUrl: favedRecipe.image, creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, recipeTitle: favedRecipe.label, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines)
+        let newFirestoreRecipe = Favorite(imageUrl: favedRecipe.image,
+                                          creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "",
+                                          dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate,
+                                          recipeTitle: favedRecipe.label,
+                                          urlCookInst: favedRecipe.url,
+                                          ingredientLinesArr: favedRecipe.ingredientLines)
         
         FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
             switch result {
@@ -93,7 +98,17 @@ class RecipesCollResultsVC: UIViewController {
     }
     
     private func deleteRecipeFromFireStore(_ tag: Int) {
-        
+        let unFavoriteRecipe = recipesResult[tag]
+        FirestoreService.manager.findIdToUnfavor(faveId: unFavoriteRecipe.uri, userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
+            FirestoreService.manager.unfavoritedRecipe(result: result) { (result) in
+                switch result {
+                case .failure(let error):
+                    print("Problem deleting recipe from FireStore: \(error)")
+                case .success:
+                    print("Recipe successfully unfavorited")
+                }
+            }
+        }
     }
     
     //MARK: - Lifecycle
@@ -121,7 +136,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell()
         }
         updateCellWithFilteredRecipes(indexPath, cell)
-
+        
         return cell
     }
     

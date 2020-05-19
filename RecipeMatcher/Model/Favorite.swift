@@ -20,7 +20,7 @@ struct Favorite {
         self.imageUrl = imageUrl
         self.creatorID = creatorID
         self.dateCreated = dateCreated
-        self.id = UUID().description
+        self.id = UUID.init().description
         self.label = recipeTitle
         self.url = urlCookInst
         self.ingredientLines = ingredientLinesArr

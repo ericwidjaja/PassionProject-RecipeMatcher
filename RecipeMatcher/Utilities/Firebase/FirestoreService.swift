@@ -53,7 +53,7 @@ class FirestoreService {
                 print(error)
             } else {
                 completion(.success(()))
-                print(uniqueID)
+                print(uniqueID + " <--uniqueID")
             }
         }
     }
@@ -67,6 +67,7 @@ class FirestoreService {
                 let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let favorite = Favorite(from: snapshot.data(), id: faveID)
+                    print(faveID + " <--faveID")
                     return favorite
                 })
                 completion(.success(favorites ?? []))
@@ -91,8 +92,8 @@ class FirestoreService {
         }
     }
     
-    func findIdToUnfavor(fave_id: String, userID: String, completionHandler: @escaping (Result<String,Error>) -> ()) {
-        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveID", isEqualTo: fave_id).getDocuments {(snapshot,error) in
+    func findIdToUnfavor(faveId: String, userID: String, completionHandler: @escaping (Result<String,Error>) -> ()) {
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveID", isEqualTo: faveId).getDocuments {(snapshot,error) in
             if let error = error {
                 completionHandler(.failure(error))
                 
@@ -100,8 +101,10 @@ class FirestoreService {
                 let recipes = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let singleRecipe = Favorite(from: snapshot.data(), id: faveID)
+                    
                     return singleRecipe
                 })
+                
                 if let recipes = recipes {
                     completionHandler(.success(recipes[0].id))
                 }
