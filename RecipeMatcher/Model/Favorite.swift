@@ -48,7 +48,8 @@ struct Favorite {
             "creatorID": self.creatorID,
             "recipeTitle": self.label,
             "urlCookInst": self.url,
-            "ingredientLines": self.ingredientLines
+            "ingredientLines": self.ingredientLines,
+            "faveID": self.id as Any
         ]
     }  
 }
