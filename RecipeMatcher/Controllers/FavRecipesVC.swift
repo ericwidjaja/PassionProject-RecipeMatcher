@@ -17,7 +17,7 @@ class FavRecipesVC: UIViewController {
             DispatchQueue.main.async {
                 self.faveRecipeView.favoriteList.reloadData()
                 //checking if the recipes that user favorited are existed
-                dump(self.favoriteRecipe)
+//                dump(self.favoriteRecipe)
             }
         }
     }
@@ -90,36 +90,7 @@ class FavRecipesVC: UIViewController {
         
     }
 }
-//MARK: - Extensions -#########################################################
 
-//extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return favoriteRecipe.count
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let favCell = faveRecipeView.favoriteList.dequeueReusableCell(withReuseIdentifier: "FavdCell", for: indexPath) as? FavdRecipesCell else {
-//            return UICollectionViewCell()
-//        }
-//
-//        let favdRecipeToSet = favoriteRecipe[indexPath.row]
-//        favCell.favdRecipeLabel.text = favdRecipeToSet.label
-//        favCell.favdRecipeImage.kf.indicatorType = .activity
-//        favCell.favdRecipeImage.kf.setImage(
-//            with: URL(string: favdRecipeToSet.imageUrl!),
-//            placeholder: UIImage(named: "RecipeImgHolder"),
-//            options: [ .scaleFactor(UIScreen.main.scale),
-//                       .transition(.flipFromRight(3))])
-//        return favCell;
-//    }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        //Passing selected FavRecipe into DetailVC
-//        let showFavRecipeToDetailVC = FavRecipeDetailVC()
-//        showFavRecipeToDetailVC.selectedRecipe = favoriteRecipe[indexPath.row]
-//        //        print(favoriteRecipe[indexPath.row].url)
-//        present(showFavRecipeToDetailVC, animated: true)
-//    }
-//}
 extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favoriteRecipe.count
@@ -130,15 +101,6 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
             return UICollectionViewCell()
         }
         updateCellsWithFaveRecipes(indexPath, favCell)
-        
-        //        let favdRecipeToSet = favoriteRecipe[indexPath.row]
-        //        favCell.favdRecipeLabel.text = favdRecipeToSet.label
-        //        favCell.favdRecipeImage.kf.indicatorType = .activity
-        //        favCell.favdRecipeImage.kf.setImage(
-        //            with: URL(string: favdRecipeToSet.imageUrl!),
-        //            placeholder: UIImage(named: "RecipeImgHolder"),
-        //            options: [ .scaleFactor(UIScreen.main.scale),
-        //                       .transition(.flipFromRight(3))])
         return favCell
     }
     

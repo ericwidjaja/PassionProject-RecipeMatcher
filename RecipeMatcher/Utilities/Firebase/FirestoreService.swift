@@ -53,6 +53,7 @@ class FirestoreService {
                 print(error)
             } else {
                 completion(.success(()))
+                print(uniqueID)
             }
         }
     }
@@ -89,4 +90,6 @@ class FirestoreService {
             }
         }
     }
+    
+//    func findIdToUnfavor(userID: String, )
 }
