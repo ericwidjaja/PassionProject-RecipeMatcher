@@ -7,7 +7,7 @@ import Foundation
 import FirebaseFirestore
 
 struct Favorite {
-    let id: String?
+    let id: String
     let label: String
     let imageUrl: String?
     let creatorID: String
