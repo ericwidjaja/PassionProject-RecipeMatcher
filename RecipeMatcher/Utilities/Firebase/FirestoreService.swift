@@ -53,11 +53,11 @@ class FirestoreService {
                 print(error)
             } else {
                 completion(.success(()))
-                print(uniqueID)
+                print(uniqueID + " <--uniqueID")
             }
         }
     }
-
+    
     func getAllFavorites(sortingCriteria: SortingCriteria?, completion: @escaping (Result<[Favorite], Error>) -> ()) {
         let completionHandler: FIRQuerySnapshotBlock = {
             (snapshot, error) in
@@ -67,6 +67,7 @@ class FirestoreService {
                 let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let favorite = Favorite(from: snapshot.data(), id: faveID)
+                    print(faveID + " <--faveID")
                     return favorite
                 })
                 completion(.success(favorites ?? []))
@@ -91,5 +92,39 @@ class FirestoreService {
         }
     }
     
-//    func findIdToUnfavor(userID: String, )
+    func findIdToUnfavor(faveId: String, userID: String, completionHandler: @escaping (Result<String,Error>) -> ()) {
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveID", isEqualTo: faveId).getDocuments {(snapshot,error) in
+            if let error = error {
+                completionHandler(.failure(error))
+                
+            } else {
+                let recipes = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
+                    let faveID = snapshot.documentID
+                    let singleRecipe = Favorite(from: snapshot.data(), id: faveID)
+                    
+                    return singleRecipe
+                })
+                
+                if let recipes = recipes {
+                    completionHandler(.success(recipes[0].id))
+                }
+            }
+        }
+    }
+    
+    func unfavoritedRecipe(result: (Result<String,Error>), completion: @escaping (Result<(),Error>) ->()) {
+        switch result {
+        case .success(let favedRecipeID):
+            db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(favedRecipeID).delete {
+                (error) in
+                if let error = error {
+                    completion(.failure(error))
+                } else {
+                    completion(.success(()))
+                }
+            }
+        case .failure(let error):
+            completion(.failure(error))
+        }
+    }
 }

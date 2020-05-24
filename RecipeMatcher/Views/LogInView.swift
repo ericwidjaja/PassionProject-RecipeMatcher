@@ -79,7 +79,6 @@ lazy var backgroundImageView: UIImageView = {
         skip.layer.cornerRadius = 8
         skip.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
         skip.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-//        skip.addTarget(self, action: #selector(skipButtonPressed), for: .touchUpInside)
         return skip
     }()
     

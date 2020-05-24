@@ -14,10 +14,17 @@
             filePath = "RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "218"
             endingLineNumber = "218"
             landmarkName = "unknown"
             landmarkType = "0">
+=======
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "updateRecipeHearts(url:cell:)"
+            landmarkType = "7">
+>>>>>>> 5f31118b0e9633d000476f6cadfce87602acd0b7
             <Locations>
                <Location
                   uuid = "B0FB909B-58D4-400A-BCD8-4B330FF992CC - de06cab3c32af62a"
@@ -62,6 +69,7 @@
             filePath = "RecipeMatcher/Utilities/Firebase/FirestoreService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "259"
             endingLineNumber = "259"
             landmarkName = "unknown"
@@ -82,6 +90,12 @@
             endingLineNumber = "237"
             landmarkName = "unknown"
             landmarkType = "0">
+=======
+            startingLineNumber = "107"
+            endingLineNumber = "107"
+            landmarkName = "findIdToUnfavor(faveId:userID:completionHandler:)"
+            landmarkType = "7">
+>>>>>>> 5f31118b0e9633d000476f6cadfce87602acd0b7
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
