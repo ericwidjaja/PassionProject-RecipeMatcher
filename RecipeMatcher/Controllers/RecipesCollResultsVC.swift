@@ -7,7 +7,6 @@ import Kingfisher
 import FirebaseAuth
 import FirebaseFirestore
 
-
 class RecipesCollResultsVC: UIViewController {
     
     static func fromSearchVC(ingredients: [String]) -> RecipesCollResultsVC {
@@ -80,13 +79,7 @@ class RecipesCollResultsVC: UIViewController {
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
         let favedRecipe = recipesResult[tag]
-        let newFirestoreRecipe = Favorite(imageUrl: favedRecipe.image,
-                                          creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "",
-                                          dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate,
-                                          recipeTitle: favedRecipe.label,
-                                          urlCookInst: favedRecipe.url,
-                                          ingredientLinesArr: favedRecipe.ingredientLines)
-        
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe.label, imageUrl: favedRecipe.image, dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines)
         FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
             switch result {
             case .success:
@@ -99,7 +92,7 @@ class RecipesCollResultsVC: UIViewController {
     
     private func deleteRecipeFromFireStore(_ tag: Int) {
         let unFavoriteRecipe = recipesResult[tag]
-        FirestoreService.manager.findIdToUnfavor(faveId: unFavoriteRecipe.uri, userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
+        FirestoreService.manager.findIdToUnfavor(fave: unFavoriteRecipe.uri, userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
             FirestoreService.manager.unfavoritedRecipe(result: result) { (result) in
                 switch result {
                 case .failure(let error):
@@ -158,4 +151,3 @@ extension RecipesCollResultsVC: HeartButtonDelegate {
         deleteRecipeFromFireStore(tag)
     }
 }
-

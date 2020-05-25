@@ -46,14 +46,14 @@ class FirestoreService {
         var fields = favd.fieldsDict
         fields["dateCreated"] = Date()
         let userID = FirebaseAuthService.manager.currentUser?.uid
-        let uniqueID = userID! + recipeTitle
-        db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(uniqueID).setData(fields) { (error) in
+//        let uniqueID = userID! + recipeTitle
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(favd.id).setData(fields) { (error) in
             if let error = error {
                 completion(.failure(error))
                 print(error)
             } else {
                 completion(.success(()))
-                print(uniqueID + " <--uniqueID")
+                print(favd.id + " <--documentID")
             }
         }
     }
@@ -82,18 +82,18 @@ class FirestoreService {
             if let error = error{
                 completion(.failure(error))
             } else {
-                let posts = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
-                    let postID = snapshot.documentID
-                    let post = Favorite(from: snapshot.data(), id: postID)
-                    return post
+                let users = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
+                    let faveID = snapshot.documentID
+                    let user = Favorite(from: snapshot.data(), id: faveID)
+                    return user
                 })
-                completion(.success(posts ?? []))
+                completion(.success(users ?? []))
             }
         }
     }
     
-    func findIdToUnfavor(faveId: String, userID: String, completionHandler: @escaping (Result<String,Error>) -> ()) {
-        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveID", isEqualTo: faveId).getDocuments {(snapshot,error) in
+    func findIdToUnfavor(fave id: String, userID: String, completionHandler: @escaping (Result<String,Error>) -> ()) {
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveID", isEqualTo: id).getDocuments {(snapshot,error) in
             if let error = error {
                 completionHandler(.failure(error))
                 
@@ -101,12 +101,13 @@ class FirestoreService {
                 let recipes = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let singleRecipe = Favorite(from: snapshot.data(), id: faveID)
-                    
+                    print("faveID from line 104 -> \(faveID)")
                     return singleRecipe
                 })
                 
                 if let recipes = recipes {
                     completionHandler(.success(recipes[0].id))
+                    print("\(recipes[0].id)")
                 }
             }
         }
@@ -114,8 +115,8 @@ class FirestoreService {
     
     func unfavoritedRecipe(result: (Result<String,Error>), completion: @escaping (Result<(),Error>) ->()) {
         switch result {
-        case .success(let favedRecipeID):
-            db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(favedRecipeID).delete {
+        case .success(let favId):
+            db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(favId).delete {
                 (error) in
                 if let error = error {
                     completion(.failure(error))
