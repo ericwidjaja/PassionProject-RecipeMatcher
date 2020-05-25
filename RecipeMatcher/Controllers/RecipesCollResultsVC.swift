@@ -98,7 +98,7 @@ class RecipesCollResultsVC: UIViewController {
                 case .failure(let error):
                     print("Problem deleting recipe from FireStore: \(error)")
                 case .success:
-                    print("Recipe successfully unfavorited")
+                    print("'\(unFavoriteRecipe.label)' successfully unfavorited")
                 }
             }
         }

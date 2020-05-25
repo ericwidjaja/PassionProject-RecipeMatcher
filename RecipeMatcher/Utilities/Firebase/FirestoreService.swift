@@ -51,7 +51,7 @@ class FirestoreService {
                 print(error)
             } else {
                 completion(.success(()))
-                print("favd.id is created \(favd.id)")
+                print("created favd.id = \(favd.id)")
             }
         }
     }
@@ -65,7 +65,7 @@ class FirestoreService {
                 let favorites = snapshot?.documents.compactMap({(snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let favorite = Favorite(from: snapshot.data(), id: faveID)
-                    print(faveID + " <--faveID")
+//                    print(faveID + " <--faveID")
                     return favorite
                 })
                 completion(.success(favorites ?? []))
@@ -99,13 +99,13 @@ class FirestoreService {
                 let recipes = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let singleRecipe = Favorite(from: snapshot.data(), id: faveID)
-                    print("faveID from line 104 -> \(faveID)")
+//                    print("faveID from line 104 -> \(faveID)")
                     return singleRecipe
                 })
                 
                 if let recipes = recipes {
                     completionHandler(.success(recipes[0].id))
-                    print("\(recipes[0].id)")
+                    print("findIdToUnfavor = \(recipes[0].id)")
                 }
             }
         }

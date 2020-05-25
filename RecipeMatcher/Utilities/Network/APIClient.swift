@@ -12,12 +12,12 @@ class RecipeAPIClient {
         }
         let request = URLRequest(url: url)
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
+            if error != nil {
                 completion(AppError.noDataReceived, nil)
             }
             guard let httpResponse = response as? HTTPURLResponse,
                 (200...299).contains(httpResponse.statusCode) else {
-                    let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -999
+                    _ = (response as? HTTPURLResponse)?.statusCode ?? -999
                     print("bad status code")
                     completion(AppError.badStatusCode, nil)
                     return
