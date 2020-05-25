@@ -45,15 +45,13 @@ class FirestoreService {
     func createFavorites(favd: Favorite, recipeTitle: String, completion: @escaping (Result<(), Error>) -> ()) {
         var fields = favd.fieldsDict
         fields["dateCreated"] = Date()
-        let userID = FirebaseAuthService.manager.currentUser?.uid
-//        let uniqueID = userID! + recipeTitle
         db.collection(FireStoreCollections.favoriteRecipes.rawValue).document(favd.id).setData(fields) { (error) in
             if let error = error {
                 completion(.failure(error))
                 print(error)
             } else {
                 completion(.success(()))
-                print(favd.id + " <--documentID")
+                print("favd.id is created \(favd.id)")
             }
         }
     }
@@ -93,7 +91,7 @@ class FirestoreService {
     }
     
     func findIdToUnfavor(fave id: String, userID: String, completionHandler: @escaping (Result<String,Error>) -> ()) {
-        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveID", isEqualTo: id).getDocuments {(snapshot,error) in
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveId", isEqualTo: id).getDocuments {(snapshot,error) in
             if let error = error {
                 completionHandler(.failure(error))
                 

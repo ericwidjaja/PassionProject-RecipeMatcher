@@ -14,6 +14,7 @@ struct Favorite {
     let dateCreated: Date?
     let url: String
     let ingredientLines: [String]
+    let faveId: String
     
     //create locally
     init(creatorID: String,
@@ -21,7 +22,8 @@ struct Favorite {
          imageUrl: String? = nil,
          dateCreated: Date? = nil,
          urlCookInst: String,
-         ingredientLinesArr: [String])
+         ingredientLinesArr: [String],
+         faveId: String)
     {
         self.id = UUID.init().description
         self.creatorID = creatorID
@@ -30,6 +32,7 @@ struct Favorite {
         self.dateCreated = dateCreated
         self.url = urlCookInst
         self.ingredientLines = ingredientLinesArr
+        self.faveId = faveId
     }
     //create remotely
     init?(from dict: [String: Any], id: String)
@@ -39,7 +42,8 @@ struct Favorite {
             let imageUrl = dict["imageUrl"] as? String,
             let dateCreated = (dict["dateCreated"] as? Timestamp)?.dateValue(),
             let urlCookInst = dict["urlCookInst"] as? String,
-            let ingredientLinesArr = dict["ingredientLines"] as? [String]
+            let ingredientLinesArr = dict["ingredientLines"] as? [String],
+            let faveId = dict["faveId"] as? String
             else { return nil }
         self.id = id
         self.creatorID = userID
@@ -48,6 +52,7 @@ struct Favorite {
         self.dateCreated = dateCreated
         self.url = urlCookInst
         self.ingredientLines = ingredientLinesArr
+        self.faveId = faveId
     }
     
     var fieldsDict: [String: Any] {
@@ -58,7 +63,7 @@ struct Favorite {
             "imageUrl": self.imageUrl as Any,
             "urlCookInst": self.url,
             "ingredientLines": self.ingredientLines,
-            //            "faveID": self.id as Any
+            "faveId": self.faveId as Any
         ]
     }
 }

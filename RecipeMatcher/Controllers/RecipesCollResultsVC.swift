@@ -79,7 +79,7 @@ class RecipesCollResultsVC: UIViewController {
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
         let favedRecipe = recipesResult[tag]
-        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe.label, imageUrl: favedRecipe.image, dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines)
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe.label, imageUrl: favedRecipe.image, dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines, faveId: favedRecipe.uri)
         FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
             switch result {
             case .success:
