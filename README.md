@@ -6,6 +6,14 @@ is an iOS app that acts as the matchmaker between your three minimum available i
 </p>
 <br><br>
 
+<p align="center"><b>Sign In and Search by Ingredients</b></p>
+<p align="center">
+
+<img src="https://github.com/ericwidjaja/PassionProject-RecipeMatcher/blob/master/Signing%20In%20and%20Search.gif" width="350" height="750">
+
+</p>
+<br><br>
+
 <p align="center"><b>User can access cooking directions with Safari</b></p>
 <p align="center">
 
