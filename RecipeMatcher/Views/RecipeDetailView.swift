@@ -38,6 +38,21 @@ class RecipeDetailView: UIView {
         return button
     }()
     
+    var bookmarkButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .red
+        button.isUserInteractionEnabled = true
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let bookmark = UIImage(systemName: "bookmark", withConfiguration: config)
+        button.setImage(bookmark, for: .normal)
+        //bookmark.fill?
+        var newFrame = button.frame.size
+        newFrame.width = 40
+        newFrame.height = 40
+        button.frame.size = newFrame
+        return button
+    }()
+    
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
@@ -70,7 +85,7 @@ class RecipeDetailView: UIView {
         return button
     }()
     
-    lazy var objectsViewArray = [self.recipeImage, self.addtDescView, self.heartButton, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
+    lazy var objectsViewArray = [self.recipeImage, self.addtDescView, self.heartButton, self.bookmarkButton, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
     
     //MARK: - Add ViewsToSubviews
     func addViewsToSubView() {
