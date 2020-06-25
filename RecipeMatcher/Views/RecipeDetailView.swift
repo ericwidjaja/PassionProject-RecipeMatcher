@@ -119,6 +119,9 @@ class RecipeDetailView: UIView {
         //        heartButton.setImage(heart, for: .normal)
         //        heartStatus = .notFilled
     }
+    @objc func bookmarkTapped(sender: UIButton) {
+        //TODO: Create new collection or add to existing collection
+    }
     
     //MARK: - Overrides
     override init(frame: CGRect) {
@@ -153,15 +156,21 @@ class RecipeDetailView: UIView {
     
     private func descriptionViewConstraints() {
         heartButton.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
         addSubview(heartButton)
+        addSubview(bookmarkButton)
         
         NSLayoutConstraint.activate([
             heartButton.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -100),
             heartButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
             heartButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
-            heartButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor)])
+            heartButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
+            
+            bookmarkButton.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 100),
+            bookmarkButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
+            bookmarkButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
+            bookmarkButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor)])
     }
-    
     
     private func detailImageConstraints() {
         NSLayoutConstraint.activate([
