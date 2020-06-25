@@ -16,6 +16,28 @@ class RecipeDetailView: UIView {
         return image
     }()
     
+    lazy var addtDescView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.65
+        return view
+    }()
+    
+    var heartButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .red
+        button.isUserInteractionEnabled = true
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        button.setImage(heart, for: .normal)
+        //heart.fill
+        var newFrame = button.frame.size
+        newFrame.width = 40
+        newFrame.height = 40
+        button.frame.size = newFrame
+        return button
+    }()
+    
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
@@ -40,32 +62,50 @@ class RecipeDetailView: UIView {
     
     lazy var urlButton: UIButton = {
         let button = UIButton(type: .system)
-            button.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-            button.layer.cornerRadius = 14
-            button.setTitle("Cooking Instructions", for: .normal)
-            button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
-            button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 18)
-            return button
-        }()
- 
-    lazy var objectsViewArray = [self.recipeImage, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
+        button.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+        button.layer.cornerRadius = 14
+        button.setTitle("Cooking Instructions", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+        button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 18)
+        return button
+    }()
+    
+    lazy var objectsViewArray = [self.recipeImage, self.addtDescView, self.heartButton, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
     
     //MARK: - Add ViewsToSubviews
-        func addViewsToSubView() {
-            for aView in objectsViewArray {
-                self.addSubview(aView)
-                aView.translatesAutoresizingMaskIntoConstraints = false
-            }
+    func addViewsToSubView() {
+        for aView in objectsViewArray {
+            self.addSubview(aView)
+            aView.translatesAutoresizingMaskIntoConstraints = false
         }
-    //MARK: - Constraints
-    private func detailViewConstraints() {
-        addViewsToSubView()
-        detailImageConstraints()
-        recipeLabelConstraints()
-        ingredientTxtViewConstraints()
-        instructionsLinkConstraints()
     }
     
+    //MARK: Function -
+    @objc func buttonTapped(sender: UIButton) {
+        //        switch heartStatus {
+        //        case .notFilled:
+        //            makeHeartFill()
+        //            delegate?.saveToPersistance(tag: sender.tag)
+        //        case .filled:
+        //            makeHeartEmpty()
+        //            delegate?.deleteFromPersistance(tag: sender.tag)
+    }
+    
+    func makeHeartFill() {
+        //        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        //        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
+        //        heartButton.setImage(heart, for: .normal)
+        //        heartStatus = .filled
+    }
+    
+    func makeHeartEmpty() {
+        //        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        //        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        //        heartButton.setImage(heart, for: .normal)
+        //        heartStatus = .notFilled
+    }
+    
+    //MARK: - Overrides
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         detailViewConstraints()
@@ -74,13 +114,46 @@ class RecipeDetailView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
- 
+    
+    //MARK: - Constraints
+    private func detailViewConstraints() {
+        addViewsToSubView()
+        detailImageConstraints()
+        addtDescConstraints()
+        descriptionViewConstraints()
+        recipeLabelConstraints()
+        ingredientTxtViewConstraints()
+        instructionsLinkConstraints()
+    }
+    
+    private func addtDescConstraints() {
+        addSubview(addtDescView)
+        NSLayoutConstraint.activate([
+            addtDescView.bottomAnchor.constraint(equalTo: recipeImage.bottomAnchor, constant: 50),
+            addtDescView.trailingAnchor.constraint(equalTo: recipeImage.trailingAnchor),
+            addtDescView.leadingAnchor.constraint(equalTo: recipeImage.leadingAnchor),
+            addtDescView.heightAnchor.constraint(equalToConstant: 70)
+        ])
+    }
+    
+    private func descriptionViewConstraints() {
+        heartButton.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        addSubview(heartButton)
+        
+        NSLayoutConstraint.activate([
+            heartButton.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -100),
+            heartButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
+            heartButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
+            heartButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor)])
+    }
+    
+    
     private func detailImageConstraints() {
         NSLayoutConstraint.activate([
-        recipeImage.topAnchor.constraint(equalTo: topAnchor),
-        recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-        recipeImage.heightAnchor.constraint(equalToConstant: 320),
-        recipeImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor)])
+            recipeImage.topAnchor.constraint(equalTo: topAnchor),
+            recipeImage.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            recipeImage.heightAnchor.constraint(equalToConstant: 320),
+            recipeImage.widthAnchor.constraint(equalTo: safeAreaLayoutGuide.widthAnchor)])
     }
     
     private func recipeLabelConstraints(){
