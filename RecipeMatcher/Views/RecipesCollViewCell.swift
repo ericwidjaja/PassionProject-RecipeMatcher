@@ -150,7 +150,7 @@ class RecipesCollViewCell: UICollectionViewCell {
     private func addtDescConstraints() {
         addSubview(addtDescView)
         NSLayoutConstraint.activate([
-            addtDescView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            addtDescView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 5),
             addtDescView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             addtDescView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             addtDescView.heightAnchor.constraint(equalToConstant: 80)
