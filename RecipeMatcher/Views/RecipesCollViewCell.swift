@@ -116,7 +116,7 @@ class RecipesCollViewCell: UICollectionViewCell {
     
     
     //MARK: Function -
-    @objc func buttonTapped(sender: UIButton) {
+    @objc func heartTapped(sender: UIButton) {
         switch heartStatus {
         case .notFilled:
             makeHeartFill()
@@ -158,7 +158,7 @@ class RecipesCollViewCell: UICollectionViewCell {
     }
     
     private func descriptionViewConstraints() {
-        heartButton.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        heartButton.addTarget(self, action: #selector(heartTapped(sender:)), for: .touchUpInside)
         addSubview(recipeLabel)
         addSubview(sourceLabel)
         addSubview(heartButton)

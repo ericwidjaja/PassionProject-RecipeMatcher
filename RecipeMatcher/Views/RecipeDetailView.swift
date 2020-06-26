@@ -32,6 +32,37 @@ class RecipeDetailView: UIView {
         return view
     }()
     
+    var shareButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .red
+        button.isUserInteractionEnabled = true
+        let config = UIImage.SymbolConfiguration(pointSize: 35, weight: UIImage.SymbolWeight.medium)
+        let share = UIImage(systemName: "square.and.arrow.up", withConfiguration: config)
+        button.setImage(share, for: .normal)
+        //share.fill?
+        var newFrame = button.frame.size
+        newFrame.width = 35
+        newFrame.height = 35
+        button.frame.size = newFrame
+        return button
+    }()
+    
+    
+    var bookmarkButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .red
+        button.isUserInteractionEnabled = true
+        let config = UIImage.SymbolConfiguration(pointSize: 35, weight: UIImage.SymbolWeight.medium)
+        let bookmark = UIImage(systemName: "bookmark", withConfiguration: config)
+        button.setImage(bookmark, for: .normal)
+        //bookmark.fill?
+        var newFrame = button.frame.size
+        newFrame.width = 35
+        newFrame.height = 35
+        button.frame.size = newFrame
+        return button
+    }()
+    
     var heartButton: UIButton = {
         let button = UIButton()
         button.tintColor = .red
@@ -40,21 +71,6 @@ class RecipeDetailView: UIView {
         let heart = UIImage(systemName: "heart", withConfiguration: config)
         button.setImage(heart, for: .normal)
         //heart.fill
-        var newFrame = button.frame.size
-        newFrame.width = 40
-        newFrame.height = 40
-        button.frame.size = newFrame
-        return button
-    }()
-    
-    var bookmarkButton: UIButton = {
-        let button = UIButton()
-        button.tintColor = .red
-        button.isUserInteractionEnabled = true
-        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
-        let bookmark = UIImage(systemName: "bookmark", withConfiguration: config)
-        button.setImage(bookmark, for: .normal)
-        //bookmark.fill?
         var newFrame = button.frame.size
         newFrame.width = 40
         newFrame.height = 40
@@ -165,21 +181,29 @@ class RecipeDetailView: UIView {
     }
     
     private func descriptionViewConstraints() {
-        heartButton.addTarget(self, action: #selector(buttonTapped(sender:)), for: .touchUpInside)
+        shareButton.addTarget(self, action: #selector(shareTapped(sender:)), for: .touchUpInside)
         bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
-        addSubview(heartButton)
+        heartButton.addTarget(self, action: #selector(heartTapped(sender:)), for: .touchUpInside)
+        addSubview(shareButton)
         addSubview(bookmarkButton)
+        addSubview(heartButton)
         
         NSLayoutConstraint.activate([
-            heartButton.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -100),
-            heartButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
-            heartButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
-            heartButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
+            shareButton.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 60),
+            shareButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
+            shareButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
+//            shareButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
             
-            bookmarkButton.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 100),
+            bookmarkButton.centerXAnchor.constraint(equalTo: addtDescView.centerXAnchor) ,
             bookmarkButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
             bookmarkButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
-            bookmarkButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor)])
+//            bookmarkButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
+            
+            heartButton.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -60),
+            heartButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
+            heartButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
+//            heartButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
+            ])
     }
     
     private func detailImageConstraints() {
