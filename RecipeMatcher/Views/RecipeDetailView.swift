@@ -110,7 +110,7 @@ class RecipeDetailView: UIView {
         return button
     }()
     
-    lazy var objectsViewArray = [self.recipeImage, self.addtDescView, self.heartButton, self.bookmarkButton, self.recipeLabel, self.ingredientsTxtView, self.urlButton]
+    lazy var objectsViewArray = [self.recipeImage, self.addtDescView, self.shareButton, self.bookmarkButton, self.heartButton,  self.recipeLabel, self.ingredientsTxtView, self.urlButton]
     
     //MARK: - Add ViewsToSubviews
     func addViewsToSubView() {
@@ -121,7 +121,10 @@ class RecipeDetailView: UIView {
     }
     
     //MARK: Function -
-    @objc func buttonTapped(sender: UIButton) {
+    @objc func shareTapped(sender: UIButton) {
+        //TODO: Create a share link thru sms, email, instagram or fb
+    }
+    @objc func heartTapped(sender: UIButton) {
         switch heartStatus {
         case .notFilled:
             makeHeartFill()
