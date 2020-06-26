@@ -7,6 +7,15 @@ import UIKit
 
 class RecipeDetailView: UIView {
     
+    enum HeartStatus {
+        case filled
+        case notFilled
+    }
+    
+    var heartStatus: HeartStatus = .notFilled
+    var cellDelegate: HeartButtonDelegate?
+    var delegate: HeartButtonDelegate?
+    
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
@@ -97,27 +106,28 @@ class RecipeDetailView: UIView {
     
     //MARK: Function -
     @objc func buttonTapped(sender: UIButton) {
-        //        switch heartStatus {
-        //        case .notFilled:
-        //            makeHeartFill()
-        //            delegate?.saveToPersistance(tag: sender.tag)
-        //        case .filled:
-        //            makeHeartEmpty()
-        //            delegate?.deleteFromPersistance(tag: sender.tag)
+        switch heartStatus {
+        case .notFilled:
+            makeHeartFill()
+            delegate?.saveToPersistance(tag: sender.tag)
+        case .filled:
+            makeHeartEmpty()
+            delegate?.deleteFromPersistance(tag: sender.tag)
+        }
     }
     
     func makeHeartFill() {
-        //        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
-        //        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
-        //        heartButton.setImage(heart, for: .normal)
-        //        heartStatus = .filled
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
+        heartButton.setImage(heart, for: .normal)
+        heartStatus = .filled
     }
     
     func makeHeartEmpty() {
-        //        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
-        //        let heart = UIImage(systemName: "heart", withConfiguration: config)
-        //        heartButton.setImage(heart, for: .normal)
-        //        heartStatus = .notFilled
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        heartButton.setImage(heart, for: .normal)
+        heartStatus = .notFilled
     }
     @objc func bookmarkTapped(sender: UIButton) {
         //TODO: Create new collection or add to existing collection
@@ -182,8 +192,7 @@ class RecipeDetailView: UIView {
     
     private func recipeLabelConstraints(){
         NSLayoutConstraint.activate([
-            recipeLabel.topAnchor.constraint(equalTo:
-                recipeImage.bottomAnchor, constant: 60),
+            recipeLabel.topAnchor.constraint(equalTo: recipeImage.bottomAnchor, constant: 60),
             recipeLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 12),
             recipeLabel.heightAnchor.constraint(equalToConstant: 50),
             recipeLabel.widthAnchor.constraint(equalToConstant: 400)])
