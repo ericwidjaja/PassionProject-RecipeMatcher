@@ -36,6 +36,7 @@ class FavRecipeDetailVC: UIViewController {
         let cookingInstUrl = selectedRecipe.url
         
     }
+    
     func showSafariVC(for cookingInstUrl: String) {
         guard let url = URL(string: cookingInstUrl)
             else {return}

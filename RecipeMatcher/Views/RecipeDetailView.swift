@@ -28,7 +28,7 @@ class RecipeDetailView: UIView {
     lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.65
+        view.alpha = 0.70
         return view
     }()
     
@@ -120,7 +120,7 @@ class RecipeDetailView: UIView {
         }
     }
     
-    //MARK: Function -
+    //MARK: - Functions
     @objc func shareTapped(sender: UIButton) {
         //TODO: Create a share link thru sms, email, instagram or fb
     }

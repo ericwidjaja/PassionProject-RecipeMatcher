@@ -5,6 +5,8 @@
 import UIKit
 import SafariServices
 import Kingfisher
+import FirebaseAuth
+import FirebaseFirestore
 
 class RecipeDetailVC: UIViewController {
     
@@ -12,7 +14,7 @@ class RecipeDetailVC: UIViewController {
     var recipe: RecipeWrapper!
     var detailRecipe = RecipeDetailView()
     
-    //MARK: - Methods
+    //MARK: - Functions
     func setDetailRecipeView() {
         view.addSubview(detailRecipe)
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

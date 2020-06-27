@@ -94,12 +94,11 @@ class FirestoreService {
         db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("creatorID", isEqualTo: userID).whereField("faveId", isEqualTo: id).getDocuments {(snapshot,error) in
             if let error = error {
                 completionHandler(.failure(error))
-                
             } else {
                 let recipes = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let singleRecipe = Favorite(from: snapshot.data(), id: faveID)
-//                    print("faveID from line 104 -> \(faveID)")
+//                    print("faveID from line 101 -> \(faveID)")
                     return singleRecipe
                 })
                 
