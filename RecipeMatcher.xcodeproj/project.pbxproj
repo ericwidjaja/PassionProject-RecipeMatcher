@@ -34,6 +34,7 @@
 		DF35F01C239472A000638254 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35F01B239472A000638254 /* Secret.swift */; };
 		DF35F01D239472A000638254 /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF35F01B239472A000638254 /* Secret.swift */; };
 		DF399A9324A815FE006D1560 /* AddOrCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF399A9224A815FE006D1560 /* AddOrCreateView.swift */; };
+		DF399A9524A82058006D1560 /* AddOrCreateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF399A9424A82058006D1560 /* AddOrCreateVC.swift */; };
 		DF66AC1E23948CFD005E36A7 /* LogInScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */; };
 		DF66AC1F23948CFD005E36A7 /* LogInScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */; };
 		DF66AC2123948D61005E36A7 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF66AC2023948D61005E36A7 /* LogInView.swift */; };
@@ -93,6 +94,7 @@
 		DF35F01823946F5800638254 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		DF35F01B239472A000638254 /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		DF399A9224A815FE006D1560 /* AddOrCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrCreateView.swift; sourceTree = "<group>"; };
+		DF399A9424A82058006D1560 /* AddOrCreateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddOrCreateVC.swift; sourceTree = "<group>"; };
 		DF66AC1D23948CFD005E36A7 /* LogInScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreenVC.swift; sourceTree = "<group>"; };
 		DF66AC2023948D61005E36A7 /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		DF66AC232394AABF005E36A7 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				DFF5DC8323B3DB2700DB2B24 /* RecipeDetailVC.swift */,
 				DFF5DC8B23B43B5900DB2B24 /* FavRecipesVC.swift */,
 				DF262D9023D69BEC009B4806 /* FavRecipeDetailVC.swift */,
+				DF399A9424A82058006D1560 /* AddOrCreateVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -467,6 +470,7 @@
 				DF2F4E3823A83E890002E8CC /* RecipeDetailView.swift in Sources */,
 				DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */,
 				DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */,
+				DF399A9524A82058006D1560 /* AddOrCreateVC.swift in Sources */,
 				DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
 				DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */,
 				DF399A9324A815FE006D1560 /* AddOrCreateView.swift in Sources */,

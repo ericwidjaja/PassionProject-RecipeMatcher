@@ -149,7 +149,14 @@ class RecipeDetailView: UIView {
         heartStatus = .notFilled
     }
     @objc func bookmarkTapped(sender: UIButton) {
-        //TODO: Create new collection or add to existing collection
+        
+//        //TODO: Create new collection or add to existing collection
+        let addOrCreateTapped = AddOrCreateVC.self
+        
+        present(addOrCreateVCTapped, animated: true, completion: nil)
+        
+        let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
+        navigationController?.pushViewController(findRecipeVC, animated: true)
     }
     
     //MARK: - Overrides
@@ -195,17 +202,14 @@ class RecipeDetailView: UIView {
             shareButton.leadingAnchor.constraint(equalTo: addtDescView.leadingAnchor, constant: 60),
             shareButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
             shareButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
-//            shareButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
             
             bookmarkButton.centerXAnchor.constraint(equalTo: addtDescView.centerXAnchor) ,
             bookmarkButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
             bookmarkButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
-//            bookmarkButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
             
             heartButton.trailingAnchor.constraint(equalTo: addtDescView.trailingAnchor, constant: -60),
             heartButton.centerYAnchor.constraint(equalTo: addtDescView.centerYAnchor),
             heartButton.topAnchor.constraint(equalTo: addtDescView.topAnchor),
-//            heartButton.bottomAnchor.constraint(equalTo: addtDescView.bottomAnchor),
             ])
     }
     

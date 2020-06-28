@@ -20,53 +20,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2B270353-B396-4A06-B7C2-C883C8B9C489"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "deleteRecipeFromFireStore(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2B270353-B396-4A06-B7C2-C883C8B9C489 - c4eb5c6315c7661b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RecipeMatcher.RecipesCollResultsVC.(deleteRecipeFromFireStore in _89AFE674794C1F9DF9177B3D6FCDE9D0)(Swift.Int) -&gt; ()"
-                  moduleName = "RecipeMatcher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ericwidjaja/Desktop/UNIT5/Project/PassionProject-RecipeMatcher/RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "95"
-                  endingLineNumber = "95"
-                  offsetFromSymbolStart = "241">
-               </Location>
-               <Location
-                  uuid = "2B270353-B396-4A06-B7C2-C883C8B9C489 - 60aca8c4e5d3b602"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;Swift.String, Swift.Error&gt;) -&gt; () in RecipeMatcher.RecipesCollResultsVC.(deleteRecipeFromFireStore in _89AFE674794C1F9DF9177B3D6FCDE9D0)(Swift.Int) -&gt; ()"
-                  moduleName = "RecipeMatcher"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ericwidjaja/Desktop/UNIT5/Project/PassionProject-RecipeMatcher/RecipeMatcher/Controllers/RecipesCollResultsVC.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "96"
-                  endingLineNumber = "96"
-                  offsetFromSymbolStart = "61">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

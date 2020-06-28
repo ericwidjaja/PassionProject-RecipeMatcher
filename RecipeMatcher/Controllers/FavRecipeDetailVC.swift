@@ -34,7 +34,6 @@ class FavRecipeDetailVC: UIViewController {
         //code start here to open in safari with url link
         
         let cookingInstUrl = selectedRecipe.url
-        
     }
     
     func showSafariVC(for cookingInstUrl: String) {
