@@ -4,6 +4,8 @@
 
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 class RecipeDetailView: UIView {
     
@@ -15,6 +17,8 @@ class RecipeDetailView: UIView {
     var heartStatus: HeartStatus = .notFilled
     var cellDelegate: HeartButtonDelegate?
     var delegate: HeartButtonDelegate?
+    var recipe : RecipeWrapper!
+    
     
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
@@ -124,6 +128,7 @@ class RecipeDetailView: UIView {
     @objc func shareTapped(sender: UIButton) {
         //TODO: Create a share link thru sms, email, instagram or fb
     }
+    
     @objc func heartTapped(sender: UIButton) {
         switch heartStatus {
         case .notFilled:
@@ -148,15 +153,17 @@ class RecipeDetailView: UIView {
         heartButton.setImage(heart, for: .normal)
         heartStatus = .notFilled
     }
+    
     @objc func bookmarkTapped(sender: UIButton) {
+        
         
 //        //TODO: Create new collection or add to existing collection
         let addOrCreateTapped = AddOrCreateVC.self
-        
-        present(addOrCreateVCTapped, animated: true, completion: nil)
-        
-        let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
-        navigationController?.pushViewController(findRecipeVC, animated: true)
+//        
+//        present(addOrCreateVCTapped, animated: true, completion: nil)
+//        
+//        let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
+//        navigationController?.pushViewController(findRecipeVC, animated: true)
     }
     
     //MARK: - Overrides
