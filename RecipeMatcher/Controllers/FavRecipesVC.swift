@@ -44,6 +44,12 @@ class FavRecipesVC: UIViewController {
         present(alert, animated:true)
     }
     
+    private func showAlert(with title: String, and message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+    
     private func getUserFavorites() {
         DispatchQueue.global(qos: .default).async {
             guard FirebaseAuthService.manager.currentUser != nil else
@@ -54,7 +60,7 @@ class FavRecipesVC: UIViewController {
                 case .success(let favorites):
                     self.favoriteRecipe = favorites
                 case .failure(let error):
-                    print("error getting fave recipes \(error)")
+                    self.showAlert(with: "Oopps, encountered error in getting Faved Recipes", and: "\(error)")
                 }
             }
         }
@@ -84,10 +90,10 @@ class FavRecipesVC: UIViewController {
         view.backgroundColor = .systemTeal
         getUserFavorites()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getUserFavorites()
-        
     }
 }
 
