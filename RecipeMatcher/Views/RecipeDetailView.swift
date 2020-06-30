@@ -364,23 +364,7 @@ class RecipeDetailView: UIView {
             aView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
-    //MARK: - Functions
-    @objc func shareTapped(sender: UIButton) {
-        //TODO: Create a share link thru sms, email, instagram or fb
-    }
-    @objc func bookmarkTapped(sender: UIButton) {
         
-        
-//        //TODO: Create new collection or add to existing collection
-        let addOrCreateTapped = AddOrCreateVC.self
-//
-//        present(addOrCreateVCTapped, animated: true, completion: nil)
-//
-//        let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
-//        navigationController?.pushViewController(findRecipeVC, animated: true)
-    }
-    
     //MARK: - Overrides
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -413,9 +397,7 @@ class RecipeDetailView: UIView {
     }
     
     private func descriptionViewConstraints() {
-        shareButton.addTarget(self, action: #selector(shareTapped(sender:)), for: .touchUpInside)
         bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
-        heartButton.addTarget(self, action: #selector(heartTapped(sender:)), for: .touchUpInside)
         addSubview(shareButton)
         addSubview(bookmarkButton)
         addSubview(heartButton)

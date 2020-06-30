@@ -118,6 +118,7 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
         present(showFavRecipeToDetailVC, animated: true)
     }
 }
+
 extension FavRecipesVC : HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
         

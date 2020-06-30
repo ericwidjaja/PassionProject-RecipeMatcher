@@ -43,7 +43,7 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
-    //MARK: - Functions
+    
     private func updateRecipeHearts(url: String, cell: RecipesCollViewCell) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
             switch result {
@@ -116,6 +116,7 @@ class RecipesCollResultsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadSearchQuery()
+        
         self.navigationController?.navigationBar.isHidden = true
     }
 }
