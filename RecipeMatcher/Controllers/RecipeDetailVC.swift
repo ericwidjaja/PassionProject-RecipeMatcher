@@ -16,7 +16,7 @@ enum HeartStatus {
 class RecipeDetailVC: UIViewController {
     
     //MARK: - Properties
-    var recipe: RecipeWrapper!
+    var recipe: RecipeWrapper?
     var detailRecipeView = RecipeDetailView()
     var heartStatus: HeartStatus = .notFilled
     
@@ -46,20 +46,20 @@ class RecipeDetailVC: UIViewController {
         updateRecipeHearts(url: favoritedRecipe?.url ?? "", recipeDetail: detailRecipeView)
         detailRecipeView.recipeImage.kf.indicatorType = .activity
         detailRecipeView.recipeImage.kf.setImage(
-            with: URL(string: recipe.image),
+            with: URL(string: recipe?.image ?? ""),
             placeholder: UIImage(named: "RecipeImgHolder"),
             options: [
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(2))])
         
-        detailRecipeView.recipeLabel.text = recipe.label
-        let lines = recipe.ingredientLines.map {$0.replacingOccurrences(of: ",", with: "")}
+        detailRecipeView.recipeLabel.text = recipe?.label
+        let lines = recipe?.ingredientLines.map {$0.replacingOccurrences(of: ",", with: "")}
             .map { $0 + "\n" }
-        let arrangedIngredients = lines.joined()
+        let arrangedIngredients = lines?.joined()
         detailRecipeView.ingredientsTxtView.text = arrangedIngredients
         
         //code start here to open in safari with url link
-        let cookInstUrl = recipe.url
+        let cookInstUrl = recipe?.url
     }
     
     func showSafariVC(for cookInstUrl: String) {
@@ -73,9 +73,14 @@ class RecipeDetailVC: UIViewController {
     //MARK: - OBJC Functions
     @objc func shareTapped(_ sender: UIButton) {
           //TODO: Create a share link thru sms, email, instagram or fb
-        let activityController = UIActivityViewController(activityItems: [recipe.url], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [recipe?.url], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
       }
+    
+    @objc func bookmarkTapped(sender: UIButton) {
+        let showBookmarkTappedVC = AddOrCreateVC()
+        
+    }
     
     @objc func heartButtonPressed(_ sender: UIButton) {
         switch heartStatus {
@@ -89,8 +94,8 @@ class RecipeDetailVC: UIViewController {
     }
     
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
-        showSafariVC(for: "\(self.recipe.url)")
-        print("\(self.recipe.url)")
+        showSafariVC(for: "\(self.recipe?.url)")
+        print("\(self.recipe?.url)")
     }
     
     
@@ -152,6 +157,7 @@ class RecipeDetailVC: UIViewController {
         detailRecipeView.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
         detailRecipeView.heartButton.addTarget(self, action: #selector(heartButtonPressed(_:)), for: .touchUpInside)
         detailRecipeView.shareButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
+        detailRecipeView.bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
     }
 }
 

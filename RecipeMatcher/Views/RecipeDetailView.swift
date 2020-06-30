@@ -397,7 +397,6 @@ class RecipeDetailView: UIView {
     }
     
     private func descriptionViewConstraints() {
-        bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
         addSubview(shareButton)
         addSubview(bookmarkButton)
         addSubview(heartButton)
