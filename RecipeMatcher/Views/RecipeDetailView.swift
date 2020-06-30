@@ -7,19 +7,19 @@ import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-class RecipeDetailView: UIView {
-    
+/*class RecipeDetailView: UIView {
+
     enum HeartStatus {
         case filled
         case notFilled
     }
-    
+
     var heartStatus: HeartStatus = .notFilled
     var cellDelegate: HeartButtonDelegate?
     var delegate: HeartButtonDelegate?
     var recipe : RecipeWrapper!
-    
-    
+
+
     lazy var recipeImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "RecipeImgHolder")
