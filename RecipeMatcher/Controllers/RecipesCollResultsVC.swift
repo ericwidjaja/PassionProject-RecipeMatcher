@@ -43,7 +43,7 @@ class RecipesCollResultsVC: UIViewController {
             }
         }
     }
-    
+    //MARK: - Functions
     private func updateRecipeHearts(url: String, cell: RecipesCollViewCell) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
             switch result {
@@ -141,7 +141,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         present(recipeDestinationVC, animated: true)
     }
 }
-//MARK: HeartButton
+//MARK: - Extensions
 extension RecipesCollResultsVC: HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
         saveRecipeToFireStore(tag)

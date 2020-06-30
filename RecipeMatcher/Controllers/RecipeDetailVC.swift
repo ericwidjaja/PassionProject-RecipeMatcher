@@ -119,14 +119,91 @@ class RecipeDetailVC: UIViewController {
         present(safariVC, animated: true)
     }
     
+    //MARK: - OBJC Functions
+    @objc func heartButtonPressed(_ sender: UIButton) {
+        switch heartStatus {
+        case .filled:
+            makeHeartEmpty()
+            deleteFromPersistance(tag: 0)
+        case .notFilled:
+            makeHeartFill()
+            saveToPersistance(tag: 0)
+        }
+    }
+    
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
         showSafariVC(for: "\(self.recipe.url)")
         print("\(self.recipe.url)")
     }
     
+    private func setHeartImage() {
+        switch heartStatus {
+        case .filled:
+            makeHeartFill()
+        case .notFilled:
+            makeHeartEmpty()
+        }
+    }
+    
+    private func makeHeartFill() {
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
+        detailRecipeView.heartButton.setImage(heart, for: .normal)
+        heartStatus = .filled
+    }
+    private func makeHeartEmpty() {
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        detailRecipeView.heartButton.setImage(heart, for: .normal)
+        heartStatus = .notFilled
+    }
+    
+    //MARK: Firestore
+    private func saveRecipeToFireStore(_ tag: Int) {
+        let favedRecipe = recipe
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe!.label, imageUrl: favedRecipe?.image, dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, urlCookInst: favedRecipe?.url ?? "", ingredientLinesArr: favedRecipe!.ingredientLines, faveId: favedRecipe!.uri)
+        FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
+            switch result {
+            case .success:
+                print("Saved in firestore")
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func deleteRecipeFromFireStore(_ tag: Int) {
+        let unFavoriteRecipe = recipe
+        FirestoreService.manager.findIdToUnfavor(fave: unFavoriteRecipe!.uri, userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
+            FirestoreService.manager.unfavoritedRecipe(result: result) { (result) in
+                switch result {
+                case .failure(let error):
+                    print("Problem deleting recipe from FireStore: \(error)")
+                case .success:
+                    print("'\(unFavoriteRecipe!.label)' successfully unfavorited")
+                }
+            }
+        }
+    }
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
-        detailRecipe.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
+        setHeartImage()
+        detailRecipeView.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
+        detailRecipeView.heartButton.addTarget(self, action: #selector(heartButtonPressed(_:)), for: .touchUpInside)
+    }
+}
+
+//MARK: - Extensions
+extension RecipeDetailVC: HeartButtonDelegate {
+    func saveToPersistance(tag: Int) {
+        saveRecipeToFireStore(tag)
+        print(tag)
+    }
+    
+    func deleteFromPersistance(tag: Int) {
+        deleteRecipeFromFireStore(tag)
     }
 }
