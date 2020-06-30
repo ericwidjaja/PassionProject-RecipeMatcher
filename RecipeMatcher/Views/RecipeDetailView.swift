@@ -28,14 +28,14 @@ import FirebaseFirestore
         image.layer.cornerRadius = 20
         return image
     }()
-    
+
     lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.alpha = 0.70
         return view
     }()
-    
+
     var shareButton: UIButton = {
         let button = UIButton()
         button.tintColor = .red
@@ -50,8 +50,8 @@ import FirebaseFirestore
         button.frame.size = newFrame
         return button
     }()
-    
-    
+
+
     var bookmarkButton: UIButton = {
         let button = UIButton()
         button.tintColor = .red
@@ -66,7 +66,7 @@ import FirebaseFirestore
         button.frame.size = newFrame
         return button
     }()
-    
+
     var heartButton: UIButton = {
         let button = UIButton()
         button.tintColor = .red
@@ -81,7 +81,7 @@ import FirebaseFirestore
         button.frame.size = newFrame
         return button
     }()
-    
+
     lazy var recipeLabel: UILabel = {
         let label = UILabel()
         label.text = "Recipe Label"
@@ -91,7 +91,7 @@ import FirebaseFirestore
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    
+
     lazy var ingredientsTxtView: UITextView = {
         let txtView = UITextView()
         txtView.font = UIFont.init(name: "Rockwell", size: 18)
@@ -103,7 +103,7 @@ import FirebaseFirestore
         txtView.textContainerInset = UIEdgeInsets(top: 25, left: 20, bottom: 25, right: 20)
         return txtView
     }()
-    
+
     lazy var urlButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
@@ -113,9 +113,9 @@ import FirebaseFirestore
         button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 18)
         return button
     }()
-    
+
     lazy var objectsViewArray = [self.recipeImage, self.addtDescView, self.shareButton, self.bookmarkButton, self.heartButton,  self.recipeLabel, self.ingredientsTxtView, self.urlButton]
-    
+
     //MARK: - Add ViewsToSubviews
     func addViewsToSubView() {
         for aView in objectsViewArray {
@@ -123,12 +123,12 @@ import FirebaseFirestore
             aView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
+
     //MARK: - Functions
     @objc func shareTapped(sender: UIButton) {
         //TODO: Create a share link thru sms, email, instagram or fb
     }
-    
+
     @objc func heartTapped(sender: UIButton) {
         switch heartStatus {
         case .notFilled:
