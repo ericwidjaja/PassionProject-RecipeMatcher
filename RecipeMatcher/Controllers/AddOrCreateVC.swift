@@ -21,6 +21,16 @@ class AddOrCreateVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(addOrCreateView)
+        view.backgroundColor = .clear
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.view.frame
+        self.view.insertSubview(blurEffectView, at: 0)
+        
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+        backgroundImage.image = #imageLiteral(resourceName: "SplashScreen")
+        backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
+        self.view.insertSubview(backgroundImage, at: 0)
         
 
     }

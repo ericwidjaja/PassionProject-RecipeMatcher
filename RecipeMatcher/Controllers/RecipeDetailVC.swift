@@ -73,7 +73,7 @@ class RecipeDetailVC: UIViewController {
     //MARK: - OBJC Functions
     @objc func shareTapped(_ sender: UIButton) {
           //TODO: Create a share link thru sms, email, instagram or fb
-        let activityController = UIActivityViewController(activityItems: [recipe?.url], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [recipe?.url ?? "https://www.foodandwine.com/"], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
       }
     
@@ -95,8 +95,8 @@ class RecipeDetailVC: UIViewController {
     }
     
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
-        showSafariVC(for: "\(self.recipe?.url)")
-        print("\(self.recipe?.url)")
+        showSafariVC(for: "\(self.recipe?.url ?? "https://www.foodandwine.com/")")
+        print("\(self.recipe?.url ?? "https://www.foodandwine.com/")")
     }
     
     

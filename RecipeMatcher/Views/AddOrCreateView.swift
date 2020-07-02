@@ -67,10 +67,11 @@ class AddOrCreateView: UIView {
     }
     
     private func makeAlert() {
-        //        let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
-        //        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-        //        alert.addAction(ok)
-        //        present(alert, animated: true, completion: nil)
+//                let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
+//                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+//                alert.addAction(ok)
+//        
+//                present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Overrides
