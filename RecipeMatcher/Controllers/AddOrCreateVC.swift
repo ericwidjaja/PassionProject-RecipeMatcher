@@ -15,9 +15,7 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
-    var recipe: RecipeWrapper?
-    var detailRecipe = RecipeDetailView()
-    var recipesCollView = RecipeCollView()
+    var addOrCreateCollection : RecipeWrapper!
 
     //MARK: - Lifecycle
     override func viewDidLoad() {

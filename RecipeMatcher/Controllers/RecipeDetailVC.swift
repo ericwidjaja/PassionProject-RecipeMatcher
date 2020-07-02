@@ -79,7 +79,8 @@ class RecipeDetailVC: UIViewController {
     
     @objc func bookmarkTapped(sender: UIButton) {
         let showBookmarkTappedVC = AddOrCreateVC()
-        
+        showBookmarkTappedVC.addOrCreateCollection = recipe
+        present(showBookmarkTappedVC, animated: true)
     }
     
     @objc func heartButtonPressed(_ sender: UIButton) {
