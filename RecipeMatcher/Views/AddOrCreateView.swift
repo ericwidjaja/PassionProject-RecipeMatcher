@@ -13,7 +13,7 @@ class AddOrCreateView: UIView {
     //MARK: - Properties
     lazy var createCollectionButton: UIButton = {
         let button = UIButton()
-        button.tintColor = .green
+        button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         button.isUserInteractionEnabled = true
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let createCollectionFolder = UIImage(systemName: "folder.fill.badge.plus", withConfiguration: config)
@@ -27,7 +27,7 @@ class AddOrCreateView: UIView {
     
     var addToCollectionButton: UIButton = {
         let button = UIButton()
-        button.tintColor = .green
+        button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         button.isUserInteractionEnabled = true
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let addToCollection = UIImage(systemName: "plus", withConfiguration: config)
@@ -48,7 +48,23 @@ class AddOrCreateView: UIView {
         return textField
     }()
     
-    lazy var objectsViewArray = [self.createCollectionButton, self.addToCollectionButton, self.newCollectionTextField]
+    lazy var collectionStackView: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [ addToCollectionButton, createCollectionButton])
+        stack.axis = .horizontal
+        stack.spacing = 50
+        stack.distribution = .fillEqually
+        
+        return stack
+    }()
+    
+    lazy var stackBackgroundView:  UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.5058823824, green: 0.3372549117, blue: 0.06666667014, alpha: 1)
+        view.layer.borderColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        return view
+    }()
+    
+    lazy var objectsViewArray = [self.newCollectionTextField, self.stackBackgroundView, self.collectionStackView]
     
     //MARK: - Add ViewsToSubviews
     func addViewsToSubView() {
@@ -87,27 +103,30 @@ class AddOrCreateView: UIView {
     //MARK: - Constraints
     private func addOrCreateConstraints() {
         addViewsToSubView()
-        createCollectionButtonConstraints()
-        addToCollectionButtonConstraints()
         newCollectionTextFieldConstraints()
+        constrainStackBackgroundView()
+        constrainStackView()
         
     }
-    private func createCollectionButtonConstraints() {
+    private func constrainStackView(){
         NSLayoutConstraint.activate([
-            createCollectionButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            createCollectionButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            createCollectionButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
-            createCollectionButton.heightAnchor.constraint(equalToConstant: 70)])
-        }
-    
-    private func addToCollectionButtonConstraints() {
-        NSLayoutConstraint.activate([
-            addToCollectionButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            addToCollectionButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            addToCollectionButton.topAnchor.constraint(equalTo: createCollectionButton.bottomAnchor, constant: 30),
-            addToCollectionButton.heightAnchor.constraint(equalToConstant: 70)])
+            collectionStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
+            collectionStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            collectionStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            collectionStackView.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
     
+    private func constrainStackBackgroundView(){
+        insertSubview(collectionStackView, aboveSubview: stackBackgroundView)
+        NSLayoutConstraint.activate([
+            stackBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackBackgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            stackBackgroundView.widthAnchor.constraint(equalTo: widthAnchor),
+            stackBackgroundView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+
     private func newCollectionTextFieldConstraints() {
         NSLayoutConstraint.activate([
         newCollectionTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),

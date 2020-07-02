@@ -16,12 +16,9 @@ class AddOrCreateVC: UIViewController {
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
     var addOrCreateCollection : RecipeWrapper!
-
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(addOrCreateView)
-        view.backgroundColor = .clear
+    
+    //MARK: - Functions
+    func blurEffect() {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.view.frame
@@ -31,8 +28,16 @@ class AddOrCreateVC: UIViewController {
         backgroundImage.image = #imageLiteral(resourceName: "SplashScreen")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
+    }
+    
+    //MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(addOrCreateView)
+        view.backgroundColor = .clear
+        blurEffect()
         
-
+        
     }
     
 }
