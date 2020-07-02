@@ -21,15 +21,16 @@ class RecipeDetailVC: UIViewController {
     var heartStatus: HeartStatus = .notFilled
     
     //MARK: - Functions
-    private func updateRecipeHearts(url: String, recipeDetail: RecipeDetailView ) {
+    private func updateRecipeHearts(url: String) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
+            print(result)
             switch result {
+                
             case .failure(let error):
                 print(error)
             case .success(let favedRecipes):
                 if favedRecipes.contains(where: {(recipe) -> Bool in recipe.url == url
                 }) {
-                    print("from detVC \(recipeDetail.recipe.url)")
                     self.makeHeartFill()
                 } else {
                     self.makeHeartEmpty()
@@ -42,8 +43,10 @@ class RecipeDetailVC: UIViewController {
         view.addSubview(detailRecipeView)
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         //https://cocoapods.org/pods/Kingfisher
-        let favoritedRecipe = detailRecipeView.recipe
-        updateRecipeHearts(url: favoritedRecipe?.url ?? "", recipeDetail: detailRecipeView)
+        guard let selectedRecipe = recipe else {
+            fatalError("A recipe is expected at this point")
+        }
+        updateRecipeHearts(url: selectedRecipe.url)
         detailRecipeView.recipeImage.kf.indicatorType = .activity
         detailRecipeView.recipeImage.kf.setImage(
             with: URL(string: recipe?.image ?? ""),
@@ -107,7 +110,6 @@ class RecipeDetailVC: UIViewController {
         print("\(self.recipe?.url ?? "https://www.foodandwine.com/")")
     }
     
-    
     private func setHeartImage() {
         switch heartStatus {
         case .filled:
@@ -159,15 +161,12 @@ class RecipeDetailVC: UIViewController {
         }
     }
     
-    
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
         setHeartImage()
         buttonsTapped ()
-        
     }
 }
 
