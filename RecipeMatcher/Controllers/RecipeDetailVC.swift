@@ -70,10 +70,18 @@ class RecipeDetailVC: UIViewController {
         present(safariVC, animated: true)
     }
     
+    func buttonsTapped () {
+        detailRecipeView.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
+        detailRecipeView.heartButton.addTarget(self, action: #selector(heartButtonPressed(_:)), for: .touchUpInside)
+        detailRecipeView.shareButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
+        detailRecipeView.bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
+    }
+    
     //MARK: - OBJC Functions
     @objc func shareTapped(_ sender: UIButton) {
           //TODO: Create a share link thru sms, email, instagram or fb
-        let activityController = UIActivityViewController(activityItems: [recipe?.url ?? "https://www.foodandwine.com/"], applicationActivities: nil)
+        let shareItem = recipe?.url ?? "https://www.foodandwine.com/"
+        let activityController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
       }
     
@@ -115,6 +123,7 @@ class RecipeDetailVC: UIViewController {
         detailRecipeView.heartButton.setImage(heart, for: .normal)
         heartStatus = .filled
     }
+    
     private func makeHeartEmpty() {
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let heart = UIImage(systemName: "heart", withConfiguration: config)
@@ -150,15 +159,15 @@ class RecipeDetailVC: UIViewController {
         }
     }
     
+    
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
         setHeartImage()
-        detailRecipeView.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
-        detailRecipeView.heartButton.addTarget(self, action: #selector(heartButtonPressed(_:)), for: .touchUpInside)
-        detailRecipeView.shareButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
-        detailRecipeView.bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(sender:)), for: .touchUpInside)
+        buttonsTapped ()
+        
     }
 }
 
