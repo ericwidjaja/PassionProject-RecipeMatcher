@@ -39,6 +39,31 @@ class RecipeDetailVC: UIViewController {
         }
     }
     
+    
+    private func setHeartImage() {
+        switch heartStatus {
+        case .filled:
+            makeHeartFill()
+        case .notFilled:
+            makeHeartEmpty()
+        }
+    }
+    
+    private func makeHeartFill() {
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
+        detailRecipeView.heartButton.setImage(heart, for: .normal)
+        heartStatus = .filled
+    }
+    
+    private func makeHeartEmpty() {
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        detailRecipeView.heartButton.setImage(heart, for: .normal)
+        heartStatus = .notFilled
+    }
+    
+    
     func setDetailRecipeView() {
         view.addSubview(detailRecipeView)
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
