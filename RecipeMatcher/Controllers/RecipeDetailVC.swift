@@ -135,28 +135,6 @@ class RecipeDetailVC: UIViewController {
         print("\(self.recipe?.url ?? "https://www.foodandwine.com/")")
     }
     
-    private func setHeartImage() {
-        switch heartStatus {
-        case .filled:
-            makeHeartFill()
-        case .notFilled:
-            makeHeartEmpty()
-        }
-    }
-    
-    private func makeHeartFill() {
-        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
-        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
-        detailRecipeView.heartButton.setImage(heart, for: .normal)
-        heartStatus = .filled
-    }
-    
-    private func makeHeartEmpty() {
-        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
-        let heart = UIImage(systemName: "heart", withConfiguration: config)
-        detailRecipeView.heartButton.setImage(heart, for: .normal)
-        heartStatus = .notFilled
-    }
     
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
