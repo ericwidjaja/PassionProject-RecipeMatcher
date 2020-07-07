@@ -16,9 +16,56 @@ class FavRecipeDetailVC: UIViewController {
     var heartStatus: HeartStatus = .notFilled
     
     //MARK: - Functions
+    private func updateRecipeHearts(url: String) {
+        FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
+            print("Result from FavREcipeDetailVC \(result)")
+            switch result {
+                
+            case .failure(let error):
+                print(error)
+            case .success(let favedRecipes):
+                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.url == url
+                }) {
+                    self.makeHeartFill()
+                } else {
+                    self.makeHeartEmpty()
+                }
+            }
+        }
+    }
+    
+    private func setHeartImage() {
+        switch heartStatus {
+        case .filled:
+            makeHeartFill()
+        case .notFilled:
+            makeHeartEmpty()
+        }
+    }
+    
+    private func makeHeartFill() {
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart.fill", withConfiguration: config)
+        favDetailRecipe.heartButton.setImage(heart, for: .normal)
+        heartStatus = .filled
+    }
+    
+    private func makeHeartEmpty() {
+        let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
+        let heart = UIImage(systemName: "heart", withConfiguration: config)
+        favDetailRecipe.heartButton.setImage(heart, for: .normal)
+        heartStatus = .notFilled
+    }
+    
     func setDetailRecipeView() {
         view.addSubview(favDetailRecipe)
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
+        guard let selectedRecipe = selectedFavRecipe else {
+            fatalError("A recipe, from FavDetailVC is expected at this point")
+        }
+        
+        updateRecipeHearts(url: selectedRecipe.url)
         
         favDetailRecipe.recipeImage.kf.indicatorType = .activity
         favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedFavRecipe.imageUrl!), placeholder: UIImage(named: "RecipeImgHolder"), options: [
