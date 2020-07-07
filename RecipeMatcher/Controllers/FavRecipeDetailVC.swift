@@ -11,6 +11,7 @@ import FirebaseFirestore
 class FavRecipeDetailVC: UIViewController {
     
     //MARK: - Properties
+    var recipe: RecipeWrapper?
     var selectedFavRecipe: Favorite!
     var favDetailRecipe = RecipeDetailView()
     var heartStatus: HeartStatus = .notFilled
@@ -91,11 +92,33 @@ class FavRecipeDetailVC: UIViewController {
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true)
     }
+    
+    func buttonsTapped() {
+        favDetailRecipe.shareButton.addTarget(self, action: #selector(), for: <#T##UIControl.Event#>)
+        
+        favDetailRecipe.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
+    }
+    
+    //MARK: - OBJC Functions
+    @objc func shareTapped(_ sender: UIButton) {
+        let shareItem = selectedFavRecipe.url
+        let activityController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
+    }
+    
+    @objc func bookmarkTapped(_ sender: UIButton) {
+        let showBookmarkTappedVC = AddOrCreateVC()
+        showBookmarkTappedVC.addOrCreateCollection = recipe
+        present(showBookmarkTappedVC, animated: true)
+    }
+    
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
         showSafariVC(for: "\(self.selectedFavRecipe.url)")
         print("safari is opening: \(self.selectedFavRecipe.url)")
     }
     
+    
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
