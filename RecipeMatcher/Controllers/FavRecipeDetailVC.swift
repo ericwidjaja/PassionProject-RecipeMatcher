@@ -2,39 +2,39 @@
 //  RecipeMatcher
 //  Created by Eric Widjaja on 1/20/20.
 import UIKit
-import SafariServices
 import Kingfisher
+import SafariServices
 import FirebaseAuth
 import FirebaseFirestore
+
 
 class FavRecipeDetailVC: UIViewController {
     
     //MARK: - Properties
-    var selectedRecipe: Favorite!
+    var selectedFavRecipe: Favorite!
     var favDetailRecipe = RecipeDetailView()
+    var heartStatus: HeartStatus = .notFilled
     
-    //MARK: - Methods
+    //MARK: - Functions
     func setDetailRecipeView() {
         view.addSubview(favDetailRecipe)
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         favDetailRecipe.recipeImage.kf.indicatorType = .activity
-        favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedRecipe.imageUrl!), placeholder: UIImage(named: "RecipeImgHolder"), options: [
+        favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedFavRecipe.imageUrl!), placeholder: UIImage(named: "RecipeImgHolder"), options: [
             .scaleFactor(UIScreen.main.scale),
             .transition(.fade(2))])
         
-        favDetailRecipe.recipeLabel.text = selectedRecipe.label
+        favDetailRecipe.recipeLabel.text = selectedFavRecipe.label
         
-        let linesFavDVC = selectedRecipe.ingredientLines.map{$0.replacingOccurrences(of: ",", with: "")}
+        let linesFavDVC = selectedFavRecipe.ingredientLines.map{$0.replacingOccurrences(of: ",", with: "")}
             .map { $0 + "\n"}
         
         let arrangedIngredients = linesFavDVC.joined()
         favDetailRecipe.ingredientsTxtView.text = arrangedIngredients
         
-        
         //code start here to open in safari with url link
-        
-        let cookingInstUrl = selectedRecipe.url
+        let cookingInstUrl = selectedFavRecipe.url
     }
     
     func showSafariVC(for cookingInstUrl: String) {
@@ -45,8 +45,8 @@ class FavRecipeDetailVC: UIViewController {
         present(safariVC, animated: true)
     }
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
-        showSafariVC(for: "\(self.selectedRecipe.url)")
-        print("safari is opening: \(self.selectedRecipe.url)")
+        showSafariVC(for: "\(self.selectedFavRecipe.url)")
+        print("safari is opening: \(self.selectedFavRecipe.url)")
     }
     
     override func viewDidLoad() {
