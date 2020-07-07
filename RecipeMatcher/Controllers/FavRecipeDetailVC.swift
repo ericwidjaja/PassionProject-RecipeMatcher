@@ -94,7 +94,11 @@ class FavRecipeDetailVC: UIViewController {
     }
     
     func buttonsTapped() {
-        favDetailRecipe.shareButton.addTarget(self, action: #selector(), for: <#T##UIControl.Event#>)
+        favDetailRecipe.shareButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
+        
+        favDetailRecipe.bookmarkButton.addTarget(self, action: #selector(bookmarkTapped(_:)), for: .touchUpInside)
+        
+        favDetailRecipe.heartButton.addTarget(self, action: #selector(heartButtonPressed(_:)), for: .touchUpInside)
         
         favDetailRecipe.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
     }
@@ -112,6 +116,18 @@ class FavRecipeDetailVC: UIViewController {
         present(showBookmarkTappedVC, animated: true)
     }
     
+    @objc func heartButtonPressed(_ sender: UIButton){
+        switch heartStatus {
+        case .filled:
+            makeHeartEmpty()
+//            deleteFromPersistance(tag: 0)
+        case .notFilled:
+            makeHeartFill()
+//            saveToPersistance(tag: 0)
+
+        }
+    }
+    
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
         showSafariVC(for: "\(self.selectedFavRecipe.url)")
         print("safari is opening: \(self.selectedFavRecipe.url)")
@@ -122,6 +138,18 @@ class FavRecipeDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
-        favDetailRecipe.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
+        buttonsTapped()
+    }
+}
+
+//MARK: - Extensions
+extension FavRecipeDetailVC: HeartButtonDelegate {
+    func saveToPersistance(tag: Int) {
+//        saveRecipeToFireStore(tag)
+        print(tag)
+    }
+    
+    func deleteFromPersistance(tag: Int) {
+//        deleteRecipeFromFireStore(tag)
     }
 }
