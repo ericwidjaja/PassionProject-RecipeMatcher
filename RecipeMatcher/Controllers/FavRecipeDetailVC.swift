@@ -19,7 +19,7 @@ class FavRecipeDetailVC: UIViewController {
     //MARK: - Functions
     private func updateRecipeHearts(url: String) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
-            print("Result from FavREcipeDetailVC \(result)")
+//            print("Result from FavREcipeDetailVC \(result)")
             switch result {
                 
             case .failure(let error):

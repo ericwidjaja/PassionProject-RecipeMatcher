@@ -23,7 +23,7 @@ class RecipeDetailVC: UIViewController {
     //MARK: - Functions
     private func updateRecipeHearts(url: String) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
-            print("Result from RecipeDetailVC \(result)")
+//            print("Result from RecipeDetailVC \(result)")
             switch result {
                 
             case .failure(let error):
@@ -69,7 +69,6 @@ class RecipeDetailVC: UIViewController {
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         //https://cocoapods.org/pods/Kingfisher
         guard let selectedRecipe = recipe else {
-            
             fatalError("A recipe is expected at this point")
         }
         updateRecipeHearts(url: selectedRecipe.url)
@@ -178,7 +177,6 @@ class RecipeDetailVC: UIViewController {
 extension RecipeDetailVC: HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
         saveRecipeToFireStore(tag)
-        print(tag)
     }
     
     func deleteFromPersistance(tag: Int) {

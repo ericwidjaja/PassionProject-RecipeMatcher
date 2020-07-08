@@ -21,6 +21,7 @@ class FavRecipesVC: UIViewController {
             }
         }
     }
+    
     //MARK: - Functions
     @objc private func signOut() {
         let alert = UIAlertController(title: "Sign Out from this App?", message: nil, preferredStyle: .actionSheet)
@@ -120,11 +121,9 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
 
 extension FavRecipesVC : HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
-        
     }
     
     func deleteFromPersistance(tag: Int) {
-        
     }
 }
 
