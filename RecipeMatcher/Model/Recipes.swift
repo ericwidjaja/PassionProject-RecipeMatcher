@@ -24,4 +24,15 @@ struct RecipeWrapper: Codable {
     let calories: Double
     let totalWeight: Double
     let totalTime: Int
+    
+    init?(from dict: [String: Any]) {
+        do {
+            let data = try JSONSerialization.data(withJSONObject: dict)
+            let recipe = try JSONDecoder().decode(RecipeWrapper.self, from: data)
+            self = recipe
+        }
+        catch {
+            return nil
+        }
+    }
 }

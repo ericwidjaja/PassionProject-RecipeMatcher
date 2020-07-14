@@ -39,7 +39,6 @@ class RecipeDetailVC: UIViewController {
         }
     }
     
-    
     private func setHeartImage() {
         switch heartStatus {
         case .filled:

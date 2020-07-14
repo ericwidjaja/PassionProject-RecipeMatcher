@@ -4,7 +4,6 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
-import Firebase
 
 fileprivate enum FireStoreCollections: String {
     case users

@@ -50,7 +50,7 @@ class RecipesCollResultsVC: UIViewController {
             case .failure(let error):
                 print(error)
             case .success(let favedRecipes):
-                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.url == url
+                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.recipe.url == url
                 }) {
                     cell.makeHeartFill()
                 } else {
@@ -79,8 +79,8 @@ class RecipesCollResultsVC: UIViewController {
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
         let favedRecipe = recipesResult[tag]
-        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe.label, imageUrl: favedRecipe.image, dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, urlCookInst: favedRecipe.url, ingredientLinesArr: favedRecipe.ingredientLines, faveId: favedRecipe.uri)
-        FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, faveId: favedRecipe.uri, recipe: favedRecipe.self)
+        FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.recipe.label) { (result) in
             switch result {
             case .success:
                 print("Saved in firestore")
@@ -116,7 +116,6 @@ class RecipesCollResultsVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         loadSearchQuery()
-        
         self.navigationController?.navigationBar.isHidden = true
     }
 }
@@ -130,12 +129,10 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         guard let cell =  recipesCollView.recipeCollectionView.dequeueReusableCell(withReuseIdentifier: "RecipeCell", for: indexPath) as? RecipesCollViewCell else { return UICollectionViewCell()
         }
         updateCellWithFilteredRecipes(indexPath, cell)
-        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         //Passing cell's data into DetailVC
         let recipeDestinationVC = RecipeDetailVC()
         recipeDestinationVC.recipe = recipesResult[indexPath.row]
