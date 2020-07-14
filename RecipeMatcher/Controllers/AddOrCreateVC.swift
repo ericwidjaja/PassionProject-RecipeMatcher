@@ -1,7 +1,5 @@
-//
 //  AddOrCreateVC.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 6/27/20.
 //  Copyright © 2020 Eric W. All rights reserved.
 //
@@ -36,8 +34,5 @@ class AddOrCreateVC: UIViewController {
         view.addSubview(addOrCreateView)
         view.backgroundColor = .clear
         blurEffect()
-        
-        
     }
-    
 }

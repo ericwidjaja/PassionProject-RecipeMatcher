@@ -17,7 +17,7 @@ class FavRecipesVC: UIViewController {
             DispatchQueue.main.async {
                 self.faveRecipeView.favoriteList.reloadData()
                 //checking if the recipes that user favorited are existed
-//                dump(self.favoriteRecipe)
+                dump(self.favoriteRecipe)
             }
         }
     }
@@ -69,16 +69,15 @@ class FavRecipesVC: UIViewController {
     
     private func updateCellsWithFaveRecipes(_ indexPath: IndexPath,_ cell: FavdRecipesCell) {
         let favdRecipeToSet = favoriteRecipe[indexPath.row]
-        cell.favdRecipeLabel.text = favdRecipeToSet.label
+        cell.favdRecipeLabel.text = favdRecipeToSet.recipe.label
         cell.favdRecipeImage.kf.indicatorType = .activity
-        cell.favdRecipeImage.kf.setImage(
-            with: URL(string: favdRecipeToSet.imageUrl!),
-            placeholder: UIImage(named: "RecipeImgHolder"),
-            options: [ .scaleFactor(UIScreen.main.scale),
-                       .transition(.flipFromRight(3))])
+//        cell.favdRecipeImage.kf.setImage(
+//            with: URL(string: favdRecipeToSet.imageUrl!),
+//            placeholder: UIImage(named: "RecipeImgHolder"),
+//            options: [ .scaleFactor(UIScreen.main.scale),
+//                       .transition(.flipFromRight(3))])
     }
 
-    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

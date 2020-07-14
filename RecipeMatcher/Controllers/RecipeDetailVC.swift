@@ -139,8 +139,9 @@ class RecipeDetailVC: UIViewController {
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
         let favedRecipe = recipe
-        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", recipeTitle: favedRecipe!.label, imageUrl: favedRecipe?.image, dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, urlCookInst: favedRecipe?.url ?? "", ingredientLinesArr: favedRecipe!.ingredientLines, faveId: favedRecipe!.uri)
-        FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.label) { (result) in
+
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, faveId: favedRecipe!.url, recipe: favedRecipe!.self)
+        FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.recipe.label) { (result) in
             switch result {
             case .success:
                 print("Saved in firestore")
