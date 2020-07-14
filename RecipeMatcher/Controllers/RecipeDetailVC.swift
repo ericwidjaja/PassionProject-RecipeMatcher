@@ -23,13 +23,13 @@ class RecipeDetailVC: UIViewController {
     //MARK: - Functions
     private func updateRecipeHearts(url: String) {
         FirestoreService.manager.getUserFavorites(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
-//            print("Result from RecipeDetailVC \(result)")
+            print("Result from RecipeDetailVC \(result)")
             switch result {
                 
             case .failure(let error):
                 print(error)
             case .success(let favedRecipes):
-                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.url == url
+                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.recipe.url == url
                 }) {
                     self.makeHeartFill()
                 } else {

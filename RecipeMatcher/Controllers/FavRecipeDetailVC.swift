@@ -25,7 +25,7 @@ class FavRecipeDetailVC: UIViewController {
             case .failure(let error):
                 print(error)
             case .success(let favedRecipes):
-                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.url == url
+                if favedRecipes.contains(where: {(recipe) -> Bool in recipe.recipe.url == url
                 }) {
                     self.makeHeartFill()
                 } else {
@@ -66,23 +66,23 @@ class FavRecipeDetailVC: UIViewController {
             fatalError("A recipe, from FavDetailVC is expected at this point")
         }
         
-        updateRecipeHearts(url: selectedRecipe.url)
+        updateRecipeHearts(url: selectedRecipe.recipe.url)
         
         favDetailRecipe.recipeImage.kf.indicatorType = .activity
-        favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedFavRecipe.imageUrl!), placeholder: UIImage(named: "RecipeImgHolder"), options: [
+        favDetailRecipe.recipeImage.kf.setImage(with: URL(string: selectedFavRecipe.recipe.image), placeholder: UIImage(named: "RecipeImgHolder"), options: [
             .scaleFactor(UIScreen.main.scale),
             .transition(.fade(2))])
         
-        favDetailRecipe.recipeLabel.text = selectedFavRecipe.label
+        favDetailRecipe.recipeLabel.text = selectedFavRecipe.recipe.label
         
-        let linesFavDVC = selectedFavRecipe.ingredientLines.map{$0.replacingOccurrences(of: ",", with: "")}
+        let linesFavDVC = selectedFavRecipe.recipe.ingredientLines.map{$0.replacingOccurrences(of: ",", with: "")}
             .map { $0 + "\n"}
         
         let arrangedIngredients = linesFavDVC.joined()
         favDetailRecipe.ingredientsTxtView.text = arrangedIngredients
         
         //code start here to open in safari with url link
-        let cookingInstUrl = selectedFavRecipe.url
+        let cookingInstUrl = selectedFavRecipe.recipe.url
     }
     
     func showSafariVC(for cookingInstUrl: String) {
@@ -105,7 +105,7 @@ class FavRecipeDetailVC: UIViewController {
     
     //MARK: - OBJC Functions
     @objc func shareTapped(_ sender: UIButton) {
-        let shareItem = selectedFavRecipe.url
+        let shareItem = selectedFavRecipe.recipe.url
         let activityController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
     }
@@ -124,13 +124,12 @@ class FavRecipeDetailVC: UIViewController {
         case .notFilled:
             makeHeartFill()
 //            saveToPersistance(tag: 0)
-
         }
     }
     
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
-        showSafariVC(for: "\(self.selectedFavRecipe.url)")
-        print("safari is opening: \(self.selectedFavRecipe.url)")
+        showSafariVC(for: "\(self.selectedFavRecipe.recipe.url)")
+        print("safari is opening: \(self.selectedFavRecipe.recipe.url)")
     }
     
     
