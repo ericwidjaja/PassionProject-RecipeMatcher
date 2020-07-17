@@ -31,7 +31,8 @@ struct RecipeWrapper: Codable {
             let recipe = try JSONDecoder().decode(RecipeWrapper.self, from: data)
             self = recipe
         }
-        catch {
+        catch let error as NSError {
+            print("Failed to load: \(error.localizedDescription)")
             return nil
         }
     }

@@ -44,7 +44,12 @@ struct Favorite {
     var fieldsDict: [String: Any] {
         return [
             "creatorID": self.creatorID,
-            "faveId": self.faveId as Any
+            "faveId": self.faveId as Any,
+            "recipeTitle": self.recipe.label,
+            "imageUrl": self.recipe.image as Any,
+            "urlCookInst": self.recipe.url,
+            "ingredientLines": self.recipe.ingredientLines
+            
         ]
     }
 }

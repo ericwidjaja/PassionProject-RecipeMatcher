@@ -17,7 +17,7 @@ class FavRecipesVC: UIViewController {
             DispatchQueue.main.async {
                 self.faveRecipeView.favoriteList.reloadData()
                 //checking if the recipes that user favorited are existed
-                dump(self.favoriteRecipe)
+//                dump(self.favoriteRecipe)
             }
         }
     }
