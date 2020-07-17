@@ -61,7 +61,6 @@ class FavRecipeDetailVC: UIViewController {
     func setDetailRecipeView() {
         view.addSubview(favDetailRecipe)
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
         guard let selectedRecipe = selectedFavRecipe else {
             fatalError("A recipe, from FavDetailVC is expected at this point")
         }

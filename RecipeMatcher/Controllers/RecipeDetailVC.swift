@@ -17,6 +17,7 @@ class RecipeDetailVC: UIViewController {
     
     //MARK: - Properties
     var recipe: RecipeWrapper?
+    var selectedFavRecipe: Favorite!
     var detailRecipeView = RecipeDetailView()
     var heartStatus: HeartStatus = .notFilled
     
@@ -107,7 +108,7 @@ class RecipeDetailVC: UIViewController {
     //MARK: - OBJC Functions
     @objc func shareTapped(_ sender: UIButton) {
           //TODO: Create a share link thru sms, email, instagram or fb
-        let shareItem = recipe?.url ?? "https://www.foodandwine.com/"
+        let shareItem = recipe?.shareAs ?? "https://www.foodandwine.com/"
         let activityController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
       }
