@@ -71,11 +71,11 @@ class FavRecipesVC: UIViewController {
         let favdRecipeToSet = favoriteRecipe[indexPath.row]
         cell.favdRecipeLabel.text = favdRecipeToSet.recipe.label
         cell.favdRecipeImage.kf.indicatorType = .activity
-//        cell.favdRecipeImage.kf.setImage(
-//            with: URL(string: favdRecipeToSet.imageUrl!),
-//            placeholder: UIImage(named: "RecipeImgHolder"),
-//            options: [ .scaleFactor(UIScreen.main.scale),
-//                       .transition(.flipFromRight(3))])
+        cell.favdRecipeImage.kf.setImage(
+            with: URL(string: favdRecipeToSet.recipe.image),
+            placeholder: UIImage(named: "RecipeImgHolder"),
+            options: [ .scaleFactor(UIScreen.main.scale),
+                       .transition(.flipFromRight(3))])
     }
 
     //MARK: - Lifecycle
