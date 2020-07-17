@@ -45,11 +45,8 @@ struct Favorite {
         return [
             "creatorID": self.creatorID,
             "faveId": self.faveId as Any,
-            "recipeTitle": self.recipe.label,
-            "imageUrl": self.recipe.image as Any,
-            "urlCookInst": self.recipe.url,
-            "ingredientLines": self.recipe.ingredientLines
-            
+            "dateCreated": self.dateCreated as Any, 
+            "recipe": self.recipe.fieldsDict
         ]
     }
 }

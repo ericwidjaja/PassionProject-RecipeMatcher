@@ -36,4 +36,21 @@ struct RecipeWrapper: Codable {
             return nil
         }
     }
+    var fieldsDict: [String: Any] {
+        return [
+            "uri": self.uri,
+            "label": self.label,
+            "image": self.image,
+            "source": self.source,
+            "url": self.url,
+            "shareAs": self.shareAs,
+            "yield": self.yield,
+            "dietLabels": self.dietLabels,
+            "healthLabels": self.healthLabels,
+            "ingredientLines": self.ingredientLines,
+            "calories": self.calories,
+            "totalWeight": self.totalWeight,
+            "totalTime": self.totalTime
+        ]
+    }
 }
