@@ -13,7 +13,7 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
-    var addOrCreateCollection : RecipeWrapper!
+    var addOrCreateCollection: RecipeWrapper!
     
     //MARK: - Functions
     func blurEffect() {
