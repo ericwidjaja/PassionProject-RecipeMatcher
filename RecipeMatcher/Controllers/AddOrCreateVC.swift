@@ -16,6 +16,7 @@ class AddOrCreateVC: UIViewController {
     var addOrCreateCollection: RecipeWrapper!
     
     //MARK: - Functions
+    
     func blurEffect() {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -27,6 +28,12 @@ class AddOrCreateVC: UIViewController {
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
     }
+    
+    //MARK: - OBJC Functions
+//    @objc func createButtonPressed() {
+//        let 
+//    }
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {

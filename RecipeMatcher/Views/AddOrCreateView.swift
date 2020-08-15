@@ -74,22 +74,6 @@ class AddOrCreateView: UIView {
         }
     }
     
-    //MARK: - Functions
-    @objc func createButtonPressed() {
-        guard let collectionName = newCollectionTextField.text, collectionName != "" else {
-            makeAlert()
-            return
-        }
-    }
-    
-    private func makeAlert() {
-//                let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
-//                let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-//                alert.addAction(ok)
-//        
-//                present(alert, animated: true, completion: nil)
-    }
-    
     //MARK: - Overrides
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
