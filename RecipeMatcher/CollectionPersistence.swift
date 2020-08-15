@@ -18,6 +18,6 @@ class CollectionPersistence {
     }
     
     func getRecipe() throws -> [FaveCollections] {
-        try persistanceHelper.getObjects()
+        return try persistanceHelper.getObjects()
     }
 }

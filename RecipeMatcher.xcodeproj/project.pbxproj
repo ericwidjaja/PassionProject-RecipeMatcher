@@ -234,10 +234,17 @@
 				DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */,
 				DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */,
 				DFEE82DD236FADBF000FDE8B /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF8AB78624E774CE00804253 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
 				DF2DFC4A24E230FD009247F3 /* PersistenceHelper.swift */,
 				DF2DFC4C24E231DA009247F3 /* CollectionPersistence.swift */,
 			);
-			name = "Supporting Files";
+			name = Persistence;
 			sourceTree = "<group>";
 		};
 		DFEE82C3236FADB6000FDE8B = {
@@ -266,6 +273,7 @@
 				DF35F00A239373E600638254 /* Model */,
 				DF28B39D23889B1B00AA8CE0 /* Views */,
 				DFEE82F7236FBDB5000FDE8B /* Controllers */,
+				DF8AB78624E774CE00804253 /* Persistence */,
 				DF6C0CD223AF22E4004BF388 /* Supporting Files */,
 				DFEE82DB236FADBF000FDE8B /* Assets.xcassets */,
 				DFF5DC9323B9931700DB2B24 /* GoogleService-Info.plist */,
