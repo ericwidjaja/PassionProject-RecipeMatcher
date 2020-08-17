@@ -48,6 +48,15 @@ class AddOrCreateView: UIView {
         return textField
     }()
     
+    var collectionsCV: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = CGSize(width: 160, height: 160)
+        let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        collection.backgroundColor = .white
+//        collection.register(CollectionsCell.self, forCellWithReuseIdentifier: "addCell")
+        return collection
+    }()
+    
     lazy var collectionStackView: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [ addToCollectionButton, createCollectionButton])
         stack.axis = .horizontal
@@ -64,7 +73,7 @@ class AddOrCreateView: UIView {
         return view
     }()
     
-    lazy var objectsViewArray = [self.newCollectionTextField, self.stackBackgroundView, self.collectionStackView]
+    lazy var objectsViewArray = [self.newCollectionTextField, self.collectionsCV, self.stackBackgroundView, self.collectionStackView]
     
     //MARK: - Add ViewsToSubviews
     func addViewsToSubView() {
@@ -73,6 +82,7 @@ class AddOrCreateView: UIView {
             aView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
+    
     
     //MARK: - Overrides
     override init(frame: CGRect) {
@@ -88,8 +98,10 @@ class AddOrCreateView: UIView {
     private func addOrCreateConstraints() {
         addViewsToSubView()
         newCollectionTextFieldConstraints()
+        constrainCollectionsCV()
         constrainStackBackgroundView()
         constrainStackView()
+        
         
     }
     private func constrainStackView(){
@@ -110,12 +122,19 @@ class AddOrCreateView: UIView {
             stackBackgroundView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
-
+    
     private func newCollectionTextFieldConstraints() {
         NSLayoutConstraint.activate([
-        newCollectionTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-        newCollectionTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-        newCollectionTextField.topAnchor.constraint(equalTo: addToCollectionButton.bottomAnchor, constant: 50),
-        newCollectionTextField.heightAnchor.constraint(equalToConstant: 70)])
-        }
+            newCollectionTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            newCollectionTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            newCollectionTextField.topAnchor.constraint(equalTo: addToCollectionButton.bottomAnchor, constant: 50),
+            newCollectionTextField.heightAnchor.constraint(equalToConstant: 70)])
+    }
+    
+    private func constrainCollectionsCV() {
+        NSLayoutConstraint.activate([
+            collectionsCV.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            collectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 50)])
+    }
 }
