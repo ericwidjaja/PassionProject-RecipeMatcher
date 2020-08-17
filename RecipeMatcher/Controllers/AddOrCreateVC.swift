@@ -2,7 +2,6 @@
 //  RecipeMatcher
 //  Created by Eric Widjaja on 6/27/20.
 //  Copyright © 2020 Eric W. All rights reserved.
-//
 
 import UIKit
 import Kingfisher
@@ -13,8 +12,6 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
-    
-    
     var addOrCreateCollection: RecipeWrapper!
     var collections = [FaveCollections]() {
         didSet {
@@ -22,9 +19,7 @@ class AddOrCreateVC: UIViewController {
         }
     }
     
-    
     //MARK: - Functions
-    
     func blurEffect() {
         let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialLight)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -39,7 +34,11 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - OBJC Functions
 //    @objc func createButtonPressed() {
-//        let 
+//        guard let collectionName = newCollectionTextField.text, collectionName != "" else {
+//            print("please create name for your collection")
+//            return
+//        }
+//        if let
 //    }
     
     
@@ -49,5 +48,21 @@ class AddOrCreateVC: UIViewController {
         view.addSubview(addOrCreateView)
         view.backgroundColor = .clear
         blurEffect()
+    }
+}
+
+extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return collections.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addCell", for: indexPath) as? CollectionsCell else {
+            return UICollectionViewCell()
+        }
+        let collection = collections[indexPath.row]
+        cell.nameLabel.text = collection.recipeType
+        cell.addButton.isHidden = false
+        return cell
     }
 }

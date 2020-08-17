@@ -11,7 +11,7 @@ import UIKit
 class CollectionsCell: UICollectionViewCell {
     var collectionsImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 100))
-        image.backgroundColor = #colorLiteral(red: 0.9411764741, green: 0.4980392158, blue: 0.3529411852, alpha: 1)
+        image.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
         return image
     }()
     var nameLabel: UILabel = {

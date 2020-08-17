@@ -13,6 +13,11 @@ enum HeartStatus {
     case notFilled
 }
 
+enum CollectionStatus {
+    case addToCollection
+    case removeFromCollection
+}
+
 class RecipeDetailVC: UIViewController {
     
     //MARK: - Properties
