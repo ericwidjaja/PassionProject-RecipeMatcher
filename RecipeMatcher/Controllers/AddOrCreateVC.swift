@@ -13,7 +13,15 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
+    
+    
     var addOrCreateCollection: RecipeWrapper!
+    var collections = [FaveCollections]() {
+        didSet {
+            self.addOrCreateView.collectionsCV.reloadData()
+        }
+    }
+    
     
     //MARK: - Functions
     

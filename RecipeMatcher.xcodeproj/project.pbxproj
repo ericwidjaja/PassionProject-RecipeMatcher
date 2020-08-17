@@ -48,6 +48,7 @@
 		DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CCE23AF2056004BF388 /* FirebaseStorageService.swift */; };
 		DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */; };
 		DF6C0CD623AF286C004BF388 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CD523AF286C004BF388 /* String+Validation.swift */; };
+		DF8AB78824EA110900804253 /* CollectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78724EA110900804253 /* CollectionsCell.swift */; };
 		DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7935723BD4E6600D5B229 /* Favorite.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
@@ -107,6 +108,7 @@
 		DF6C0CCE23AF2056004BF388 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		DF6C0CD523AF286C004BF388 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
+		DF8AB78724EA110900804253 /* CollectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsCell.swift; sourceTree = "<group>"; };
 		DFE7935723BD4E6600D5B229 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				DFF5DC8723B4376B00DB2B24 /* FavRecipesView.swift */,
 				DF262D8E23D0C067009B4806 /* FavdRecipesCell.swift */,
 				DF399A9224A815FE006D1560 /* AddOrCreateView.swift */,
+				DF8AB78724EA110900804253 /* CollectionsCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				DFEE82D4236FADB6000FDE8B /* SearchRecipesVC.swift in Sources */,
 				DF2F4E3823A83E890002E8CC /* RecipeDetailView.swift in Sources */,
 				DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */,
+				DF8AB78824EA110900804253 /* CollectionsCell.swift in Sources */,
 				DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */,
 				DF399A9524A82058006D1560 /* AddOrCreateVC.swift in Sources */,
 				DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
