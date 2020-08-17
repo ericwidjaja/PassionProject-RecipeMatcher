@@ -7,7 +7,7 @@ import Foundation
 
 class CollectionPersistence {
     private init() {}
-    static let helper = CollectionPersistence()
+    static let manager = CollectionPersistence()
     private let persistanceHelper = PersistenceHelper<FaveCollections>.init(fileName: "FaveCollections.plist")
     
     func save(newElement: FaveCollections) throws {

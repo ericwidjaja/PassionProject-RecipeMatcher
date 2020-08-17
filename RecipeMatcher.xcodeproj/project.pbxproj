@@ -49,6 +49,7 @@
 		DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */; };
 		DF6C0CD623AF286C004BF388 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CD523AF286C004BF388 /* String+Validation.swift */; };
 		DF8AB78824EA110900804253 /* CollectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78724EA110900804253 /* CollectionsCell.swift */; };
+		DF8AB78A24EB1CAE00804253 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78924EB1CAE00804253 /* Protocol.swift */; };
 		DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7935723BD4E6600D5B229 /* Favorite.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
@@ -109,6 +110,7 @@
 		DF6C0CD023AF20B9004BF388 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		DF6C0CD523AF286C004BF388 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		DF8AB78724EA110900804253 /* CollectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsCell.swift; sourceTree = "<group>"; };
+		DF8AB78924EB1CAE00804253 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
 		DFE7935723BD4E6600D5B229 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				DF6C0CC823AEEF3E004BF388 /* AppUser.swift */,
 				DFE7935723BD4E6600D5B229 /* Favorite.swift */,
 				DF2DFC4E24E2339B009247F3 /* FaveCollections.swift */,
+				DF8AB78924EB1CAE00804253 /* Protocol.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				DF325B8423A1801F00F112B5 /* RecipesCollResultsVC.swift in Sources */,
 				DF6C0CCD23AF2012004BF388 /* FirebaseAuthService.swift in Sources */,
 				DFF5DC8223B2E3E300DB2B24 /* ButtonProtocol.swift in Sources */,
+				DF8AB78A24EB1CAE00804253 /* Protocol.swift in Sources */,
 				DF6C0CD623AF286C004BF388 /* String+Validation.swift in Sources */,
 				DF35F01923946F5800638254 /* APIClient.swift in Sources */,
 				DF2DFC4B24E230FD009247F3 /* PersistenceHelper.swift in Sources */,

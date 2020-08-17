@@ -120,7 +120,7 @@ class RecipeDetailVC: UIViewController {
     
     @objc func bookmarkTapped(sender: UIButton) {
         let showBookmarkTappedVC = AddOrCreateVC()
-        showBookmarkTappedVC.addOrCreateCollection = recipe
+        showBookmarkTappedVC.recipeCollection = recipe
         present(showBookmarkTappedVC, animated: true)
     }
     

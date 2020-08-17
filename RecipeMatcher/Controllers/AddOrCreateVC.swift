@@ -12,7 +12,8 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
-    var addOrCreateCollection: RecipeWrapper!
+    var recipeCollection: RecipeWrapper!
+    var delegate: Reload?
     var collections = [FaveCollections]() {
         didSet {
             self.addOrCreateView.collectionsCV.reloadData()
@@ -33,13 +34,13 @@ class AddOrCreateVC: UIViewController {
     }
     
     //MARK: - OBJC Functions
-//    @objc func createButtonPressed() {
-//        guard let collectionName = newCollectionTextField.text, collectionName != "" else {
-//            print("please create name for your collection")
-//            return
-//        }
-//        if let
-//    }
+    //    @objc func createButtonPressed() {
+    //        guard let collectionName = newCollectionTextField.text, collectionName != "" else {
+    //            print("please create name for your collection")
+    //            return
+    //        }
+    //        if let
+    //    }
     
     
     //MARK: - Lifecycle
@@ -50,7 +51,7 @@ class AddOrCreateVC: UIViewController {
         blurEffect()
     }
 }
-
+//MARK: - Extension
 extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collections.count
@@ -61,8 +62,21 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let collection = collections[indexPath.row]
-        cell.nameLabel.text = collection.recipeType
+        cell.nameLabel.text = collection.recipeTitle
         cell.addButton.isHidden = false
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        do {
+            guard let recipe = recipeCollection else {
+                return }
+            let collection = collections[indexPath.row]
+            collection.recipes.append(recipe)
+            try CollectionPersistence.manager.replace(newArr: collections)
+            self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
+        } catch {
+            print(error)
+        }
     }
 }
