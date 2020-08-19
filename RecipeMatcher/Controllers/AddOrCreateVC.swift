@@ -71,7 +71,7 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
         do {
             guard let recipe = recipeCollection else {
                 return }
-            let collection = collections[indexPath.row]
+            var collection = collections[indexPath.row]
             collection.recipes.append(recipe)
             try CollectionPersistence.manager.replace(newArr: collections)
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
