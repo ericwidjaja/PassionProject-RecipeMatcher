@@ -33,6 +33,26 @@ class AddOrCreateVC: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
     }
     
+    private func loadCollections() {
+        do {
+            let persistedCollections = try CollectionPersistence.manager.getRecipe()
+            collections = persistedCollections
+        } catch {
+            print(error)
+        }
+    }
+    
+    private func saveNewCollection(newCollection: FaveCollections) {
+        do {
+            try CollectionPersistence.manager
+            .save(newElement: newCollection)
+            self.addOrCreateView.window?.rootViewController?.dismiss(animated: true, completion: nil)
+            delegate?.reloadCollectionView()
+        } catch {
+            print(error)
+        }
+    }
+    
     //MARK: - OBJC Functions
     //    @objc func createButtonPressed() {
     //        guard let collectionName = newCollectionTextField.text, collectionName != "" else {

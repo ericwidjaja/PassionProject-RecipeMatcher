@@ -53,7 +53,7 @@ class AddOrCreateView: UIView {
         layout.estimatedItemSize = CGSize(width: 160, height: 160)
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collection.backgroundColor = .white
-//        collection.register(CollectionsCell.self, forCellWithReuseIdentifier: "addCell")
+        collection.register(CollectionsCell.self, forCellWithReuseIdentifier: "addCell")
         return collection
     }()
     
@@ -62,7 +62,6 @@ class AddOrCreateView: UIView {
         stack.axis = .horizontal
         stack.spacing = 50
         stack.distribution = .fillEqually
-        
         return stack
     }()
     
@@ -82,7 +81,6 @@ class AddOrCreateView: UIView {
             aView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    
     
     //MARK: - Overrides
     override init(frame: CGRect) {
