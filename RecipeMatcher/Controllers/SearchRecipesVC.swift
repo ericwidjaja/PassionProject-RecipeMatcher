@@ -21,10 +21,9 @@ class SearchRecipesVC : UIViewController {
     }
     
     @objc func findRecipeButtonPressed(_ sender: UIButton) {
-        
         let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
         navigationController?.pushViewController(findRecipeVC, animated: true)
-        dump(ingredients)
+//        dump(ingredients)
     }
     
     @objc private func signOut() {

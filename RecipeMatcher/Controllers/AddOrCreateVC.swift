@@ -53,15 +53,28 @@ class AddOrCreateVC: UIViewController {
         }
     }
     
-    //MARK: - OBJC Functions
-    //    @objc func createButtonPressed() {
-    //        guard let collectionName = newCollectionTextField.text, collectionName != "" else {
-    //            print("please create name for your collection")
-    //            return
-    //        }
-    //        if let
-    //    }
+    func buttonsTapped() {
+        addOrCreateView.addToCollectionButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
+    }
     
+//    MARK: - OBJC Functions
+    @objc func createButtonPressed(_ sender: UIButton) {
+            guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != "" else {
+                print("please create name for your collection")
+                return
+            }
+            if let recipe = recipeCollection {
+                let newCollection = FaveCollections(recipeType: collectionName, recipes: [recipe])
+                saveNewCollection(newCollection: newCollection)
+            } else {
+                let newCollection = FaveCollections(recipeType: collectionName, recipes: [])
+                saveNewCollection(newCollection: newCollection)
+            }
+        }
+    private func setDelegates() {
+        self.addOrCreateView.collectionsCV.delegate = self
+        self.addOrCreateView.collectionsCV.dataSource = self
+    }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -69,8 +82,14 @@ class AddOrCreateVC: UIViewController {
         view.addSubview(addOrCreateView)
         view.backgroundColor = .clear
         blurEffect()
+        loadCollections()
+        buttonsTapped()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.addOrCreateView.collectionsCV.reloadData()
     }
 }
+
 //MARK: - Extension
 extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

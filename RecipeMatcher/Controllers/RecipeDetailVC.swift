@@ -103,7 +103,7 @@ class RecipeDetailVC: UIViewController {
         present(safariVC, animated: true)
     }
     
-    func buttonsTapped () {
+    func buttonsTapped() {
         detailRecipeView.urlButton.addTarget(self, action: #selector(cookingInstructionButtonPressed(_:)), for: .touchUpInside)
         detailRecipeView.heartButton.addTarget(self, action: #selector(heartButtonPressed(_:)), for: .touchUpInside)
         detailRecipeView.shareButton.addTarget(self, action: #selector(shareTapped(_:)), for: .touchUpInside)
@@ -175,7 +175,7 @@ class RecipeDetailVC: UIViewController {
         super.viewDidLoad()
         setDetailRecipeView()
         setHeartImage()
-        buttonsTapped ()
+        buttonsTapped()
     }
 }
 
