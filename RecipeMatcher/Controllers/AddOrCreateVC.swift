@@ -82,7 +82,7 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         let collection = collections[indexPath.row]
-        cell.nameLabel.text = collection.recipeTitle
+        cell.nameLabel.text = collection.recipeType
         cell.addButton.isHidden = false
         return cell
     }
