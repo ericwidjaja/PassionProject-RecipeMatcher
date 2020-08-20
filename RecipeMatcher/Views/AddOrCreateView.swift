@@ -30,7 +30,7 @@ class AddOrCreateView: UIView {
         button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         button.isUserInteractionEnabled = true
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
-        let addToCollection = UIImage(systemName: "plus", withConfiguration: config)
+        let addToCollection = UIImage(systemName: "folder.fill.badge.plus", withConfiguration: config)
         button.setImage(addToCollection, for: .normal)
         //bookmark.fill?
         var newFrame = button.frame.size
@@ -58,7 +58,8 @@ class AddOrCreateView: UIView {
     }()
     
     lazy var collectionStackView: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [ addToCollectionButton, createCollectionButton])
+//        let stack = UIStackView(arrangedSubviews: [addToCollectionButton, createCollectionButton])
+        let stack = UIStackView(arrangedSubviews: [addToCollectionButton])
         stack.axis = .horizontal
         stack.spacing = 50
         stack.distribution = .fillEqually
@@ -99,9 +100,8 @@ class AddOrCreateView: UIView {
         constrainCollectionsCV()
         constrainStackBackgroundView()
         constrainStackView()
-        
-        
     }
+    
     private func constrainStackView(){
         NSLayoutConstraint.activate([
             collectionStackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 30),
@@ -131,8 +131,8 @@ class AddOrCreateView: UIView {
     
     private func constrainCollectionsCV() {
         NSLayoutConstraint.activate([
-            collectionsCV.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            collectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 100),
+            collectionsCV.centerYAnchor.constraint(equalTo: newCollectionTextField.centerYAnchor),
+            collectionsCV.leadingAnchor.constraint(equalTo: newCollectionTextField.leadingAnchor, constant: 2),
             collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 50)])
     }
 }

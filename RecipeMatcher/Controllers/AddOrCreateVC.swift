@@ -17,6 +17,7 @@ class AddOrCreateVC: UIViewController {
     var collections = [FaveCollections]() {
         didSet {
             self.addOrCreateView.collectionsCV.reloadData()
+            dump(collections)
         }
     }
     
