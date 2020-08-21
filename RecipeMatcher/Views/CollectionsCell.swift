@@ -10,20 +10,21 @@ import UIKit
 
 class CollectionsCell: UICollectionViewCell {
     var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 100))
-        image.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        image.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         return image
     }()
+    
     var nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
+        label.textColor = .white
         return label
     }()
+    
     var addButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-//        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
-        
-        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: UIImage.SymbolWeight.medium)
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+        let config = UIImage.SymbolConfiguration(pointSize: 40)
         let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         button.setImage(addToCollection, for: .normal)
         return button
@@ -33,7 +34,7 @@ class CollectionsCell: UICollectionViewCell {
         contentView.addSubview(collectionsImage)
         collectionsImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor),
+            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
             collectionsImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionsImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionsImage.widthAnchor.constraint(equalToConstant: collectionsImage.frame.width),
@@ -43,7 +44,7 @@ class CollectionsCell: UICollectionViewCell {
         contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor),
+            nameLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 10),
             nameLabel.leadingAnchor.constraint(equalTo: collectionsImage.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])

@@ -11,7 +11,7 @@ import UIKit
 class AddOrCreateView: UIView {
     
     //MARK: - Properties
-    lazy var createCollectionButton: UIButton = {
+    lazy var createCollTitleButton: UIButton = {
         let button = UIButton()
         button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
         button.isUserInteractionEnabled = true
@@ -50,9 +50,9 @@ class AddOrCreateView: UIView {
     
     var collectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 160, height: 160)
+        layout.estimatedItemSize = CGSize(width: 100, height: 115)
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        collection.backgroundColor = .white
+        collection.backgroundColor = .clear
         collection.register(CollectionsCell.self, forCellWithReuseIdentifier: "addCell")
         return collection
     }()
@@ -126,14 +126,14 @@ class AddOrCreateView: UIView {
             newCollectionTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             newCollectionTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
             newCollectionTextField.topAnchor.constraint(equalTo: addToCollectionButton.bottomAnchor, constant: 50),
-            newCollectionTextField.heightAnchor.constraint(equalToConstant: 70)])
+            newCollectionTextField.heightAnchor.constraint(equalToConstant: 60)])
     }
     
     private func constrainCollectionsCV() {
         NSLayoutConstraint.activate([
-            collectionsCV.topAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
-            collectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            collectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 20),
+            collectionsCV.leadingAnchor.constraint(equalTo: newCollectionTextField.leadingAnchor),
+            collectionsCV.trailingAnchor.constraint(equalTo: newCollectionTextField.trailingAnchor),
             collectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
     }
 }
