@@ -21,7 +21,11 @@ class CollectionsCell: UICollectionViewCell {
     }()
     var addButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+//        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+        
+        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: UIImage.SymbolWeight.medium)
+        let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
+        button.setImage(addToCollection, for: .normal)
         return button
     }()
     

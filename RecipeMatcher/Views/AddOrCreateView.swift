@@ -131,8 +131,9 @@ class AddOrCreateView: UIView {
     
     private func constrainCollectionsCV() {
         NSLayoutConstraint.activate([
-            collectionsCV.centerYAnchor.constraint(equalTo: newCollectionTextField.centerYAnchor),
-            collectionsCV.leadingAnchor.constraint(equalTo: newCollectionTextField.leadingAnchor, constant: 2),
-            collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 50)])
+            collectionsCV.topAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor),
+            collectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            collectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            collectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
     }
 }

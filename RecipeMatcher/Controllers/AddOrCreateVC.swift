@@ -84,6 +84,7 @@ class AddOrCreateVC: UIViewController {
         view.backgroundColor = .clear
         blurEffect()
         loadCollections()
+        setDelegates()
         buttonsTapped()
     }
     override func viewWillAppear(_ animated: Bool) {
