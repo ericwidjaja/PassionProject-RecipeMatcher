@@ -1,5 +1,5 @@
 //
-//  FavCollectionVC.swift
+//  FavCollectionsVC.swift
 //  RecipeMatcher
 //
 //  Created by Eric Widjaja on 8/22/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavCollectionVC: UIViewController {
+class FavCollectionsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
