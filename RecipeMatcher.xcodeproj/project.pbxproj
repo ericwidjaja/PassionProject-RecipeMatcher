@@ -50,6 +50,8 @@
 		DF6C0CD623AF286C004BF388 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF6C0CD523AF286C004BF388 /* String+Validation.swift */; };
 		DF8AB78824EA110900804253 /* CollectionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78724EA110900804253 /* CollectionsCell.swift */; };
 		DF8AB78A24EB1CAE00804253 /* Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78924EB1CAE00804253 /* Protocol.swift */; };
+		DF8AB78C24F20B0500804253 /* FavCollectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78B24F20B0500804253 /* FavCollectionsVC.swift */; };
+		DF8AB78E24F20DE100804253 /* FavCollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB78D24F20DE100804253 /* FavCollectionsView.swift */; };
 		DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7935723BD4E6600D5B229 /* Favorite.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
@@ -111,6 +113,8 @@
 		DF6C0CD523AF286C004BF388 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		DF8AB78724EA110900804253 /* CollectionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionsCell.swift; sourceTree = "<group>"; };
 		DF8AB78924EB1CAE00804253 /* Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocol.swift; sourceTree = "<group>"; };
+		DF8AB78B24F20B0500804253 /* FavCollectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCollectionsVC.swift; sourceTree = "<group>"; };
+		DF8AB78D24F20DE100804253 /* FavCollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavCollectionsView.swift; sourceTree = "<group>"; };
 		DFE7935723BD4E6600D5B229 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +188,7 @@
 				DFF5DC8723B4376B00DB2B24 /* FavRecipesView.swift */,
 				DF262D8E23D0C067009B4806 /* FavdRecipesCell.swift */,
 				DF399A9224A815FE006D1560 /* AddOrCreateView.swift */,
+				DF8AB78D24F20DE100804253 /* FavCollectionsView.swift */,
 				DF8AB78724EA110900804253 /* CollectionsCell.swift */,
 			);
 			path = Views;
@@ -310,6 +315,7 @@
 				DFF5DC8323B3DB2700DB2B24 /* RecipeDetailVC.swift */,
 				DFF5DC8B23B43B5900DB2B24 /* FavRecipesVC.swift */,
 				DF399A9424A82058006D1560 /* AddOrCreateVC.swift */,
+				DF8AB78B24F20B0500804253 /* FavCollectionsVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -489,6 +495,7 @@
 				DF2F4E3823A83E890002E8CC /* RecipeDetailView.swift in Sources */,
 				DF6C0CCF23AF2056004BF388 /* FirebaseStorageService.swift in Sources */,
 				DF8AB78824EA110900804253 /* CollectionsCell.swift in Sources */,
+				DF8AB78E24F20DE100804253 /* FavCollectionsView.swift in Sources */,
 				DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */,
 				DF399A9524A82058006D1560 /* AddOrCreateVC.swift in Sources */,
 				DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */,
@@ -515,6 +522,7 @@
 				DF66AC242394AABF005E36A7 /* SearchView.swift in Sources */,
 				DF66AC1E23948CFD005E36A7 /* LogInScreenVC.swift in Sources */,
 				DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */,
+				DF8AB78C24F20B0500804253 /* FavCollectionsVC.swift in Sources */,
 				DF6C0CC923AEEF3E004BF388 /* AppUser.swift in Sources */,
 				DF2DFC4D24E231DA009247F3 /* CollectionPersistence.swift in Sources */,
 				DF35F01C239472A000638254 /* Secret.swift in Sources */,
