@@ -12,11 +12,9 @@ class FavCollectionsVC: UIViewController {
     
     //MARK: - Properties
     var favCollView = FavCollectionsView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(favCollView)
-
     }
-
 }
