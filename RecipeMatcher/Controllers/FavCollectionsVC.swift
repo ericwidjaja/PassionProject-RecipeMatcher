@@ -16,5 +16,6 @@ class FavCollectionsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(favCollView)
+        view.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
     }
 }

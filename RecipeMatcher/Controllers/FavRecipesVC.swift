@@ -87,7 +87,6 @@ class FavRecipesVC: UIViewController {
         faveRecipeView.favoriteList.delegate = self
         faveRecipeView.favoriteList.dataSource = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-        view.backgroundColor = .systemTeal
         getUserFavorites()
     }
     

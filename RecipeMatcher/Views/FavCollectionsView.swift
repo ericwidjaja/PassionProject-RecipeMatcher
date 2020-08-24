@@ -11,22 +11,35 @@ import Kingfisher
 
 class FavCollectionsView: UIView {
     
+//MARK: - Objects
+    lazy var backgroundImageView: UIImageView = {
+        let mainImage = UIImageView()
+        mainImage.image = #imageLiteral(resourceName: "MainScreen")
+        mainImage.contentMode = .scaleAspectFill
+        mainImage.clipsToBounds = true
+        return mainImage
+    }()
+    
     lazy var favCollectionsTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "My Collections"
-        label.font = .boldSystemFont(ofSize: 40)
+        label.font = .boldSystemFont(ofSize: 30)
         label.textColor = .white
         return label
     }()
     
+
+//MARK: - Constraints
+
+    
         override init(frame: CGRect) {
             super.init(frame: UIScreen.main.bounds)
-            constraintsFavCollectionsTitleLabel()
+            favCollViewConstraints()
         }
     
         required init?(coder aDecoder: NSCoder) {
             super.init(coder: aDecoder)
-            constraintsFavCollectionsTitleLabel()
+            
         }
 
     //MARK: - FavCollectionsView Constraints
@@ -34,10 +47,14 @@ class FavCollectionsView: UIView {
         addSubview(favCollectionsTitleLabel)
         favCollectionsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            favCollectionsTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 2),
+            favCollectionsTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
             favCollectionsTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             favCollectionsTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            favCollectionsTitleLabel.heightAnchor.constraint(equalToConstant: 50)
+            favCollectionsTitleLabel.heightAnchor.constraint(equalToConstant: 35)
         ])
+    }
+    
+    private func favCollViewConstraints(){
+        constraintsFavCollectionsTitleLabel()
     }
 }

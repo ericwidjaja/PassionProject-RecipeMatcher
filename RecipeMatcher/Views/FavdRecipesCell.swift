@@ -22,6 +22,7 @@ class FavdRecipesCell: UICollectionViewCell {
         label.text = "Recipe Label"
         label.font = UIFont.init(name: "Rockwell", size: 14)
         label.numberOfLines = 2
+        label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
