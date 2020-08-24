@@ -104,7 +104,7 @@ class RecipesCollResultsVC: UIViewController {
         }
     }
     
-    //MARK: - Lifecycle
+//MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(recipesCollView)

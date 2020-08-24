@@ -4,8 +4,11 @@
 
 import UIKit
 import Foundation
+import Kingfisher
 
 class RecipeCollView: UIView {
+    
+//MARK: - Objects
     lazy var recipeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 390, height: 450)
