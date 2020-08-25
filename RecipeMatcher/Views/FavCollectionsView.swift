@@ -8,22 +8,16 @@ import Kingfisher
 
 class FavCollectionsView: UIView {
     
-//MARK: - Objects
-//    lazy var backgroundImageView: UIImageView = {
-//        let mainImage = UIImageView()
-//        mainImage.image = #imageLiteral(resourceName: "MainScreen")
-//        mainImage.contentMode = .scaleAspectFill
-//        mainImage.clipsToBounds = true
-//        return mainImage
-//    }()
+    //MARK: - Objects
     
     lazy var myCollectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 180, height: 100)
+        layout.itemSize = CGSize(width: 200, height: 200)
         layout.scrollDirection = .vertical
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: -15, right: 2)
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cv.backgroundColor = .gray
-        cv.register(CollectionsCell.self, forCellWithReuseIdentifier: "myCell")
+        cv.backgroundColor = .lightGray
+
         cv.showsHorizontalScrollIndicator = false
         return cv
     }()
@@ -36,21 +30,18 @@ class FavCollectionsView: UIView {
         return label
     }()
     
-
-//MARK: - Constraints
-
-        override init(frame: CGRect) {
-            super.init(frame: UIScreen.main.bounds)
-            setMyFavCollectionsUI()
-        }
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+        setMyFavCollectionsConstraints()
+    }
     
-        required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-        }
-
-//MARK: - FavCollectionsView Constraints
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setMyFavCollectionsConstraints()
+    }
     
-    private func setMyFavCollectionsUI() {
+    //MARK: - FavCollectionsView Constraints
+    private func setMyFavCollectionsConstraints() {
         self.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 0.8967786815)
         myFavCollTitleLabelConstraints()
         myCollectionsCVConstraints()
@@ -74,5 +65,5 @@ class FavCollectionsView: UIView {
             myCollectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             myCollectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             myCollectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
-        }
+    }
 }

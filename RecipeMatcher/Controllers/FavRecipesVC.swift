@@ -96,6 +96,7 @@ class FavRecipesVC: UIViewController {
     }
 }
 
+//MARK: - Extensions
 extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favoriteRecipe.count

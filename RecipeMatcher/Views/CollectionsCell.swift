@@ -1,24 +1,29 @@
-//
 //  CollectionsCell.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 8/16/20.
 //  Copyright © 2020 Eric W. All rights reserved.
-//
 
 import UIKit
 
 class CollectionsCell: UICollectionViewCell {
-    var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        image.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+    
+    lazy var collectionsImage: UIImageView = {
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        image.image = UIImage(named: "RecipeImgHolder")
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        image.layer.allowsGroupOpacity = true
+        image.layer.cornerRadius = 20
+//        image.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         return image
     }()
     
-    var nameLabel: UILabel = {
+    lazy var nameLabel: UILabel = {
         let label = UILabel()
+        label.font = UIFont.init(name: "Rockwell", size: 14)
         label.textAlignment = .center
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     

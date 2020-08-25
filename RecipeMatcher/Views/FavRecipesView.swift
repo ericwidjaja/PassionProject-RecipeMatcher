@@ -10,11 +10,12 @@ class FavRecipesView: UIView {
         layout.itemSize = CGSize(width: 200, height: 200)
         layout.scrollDirection = .vertical
         layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: -15, right: 2)
-        let cellTable = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        cellTable.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
-        return cellTable
+        let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        cv.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1)
+        return cv
     }()
     
+   
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
         favRecipesConstraints()
@@ -24,7 +25,7 @@ class FavRecipesView: UIView {
         super.init(coder: aDecoder)
         favRecipesConstraints()
     }
-    
+     //MARK: - Constraints
     private func favRecipesConstraints() {
         addSubview(favoriteList)
         favoriteList.translatesAutoresizingMaskIntoConstraints = false
