@@ -1,37 +1,37 @@
-//  CollectionsCell.swift
+//  AddCreateCell.swift
 //  RecipeMatcher
-//  Created by Eric Widjaja on 8/16/20.
+//  Created by Eric Widjaja on 8/24/20.
 //  Copyright © 2020 Eric W. All rights reserved.
 
 import UIKit
 
-class CollectionsCell: UICollectionViewCell {
+class AddCreateCell: UICollectionViewCell {
     
     lazy var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 115))
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
         image.layer.cornerRadius = 20
-//        image.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
         return image
     }()
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 18)
+        label.font = UIFont.init(name: "Rockwell", size: 16)
         label.textAlignment = .center
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
-    var addButton: UIButton = {
+    lazy var addButton: UIButton = {
         let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
         let config = UIImage.SymbolConfiguration(pointSize: 40)
         let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         button.setImage(addToCollection, for: .normal)
+        button.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
         return button
     }()
     

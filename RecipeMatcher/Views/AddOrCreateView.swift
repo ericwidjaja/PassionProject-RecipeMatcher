@@ -1,10 +1,7 @@
-//
 //  AddOrCreateView.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 6/27/20.
 //  Copyright © 2020 Eric W. All rights reserved.
-//
 
 import UIKit
 
@@ -50,10 +47,10 @@ class AddOrCreateView: UIView {
     
     var collectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 100, height: 115)
+        layout.estimatedItemSize = CGSize(width: 100, height: 130)
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
-        collection.register(CollectionsCell.self, forCellWithReuseIdentifier: "addCell")
+        collection.register(AddCreateCell.self, forCellWithReuseIdentifier: "addCell")
         return collection
     }()
     
@@ -68,7 +65,7 @@ class AddOrCreateView: UIView {
     
     lazy var stackBackgroundView:  UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.6687944115, green: 0.4859332079, blue: 0.4131456941, alpha: 0.7249304366)
+        view.backgroundColor = #colorLiteral(red: 0.7057714462, green: 0.5156850815, blue: 0.4401528835, alpha: 0.5958101455)
         view.layer.borderColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         return view
     }()
