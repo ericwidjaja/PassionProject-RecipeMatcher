@@ -14,7 +14,7 @@ class FavCollectionsVC: UIViewController {
     var myFavCollections = [FaveCollections]() {
         didSet {
             favCollView.myCollectionsCV.reloadData()
-            dump(self.favCollView) // to check if the collections are existed
+//            dump(self.favCollView) // to check if the collections are existed
         }
     }
     
@@ -59,7 +59,7 @@ extension FavCollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate
             return UICollectionViewCell()
         }
         let collection = myFavCollections[indexPath.row]
-        cell.nameLabel.text = collection.recipeType
+        cell.recipeTypeLabel.text = collection.recipeType
         cell.addButton.isHidden = true
         return cell
     }

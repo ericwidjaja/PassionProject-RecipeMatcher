@@ -14,13 +14,13 @@ class CollectionsCell: UICollectionViewCell {
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
         image.layer.cornerRadius = 20
-//        image.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+        image.backgroundColor = .clear
         return image
     }()
     
-    lazy var nameLabel: UILabel = {
+    lazy var recipeTypeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 18)
+        label.font = UIFont.init(name: "Rockwell", size: 16)
         label.textAlignment = .center
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
@@ -39,20 +39,20 @@ class CollectionsCell: UICollectionViewCell {
         contentView.addSubview(collectionsImage)
         collectionsImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             collectionsImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionsImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionsImage.widthAnchor.constraint(equalToConstant: collectionsImage.frame.width),
             collectionsImage.heightAnchor.constraint(equalToConstant: collectionsImage.frame.height)])
     }
     func setNameConstraints() {
-        contentView.addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(recipeTypeLabel)
+        recipeTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 10),
-            nameLabel.leadingAnchor.constraint(equalTo: collectionsImage.leadingAnchor),
-            nameLabel.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor),
-            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
+            recipeTypeLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 10),
+            recipeTypeLabel.leadingAnchor.constraint(equalTo: collectionsImage.leadingAnchor),
+            recipeTypeLabel.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor),
+            recipeTypeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
     }
     func setAddButtonConstraints() {
         collectionsImage.addSubview(addButton)
@@ -68,7 +68,7 @@ class CollectionsCell: UICollectionViewCell {
         super.init(frame: frame)
         setImageConstraints()
         setNameConstraints()
-        setAddButtonConstraints()
+//        setAddButtonConstraints()
     }
     
     required init?(coder: NSCoder) {
