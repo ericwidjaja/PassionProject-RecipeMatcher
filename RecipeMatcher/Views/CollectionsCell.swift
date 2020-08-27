@@ -8,12 +8,13 @@ import UIKit
 class CollectionsCell: UICollectionViewCell {
     
     lazy var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
-        image.image = UIImage(named: "RecipeImgHolder")
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 396, height: 200))
+//        let image = UIImageView()
+        image.image = UIImage(named: "IceCream")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 20
+        image.layer.cornerRadius = 10
         image.backgroundColor = .clear
         return image
     }()
