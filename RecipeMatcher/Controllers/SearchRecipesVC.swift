@@ -42,6 +42,7 @@ class SearchRecipesVC : UIViewController {
           }, completion: nil)
         }
       }))
+        
       let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
       alert.addAction(action)
       alert.addAction(cancel)
@@ -63,8 +64,8 @@ class SearchRecipesVC : UIViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
     }
 }
-//MARK: - Extensions
 
+//MARK: - Extensions
 extension SearchRecipesVC: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         searchView.ingredientTextField.clearsOnBeginEditing = true

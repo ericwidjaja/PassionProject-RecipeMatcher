@@ -60,7 +60,7 @@ class AddOrCreateVC: UIViewController {
     
 //    MARK: - OBJC Functions
     @objc func createButtonPressed(_ sender: UIButton) {
-            guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != "" else {
+        guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != "" else {
                 print("please create name for your collection")
                 return
             }

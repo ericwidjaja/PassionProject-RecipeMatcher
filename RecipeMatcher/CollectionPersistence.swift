@@ -13,6 +13,7 @@ class CollectionPersistence {
     func save(newElement: FaveCollections) throws {
         try persistanceHelper.save(newElement: newElement)
     }
+    
     func replace(newArr: [FaveCollections]) throws {
         try persistanceHelper.replace(arrOfElements: newArr)
     }

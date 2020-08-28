@@ -20,6 +20,20 @@ class PersistenceHelper<T: Codable> {
         try serializedData.write(to: url, options: Data.WritingOptions.atomic)
     }
     
+    func delete(num: Int) throws{
+        var elements = try getObjects()
+        elements.remove(at: num)
+           let serializedData = try PropertyListEncoder().encode(elements)
+        try serializedData.write(to: url, options: Data.WritingOptions.atomic)
+    }
+    
+    func edit(num: Int, newElement: T) throws{
+        var elements = try getObjects()
+        elements[num] = newElement
+        let serializedData = try PropertyListEncoder().encode(elements)
+        try serializedData.write(to: url, options: Data.WritingOptions.atomic)
+    }
+    
     func replace(arrOfElements: [T]) throws {
         let serializedData = try PropertyListEncoder().encode(arrOfElements)
         try serializedData.write(to: url, options: Data.WritingOptions.atomic)
