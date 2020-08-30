@@ -46,6 +46,7 @@ class PersistenceHelper<T: Codable> {
     private let fileName: String
     
     private var url: URL {
+        print(filePathFromDocumentsDirectory(filename: fileName))
         return filePathFromDocumentsDirectory(filename: fileName)
     }
     

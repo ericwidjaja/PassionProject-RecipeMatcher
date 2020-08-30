@@ -67,8 +67,9 @@ class AddOrCreateVC: UIViewController {
     
 //    MARK: - OBJC Functions
     @objc func createButtonPressed(_ sender: UIButton) {
-        guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != "" else {
-                showAlert()
+        guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != ""
+            else {
+                self.showAlert()
                 return
             }
             if let recipe = recipeCollection {
