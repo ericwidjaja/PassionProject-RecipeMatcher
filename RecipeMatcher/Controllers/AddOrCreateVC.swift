@@ -54,6 +54,13 @@ class AddOrCreateVC: UIViewController {
         }
     }
     
+    private func showAlert() {
+        let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
+
     func buttonsTapped() {
         addOrCreateView.addToCollectionButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
     }
@@ -61,7 +68,7 @@ class AddOrCreateVC: UIViewController {
 //    MARK: - OBJC Functions
     @objc func createButtonPressed(_ sender: UIButton) {
         guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != "" else {
-                print("please create name for your collection")
+                showAlert()
                 return
             }
             if let recipe = recipeCollection {
