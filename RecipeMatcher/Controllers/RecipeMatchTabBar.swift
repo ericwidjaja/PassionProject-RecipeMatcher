@@ -9,7 +9,7 @@ class RecipeMatchTabBar: UITabBarController {
     
     lazy var navController2 = UINavigationController(rootViewController: FavRecipesVC())
     
-    lazy var navController3 = UINavigationController(rootViewController: FavCollectionsVC())
+    lazy var navController3 = UINavigationController(rootViewController: MyCookbookCollectionsVC())
     
     override func viewDidLoad() {
         super.viewDidLoad()

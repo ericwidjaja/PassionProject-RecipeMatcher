@@ -14,7 +14,7 @@ class AddOrCreateVC: UIViewController {
     var addOrCreateView = AddOrCreateView()
     var recipeCollection: RecipeWrapper!
     var delegate: Reload?
-    var collections = [FaveCollections]() {
+    var collections = [CookbookCollections]() {
         didSet {
             self.addOrCreateView.collectionsCV.reloadData()
             dump(collections)
@@ -43,7 +43,7 @@ class AddOrCreateVC: UIViewController {
         }
     }
     
-    private func saveNewCollection(newCollection: FaveCollections) {
+    private func saveNewCollection(newCollection: CookbookCollections) {
         do {
             try CollectionPersistence.manager
             .save(newElement: newCollection)
@@ -73,10 +73,10 @@ class AddOrCreateVC: UIViewController {
                 return
             }
             if let recipe = recipeCollection {
-                let newCollection = FaveCollections(recipeType: collectionName, recipes: [recipe])
+                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [recipe])
                 saveNewCollection(newCollection: newCollection)
             } else {
-                let newCollection = FaveCollections(recipeType: collectionName, recipes: [])
+                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [])
                 saveNewCollection(newCollection: newCollection)
             }
         }

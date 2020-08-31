@@ -1,4 +1,4 @@
-//  FavCollectionsView.swift
+//  CookbookCollectionsView.swift
 //  RecipeMatcher
 //  Created by Eric Widjaja on 8/22/20.
 //  Copyright © 2020 Eric W. All rights reserved.
@@ -6,7 +6,7 @@
 import UIKit
 import Kingfisher
 
-class FavCollectionsView: UIView {
+class CookbookCollectionsView: UIView {
     
     //MARK: - Objects
     lazy var myCollectionsCV: UICollectionView = {
@@ -20,10 +20,10 @@ class FavCollectionsView: UIView {
         return cv
     }()
     
-    lazy var favCollectionsTitleLabel: UILabel = {
+    lazy var myCollectionLabel: UILabel = {
         let label = UILabel()
-        label.text = "My Collections"
-        label.font = .boldSystemFont(ofSize: 30)
+        label.text = "My Cookbook Collections"
+        label.font = .boldSystemFont(ofSize: 35)
         label.textColor = .white
         return label
     }()
@@ -46,20 +46,20 @@ class FavCollectionsView: UIView {
     }
     
     private func myFavCollTitleLabelConstraints() {
-        addSubview(favCollectionsTitleLabel)
-        favCollectionsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(myCollectionLabel)
+        myCollectionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            favCollectionsTitleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
-            favCollectionsTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            favCollectionsTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            favCollectionsTitleLabel.heightAnchor.constraint(equalToConstant: 45)])
+            myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
+            myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            myCollectionLabel.heightAnchor.constraint(equalToConstant: 45)])
     }
     
     private func myCollectionsCVConstraints() {
         addSubview(myCollectionsCV)
         myCollectionsCV.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionsCV.topAnchor.constraint(equalTo: favCollectionsTitleLabel.bottomAnchor, constant: 10),
+            myCollectionsCV.topAnchor.constraint(equalTo: myCollectionLabel.bottomAnchor, constant: 10),
             myCollectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             myCollectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             myCollectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])

@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct FaveCollections: Codable {
+struct CookbookCollections: Codable {
     let recipeType: String
     var recipes: [RecipeWrapper]
     
