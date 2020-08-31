@@ -7,12 +7,11 @@ import Foundation
 
 struct FaveCollections: Codable {
     let recipeType: String
-//    let recipeTitle: String
     var recipes: [RecipeWrapper]
     
-    init(recipeType: String, recipes: [RecipeWrapper]) {
+    init(recipeType: String, recipes: [RecipeWrapper])
+    {
         self.recipeType = recipeType
-//        self.recipeTitle = recipeTitle
         self.recipes = recipes
     }
 }

@@ -60,7 +60,7 @@ extension FavCollectionsVC: UICollectionViewDataSource, UICollectionViewDelegate
         }
         let collection = myFavCollections[indexPath.row]
         cell.recipeTypeLabel.text = collection.recipeType
-        cell.addButton.isHidden = true
+//        cell.collectionsImage.image
         return cell
     }
 }
