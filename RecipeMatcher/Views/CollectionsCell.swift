@@ -23,8 +23,9 @@ class CollectionsCell: UICollectionViewCell {
         let label = UILabel()
         label.font = UIFont.init(name: "Rockwell", size: 20)
         label.textAlignment = .center
-        label.textColor = .black
-        label.backgroundColor = .gray
+        label.textColor = .white
+        label.layer.cornerRadius = 10
+        label.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
@@ -47,13 +48,14 @@ class CollectionsCell: UICollectionViewCell {
     }
     
     func setNameConstraints() {
-        collectionsImage.addSubview(recipeTypeLabel)
+        contentView.addSubview(recipeTypeLabel)
         recipeTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-//            recipeTypeLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 10),
-            recipeTypeLabel.leadingAnchor.constraint(equalTo: collectionsImage.leadingAnchor),
-            recipeTypeLabel.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor),
-            recipeTypeLabel.bottomAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: -2)])
+            recipeTypeLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 2),
+            recipeTypeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            recipeTypeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            recipeTypeLabel.heightAnchor.constraint(equalToConstant: 24)
+        ])
     }
     func setAddButtonConstraints() {
         collectionsImage.addSubview(addButton)
