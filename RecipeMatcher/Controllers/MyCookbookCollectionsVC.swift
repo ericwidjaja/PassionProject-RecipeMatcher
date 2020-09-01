@@ -14,8 +14,10 @@ class MyCookbookCollectionsVC: UIViewController {
     var cookbkCollCell = CollectionsCell()
     var myCookbookCollections = [CookbookCollections]() {
         didSet {
-            cookbookCV.myCollectionsCV.reloadData()
-            //            dump(self.favCollView) // to check if the collections are existed
+            DispatchQueue.main.async {
+                self.cookbookCV.myCollectionsCV.reloadData()
+                dump(self.myCookbookCollections) // to check if the collections are existed
+            }
         }
     }
     
@@ -61,7 +63,7 @@ extension MyCookbookCollectionsVC: UICollectionViewDataSource, UICollectionViewD
         }
         let collection = myCookbookCollections[indexPath.row]
         cell.recipeTypeLabel.text = collection.recipeType
-        //        cell.collectionsImage.image
+//        cell.collectionsImage.image = collection.image
         return cell
     }
 }

@@ -139,7 +139,7 @@ extension RecipesCollResultsVC: UICollectionViewDataSource, UICollectionViewDele
         present(recipeDestinationVC, animated: true)
     }
 }
-//MARK: - Extensions
+
 extension RecipesCollResultsVC: HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
         saveRecipeToFireStore(tag)

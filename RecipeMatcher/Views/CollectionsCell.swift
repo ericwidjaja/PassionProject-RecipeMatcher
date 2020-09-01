@@ -7,9 +7,18 @@ import UIKit
 
 class CollectionsCell: UICollectionViewCell {
     
+//    lazy var collectionsImage: UIImageView = {
+//        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 396, height: 200))
+//        image.image = UIImage(named: "IceCream")
+//        image.contentMode = .scaleAspectFill
+//        image.clipsToBounds = true
+//        image.layer.allowsGroupOpacity = true
+//        image.layer.cornerRadius = 10
+//        image.backgroundColor = .clear
+//        return image
+//    }()
     lazy var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 396, height: 200))
-//        let image = UIImageView()
+        let image = UIImageView()
         image.image = UIImage(named: "IceCream")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
@@ -30,13 +39,13 @@ class CollectionsCell: UICollectionViewCell {
         return label
     }()
     
-    var addButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        let config = UIImage.SymbolConfiguration(pointSize: 40)
-        let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
-        button.setImage(addToCollection, for: .normal)
-        return button
-    }()
+//    var addButton: UIButton = {
+//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+//        let config = UIImage.SymbolConfiguration(pointSize: 40)
+//        let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
+//        button.setImage(addToCollection, for: .normal)
+//        return button
+//    }()
     
     func setImageConstraints() {
         contentView.addSubview(collectionsImage)
@@ -57,15 +66,16 @@ class CollectionsCell: UICollectionViewCell {
             recipeTypeLabel.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
-    func setAddButtonConstraints() {
-        collectionsImage.addSubview(addButton)
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            addButton.centerYAnchor.constraint(equalTo: collectionsImage.centerYAnchor),
-            addButton.centerXAnchor.constraint(equalTo: collectionsImage.centerXAnchor),
-            addButton.heightAnchor.constraint(equalToConstant: addButton.frame.height),
-            addButton.widthAnchor.constraint(equalToConstant: addButton.frame.width)])
-    }
+    
+//    func setAddButtonConstraints() {
+//        collectionsImage.addSubview(addButton)
+//        addButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            addButton.centerYAnchor.constraint(equalTo: collectionsImage.centerYAnchor),
+//            addButton.centerXAnchor.constraint(equalTo: collectionsImage.centerXAnchor),
+//            addButton.heightAnchor.constraint(equalToConstant: addButton.frame.height),
+//            addButton.widthAnchor.constraint(equalToConstant: addButton.frame.width)])
+//    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
