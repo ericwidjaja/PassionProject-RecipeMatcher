@@ -53,13 +53,7 @@ class AddOrCreateVC: UIViewController {
             print(error)
         }
     }
-    
-    //    private func showAlert() {
-    //        let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
-    //        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-    //        alert.addAction(ok)
-    //        present(alert, animated: true, completion: nil)
-    //    }
+
     private func showAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -79,13 +73,18 @@ class AddOrCreateVC: UIViewController {
                 return
         }
         
-//        if let recipe = recipeCollection {
-//            let newCollection = CookbookCollections(recipeType: collectionName, recipes: [recipe])
-//            saveNewCollection(newCollection: newCollection)
-//        } else {
-//            let newCollection = CookbookCollections(recipeType: collectionName, recipes: [])
-//            saveNewCollection(newCollection: newCollection)
-//        }
+        let currentCollections = collections
+        if currentCollections.contains(where: {$0.recipeType.lowercased() == collectionName.lowercased()}) {
+            self.showAlert(title: nil, message: "This collection already exists \n Please create another collection")
+        } else {
+            if let recipe = recipeCollection {
+                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [recipe])
+                saveNewCollection(newCollection: newCollection)
+            } else {
+                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [])
+                saveNewCollection(newCollection: newCollection)
+            }
+        }
     }
     
     private func setDelegates() {

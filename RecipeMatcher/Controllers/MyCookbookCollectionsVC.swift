@@ -16,7 +16,7 @@ class MyCookbookCollectionsVC: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.cookbookCV.myCollectionsCV.reloadData()
-                dump(self.myCookbookCollections) // to check if the collections are existed
+//                dump(self.myCookbookCollections) // to check if the collections are existed
             }
         }
     }
