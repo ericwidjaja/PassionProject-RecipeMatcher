@@ -46,7 +46,7 @@ class AddOrCreateVC: UIViewController {
     private func saveNewCollection(newCollection: CookbookCollections) {
         do {
             try CollectionPersistence.manager
-            .save(newElement: newCollection)
+                .save(newElement: newCollection)
             self.addOrCreateView.window?.rootViewController?.dismiss(animated: true, completion: nil)
             delegate?.reloadCollectionView()
         } catch {
@@ -54,32 +54,40 @@ class AddOrCreateVC: UIViewController {
         }
     }
     
-    private func showAlert() {
-        let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
+    //    private func showAlert() {
+    //        let alert = UIAlertController(title: "Required", message: "Enter a name for new collection", preferredStyle: .alert)
+    //        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+    //        alert.addAction(ok)
+    //        present(alert, animated: true, completion: nil)
+    //    }
+    private func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
     }
-
+    
     func buttonsTapped() {
         addOrCreateView.addToCollectionButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
     }
     
-//    MARK: - OBJC Functions
+    //    MARK: - OBJC Functions
     @objc func createButtonPressed(_ sender: UIButton) {
         guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != ""
             else {
-                self.showAlert()
+                self.showAlert(title: "Required", message: "Enter a name for new collection")
                 return
-            }
-            if let recipe = recipeCollection {
-                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [recipe])
-                saveNewCollection(newCollection: newCollection)
-            } else {
-                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [])
-                saveNewCollection(newCollection: newCollection)
-            }
         }
+        
+//        if let recipe = recipeCollection {
+//            let newCollection = CookbookCollections(recipeType: collectionName, recipes: [recipe])
+//            saveNewCollection(newCollection: newCollection)
+//        } else {
+//            let newCollection = CookbookCollections(recipeType: collectionName, recipes: [])
+//            saveNewCollection(newCollection: newCollection)
+//        }
+    }
+    
     private func setDelegates() {
         self.addOrCreateView.collectionsCV.delegate = self
         self.addOrCreateView.collectionsCV.dataSource = self

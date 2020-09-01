@@ -23,7 +23,7 @@ class CookbookCollectionsView: UIView {
     lazy var myCollectionLabel: UILabel = {
         let label = UILabel()
         label.text = "My Cookbook Collections"
-        label.font = .boldSystemFont(ofSize: 35)
+        label.font = .boldSystemFont(ofSize: 30)
         label.textColor = .white
         return label
     }()

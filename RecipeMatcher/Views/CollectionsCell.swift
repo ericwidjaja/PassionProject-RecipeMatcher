@@ -34,7 +34,7 @@ class CollectionsCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = .white
         label.layer.cornerRadius = 10
-        label.backgroundColor = #colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1)
+        label.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
