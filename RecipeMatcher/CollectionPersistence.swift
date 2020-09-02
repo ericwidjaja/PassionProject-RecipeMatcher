@@ -8,17 +8,17 @@ import Foundation
 class CollectionPersistence {
     private init() {}
     static let manager = CollectionPersistence()
-    private let persistanceHelper = PersistenceHelper<CookbookCollections>.init(fileName: "FaveCollections.plist")
+    private let persistanceHelper = PersistenceHelper<CookbookCollection>.init(fileName: "FaveCollections.plist")
     
-    func save(newElement: CookbookCollections) throws {
+    func save(newElement: CookbookCollection) throws {
         try persistanceHelper.save(newElement: newElement)
     }
     
-    func replace(newArr: [CookbookCollections]) throws {
+    func replace(newArr: [CookbookCollection]) throws {
         try persistanceHelper.replace(arrOfElements: newArr)
     }
     
-    func getRecipe() throws -> [CookbookCollections] {
+    func getRecipe() throws -> [CookbookCollection] {
         return try persistanceHelper.getObjects()
     }
 }

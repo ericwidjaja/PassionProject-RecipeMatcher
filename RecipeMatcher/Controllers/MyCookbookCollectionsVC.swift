@@ -12,7 +12,7 @@ class MyCookbookCollectionsVC: UIViewController {
     //MARK: - Properties
     var cookbookCV = CookbookCollectionsView()
     var cookbkCollCell = CollectionsCell()
-    var myCookbookCollections = [CookbookCollections]() {
+    var myCookbookCollections = [CookbookCollection]() {
         didSet {
             DispatchQueue.main.async {
                 self.cookbookCV.myCollectionsCV.reloadData()
@@ -63,7 +63,10 @@ extension MyCookbookCollectionsVC: UICollectionViewDataSource, UICollectionViewD
         }
         let collection = myCookbookCollections[indexPath.row]
         cell.recipeTypeLabel.text = collection.recipeType
-//        cell.collectionsImage.image = collection.image
+        guard let imageUrl = collection.recipes.randomElement()?.image else {
+            return cell
+        }
+        cell.collectionsImage.kf.setImage(with: URL(string: imageUrl))
         return cell
     }
 }

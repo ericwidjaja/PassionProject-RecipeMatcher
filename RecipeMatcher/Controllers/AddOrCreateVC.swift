@@ -14,7 +14,7 @@ class AddOrCreateVC: UIViewController {
     var addOrCreateView = AddOrCreateView()
     var recipeCollection: RecipeWrapper!
     var delegate: Reload?
-    var collections = [CookbookCollections]() {
+    var collections = [CookbookCollection]() {
         didSet {
             self.addOrCreateView.collectionsCV.reloadData()
             dump(collections)
@@ -43,7 +43,7 @@ class AddOrCreateVC: UIViewController {
         }
     }
     
-    private func saveNewCollection(newCollection: CookbookCollections) {
+    private func saveNewCollection(newCollection: CookbookCollection) {
         do {
             try CollectionPersistence.manager
                 .save(newElement: newCollection)
@@ -78,10 +78,10 @@ class AddOrCreateVC: UIViewController {
             self.showAlert(title: nil, message: "This collection already exists \n Please create another collection")
         } else {
             if let recipe = recipeCollection {
-                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [recipe])
+                let newCollection = CookbookCollection(recipeType: collectionName, recipes: [recipe])
                 saveNewCollection(newCollection: newCollection)
             } else {
-                let newCollection = CookbookCollections(recipeType: collectionName, recipes: [])
+                let newCollection = CookbookCollection(recipeType: collectionName, recipes: [])
                 saveNewCollection(newCollection: newCollection)
             }
         }
