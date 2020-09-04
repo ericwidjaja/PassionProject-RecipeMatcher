@@ -5,19 +5,17 @@
 
 import UIKit
 import Kingfisher
-import FirebaseAuth
-import FirebaseFirestore
 
 class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
     var recipeCollection: RecipeWrapper!
-    var delegate: Reload?
+    var delegate: ReloadViewDelegate?
     var collections = [CookbookCollection]() {
         didSet {
             self.addOrCreateView.collectionsCV.reloadData()
-            dump(collections)
+            //            dump(collections)
         }
     }
     
@@ -53,7 +51,7 @@ class AddOrCreateVC: UIViewController {
             print(error)
         }
     }
-
+    
     private func showAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -65,25 +63,30 @@ class AddOrCreateVC: UIViewController {
         addOrCreateView.addToCollectionButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
     }
     
-    //    MARK: - OBJC Functions
+    func updateCollection(collection: CookbookCollection) {
+        let allColl = try? CollectionPersistence.manager.getRecipe()
+        if let index = allColl?.firstIndex(where: {$0.recipeType == collection.recipeType}) {
+            try? CollectionPersistence.manager.updateCollection(collection: collection, index: index) }
+    }
+    
+    //MARK: - OBJC Functions
     @objc func createButtonPressed(_ sender: UIButton) {
         guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != ""
             else {
                 self.showAlert(title: "Required", message: "Enter a name for new collection")
                 return
         }
-        
         let currentCollections = collections
-        if currentCollections.contains(where: {$0.recipeType.lowercased() == collectionName.lowercased()}) {
+        guard !currentCollections.contains(where: {$0.recipeType.lowercased() == collectionName.lowercased()}) else {
             self.showAlert(title: nil, message: "This collection already exists \n Please create another collection")
+            return
+        }
+        if let recipe = recipeCollection {
+            let newCollection = CookbookCollection(recipeType: collectionName, recipes: [recipe])
+            saveNewCollection(newCollection: newCollection)
         } else {
-            if let recipe = recipeCollection {
-                let newCollection = CookbookCollection(recipeType: collectionName, recipes: [recipe])
-                saveNewCollection(newCollection: newCollection)
-            } else {
-                let newCollection = CookbookCollection(recipeType: collectionName, recipes: [])
-                saveNewCollection(newCollection: newCollection)
-            }
+            let newCollection = CookbookCollection(recipeType: collectionName, recipes: [])
+            saveNewCollection(newCollection: newCollection)
         }
     }
     
