@@ -7,16 +7,18 @@ import UIKit
 
 class CollectionsCell: UICollectionViewCell {
     
-//    lazy var collectionsImage: UIImageView = {
-//        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 396, height: 200))
-//        image.image = UIImage(named: "IceCream")
-//        image.contentMode = .scaleAspectFill
-//        image.clipsToBounds = true
-//        image.layer.allowsGroupOpacity = true
-//        image.layer.cornerRadius = 10
-//        image.backgroundColor = .clear
-//        return image
-//    }()
+    //MARK: - Properties
+    lazy var collView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let cvHorizontal = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cvHorizontal.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+        cvHorizontal.dataSource = self
+        cvHorizontal.delegate = self
+        cvHorizontal.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
+        return cvHorizontal
+    }()
+    
     lazy var collectionsImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IceCream")
@@ -39,52 +41,73 @@ class CollectionsCell: UICollectionViewCell {
         return label
     }()
     
-//    var addButton: UIButton = {
-//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-//        let config = UIImage.SymbolConfiguration(pointSize: 40)
-//        let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
-//        button.setImage(addToCollection, for: .normal)
-//        return button
-//    }()
+    var recipes: [RecipeWrapper]! {
+        didSet {
+            //            print(recipes)
+        }
+    }
     
-    func setImageConstraints() {
-        contentView.addSubview(collectionsImage)
-        collectionsImage.translatesAutoresizingMaskIntoConstraints = false
+    func reloadData() {
+        DispatchQueue.main.async {
+            self.collView.reloadData()
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setCVConstraints()
+        setNameConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+//MARK: - Extensions
+extension CollectionsCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return recipes.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as? CkbkCVCell else {//casting it so you can access your properties
+            return UICollectionViewCell()}
+        
+        let specificRecipe = recipes[indexPath.row]
+        cell.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        let imgURL = URL(string: specificRecipe.image)
+        cell.ckbkImage.kf.setImage(with: imgURL)
+        return cell
+    }
+}
+
+extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 100, height: 190)
+    }
+}
+
+
+extension CollectionsCell {
+    // MARK: Constraints
+    func setCVConstraints() {
+        contentView.addSubview(collView)
+        collView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            collectionsImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            collectionsImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
+            collView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            collView.heightAnchor.constraint(equalToConstant: 200),
+            collView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            collView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
     
     func setNameConstraints() {
         contentView.addSubview(recipeTypeLabel)
         recipeTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            recipeTypeLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 2),
+            recipeTypeLabel.topAnchor.constraint(equalTo: collView.bottomAnchor, constant: 2),
             recipeTypeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             recipeTypeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            recipeTypeLabel.heightAnchor.constraint(equalToConstant: 24)
-        ])
-    }
-    
-//    func setAddButtonConstraints() {
-//        collectionsImage.addSubview(addButton)
-//        addButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            addButton.centerYAnchor.constraint(equalTo: collectionsImage.centerYAnchor),
-//            addButton.centerXAnchor.constraint(equalTo: collectionsImage.centerXAnchor),
-//            addButton.heightAnchor.constraint(equalToConstant: addButton.frame.height),
-//            addButton.widthAnchor.constraint(equalToConstant: addButton.frame.width)])
-//    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setImageConstraints()
-        setNameConstraints()
-//        setAddButtonConstraints()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+            recipeTypeLabel.heightAnchor.constraint(equalToConstant: 24)])
     }
 }

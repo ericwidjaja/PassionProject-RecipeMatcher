@@ -137,7 +137,7 @@ class RecipeDetailVC: UIViewController {
     
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
         showSafariVC(for: "\(self.recipe?.url ?? "https://www.foodandwine.com/")")
-        print("\(self.recipe?.url ?? "https://www.foodandwine.com/")")
+//        print("\(self.recipe?.url ?? "https://www.foodandwine.com/")")
     }
     
     

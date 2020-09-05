@@ -34,17 +34,18 @@ class MyCookbookCollectionsVC: UIViewController {
             print(error)
         }
     }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewDidLoad")
         view.addSubview(cookbookCV)
         setMyCookbookDelegates()
         cookbookCV.myCollectionsCV.register(CollectionsCell.self, forCellWithReuseIdentifier: "myCell")
-        loadMyCookbkCollections()
     }
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppearCalled")
         loadMyCookbkCollections()
     }
 }
