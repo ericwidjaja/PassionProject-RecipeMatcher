@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol Reload {
+protocol ReloadViewDelegate: class {
     func reloadCollectionView()
 }

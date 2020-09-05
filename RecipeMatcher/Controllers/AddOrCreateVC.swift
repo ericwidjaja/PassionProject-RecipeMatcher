@@ -130,9 +130,9 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
         do {
             guard let recipe = recipeCollection else {
                 return }
-            var collection = collections[indexPath.row]
-            collection.recipes.append(recipe)
-            try CollectionPersistence.manager.replace(newArr: collections)
+            var selectedCollection = collections[indexPath.row]
+            selectedCollection.recipes.append(recipe)
+            updateCollection(collection: selectedCollection)
             self.view.window?.rootViewController?.dismiss(animated: true, completion: nil)
         } catch {
             print(error)

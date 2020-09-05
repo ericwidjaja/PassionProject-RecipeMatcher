@@ -16,7 +16,6 @@ class MyCookbookCollectionsVC: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.cookbookCV.myCollectionsCV.reloadData()
-//                dump(self.myCookbookCollections) // to check if the collections are existed
             }
         }
     }
@@ -58,10 +57,13 @@ extension MyCookbookCollectionsVC: UICollectionViewDataSource, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = cookbookCV.myCollectionsCV .dequeueReusableCell(withReuseIdentifier: "myCell", for: indexPath) as? CollectionsCell else {
             return UICollectionViewCell()
         }
+        cell.reloadData()
         let collection = myCookbookCollections[indexPath.row]
+        cell.recipes = collection.recipes
         cell.recipeTypeLabel.text = collection.recipeType
         guard let imageUrl = collection.recipes.randomElement()?.image else {
             return cell
@@ -71,7 +73,7 @@ extension MyCookbookCollectionsVC: UICollectionViewDataSource, UICollectionViewD
     }
 }
 
-extension MyCookbookCollectionsVC: Reload {
+extension MyCookbookCollectionsVC: ReloadViewDelegate {
     func reloadCollectionView() {
         loadMyCookbkCollections()
     }
