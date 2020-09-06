@@ -12,7 +12,6 @@ class CollectionsCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cvHorizontal = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        cvHorizontal.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         cvHorizontal.dataSource = self
         cvHorizontal.delegate = self
         cvHorizontal.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
@@ -25,21 +24,33 @@ class CollectionsCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 10
+        image.layer.cornerRadius = 15
         image.backgroundColor = .clear
         return image
     }()
     
+    lazy var addLabelsView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.alpha = 0.65
+        return view
+    }()
+    
     lazy var recipeTypeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 20)
-        label.textAlignment = .center
+        label.font = UIFont.init(name: "Rockwell", size: 18)
         label.textColor = .white
-        label.layer.cornerRadius = 10
-//        label.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
+    
+    lazy var quantityLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.init(name: "Rockwell", size: 16)
+            label.textAlignment = .center
+            label.textColor = .white
+            return label
+        }()
     
     var recipes: [RecipeWrapper]! {
         didSet {
