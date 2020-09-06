@@ -12,7 +12,7 @@ class CollectionsCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cvHorizontal = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cvHorizontal.backgroundColor = #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1)
+//        cvHorizontal.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         cvHorizontal.dataSource = self
         cvHorizontal.delegate = self
         cvHorizontal.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
@@ -36,7 +36,7 @@ class CollectionsCell: UICollectionViewCell {
         label.textAlignment = .center
         label.textColor = .white
         label.layer.cornerRadius = 10
-        label.backgroundColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+//        label.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
