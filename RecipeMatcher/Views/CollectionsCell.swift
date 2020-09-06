@@ -24,8 +24,7 @@ class CollectionsCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 15
-        image.backgroundColor = .clear
+        image.layer.cornerRadius = 20
         return image
     }()
     
@@ -51,6 +50,8 @@ class CollectionsCell: UICollectionViewCell {
             label.textColor = .white
             return label
         }()
+    
+    lazy var objectsViewArray = [self.addLabelsView, self.quantityLabel, self.recipeTypeLabel]
     
     var recipes: [RecipeWrapper]! {
         didSet {
@@ -101,6 +102,15 @@ extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlo
 
 
 extension CollectionsCell {
+    
+    //MARK: - Add ViewsToSubviews
+    func addViewsToSubView() {
+        for aView in objectsViewArray {
+            self.addSubview(aView)
+            aView.translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
     // MARK: Constraints
     func setCVConstraints() {
         contentView.addSubview(collView)
