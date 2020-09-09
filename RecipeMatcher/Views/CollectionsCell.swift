@@ -22,7 +22,7 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collectionsImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IceCream")
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
         image.layer.cornerRadius = 20
@@ -69,7 +69,7 @@ class CollectionsCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setCVConstraints()
-        setNameConstraints()
+        setRecipeTypeLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -104,14 +104,6 @@ extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlo
 
 extension CollectionsCell {
     
-    //MARK: - Add ViewsToSubviews
-    func addViewsToSubView() {
-        for aView in objectsViewArray {
-            self.addSubview(aView)
-            aView.translatesAutoresizingMaskIntoConstraints = false
-        }
-    }
-    
     // MARK: Constraints
     func setCVConstraints() {
         contentView.addSubview(collView)
@@ -123,7 +115,7 @@ extension CollectionsCell {
             collView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
     
-    func setNameConstraints() {
+    func setRecipeTypeLabel() {
         contentView.addSubview(recipeTypeLabel)
         recipeTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
