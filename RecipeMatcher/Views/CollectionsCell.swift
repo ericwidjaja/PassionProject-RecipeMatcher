@@ -11,17 +11,18 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        let cvHorizontal = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cvHorizontal.dataSource = self
-        cvHorizontal.delegate = self
-        cvHorizontal.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
-        return cvHorizontal
+        let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        horizontalCV.layer.cornerRadius = 10
+        horizontalCV.dataSource = self
+        horizontalCV.delegate = self
+        horizontalCV.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
+        return horizontalCV
     }()
     
     lazy var collectionsImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IceCream")
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
         image.layer.cornerRadius = 20
@@ -51,7 +52,7 @@ class CollectionsCell: UICollectionViewCell {
             return label
         }()
     
-    lazy var objectsViewArray = [self.addLabelsView, self.quantityLabel, self.recipeTypeLabel]
+    lazy var objectsViewArray = [self.addLabelsView, self.quantityLabel, self.recipeTypeLabel, self.collectionsImage]
     
     var recipes: [RecipeWrapper]! {
         didSet {
