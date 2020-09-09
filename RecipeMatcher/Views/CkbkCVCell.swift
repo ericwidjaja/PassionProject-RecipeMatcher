@@ -29,7 +29,7 @@ extension CkbkCVCell {
         contentView.addSubview(ckbkImage)
         ckbkImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            ckbkImage.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            ckbkImage.heightAnchor.constraint(equalTo: contentView.heightAnchor, constant: 10),
             ckbkImage.widthAnchor.constraint(equalTo: contentView.widthAnchor)])
     }
 }

@@ -11,11 +11,11 @@ class CookbookCollectionsView: UIView {
     //MARK: - Objects
     lazy var myCollectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 400, height: 210)
+        layout.itemSize = CGSize(width: 410, height: 198)
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 2, bottom: 5, right: 2)
+        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.backgroundColor = .lightGray
+        cv.backgroundColor = .black
         cv.showsHorizontalScrollIndicator = false
         return cv
     }()
@@ -23,7 +23,7 @@ class CookbookCollectionsView: UIView {
     lazy var myCollectionLabel: UILabel = {
         let label = UILabel()
         label.text = "My Cookbook Collections"
-        label.font = .boldSystemFont(ofSize: 30)
+        label.font = .boldSystemFont(ofSize: 26)
         label.textColor = .white
         return label
     }()
@@ -59,7 +59,7 @@ class CookbookCollectionsView: UIView {
         addSubview(myCollectionsCV)
         myCollectionsCV.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionsCV.topAnchor.constraint(equalTo: myCollectionLabel.bottomAnchor, constant: 10),
+            myCollectionsCV.topAnchor.constraint(equalTo: myCollectionLabel.bottomAnchor),
             myCollectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             myCollectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             myCollectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])

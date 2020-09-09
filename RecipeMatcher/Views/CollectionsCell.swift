@@ -8,11 +8,12 @@ import UIKit
 class CollectionsCell: UICollectionViewCell {
     
     //MARK: - Properties
-    lazy var collView: UICollectionView = {
+    lazy var horizontalCollView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         horizontalCV.layer.cornerRadius = 10
+        horizontalCV.backgroundColor = .orange
         horizontalCV.dataSource = self
         horizontalCV.delegate = self
         horizontalCV.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
@@ -22,7 +23,7 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collectionsImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IceCream")
-        image.contentMode = .scaleAspectFill
+        image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
         image.layer.cornerRadius = 20
@@ -38,7 +39,7 @@ class CollectionsCell: UICollectionViewCell {
     
     lazy var recipeTypeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 18)
+        label.font = UIFont.init(name: "Rockwell", size: 22)
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -51,9 +52,7 @@ class CollectionsCell: UICollectionViewCell {
             label.textColor = .white
             return label
         }()
-    
-    lazy var objectsViewArray = [self.addLabelsView, self.quantityLabel, self.recipeTypeLabel, self.collectionsImage]
-    
+ 
     var recipes: [RecipeWrapper]! {
         didSet {
             //            print(recipes)
@@ -62,7 +61,7 @@ class CollectionsCell: UICollectionViewCell {
     
     func reloadData() {
         DispatchQueue.main.async {
-            self.collView.reloadData()
+            self.horizontalCollView.reloadData()
         }
     }
     
@@ -97,7 +96,7 @@ extension CollectionsCell: UICollectionViewDataSource {
 
 extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: 190)
+        return CGSize(width: 120, height: 175)
     }
 }
 
@@ -106,22 +105,22 @@ extension CollectionsCell {
     
     // MARK: Constraints
     func setCVConstraints() {
-        contentView.addSubview(collView)
-        collView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.addSubview(horizontalCollView)
+        horizontalCollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            collView.heightAnchor.constraint(equalToConstant: 200),
-            collView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            collView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
+            horizontalCollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            horizontalCollView.heightAnchor.constraint(equalToConstant: 170),
+            horizontalCollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            horizontalCollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
     
     func setRecipeTypeLabel() {
         contentView.addSubview(recipeTypeLabel)
         recipeTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            recipeTypeLabel.topAnchor.constraint(equalTo: collView.bottomAnchor, constant: 2),
-            recipeTypeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            recipeTypeLabel.topAnchor.constraint(equalTo: horizontalCollView.bottomAnchor, constant: 5),
+            recipeTypeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             recipeTypeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            recipeTypeLabel.heightAnchor.constraint(equalToConstant: 24)])
+            recipeTypeLabel.heightAnchor.constraint(equalToConstant: 26)])
     }
 }
