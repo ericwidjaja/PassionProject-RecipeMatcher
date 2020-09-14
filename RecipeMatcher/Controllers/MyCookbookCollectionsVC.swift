@@ -72,6 +72,7 @@ extension MyCookbookCollectionsVC: UICollectionViewDataSource, UICollectionViewD
         cell.collectionsImage.kf.setImage(with: URL(string: imageUrl))
         return cell
     }
+    
 }
 
 extension MyCookbookCollectionsVC: ReloadViewDelegate {

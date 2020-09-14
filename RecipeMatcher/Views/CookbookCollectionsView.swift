@@ -13,7 +13,7 @@ class CookbookCollectionsView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 410, height: 198)
         layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+//        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .black
         cv.showsHorizontalScrollIndicator = false
@@ -49,7 +49,7 @@ class CookbookCollectionsView: UIView {
         addSubview(myCollectionLabel)
         myCollectionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 5),
+            myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             myCollectionLabel.heightAnchor.constraint(equalToConstant: 45)])
