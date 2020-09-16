@@ -5,6 +5,10 @@
 
 import UIKit
 
+protocol CollectionsCellDelegate: class {
+    func didSelectRecipe(_ recipe: RecipeWrapper)
+}
+
 class CollectionsCell: UICollectionViewCell {
     
     //MARK: - Properties
@@ -58,6 +62,8 @@ class CollectionsCell: UICollectionViewCell {
             //            print(recipes)
         }
     }
+    
+    weak var delegate: CollectionsCellDelegate?
     
     func reloadData() {
         DispatchQueue.main.async {

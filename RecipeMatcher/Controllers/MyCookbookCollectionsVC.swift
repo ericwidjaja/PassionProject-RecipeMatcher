@@ -66,13 +66,13 @@ extension MyCookbookCollectionsVC: UICollectionViewDataSource, UICollectionViewD
         let collection = myCookbookCollections[indexPath.row]
         cell.recipes = collection.recipes
         cell.recipeTypeLabel.text = collection.recipeType
+        cell.delegate = self
         guard let imageUrl = collection.recipes.randomElement()?.image else {
             return cell
         }
         cell.collectionsImage.kf.setImage(with: URL(string: imageUrl))
         return cell
     }
-    
 }
 
 extension MyCookbookCollectionsVC: ReloadViewDelegate {
