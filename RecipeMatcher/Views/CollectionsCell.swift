@@ -16,7 +16,7 @@ class CollectionsCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        horizontalCV.layer.cornerRadius = 10
+        horizontalCV.layer.cornerRadius = 20
         horizontalCV.backgroundColor = .orange
         horizontalCV.dataSource = self
         horizontalCV.delegate = self
@@ -30,7 +30,7 @@ class CollectionsCell: UICollectionViewCell {
         image.contentMode = .scaleAspectFit
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 20
+        image.layer.cornerRadius = 25
         return image
     }()
     
@@ -102,10 +102,14 @@ extension CollectionsCell: UICollectionViewDataSource {
 
 extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 120, height: 175)
+        return CGSize(width: 160, height: 135)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedRecipeFromCollection = recipes[indexPath.row]
+        delegate?.didSelectRecipe(selectedRecipeFromCollection)
     }
 }
-
 
 extension CollectionsCell {
     
@@ -114,8 +118,8 @@ extension CollectionsCell {
         contentView.addSubview(horizontalCollView)
         horizontalCollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            horizontalCollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            horizontalCollView.heightAnchor.constraint(equalToConstant: 170),
+            horizontalCollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
+            horizontalCollView.heightAnchor.constraint(equalToConstant: 160),
             horizontalCollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             horizontalCollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
@@ -124,7 +128,7 @@ extension CollectionsCell {
         contentView.addSubview(recipeTypeLabel)
         recipeTypeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            recipeTypeLabel.topAnchor.constraint(equalTo: horizontalCollView.bottomAnchor, constant: 5),
+            recipeTypeLabel.topAnchor.constraint(equalTo: horizontalCollView.bottomAnchor, constant: 8),
             recipeTypeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
             recipeTypeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             recipeTypeLabel.heightAnchor.constraint(equalToConstant: 26)])

@@ -80,3 +80,11 @@ extension MyCookbookCollectionsVC: ReloadViewDelegate {
         loadMyCookbkCollections()
     }
 }
+
+extension MyCookbookCollectionsVC: CollectionsCellDelegate {
+    func didSelectRecipe(_ recipe: RecipeWrapper) {
+        let detailVC = RecipeDetailVC()
+        detailVC.recipe = recipe
+        self.navigationController?.present(detailVC, animated: true)
+    }
+}
