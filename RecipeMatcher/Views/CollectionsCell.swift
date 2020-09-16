@@ -17,7 +17,7 @@ class CollectionsCell: UICollectionViewCell {
         layout.scrollDirection = .horizontal
         let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         horizontalCV.layer.cornerRadius = 20
-        horizontalCV.backgroundColor = .orange
+        horizontalCV.backgroundColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
         horizontalCV.dataSource = self
         horizontalCV.delegate = self
         horizontalCV.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
@@ -34,13 +34,6 @@ class CollectionsCell: UICollectionViewCell {
         return image
     }()
     
-    lazy var addLabelsView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.alpha = 0.65
-        return view
-    }()
-    
     lazy var recipeTypeLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.init(name: "Rockwell", size: 22)
@@ -48,14 +41,6 @@ class CollectionsCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
-    
-    lazy var quantityLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 16)
-            label.textAlignment = .center
-            label.textColor = .white
-            return label
-        }()
  
     var recipes: [RecipeWrapper]! {
         didSet {
@@ -102,7 +87,7 @@ extension CollectionsCell: UICollectionViewDataSource {
 
 extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 135)
+        return CGSize(width: 160, height: 140)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

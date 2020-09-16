@@ -13,7 +13,6 @@ class CookbookCollectionsView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 410, height: 198)
         layout.scrollDirection = .vertical
-//        layout.sectionInset = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .black
         cv.showsHorizontalScrollIndicator = false
