@@ -17,7 +17,6 @@ class RecipeMatchTabBar: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navControllersSetup()
-        
     }
     
     func navControllersSetup() {

@@ -47,7 +47,7 @@ class UserProfileView: UIView {
         return emailLabel
     }()
     
-    lazy var objectsViewArray = [self.backgroundImageView, self.userImageView, self.userNameLabel, self.emailLabel]
+    lazy var objectsViewArray = [self.userImageView, self.userNameLabel, self.emailLabel]
     
     
     //MARK: - Add ViewsToSubviews
@@ -61,7 +61,7 @@ class UserProfileView: UIView {
     //MARK: - Constraints
     private func userProfileConstraints() {
         addViewsToSubView()
-        backGroundImageConstraints()
+//        backGroundImageConstraints()
         //        userImageConstraints()
         userNameConstraints()
         //        userEmailConstraints()
