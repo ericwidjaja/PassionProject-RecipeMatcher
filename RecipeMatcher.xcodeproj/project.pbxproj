@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7DC3600960E770AA5D28E9E0 /* Pods_RecipeMatcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F82F50D2E713BB59271FD349 /* Pods_RecipeMatcher.framework */; };
 		DF0959C7251681F500F67ACF /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0959C6251681F500F67ACF /* UserProfileView.swift */; };
+		DF0959C92516AECE00F67ACF /* UserProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF0959C82516AECE00F67ACF /* UserProfileVC.swift */; };
 		DF262D8F23D0C067009B4806 /* FavdRecipesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF262D8E23D0C067009B4806 /* FavdRecipesCell.swift */; };
 		DF28B39823884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
 		DF28B39923884A3300AA8CE0 /* RecipeMatchTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */; };
@@ -89,6 +90,7 @@
 		AF1321605642414F09096930 /* Pods-RecipeMatcherTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMatcherTests.release.xcconfig"; path = "Target Support Files/Pods-RecipeMatcherTests/Pods-RecipeMatcherTests.release.xcconfig"; sourceTree = "<group>"; };
 		DBED1C097715BAB3CDC15FAE /* Pods-RecipeMatcher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RecipeMatcher.debug.xcconfig"; path = "Target Support Files/Pods-RecipeMatcher/Pods-RecipeMatcher.debug.xcconfig"; sourceTree = "<group>"; };
 		DF0959C6251681F500F67ACF /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		DF0959C82516AECE00F67ACF /* UserProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileVC.swift; sourceTree = "<group>"; };
 		DF262D8E23D0C067009B4806 /* FavdRecipesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavdRecipesCell.swift; sourceTree = "<group>"; };
 		DF28B39723884A3300AA8CE0 /* RecipeMatchTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeMatchTabBar.swift; sourceTree = "<group>"; };
 		DF2DFC4A24E230FD009247F3 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				DFF5DC8B23B43B5900DB2B24 /* FavRecipesVC.swift */,
 				DF399A9424A82058006D1560 /* AddOrCreateVC.swift */,
 				DF8AB7D524FDA3F500804253 /* MyCookbookCollectionsVC.swift */,
+				DF0959C82516AECE00F67ACF /* UserProfileVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				DFEE82DA236FADB6000FDE8B /* RecipeMatcher.xcdatamodeld in Sources */,
 				DF66AC2123948D61005E36A7 /* LogInView.swift in Sources */,
 				DF325B8423A1801F00F112B5 /* RecipesCollResultsVC.swift in Sources */,
+				DF0959C92516AECE00F67ACF /* UserProfileVC.swift in Sources */,
 				DF6C0CCD23AF2012004BF388 /* FirebaseAuthService.swift in Sources */,
 				DFF5DC8223B2E3E300DB2B24 /* ButtonProtocol.swift in Sources */,
 				DF8AB78A24EB1CAE00804253 /* Protocol.swift in Sources */,

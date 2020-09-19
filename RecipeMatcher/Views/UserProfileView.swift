@@ -1,7 +1,5 @@
 //  UserProfileView.swift
 //  RecipeMatcher
-//  Created by Eric Widjaja on 9/19/20.
-//  Copyright © 2020 Eric W. All rights reserved.
 
 import UIKit
 import Firebase
@@ -12,18 +10,18 @@ class UserProfileView: UIView {
     
     //MARK: - Objects
     
-    lazy var contentView: UIView = {
-        let profileView = UIView()
-        profileView.backgroundColor = #colorLiteral(red: 0.1504360437, green: 0.006763501558, blue: 0.5917420983, alpha: 0.7002622003)
-        profileView.alpha = 0.4
-        return profileView
-    }()
-    
+    //    lazy var contentView: UIView = {
+    //        let profileView = UIView()
+    //        profileView.backgroundColor = #colorLiteral(red: 0.1504360437, green: 0.006763501558, blue: 0.5917420983, alpha: 0.7002622003)
+    //        profileView.alpha = 0.4
+    //        return profileView
+    //    }()
+    //
     lazy var backgroundImageView: UIImageView = {
         let backgroundImage = UIImageView()
-        backgroundImage.layer.cornerRadius = 20
         backgroundImage.image = #imageLiteral(resourceName: "MainScreen")
-        backgroundImage.contentMode = .scaleToFill
+        backgroundImage.contentMode = .scaleAspectFill
+        backgroundImage.clipsToBounds = true
         return backgroundImage
     }()
     
@@ -60,6 +58,41 @@ class UserProfileView: UIView {
         }
     }
     
+    //MARK: - Constraints
+    private func userProfileConstraints() {
+        addViewsToSubView()
+        backGroundImageConstraints()
+        //        userImageConstraints()
+        userNameConstraints()
+        //        userEmailConstraints()
+    }
     
+    private func backGroundImageConstraints() {
+        NSLayoutConstraint.activate([backgroundImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), backgroundImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor), backgroundImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor), backgroundImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
+    }
+    
+    //    private func userImageConstraints() {
+    //        NSLayoutConstraint.activate([]])
+    //
+    //
+    //    }
+    
+    private func userNameConstraints() {
+        NSLayoutConstraint.activate([userNameLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+                                     userNameLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)])
+    }
+    
+    //    private func userEmailConstraints() {
+    //        NSLayoutConstraint.activate(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
+    //
+    //    }
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+        userProfileConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
 }

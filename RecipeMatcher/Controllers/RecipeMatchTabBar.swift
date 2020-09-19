@@ -11,6 +11,9 @@ class RecipeMatchTabBar: UITabBarController {
     
     lazy var navController3 = UINavigationController(rootViewController: MyCookbookCollectionsVC())
     
+    lazy var navController4 = UINavigationController(rootViewController: UserProfileVC())
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navControllersSetup()
@@ -23,6 +26,9 @@ class RecipeMatchTabBar: UITabBarController {
         navController2.tabBarItem = UITabBarItem(title: "FAVORITES", image: UIImage(systemName: "heart.fill"), tag: 1)
         
         navController3.tabBarItem = UITabBarItem(title: "COLLECTIONS", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 2)
-        self.viewControllers = [navController1, navController2, navController3]
+        
+        navController4.tabBarItem = UITabBarItem(title: "PROFILE", image: UIImage(systemName: "person.circle"), tag: 3)
+        
+        self.viewControllers = [navController1, navController2, navController3, navController4]
     }
 }
