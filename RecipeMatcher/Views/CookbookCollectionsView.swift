@@ -11,7 +11,7 @@ class CookbookCollectionsView: UIView {
     //MARK: - Objects
     lazy var myCollectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 410, height: 198)
+        layout.itemSize = CGSize(width: 410, height: 140)
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .black
@@ -39,7 +39,7 @@ class CookbookCollectionsView: UIView {
     
     //MARK: - FavCollectionsView Constraints
     private func setMyFavCollectionsConstraints() {
-        self.backgroundColor = #colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 0.8967786815)
+        self.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         myFavCollTitleLabelConstraints()
         myCollectionsCVConstraints()
     }

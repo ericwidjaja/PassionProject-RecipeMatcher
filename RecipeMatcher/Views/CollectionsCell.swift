@@ -16,7 +16,7 @@ class CollectionsCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        horizontalCV.layer.cornerRadius = 20
+        horizontalCV.layer.cornerRadius = 15
         horizontalCV.backgroundColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
         horizontalCV.dataSource = self
         horizontalCV.delegate = self
@@ -27,10 +27,7 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collectionsImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IceCream")
-        image.contentMode = .scaleAspectFit
-        image.clipsToBounds = true
-        image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 25
+        image.layer.cornerRadius = 20
         return image
     }()
     
@@ -78,7 +75,6 @@ extension CollectionsCell: UICollectionViewDataSource {
             return UICollectionViewCell()}
         
         let specificRecipe = recipes[indexPath.row]
-        cell.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
         let imgURL = URL(string: specificRecipe.image)
         cell.ckbkImage.kf.setImage(with: imgURL)
         return cell
@@ -87,7 +83,7 @@ extension CollectionsCell: UICollectionViewDataSource {
 
 extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 160, height: 140)
+        return CGSize(width: 140, height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -103,8 +99,8 @@ extension CollectionsCell {
         contentView.addSubview(horizontalCollView)
         horizontalCollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            horizontalCollView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 2),
-            horizontalCollView.heightAnchor.constraint(equalToConstant: 160),
+            horizontalCollView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            horizontalCollView.heightAnchor.constraint(equalToConstant: 130),
             horizontalCollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             horizontalCollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
