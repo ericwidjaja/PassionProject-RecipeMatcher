@@ -25,11 +25,11 @@ class CollectionsCell: UICollectionViewCell {
     }()
     
     lazy var collectionsImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(named: "IceCream")
-        image.sizeThatFits(.init(width: 140, height: 120))
-        image.layer.cornerRadius = 15
-        return image
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "IceCream")
+        imageView.sizeThatFits(.init(width: 140, height: 120))
+        imageView.layer.cornerRadius = 15
+        return imageView
     }()
     
     lazy var recipeTypeLabel: UILabel = {
