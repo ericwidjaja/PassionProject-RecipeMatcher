@@ -11,7 +11,7 @@ class CookbookCollectionsView: UIView {
     //MARK: - Objects
     lazy var myCollectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 410, height: 140)
+        layout.itemSize = CGSize(width: 410, height: 150)
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .black
@@ -22,7 +22,7 @@ class CookbookCollectionsView: UIView {
     lazy var myCollectionLabel: UILabel = {
         let label = UILabel()
         label.text = "My Cookbook Collections"
-        label.font = .boldSystemFont(ofSize: 26)
+        label.font = .boldSystemFont(ofSize: 30)
         label.textColor = .white
         return label
     }()
@@ -49,7 +49,7 @@ class CookbookCollectionsView: UIView {
         myCollectionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
             myCollectionLabel.heightAnchor.constraint(equalToConstant: 45)])
     }

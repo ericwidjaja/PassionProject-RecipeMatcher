@@ -17,7 +17,7 @@ class CollectionsCell: UICollectionViewCell {
         layout.scrollDirection = .horizontal
         let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
         horizontalCV.layer.cornerRadius = 15
-        horizontalCV.backgroundColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
+        horizontalCV.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
         horizontalCV.dataSource = self
         horizontalCV.delegate = self
         horizontalCV.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
@@ -27,13 +27,14 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collectionsImage: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "IceCream")
-        image.layer.cornerRadius = 20
+        image.sizeThatFits(.init(width: 140, height: 120))
+        image.layer.cornerRadius = 15
         return image
     }()
     
     lazy var recipeTypeLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 22)
+        label.font = UIFont.init(name: "Rockwell", size: 20)
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -83,7 +84,7 @@ extension CollectionsCell: UICollectionViewDataSource {
 
 extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 140, height: 125)
+        return CGSize(width: 150, height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -100,7 +101,7 @@ extension CollectionsCell {
         horizontalCollView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             horizontalCollView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            horizontalCollView.heightAnchor.constraint(equalToConstant: 130),
+            horizontalCollView.heightAnchor.constraint(equalToConstant: 125),
             horizontalCollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             horizontalCollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)])
     }
