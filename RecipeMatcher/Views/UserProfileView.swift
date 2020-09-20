@@ -14,7 +14,7 @@ class UserProfileView: UIView {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         view.alpha = 0.225
-        view.layer.borderWidth = 5
+        view.layer.borderWidth = 6
         view.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
         view.layer.cornerRadius = 20
         return view
@@ -23,6 +23,12 @@ class UserProfileView: UIView {
     lazy var userImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage.init(systemName: "person.circle")
+        imageView.tintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 150/2
+        imageView.layer.borderWidth = 5
+        imageView.layer.borderColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
+        imageView.clipsToBounds = true
         return imageView
     }()
     
