@@ -1,12 +1,12 @@
 //
 //  UserProfileVC.swift
 //  RecipeMatcher
-//
 //  Created by Eric Widjaja on 9/19/20.
 //  Copyright © 2020 Eric W. All rights reserved.
-//
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class UserProfileVC: UIViewController {
     
@@ -14,6 +14,7 @@ class UserProfileVC: UIViewController {
     //MARK: - Properties
     
     var userProfile = UserProfileView()
+    var currentUser = FirebaseAuthService.manager.currentUser
     
     //MARK: - Functions
     
@@ -29,12 +30,35 @@ class UserProfileVC: UIViewController {
         self.view.insertSubview(backgroundImage, at: 0)
     }
     
+    private func showUserProfile() {
+        showUserNameLabel()
+        showUserEmailLabel()
+    }
+    
+    private func showUserNameLabel() {
+        FirestoreService.manager.getUserInfo(userID: FirebaseAuthService.manager.currentUser?.uid ?? "") {result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let user):
+                self.userProfile.userNameLabel.text = user.userName
+            }
+        }
+        
+    }
+    private func showUserEmailLabel() {
+        if let userEmail = FirebaseAuthService.manager.currentUser?.email {
+            self.userProfile.emailLabel.text = "\(userEmail)"
+        }
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(userProfile)
         view.backgroundColor = .clear
         blurEffect()
+        showUserProfile()
     }
     
     override func viewWillAppear(_ animated: Bool) {
