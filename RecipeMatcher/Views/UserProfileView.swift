@@ -10,19 +10,13 @@ class UserProfileView: UIView {
     
     //MARK: - Objects
     
-    //    lazy var contentView: UIView = {
-    //        let profileView = UIView()
-    //        profileView.backgroundColor = #colorLiteral(red: 0.1504360437, green: 0.006763501558, blue: 0.5917420983, alpha: 0.7002622003)
-    //        profileView.alpha = 0.4
-    //        return profileView
-    //    }()
-    //
-    lazy var backgroundImageView: UIImageView = {
-        let backgroundImage = UIImageView()
-        backgroundImage.image = #imageLiteral(resourceName: "MainScreen")
-        backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.clipsToBounds = true
-        return backgroundImage
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
+        view.layer.borderWidth = 2
+        view.layer.cornerRadius = 10
+        view.alpha = 0.4
+        return view
     }()
     
     lazy var userImageView: UIImageView = {
@@ -47,7 +41,7 @@ class UserProfileView: UIView {
         return emailLabel
     }()
     
-    lazy var objectsViewArray = [self.userImageView, self.userNameLabel, self.emailLabel]
+    lazy var objectsViewArray = [self.containerView, self.userImageView, self.userNameLabel, self.emailLabel]
     
     
     //MARK: - Add ViewsToSubviews

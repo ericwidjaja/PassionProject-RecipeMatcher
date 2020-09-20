@@ -43,10 +43,14 @@ class MyCookbookCollectionsVC: UIViewController {
         setMyCookbookDelegates()
         cookbookCV.myCollectionsCV.register(CollectionsCell.self, forCellWithReuseIdentifier: "myCell")
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppearCalled")
         loadMyCookbkCollections()
+    }
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 

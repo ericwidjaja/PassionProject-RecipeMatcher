@@ -15,16 +15,10 @@ class UserProfileVC: UIViewController {
     
     var userProfile = UserProfileView()
     
+    //MARK: - Functions
     
-    
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.addSubview(userProfile)
-        view.backgroundColor = .clear
-        
-        
-        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterialDark)
+    private func blurEffect() {
+        let blurEffect = UIBlurEffect(style: .systemChromeMaterialDark)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.view.frame
         self.view.insertSubview(blurEffectView, at: 0)
@@ -33,7 +27,14 @@ class UserProfileVC: UIViewController {
         backgroundImage.image = #imageLiteral(resourceName: "MainScreen")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
-        
+    }
+    
+    //MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(userProfile)
+        view.backgroundColor = .clear
+        blurEffect()
     }
     
     override func viewWillAppear(_ animated: Bool) {
