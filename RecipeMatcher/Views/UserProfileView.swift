@@ -72,9 +72,7 @@ class UserProfileView: UIView {
     private func userProfileConstraints() {
         addViewsToSubView()
         containerViewConstraints()
-        //        userImageConstraints()
-//        userNameConstraints()
-        //        userEmailConstraints()
+        itemsContainerConstraints()
     }
     
     private func containerViewConstraints() {
@@ -85,21 +83,22 @@ class UserProfileView: UIView {
             containerView.heightAnchor.constraint(equalToConstant: 450), containerView.widthAnchor.constraint(equalToConstant: 300)])
     }
     
-    //    private func userImageConstraints() {
-    //        NSLayoutConstraint.activate([]])
-    //
-    //
-    //    }
-    
-    private func userNameConstraints() {
-        NSLayoutConstraint.activate([userNameLabel.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-                                     userNameLabel.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)])
+    private func itemsContainerConstraints() {
+        addSubview(userImageView)
+        addSubview(userNameLabel)
+        addSubview(emailLabel)
+        
+        NSLayoutConstraint.activate([
+            userImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            userImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: -110),
+            userImageView.widthAnchor.constraint(equalToConstant: 150),
+            userImageView.heightAnchor.constraint(equalToConstant: 150),
+            
+            userNameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            userNameLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            
+            emailLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 50),
+            emailLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            emailLabel.heightAnchor.constraint(equalToConstant: 50)])
     }
-    
-    //    private func userEmailConstraints() {
-    //        NSLayoutConstraint.activate(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
-    //
-    //    }
-
-    
 }
