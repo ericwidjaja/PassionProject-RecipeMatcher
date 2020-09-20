@@ -12,10 +12,11 @@ class UserProfileView: UIView {
     
     lazy var containerView: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.7450980544, green: 0.1568627506, blue: 0.07450980693, alpha: 1)
-        view.layer.borderWidth = 2
-        view.layer.cornerRadius = 10
-        view.alpha = 0.4
+        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.alpha = 0.225
+        view.layer.borderWidth = 5
+        view.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
+        view.layer.cornerRadius = 20
         return view
     }()
     
@@ -51,18 +52,31 @@ class UserProfileView: UIView {
             aView.translatesAutoresizingMaskIntoConstraints = false
         }
     }
+    //MARK: - Overrides
+    override init(frame: CGRect) {
+        super.init(frame: UIScreen.main.bounds)
+        userProfileConstraints()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     
     //MARK: - Constraints
     private func userProfileConstraints() {
         addViewsToSubView()
-//        backGroundImageConstraints()
+        containerViewConstraints()
         //        userImageConstraints()
-        userNameConstraints()
+//        userNameConstraints()
         //        userEmailConstraints()
     }
     
-    private func backGroundImageConstraints() {
-        NSLayoutConstraint.activate([backgroundImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor), backgroundImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor), backgroundImageView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor), backgroundImageView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
+    private func containerViewConstraints() {
+        addSubview(containerView)
+        NSLayoutConstraint.activate([
+            containerView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            containerView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 75),
+            containerView.heightAnchor.constraint(equalToConstant: 450), containerView.widthAnchor.constraint(equalToConstant: 300)])
     }
     
     //    private func userImageConstraints() {
@@ -80,13 +94,6 @@ class UserProfileView: UIView {
     //        NSLayoutConstraint.activate(<#T##constraints: [NSLayoutConstraint]##[NSLayoutConstraint]#>)
     //
     //    }
-    override init(frame: CGRect) {
-        super.init(frame: UIScreen.main.bounds)
-        userProfileConstraints()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+
     
 }

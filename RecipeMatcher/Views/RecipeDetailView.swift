@@ -26,7 +26,7 @@ class RecipeDetailView: UIView {
     lazy var addtDescView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.alpha = 0.70
+        view.alpha = 0.60
         return view
     }()
     
