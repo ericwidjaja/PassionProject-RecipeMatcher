@@ -11,7 +11,7 @@ class CookbookCollectionsView: UIView {
     //MARK: - Objects
     lazy var myCollectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 410, height: 150)
+        layout.itemSize = CGSize(width: 410, height: 180)
         layout.scrollDirection = .vertical
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.backgroundColor = .black
