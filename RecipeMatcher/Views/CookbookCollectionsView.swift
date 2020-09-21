@@ -22,7 +22,7 @@ class CookbookCollectionsView: UIView {
     lazy var myCollectionLabel: UILabel = {
         let label = UILabel()
         label.text = "My Cookbook Collections"
-        label.font = .boldSystemFont(ofSize: 30)
+        label.font = .boldSystemFont(ofSize: 32)
         label.textColor = .white
         return label
     }()
@@ -48,10 +48,10 @@ class CookbookCollectionsView: UIView {
         addSubview(myCollectionLabel)
         myCollectionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            myCollectionLabel.heightAnchor.constraint(equalToConstant: 45)])
+            myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
+            myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8),
+            myCollectionLabel.heightAnchor.constraint(equalToConstant: 40)])
     }
     
     private func myCollectionsCVConstraints() {
