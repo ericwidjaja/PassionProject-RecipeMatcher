@@ -77,7 +77,7 @@ class FavRecipesVC: UIViewController {
             options: [ .scaleFactor(UIScreen.main.scale),
                        .transition(.flipFromRight(3))])
     }
-
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +112,7 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        Passing selected FavRecipe into DetailVC
+        //        Passing selected FavRecipe into DetailVC
         let favToDetailVC = RecipeDetailVC()
         favToDetailVC.recipe = favoriteRecipe[indexPath.row].recipe
         present(favToDetailVC, animated: true)
