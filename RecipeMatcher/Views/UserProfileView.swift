@@ -48,7 +48,19 @@ class UserProfileView: UIView {
         return emailLabel
     }()
     
-    lazy var objectsViewArray = [self.containerView, self.userImageView, self.userNameLabel, self.emailLabel]
+    var logOutButton: UIButton = {
+        
+        let button = UIButton()
+        button.backgroundColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
+        button.layer.cornerRadius = 8
+        button.setTitle("Log Out", for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
+        button.isUserInteractionEnabled = true
+        button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 16)
+        return button
+    }()
+    
+    lazy var objectsViewArray = [self.containerView, self.userImageView, self.userNameLabel, self.emailLabel, self.logOutButton]
     
     
     //MARK: - Add ViewsToSubviews
@@ -71,8 +83,19 @@ class UserProfileView: UIView {
     //MARK: - Constraints
     private func userProfileConstraints() {
         addViewsToSubView()
+        logOutConstraints()
         containerViewConstraints()
         itemsContainerConstraints()
+    }
+    
+    private func logOutConstraints() {
+        addSubview(logOutButton)
+        NSLayoutConstraint.activate([
+            logOutButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            logOutButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            logOutButton.heightAnchor.constraint(equalToConstant: 35),
+            logOutButton.widthAnchor.constraint(equalToConstant: 100)
+        ])
     }
     
     private func containerViewConstraints() {
@@ -89,6 +112,7 @@ class UserProfileView: UIView {
         addSubview(emailLabel)
         
         NSLayoutConstraint.activate([
+            
             userImageView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             userImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: -110),
             userImageView.widthAnchor.constraint(equalToConstant: 150),

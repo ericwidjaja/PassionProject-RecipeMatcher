@@ -82,12 +82,13 @@ class FavRecipesVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(faveRecipeView)
+        getUserFavorites()
         faveRecipeView.favoriteList.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
         
         faveRecipeView.favoriteList.delegate = self
         faveRecipeView.favoriteList.dataSource = self
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-        getUserFavorites()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
