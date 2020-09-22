@@ -15,7 +15,7 @@ class FavRecipesVC: UIViewController {
     var favoriteRecipe = [Favorite]() {
         didSet {
             DispatchQueue.main.async {
-                self.faveRecipeView.favoriteList.reloadData()
+                self.faveRecipeView.favoriteCollView.reloadData()
                 //checking if the recipes that user favorited are existed
                 //                dump(self.favoriteRecipe)
             }
@@ -84,17 +84,20 @@ class FavRecipesVC: UIViewController {
         super.viewDidLoad()
         view.addSubview(faveRecipeView)
         getUserFavorites()
-        faveRecipeView.favoriteList.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
-        
-        faveRecipeView.favoriteList.delegate = self
-        faveRecipeView.favoriteList.dataSource = self
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-        
+        faveRecipeView.favoriteCollView.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
+        faveRecipeView.favoriteCollView.delegate = self
+        faveRecipeView.favoriteCollView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(true)
         getUserFavorites()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
@@ -105,7 +108,7 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let favCell = faveRecipeView.favoriteList.dequeueReusableCell(withReuseIdentifier: "FavdCell", for: indexPath) as? FavdRecipesCell else {
+        guard let favCell = faveRecipeView.favoriteCollView.dequeueReusableCell(withReuseIdentifier: "FavdCell", for: indexPath) as? FavdRecipesCell else {
             return UICollectionViewCell()
         }
         updateCellsWithFaveRecipes(indexPath, favCell)

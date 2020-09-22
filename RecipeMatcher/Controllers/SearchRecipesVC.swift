@@ -60,14 +60,11 @@ class SearchRecipesVC : UIViewController {
         view.addSubview(searchView)
         loadSearchData()
         searchView.findRecipesButton.addTarget(self, action: #selector(findRecipeButtonPressed), for: .touchUpInside)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .done, target: self, action: #selector(signOut))
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {

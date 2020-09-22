@@ -45,18 +45,15 @@ class MyCookbookCollectionsVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppearCalled - hide the navigation bar")
+        super.viewWillAppear(true)
+//        print("viewWillAppearCalled - hide the navigation bar")
         loadMyCookbkCollections()
         self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
         self.navigationController?.navigationBar.isHidden = false
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 }
 
