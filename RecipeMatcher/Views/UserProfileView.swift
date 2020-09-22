@@ -53,7 +53,7 @@ class UserProfileView: UIView {
         let button = UIButton()
         button.backgroundColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
         button.layer.cornerRadius = 8
-        button.setTitle("Log Out", for: .normal)
+        button.setTitle("Sign Out", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1), for: .normal)
         button.isUserInteractionEnabled = true
         button.titleLabel?.font = UIFont(name: "Noteworthy-Bold", size: 20)
