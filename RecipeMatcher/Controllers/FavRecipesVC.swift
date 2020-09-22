@@ -23,29 +23,6 @@ class FavRecipesVC: UIViewController {
     }
     
     //MARK: - Functions
-
-    //    @objc private func signOut() {
-    //        let alert = UIAlertController(title: "Sign Out from this App?", message: nil, preferredStyle: .actionSheet)
-    //        let action = UIAlertAction.init(title: "Yes", style: .destructive, handler: .some({ (action) in
-    //            DispatchQueue.main.async {
-    //                FirebaseAuthService.manager.logoutUser()
-    //                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-    //                    let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-    //                    else {
-    //                        return
-    //                }
-    //                UIView.transition(with: window, duration: 0.5, options: .curveEaseInOut
-    //                    , animations: {
-    //                        window.rootViewController = LogInScreenVC()
-    //                }, completion: nil)
-    //            }
-    //        }))
-    //        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-    //        alert.addAction(action)
-    //        alert.addAction(cancel)
-    //        present(alert, animated:true)
-    //    }
-    
     private func showAlert(with title: String, and message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
