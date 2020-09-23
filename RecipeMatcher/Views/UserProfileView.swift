@@ -15,8 +15,8 @@ class UserProfileView: UIView {
         view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         view.alpha = 0.225
         view.layer.borderWidth = 6
-        view.layer.borderColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1)
-        view.layer.cornerRadius = 20
+        view.layer.borderColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        view.layer.cornerRadius = 25
         return view
     }()
     
