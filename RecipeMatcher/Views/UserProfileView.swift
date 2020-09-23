@@ -93,7 +93,7 @@ class UserProfileView: UIView {
         NSLayoutConstraint.activate([
             logOutButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
             logOutButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            logOutButton.heightAnchor.constraint(equalToConstant: 35),
+            logOutButton.heightAnchor.constraint(equalToConstant: 32),
             logOutButton.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
@@ -103,7 +103,7 @@ class UserProfileView: UIView {
         NSLayoutConstraint.activate([
             containerView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             containerView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 75),
-            containerView.heightAnchor.constraint(equalToConstant: 450), containerView.widthAnchor.constraint(equalToConstant: 300)])
+            containerView.heightAnchor.constraint(equalToConstant: 416), containerView.widthAnchor.constraint(equalToConstant: 300)])
     }
     
     private func itemsContainerConstraints() {
@@ -119,10 +119,11 @@ class UserProfileView: UIView {
             userImageView.heightAnchor.constraint(equalToConstant: 150),
             
             userNameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            userNameLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
+            userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 120),
+            userNameLabel.heightAnchor.constraint(equalToConstant: 48),
             
-            emailLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 50),
+            emailLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 32),
             emailLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            emailLabel.heightAnchor.constraint(equalToConstant: 50)])
+            emailLabel.heightAnchor.constraint(equalToConstant: 48)])
     }
 }
