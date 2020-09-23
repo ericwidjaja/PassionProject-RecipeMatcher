@@ -22,7 +22,7 @@ class CookbookCollectionsView: UIView {
     lazy var myCollectionLabel: UILabel = {
         let label = UILabel()
         label.text = "My Cookbook Collections"
-        label.font = .boldSystemFont(ofSize: 32)
+        label.font = .boldSystemFont(ofSize: 30)
         label.textColor = .white
         return label
     }()
@@ -50,15 +50,15 @@ class CookbookCollectionsView: UIView {
         NSLayoutConstraint.activate([
             myCollectionLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 8),
             myCollectionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
-            myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 8),
-            myCollectionLabel.heightAnchor.constraint(equalToConstant: 40)])
+            myCollectionLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+            myCollectionLabel.heightAnchor.constraint(equalToConstant: 36)])
     }
     
     private func myCollectionsCVConstraints() {
         addSubview(myCollectionsCV)
         myCollectionsCV.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            myCollectionsCV.topAnchor.constraint(equalTo: myCollectionLabel.bottomAnchor),
+            myCollectionsCV.topAnchor.constraint(equalTo: myCollectionLabel.bottomAnchor, constant: 8),
             myCollectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             myCollectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             myCollectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])

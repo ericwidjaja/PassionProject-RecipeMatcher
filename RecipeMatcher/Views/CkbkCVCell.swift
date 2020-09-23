@@ -10,7 +10,7 @@ class CkbkCVCell: UICollectionViewCell {
     
     lazy var ckbkImage: UIImageView = {
         let ckbkImg = UIImageView()
-        ckbkImg.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        ckbkImg.layer.cornerRadius = 20
         return ckbkImg
     }()
     

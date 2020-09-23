@@ -7,6 +7,7 @@ import UIKit
 
 class FavdRecipesCell: UICollectionViewCell {
     
+    //MARK: - Properties
     lazy var favdRecipeImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
         image.image = UIImage(named: "RecipeImgHolder")
@@ -21,7 +22,7 @@ class FavdRecipesCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Recipe Label"
         label.font = UIFont.init(name: "Rockwell", size: 14)
-        label.numberOfLines = 2
+        label.numberOfLines = 3
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
         return label
@@ -57,9 +58,9 @@ class FavdRecipesCell: UICollectionViewCell {
         favdRecipeImage.widthAnchor.constraint(equalToConstant: favdRecipeImage.frame.width),
         favdRecipeImage.heightAnchor.constraint(equalToConstant: favdRecipeImage.frame.height),
         
-        favdRecipeLabel.topAnchor.constraint(equalTo: favdRecipeImage.bottomAnchor),
+        favdRecipeLabel.topAnchor.constraint(equalTo: favdRecipeImage.bottomAnchor, constant: 2),
         favdRecipeLabel.leadingAnchor.constraint(equalTo: favdRecipeImage.leadingAnchor),
         favdRecipeLabel.trailingAnchor.constraint(equalTo: favdRecipeImage.trailingAnchor),
-        favdRecipeLabel.heightAnchor.constraint(equalToConstant: 50)])
+        favdRecipeLabel.heightAnchor.constraint(equalToConstant: 60)])
     }
 }

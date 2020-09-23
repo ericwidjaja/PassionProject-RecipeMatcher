@@ -16,8 +16,8 @@ class CollectionsCell: UICollectionViewCell {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let horizontalCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        horizontalCV.layer.cornerRadius = 15
-        horizontalCV.backgroundColor = #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)
+        horizontalCV.layer.cornerRadius = 10
+        horizontalCV.backgroundColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
         horizontalCV.dataSource = self
         horizontalCV.delegate = self
         horizontalCV.register(CkbkCVCell.self, forCellWithReuseIdentifier: "cellID")
@@ -27,8 +27,7 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collectionsImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "IceCream")
-        imageView.sizeThatFits(.init(width: 140, height: 120))
-        imageView.layer.cornerRadius = 15
+        imageView.sizeThatFits(.init(width: 160, height: 125))
         return imageView
     }()
     
@@ -39,7 +38,7 @@ class CollectionsCell: UICollectionViewCell {
         label.adjustsFontSizeToFitWidth = true
         return label
     }()
- 
+    
     var recipes: [RecipeWrapper]! {
         didSet {
             //            print(recipes)
