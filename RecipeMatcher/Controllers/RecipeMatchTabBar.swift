@@ -12,22 +12,24 @@ class RecipeMatchTabBar: UITabBarController {
     lazy var navController4 = UINavigationController(rootViewController: UserProfileVC())
     
     //MARK: - Functions
-    private func tabBarSetup() {
+    private func setupTabBarAppearance() {
         let appearance = UITabBarAppearance()
-        appearance.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
+        appearance.backgroundColor = #colorLiteral(red: 0.3098039329, green: 0.01568627544, blue: 0.1294117719, alpha: 1)
         tabBar.standardAppearance = appearance
     }
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        navControllersSetup()
-        tabBarSetup()
+        setupTabBar()
+        setupTabBarAppearance()
     }
     
-    func navControllersSetup() {
+    func setupTabBar() {
         navController1.tabBarItem = UITabBarItem(title: "SEARCH", image: UIImage(systemName: "magnifyingglass.circle"), tag: 0)
+        
         navController2.tabBarItem = UITabBarItem(title: "FAVORITES", image: UIImage(systemName: "heart.fill"), tag: 1)
+        
         navController3.tabBarItem = UITabBarItem(title: "COLLECTIONS", image: UIImage(systemName: "folder.fill.badge.plus"), tag: 2)
         navController4.tabBarItem = UITabBarItem(title: "PROFILE", image: UIImage(systemName: "person.circle"), tag: 3)
         
