@@ -56,14 +56,18 @@ class FavRecipesVC: UIViewController {
                        .transition(.flipFromRight(3))])
     }
     
+    private func setFaveDelegates() {
+        faveRecipeView.favoriteCollView.delegate = self
+        faveRecipeView.favoriteCollView.dataSource = self
+    }
+    
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(faveRecipeView)
         getUserFavorites()
+        setFaveDelegates()
         faveRecipeView.favoriteCollView.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
-        faveRecipeView.favoriteCollView.delegate = self
-        faveRecipeView.favoriteCollView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,12 +78,13 @@ class FavRecipesVC: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.isHidden = false
     }
 }
 
 //MARK: - Extensions
 extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favoriteRecipe.count
     }
