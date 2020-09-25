@@ -27,7 +27,7 @@ class AddOrCreateVC: UIViewController {
         self.view.insertSubview(blurEffectView, at: 0)
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = #imageLiteral(resourceName: "SplashScreen")
+        backgroundImage.image = #imageLiteral(resourceName: "VietnamTable")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
     }
