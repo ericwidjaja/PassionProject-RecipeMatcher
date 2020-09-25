@@ -2,7 +2,6 @@
 //  RecipeMatcher
 //  Created by Eric Widjaja on 6/27/20.
 //  Copyright © 2020 Eric W. All rights reserved.
-
 import UIKit
 
 class AddOrCreateView: UIView {

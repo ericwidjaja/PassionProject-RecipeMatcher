@@ -21,7 +21,8 @@ class MyCookbookCollectionsVC: UIViewController {
     }
     
     //MARK: - Functions
-    private func setMyCookbookDelegates() {
+    private func setMyCkbkCollDelegatesAndCell() {
+        cookbookCV.myCollectionsCV.register(CollectionsCell.self, forCellWithReuseIdentifier: "myCell")
         cookbookCV.myCollectionsCV.dataSource = self
         cookbookCV.myCollectionsCV.delegate = self
     }
@@ -40,13 +41,12 @@ class MyCookbookCollectionsVC: UIViewController {
         super.viewDidLoad()
         print("viewDidLoad")
         view.addSubview(cookbookCV)
-        setMyCookbookDelegates()
-        cookbookCV.myCollectionsCV.register(CollectionsCell.self, forCellWithReuseIdentifier: "myCell")
+        setMyCkbkCollDelegatesAndCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        print("viewWillAppearCalled - hide the navigation bar")
+        //        print("viewWillAppearCalled - hide the navigation bar")
         loadMyCookbkCollections()
         self.navigationController?.navigationBar.isHidden = true
     }

@@ -60,7 +60,8 @@ class AddOrCreateVC: UIViewController {
     }
     
     func buttonsTapped() {
-        addOrCreateView.addToCollectionButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
+        
+        addOrCreateView.createCollTitleButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
     }
     
     func updateCollection(collection: CookbookCollection) {

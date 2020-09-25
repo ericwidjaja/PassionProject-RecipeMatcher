@@ -56,7 +56,8 @@ class FavRecipesVC: UIViewController {
                        .transition(.flipFromRight(3))])
     }
     
-    private func setFaveDelegates() {
+    private func setFavDelegatesAndCell() {
+        faveRecipeView.favoriteCollView.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
         faveRecipeView.favoriteCollView.delegate = self
         faveRecipeView.favoriteCollView.dataSource = self
     }
@@ -66,8 +67,7 @@ class FavRecipesVC: UIViewController {
         super.viewDidLoad()
         view.addSubview(faveRecipeView)
         getUserFavorites()
-        setFaveDelegates()
-        faveRecipeView.favoriteCollView.register(FavdRecipesCell.self, forCellWithReuseIdentifier: "FavdCell")
+        setFavDelegatesAndCell()
     }
     
     override func viewWillAppear(_ animated: Bool) {

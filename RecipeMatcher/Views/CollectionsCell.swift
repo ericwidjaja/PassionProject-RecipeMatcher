@@ -27,7 +27,6 @@ class CollectionsCell: UICollectionViewCell {
     lazy var collectionsImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "IceCream")
-        imageView.sizeThatFits(.init(width: 160, height: 125))
         return imageView
     }()
     
@@ -83,7 +82,7 @@ extension CollectionsCell: UICollectionViewDataSource {
 
 extension CollectionsCell: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 125)
+        return CGSize(width: 160, height: 125)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
