@@ -83,15 +83,15 @@ class SearchView: UIView {
         NSLayoutConstraint.activate([
             ingredientsTblView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
             ingredientsTblView.topAnchor.constraint(equalTo: ingredientTextField.bottomAnchor, constant: 105),
-            ingredientsTblView.heightAnchor.constraint(equalToConstant: 350),
-            ingredientsTblView.widthAnchor.constraint(equalToConstant: 260)])
+            ingredientsTblView.heightAnchor.constraint(equalToConstant: 368),
+            ingredientsTblView.widthAnchor.constraint(equalToConstant: 280)])
     }
     private func findRecipesConstraints() {
         NSLayoutConstraint.activate([
             findRecipesButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor, constant: 100),
-            findRecipesButton.topAnchor.constraint(equalTo: ingredientsTblView.bottomAnchor, constant: 110),
-            findRecipesButton.heightAnchor.constraint(equalToConstant: 40),
-            findRecipesButton.widthAnchor.constraint(equalToConstant: 150)])
+            findRecipesButton.topAnchor.constraint(equalTo: ingredientsTblView.bottomAnchor, constant: 136),
+            findRecipesButton.heightAnchor.constraint(equalToConstant: 48),
+            findRecipesButton.widthAnchor.constraint(equalToConstant: 160)])
     }
     
     override init(frame: CGRect) {

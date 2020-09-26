@@ -4,6 +4,7 @@
 //  Copyright © 2020 Eric W. All rights reserved.
 import UIKit
 
+
 class AddCreateCell: UICollectionViewCell {
     
     lazy var collectionsImage: UIImageView = {
@@ -30,11 +31,12 @@ class AddCreateCell: UICollectionViewCell {
         let config = UIImage.SymbolConfiguration(pointSize: 32)
         let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         button.setImage(addToCollection, for: .normal)
-        button.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
+        button.tintColor = #colorLiteral(red: 0.3098039329, green: 0.2039215714, blue: 0.03921568766, alpha: 1)
         return button
     }()
     
-    func setImageConstraints() {
+    //MARK: - Functions
+    private func setImageConstraints() {
         contentView.addSubview(collectionsImage)
         collectionsImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -44,7 +46,8 @@ class AddCreateCell: UICollectionViewCell {
             collectionsImage.widthAnchor.constraint(equalToConstant: collectionsImage.frame.width),
             collectionsImage.heightAnchor.constraint(equalToConstant: collectionsImage.frame.height)])
     }
-    func setNameConstraints() {
+    
+    private func setNameConstraints() {
         contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -53,12 +56,13 @@ class AddCreateCell: UICollectionViewCell {
             nameLabel.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
     }
-    func setAddButtonConstraints() {
+    
+    private func setAddButtonConstraints() {
         collectionsImage.addSubview(addButton)
         addButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            addButton.centerYAnchor.constraint(equalTo: collectionsImage.centerYAnchor),
-            addButton.centerXAnchor.constraint(equalTo: collectionsImage.centerXAnchor),
+            addButton.bottomAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: -8),
+            addButton.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor, constant: -8),
             addButton.heightAnchor.constraint(equalToConstant: addButton.frame.height),
             addButton.widthAnchor.constraint(equalToConstant: addButton.frame.width)])
     }
