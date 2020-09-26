@@ -9,7 +9,7 @@ class AddOrCreateView: UIView {
     //MARK: - Properties
     lazy var createCollTitleButton: UIButton = {
         let button = UIButton()
-        button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        button.tintColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
         button.isUserInteractionEnabled = true
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let createCollectionFolder = UIImage(systemName: "folder.fill.badge.plus", withConfiguration: config)
@@ -23,7 +23,7 @@ class AddOrCreateView: UIView {
     
     var addToCollectionButton: UIButton = {
         let button = UIButton()
-        button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        button.tintColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 0.5486943493)
         button.isUserInteractionEnabled = true
         let config = UIImage.SymbolConfiguration(pointSize: 40, weight: UIImage.SymbolWeight.medium)
         let addToCollection = UIImage(systemName: "folder.fill.badge.plus", withConfiguration: config)
@@ -39,14 +39,14 @@ class AddOrCreateView: UIView {
     var newCollectionTextField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
-        textField.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+        textField.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 0.5040667808)
         textField.placeholder = "Enter new collection name"
         return textField
     }()
     
     var collectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 100, height: 130)
+        layout.estimatedItemSize = CGSize(width: 105, height: 100)
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
         collection.register(AddCreateCell.self, forCellWithReuseIdentifier: "addCell")
@@ -113,21 +113,21 @@ class AddOrCreateView: UIView {
             stackBackgroundView.centerXAnchor.constraint(equalTo: centerXAnchor),
             stackBackgroundView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             stackBackgroundView.widthAnchor.constraint(equalTo: widthAnchor),
-            stackBackgroundView.heightAnchor.constraint(equalToConstant: 100)
+            stackBackgroundView.heightAnchor.constraint(equalToConstant: 64)
         ])
     }
     
     private func newCollectionTextFieldConstraints() {
         NSLayoutConstraint.activate([
             newCollectionTextField.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
-            newCollectionTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            newCollectionTextField.topAnchor.constraint(equalTo: addToCollectionButton.bottomAnchor, constant: 50),
-            newCollectionTextField.heightAnchor.constraint(equalToConstant: 60)])
+            newCollectionTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            newCollectionTextField.topAnchor.constraint(equalTo: addToCollectionButton.bottomAnchor, constant: 24),
+            newCollectionTextField.heightAnchor.constraint(equalToConstant: 56)])
     }
     
     private func constrainCollectionsCV() {
         NSLayoutConstraint.activate([
-            collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 20),
+            collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 16),
             collectionsCV.leadingAnchor.constraint(equalTo: newCollectionTextField.leadingAnchor),
             collectionsCV.trailingAnchor.constraint(equalTo: newCollectionTextField.trailingAnchor),
             collectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])

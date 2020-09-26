@@ -7,18 +7,18 @@ import UIKit
 class AddCreateCell: UICollectionViewCell {
     
     lazy var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 115))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 105, height: 80))
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.allowsGroupOpacity = true
-        image.layer.cornerRadius = 20
+        image.layer.cornerRadius = 12
         return image
     }()
     
     lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.init(name: "Rockwell", size: 16)
+        label.font = UIFont.init(name: "Rockwell", size: 18)
         label.textAlignment = .center
         label.textColor = .white
         label.adjustsFontSizeToFitWidth = true
@@ -26,8 +26,8 @@ class AddCreateCell: UICollectionViewCell {
     }()
     
     lazy var addButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
-        let config = UIImage.SymbolConfiguration(pointSize: 40)
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
+        let config = UIImage.SymbolConfiguration(pointSize: 35)
         let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         button.setImage(addToCollection, for: .normal)
         button.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
@@ -38,7 +38,7 @@ class AddCreateCell: UICollectionViewCell {
         contentView.addSubview(collectionsImage)
         collectionsImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
+            collectionsImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 4),
             collectionsImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionsImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             collectionsImage.widthAnchor.constraint(equalToConstant: collectionsImage.frame.width),
@@ -48,7 +48,7 @@ class AddCreateCell: UICollectionViewCell {
         contentView.addSubview(nameLabel)
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nameLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 10),
+            nameLabel.topAnchor.constraint(equalTo: collectionsImage.bottomAnchor, constant: 16),
             nameLabel.leadingAnchor.constraint(equalTo: collectionsImage.leadingAnchor),
             nameLabel.trailingAnchor.constraint(equalTo: collectionsImage.trailingAnchor),
             nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)])
