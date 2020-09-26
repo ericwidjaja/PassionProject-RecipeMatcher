@@ -5,11 +5,13 @@
 
 import UIKit
 import Kingfisher
+
 class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
     var addOrCreateView = AddOrCreateView()
     var recipeCollection: RecipeWrapper!
+    var addCreateCell = AddCreateCell()
     var delegate: ReloadViewDelegate?
     var collections = [CookbookCollection]() {
         didSet {
@@ -78,7 +80,7 @@ class AddOrCreateVC: UIViewController {
         
         let currentCollections = collections
         guard !currentCollections.contains(where: {$0.recipeType.lowercased() == collectionName.lowercased()}) else {
-            self.showAlert(title: nil, message: "This collection already exists \n Please create another collection")
+            self.showAlert(title: nil, message: "This collection already exists!\n Please create another collection")
             return
         }
         if let recipe = recipeCollection {
@@ -117,12 +119,18 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "addCell", for: indexPath) as? AddCreateCell else {
             return UICollectionViewCell()
         }
         let collection = collections[indexPath.row]
         cell.nameLabel.text = collection.recipeType
         cell.addButton.isHidden = false
+        
+        guard let imageUrl = collection.recipes.randomElement()?.image else {
+            return cell
+        }
+        cell.collectionsImage.kf.setImage(with: URL(string: imageUrl))
         return cell
     }
     
@@ -139,3 +147,4 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
         }
     }
 }
+

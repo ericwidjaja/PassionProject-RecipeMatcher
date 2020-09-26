@@ -112,4 +112,3 @@ extension FavRecipesVC : HeartButtonDelegate {
     func deleteFromPersistance(tag: Int) {
     }
 }
-

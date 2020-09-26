@@ -27,8 +27,8 @@ class LogInScreenVC: UIViewController {
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
-    //MARK: - OBJ-C Methods
     
+    //MARK: - OBJC Function
     @objc func validateFields() {
         guard logInEmail!.hasText, logInPassword!.hasText else {
             logInScreen.signInButton.isEnabled = false
@@ -82,8 +82,6 @@ class LogInScreenVC: UIViewController {
                 case .failure(let error):
                     self.showAlert(with: "Couldn't create user", and: "Error: \(error)")
                 case .success(let newUser):
-//                    FirestoreService.manager.createAppUser(user: AppUser.init(from: newUser)) { (result) in self.handleSignInResponse(with: result)
-//                    }
                     FirestoreService.manager.createAppUser(user: AppUser(from: newUser, userName: (self.logInEmail?.text!)!)) { [weak self] newResult in
                         self?.handleSignInResponse(with: newResult)
                     }

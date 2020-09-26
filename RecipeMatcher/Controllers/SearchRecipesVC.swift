@@ -19,13 +19,13 @@ class SearchRecipesVC : UIViewController {
         }
     }
     
-    //MARK: - Functions
+    //MARK: - OBJC Functions
     @objc func findRecipeButtonPressed(_ sender: UIButton) {
         let findRecipeVC = RecipesCollResultsVC.fromSearchVC(ingredients: ingredients)
         navigationController?.pushViewController(findRecipeVC, animated: true)
-//        dump(ingredients)
+        //        dump(ingredients)
     }
-
+    //MARK: - Functions
     private func loadSearchData() {
         searchView.ingredientsTblView.dataSource = self
         searchView.ingredientsTblView.delegate = self
