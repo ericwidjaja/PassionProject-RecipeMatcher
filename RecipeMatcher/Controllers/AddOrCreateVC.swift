@@ -5,7 +5,6 @@
 
 import UIKit
 import Kingfisher
-
 class AddOrCreateVC: UIViewController {
     
     //MARK: - Properties
@@ -21,13 +20,13 @@ class AddOrCreateVC: UIViewController {
     
     //MARK: - Functions
     func blurEffect() {
-        let blurEffect = UIBlurEffect(style: .systemChromeMaterialDark)
+        let blurEffect = UIBlurEffect(style: .systemUltraThinMaterial)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.view.frame
         self.view.insertSubview(blurEffectView, at: 0)
         
         let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
-        backgroundImage.image = #imageLiteral(resourceName: "VietnamTable")
+        backgroundImage.image = #imageLiteral(resourceName: "SplashScreen")
         backgroundImage.contentMode = UIView.ContentMode.scaleAspectFill
         self.view.insertSubview(backgroundImage, at: 0)
     }
@@ -60,8 +59,7 @@ class AddOrCreateVC: UIViewController {
     }
     
     func buttonsTapped() {
-        
-        addOrCreateView.createCollTitleButton.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
+        addOrCreateView.createCollection.addTarget(self, action: #selector(createButtonPressed(_:)), for: .touchUpInside)
     }
     
     func updateCollection(collection: CookbookCollection) {
@@ -74,9 +72,10 @@ class AddOrCreateVC: UIViewController {
     @objc func createButtonPressed(_ sender: UIButton) {
         guard let collectionName = self.addOrCreateView.newCollectionTextField.text, collectionName != ""
             else {
-                self.showAlert(title: "Required", message: "Enter a name for new collection")
+                self.showAlert(title: "Required", message: "Please enter a name for new collection")
                 return
         }
+        
         let currentCollections = collections
         guard !currentCollections.contains(where: {$0.recipeType.lowercased() == collectionName.lowercased()}) else {
             self.showAlert(title: nil, message: "This collection already exists \n Please create another collection")
@@ -111,7 +110,7 @@ class AddOrCreateVC: UIViewController {
     }
 }
 
-    //MARK: - Extension
+//MARK: - Extension
 extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collections.count
