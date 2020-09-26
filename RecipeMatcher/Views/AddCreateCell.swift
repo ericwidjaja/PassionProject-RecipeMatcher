@@ -26,11 +26,11 @@ class AddCreateCell: UICollectionViewCell {
     }()
     
     lazy var addButton: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 35, height: 35))
-        let config = UIImage.SymbolConfiguration(pointSize: 35)
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        let config = UIImage.SymbolConfiguration(pointSize: 32)
         let addToCollection = UIImage(systemName: "square.and.arrow.down.fill", withConfiguration: config)
         button.setImage(addToCollection, for: .normal)
-        button.tintColor = #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1)
+        button.tintColor = #colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)
         return button
     }()
     
