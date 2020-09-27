@@ -73,6 +73,7 @@ class FavRecipesVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         getUserFavorites()
+        setFavDelegatesAndCell()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -105,7 +106,7 @@ extension FavRecipesVC: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
 }
 
-extension FavRecipesVC : HeartButtonDelegate {
+extension FavRecipesVC: HeartButtonDelegate {
     func saveToPersistance(tag: Int) {
     }
     

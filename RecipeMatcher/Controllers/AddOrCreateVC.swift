@@ -16,7 +16,7 @@ class AddOrCreateVC: UIViewController {
     var collections = [CookbookCollection]() {
         didSet {
             self.addOrCreateView.collectionsCV.reloadData()
-            //            dump(collections)
+//                        dump(collections)
         }
     }
     
@@ -107,6 +107,7 @@ class AddOrCreateVC: UIViewController {
         setDelegates()
         buttonsTapped()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.addOrCreateView.collectionsCV.reloadData()
     }

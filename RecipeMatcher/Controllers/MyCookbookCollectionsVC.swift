@@ -1,4 +1,3 @@
-//
 //  MyCookbookCollectionsVC.swift
 //  RecipeMatcher
 //  Created by Eric Widjaja on 8/22/20.
@@ -16,6 +15,7 @@ class MyCookbookCollectionsVC: UIViewController {
         didSet {
             DispatchQueue.main.async {
                 self.cookbookCV.myCollectionsCV.reloadData()
+                //                dump(self.myCookbookCollections)
             }
         }
     }
@@ -35,6 +35,15 @@ class MyCookbookCollectionsVC: UIViewController {
             print(error)
         }
     }
+    
+    private func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
