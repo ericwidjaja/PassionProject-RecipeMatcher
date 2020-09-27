@@ -16,8 +16,8 @@ class SearchView: UIView {
     
     lazy var ingredientTextField: UITextField = {
         let ingredientTxtField = UITextField()
-        ingredientTxtField.placeholder = "type your ingredient and press enter"
-        ingredientTxtField.font = UIFont(name: "Noteworthy", size: 20)
+        ingredientTxtField.placeholder = "Please enter two or more ingredients"
+        ingredientTxtField.font = UIFont(name: "Noteworthy-Bold", size: 18)
         ingredientTxtField.borderStyle = .roundedRect
         ingredientTxtField.textAlignment = .center
         ingredientTxtField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)

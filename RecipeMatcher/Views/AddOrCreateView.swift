@@ -11,8 +11,10 @@ class AddOrCreateView: UIView {
     lazy var addCreateTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Add to One of Your Collections"
-        label.font = .boldSystemFont(ofSize: 26)
+        label.font = UIFont.init(name: "Rockwell-Bold", size: 22)
+        label.textAlignment = .center
         label.textColor = .white
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -35,7 +37,8 @@ class AddOrCreateView: UIView {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 0.5040667808)
-        textField.placeholder = "CREATE A NEW COLLECTION"
+        textField.font = UIFont.init(name: "Rockwell-Bold", size: 16)
+        textField.placeholder = " CREATE A NEW COLLECTION"
         return textField
     }()
     

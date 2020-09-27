@@ -149,3 +149,10 @@ extension AddOrCreateVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
 }
 
+extension AddOrCreateVC: UITextFieldDelegate {
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        addOrCreateView.newCollectionTextField.clearsOnBeginEditing = true
+        return true
+    }
+}
+
