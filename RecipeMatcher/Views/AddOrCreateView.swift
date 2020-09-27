@@ -58,8 +58,8 @@ class AddOrCreateView: UIView {
     
     lazy var stackBackgroundView:  UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.7057714462, green: 0.5156850815, blue: 0.4401528835, alpha: 0.8453820633)
-        view.layer.cornerRadius = 12
+        view.backgroundColor = #colorLiteral(red: 0.706428349, green: 0.5107896328, blue: 0.4429188073, alpha: 0.7978381849)
+        view.layer.cornerRadius = 8
         return view
     }()
     
