@@ -10,7 +10,7 @@ class AddOrCreateView: UIView {
 
     lazy var addCreateTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Create New / Add to Collections"
+        label.text = "Add to One of Your Collections"
         label.font = .boldSystemFont(ofSize: 26)
         label.textColor = .white
         return label
@@ -35,13 +35,13 @@ class AddOrCreateView: UIView {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
         textField.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 0.5040667808)
-        textField.placeholder = "Enter new collection name"
+        textField.placeholder = "CREATE A NEW COLLECTION"
         return textField
     }()
     
     lazy var collectionsCV: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 105, height: 100)
+        layout.estimatedItemSize = CGSize(width: 120, height: 140)
         let collection = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         collection.backgroundColor = .clear
         collection.register(AddCreateCell.self, forCellWithReuseIdentifier: "addCell")
@@ -59,7 +59,7 @@ class AddOrCreateView: UIView {
     lazy var stackBackgroundView:  UIView = {
         let view = UIView()
         view.backgroundColor = #colorLiteral(red: 0.7057714462, green: 0.5156850815, blue: 0.4401528835, alpha: 0.8453820633)
-        view.layer.borderColor = #colorLiteral(red: 0.1921568662, green: 0.007843137719, blue: 0.09019608051, alpha: 1)
+        view.layer.cornerRadius = 12
         return view
     }()
     
@@ -87,7 +87,7 @@ class AddOrCreateView: UIView {
     private func addOrCreateConstraints() {
         addViewsToSubView()
         newCollectionTextFieldConstraints()
-        createCollectionConstraints()
+        newCollectionButtonConstraints()
         constrainCollectionsCV()
         constrainStackBackgroundView()
         constrainStackView()
@@ -111,27 +111,27 @@ class AddOrCreateView: UIView {
             stackBackgroundView.heightAnchor.constraint(equalToConstant: 72)])
     }
     
+    private func constrainCollectionsCV() {
+        NSLayoutConstraint.activate([
+            collectionsCV.topAnchor.constraint(equalTo: stackBackgroundView.bottomAnchor, constant: 8),
+            collectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            collectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            collectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -104)])
+    }
+    
     private func newCollectionTextFieldConstraints() {
         NSLayoutConstraint.activate([
             
-            newCollectionTextField.topAnchor.constraint(equalTo: stackBackgroundView.bottomAnchor, constant: 12),
+            newCollectionTextField.topAnchor.constraint(equalTo: collectionsCV.bottomAnchor, constant: 8),
             newCollectionTextField.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 8),
             newCollectionTextField.widthAnchor.constraint(equalToConstant: 330),
             newCollectionTextField.heightAnchor.constraint(equalToConstant: 56)])
     }
     
-    private func createCollectionConstraints() {
+    private func newCollectionButtonConstraints() {
         NSLayoutConstraint.activate([
-            createCollection.topAnchor.constraint(equalTo: stackBackgroundView.bottomAnchor, constant: 12),
+            createCollection.topAnchor.constraint(equalTo: collectionsCV.bottomAnchor, constant: 8),
             createCollection.centerYAnchor.constraint(equalTo: newCollectionTextField.centerYAnchor),
             createCollection.leadingAnchor.constraint(equalTo: newCollectionTextField.trailingAnchor, constant: 8)])
-    }
-    
-    private func constrainCollectionsCV() {
-        NSLayoutConstraint.activate([
-            collectionsCV.topAnchor.constraint(equalTo: newCollectionTextField.bottomAnchor, constant: 16),
-            collectionsCV.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            collectionsCV.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            collectionsCV.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)])
     }
 }

@@ -8,7 +8,7 @@ import UIKit
 class AddCreateCell: UICollectionViewCell {
     
     lazy var collectionsImage: UIImageView = {
-        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 105, height: 80))
+        let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 120, height: 120))
         image.image = UIImage(named: "RecipeImgHolder")
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
