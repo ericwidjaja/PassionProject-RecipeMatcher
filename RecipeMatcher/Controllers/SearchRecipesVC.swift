@@ -97,7 +97,7 @@ extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
     //Allow user to edit the tableView's rows of their input ingredients
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
-
+        
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -109,12 +109,4 @@ extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
             tableView.endUpdates()
         }
     }
-    
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let deselect = UITableViewRowAction(style: .destructive, title: "X") { [weak self] (action, indexPath) in
-//            self?.ingredients.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//        }
-//        return [deselect]
-//    }
 }

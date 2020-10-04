@@ -29,7 +29,7 @@ class SearchView: UIView {
     
     lazy var ingredientsTblView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = UIColor(displayP3Red: 50/255, green: 30/255, blue: 50/255, alpha: 0.25)
+        tableView.backgroundColor = UIColor(displayP3Red: 50/255, green: 70/255, blue: 70/255, alpha: 0.275)
         tableView.layer.cornerRadius = 15
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "IngredientCell")
         return tableView
