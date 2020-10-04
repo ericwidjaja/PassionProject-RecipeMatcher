@@ -94,12 +94,27 @@ extension SearchRecipesVC: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = ingredients[indexPath.row]
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deselect = UITableViewRowAction(style: .destructive, title: "X") { [weak self] (action, indexPath) in
-            self?.ingredients.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        }
-        return [deselect]
+    //Allow user to edit the tableView's rows of their input ingredients
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            ingredients.remove(at: indexPath.row)
+            
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+//        let deselect = UITableViewRowAction(style: .destructive, title: "X") { [weak self] (action, indexPath) in
+//            self?.ingredients.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//        }
+//        return [deselect]
+//    }
 }
