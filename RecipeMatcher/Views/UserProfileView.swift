@@ -127,15 +127,15 @@ class UserProfileView: UIView {
             
             userNameLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             userNameLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 80),
-            userNameLabel.heightAnchor.constraint(equalToConstant: 48),
+            userNameLabel.heightAnchor.constraint(equalToConstant: 56),
             
             editButton.centerYAnchor.constraint(equalTo: userNameLabel.centerYAnchor),
-            editButton.leadingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -80),
-            editButton.widthAnchor.constraint(equalToConstant: 48),
-            editButton.heightAnchor.constraint(equalToConstant: 48),
+            editButton.leadingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -72),
+            editButton.widthAnchor.constraint(equalToConstant: 56),
+            editButton.heightAnchor.constraint(equalToConstant: 56),
             
             emailLabel.topAnchor.constraint(equalTo: userNameLabel.bottomAnchor, constant: 16),
             emailLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            emailLabel.heightAnchor.constraint(equalToConstant: 48)])
+            emailLabel.heightAnchor.constraint(equalToConstant: 56)])
     }
 }
