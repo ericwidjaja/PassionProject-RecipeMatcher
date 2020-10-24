@@ -53,7 +53,6 @@ class UserProfileVC: UIViewController {
             case .failure(let error):
                 print(error)
             }
-            
         }
     }
     

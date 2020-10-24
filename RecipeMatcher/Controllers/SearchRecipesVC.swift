@@ -6,7 +6,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestore
 
-
 class SearchRecipesVC : UIViewController {
     
     //MARK: - Properties
