@@ -20,6 +20,7 @@ struct Favorite {
          recipe: RecipeWrapper)
     {
         self.id = UUID.init().description
+//        print(self.id)
         self.creatorID = creatorID
         self.dateCreated = dateCreated
         self.faveId = faveId

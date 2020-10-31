@@ -22,9 +22,9 @@ class RecipeDetailVC: UIViewController {
     
     //MARK: - Properties
     var recipe: RecipeWrapper?
-    var selectedFavRecipe: Favorite!
     var detailRecipeView = RecipeDetailView()
     var heartStatus: HeartStatus = .notFilled
+//    weak var delegate: FaveRecipesDelegate?
     
     //MARK: - Functions
     private func updateRecipeHearts(url: String) {
@@ -67,7 +67,6 @@ class RecipeDetailVC: UIViewController {
         detailRecipeView.heartButton.setImage(heart, for: .normal)
         heartStatus = .notFilled
     }
-    
     
     func setDetailRecipeView() {
         view.addSubview(detailRecipeView)
@@ -112,7 +111,6 @@ class RecipeDetailVC: UIViewController {
     
     //MARK: - OBJC Functions
     @objc func shareTapped(_ sender: UIButton) {
-          //TODO: Create a share link thru sms, email, instagram or fb
         let shareItem = recipe?.shareAs ?? "https://www.foodandwine.com/"
         let activityController = UIActivityViewController(activityItems: [shareItem], applicationActivities: nil)
         present(activityController, animated: true, completion: nil)
@@ -137,15 +135,12 @@ class RecipeDetailVC: UIViewController {
     
     @objc func cookingInstructionButtonPressed(_ sender: UIButton) {
         showSafariVC(for: "\(self.recipe?.url ?? "https://www.foodandwine.com/")")
-//        print("\(self.recipe?.url ?? "https://www.foodandwine.com/")")
     }
-    
     
     //MARK: Firestore
     private func saveRecipeToFireStore(_ tag: Int) {
         let favedRecipe = recipe
-
-        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, faveId: favedRecipe!.url, recipe: favedRecipe!.self)
+        let newFirestoreRecipe = Favorite(creatorID: FirebaseAuthService.manager.currentUser?.uid ?? "", dateCreated: FirebaseAuthService.manager.currentUser?.metadata.creationDate, faveId: favedRecipe!.uri, recipe: favedRecipe!.self)
         FirestoreService.manager.createFavorites(favd: newFirestoreRecipe, recipeTitle: newFirestoreRecipe.recipe.label) { (result) in
             switch result {
             case .success:
@@ -157,25 +152,25 @@ class RecipeDetailVC: UIViewController {
     }
     
     private func deleteRecipeFromFireStore(_ tag: Int) {
-        let unFavoriteRecipe = recipe
-        FirestoreService.manager.findIdToUnfavor(fave: unFavoriteRecipe!.uri, userID: FirebaseAuthService.manager.currentUser?.uid ?? "") { (result) in
-            FirestoreService.manager.unfavoritedRecipe(result: result) { (result) in
-                switch result {
-                case .failure(let error):
-                    print("Problem deleting recipe from FireStore: \(error)")
-                case .success:
-                    print("'\(unFavoriteRecipe!.label)' successfully unfavorited")
-                }
+        let faveIDToDelete = recipe?.uri ?? ""
+        FirestoreService.manager.unfavoriteRecipe(faveId: faveIDToDelete) { (result) in
+            switch result {
+            case .success(()):
+                self.dismiss(animated: true, completion: nil)
+//                self.delegate?.reloadFavorites()
+            case .failure(let error):
+                print(error)
             }
         }
     }
-    
+
     //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setDetailRecipeView()
         setHeartImage()
         buttonsTapped()
+//        print("from viewDidLoad RecipeDetailVC: \(recipe?.uri ?? "")")
     }
 }
 

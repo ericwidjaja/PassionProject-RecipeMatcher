@@ -14,7 +14,7 @@ class RecipeMatchTabBar: UITabBarController {
     //MARK: - Functions
     private func setupTabBarAppearance() {
         let appearance = UITabBarAppearance()
-        appearance.backgroundColor = #colorLiteral(red: 1, green: 0.3748272657, blue: 0, alpha: 0.7335455908)
+        appearance.backgroundColor = #colorLiteral(red: 0.521568656, green: 0.1098039225, blue: 0.05098039284, alpha: 1)
         tabBar.standardAppearance = appearance
     }
     

@@ -112,13 +112,29 @@ class FirestoreService {
                 let recipes = snapshot?.documents.compactMap({ (snapshot) -> Favorite? in
                     let faveID = snapshot.documentID
                     let singleRecipe = Favorite(from: snapshot.data(), id: faveID)
+                    
 //                    print("faveID from line 101 -> \(faveID)")
                     return singleRecipe
                 })
-                
-                if let recipes = recipes {
-                    completionHandler(.success(recipes[0].id))
-                    print("findIdToUnfavor = \(recipes[0].id)")
+                print(recipes!)
+//                if let recipes = recipes {
+//                    completionHandler(.success(recipes[0].id))
+//                    print("findIdToUnfavor = \(recipes[0].id)")
+//                }
+            }
+        }
+    }
+    
+    func unfavoriteRecipe(faveId: String, completion: @escaping (Result<(),Error>) -> ()) {
+        let creatorID = (FirebaseAuthService.manager.currentUser?.uid)!
+        db.collection(FireStoreCollections.favoriteRecipes.rawValue).whereField("faveId", isEqualTo: faveId).getDocuments { (querySnapshot, error) in
+            if let error = error {
+                print(error)
+                completion(.failure(error))
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.delete()
+                    completion(.success(()))
                 }
             }
         }
