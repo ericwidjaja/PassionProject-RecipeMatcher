@@ -24,7 +24,7 @@ class RecipeDetailVC: UIViewController {
     var recipe: RecipeWrapper?
     var detailRecipeView = RecipeDetailView()
     var heartStatus: HeartStatus = .notFilled
-    weak var favDelegate: FaveRecipesDelegate?
+    weak var favDelegate: FavRecipesDelegate?
     
     //MARK: - Functions
     private func updateRecipeHearts(url: String) {
