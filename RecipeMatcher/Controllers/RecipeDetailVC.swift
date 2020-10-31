@@ -24,7 +24,7 @@ class RecipeDetailVC: UIViewController {
     var recipe: RecipeWrapper?
     var detailRecipeView = RecipeDetailView()
     var heartStatus: HeartStatus = .notFilled
-//    weak var delegate: FaveRecipesDelegate?
+    weak var favDelegate: FaveRecipesDelegate?
     
     //MARK: - Functions
     private func updateRecipeHearts(url: String) {
@@ -157,7 +157,7 @@ class RecipeDetailVC: UIViewController {
             switch result {
             case .success(()):
                 self.dismiss(animated: true, completion: nil)
-//                self.delegate?.reloadFavorites()
+                self.favDelegate?.reloadFavorites()
             case .failure(let error):
                 print(error)
             }

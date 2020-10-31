@@ -56,6 +56,7 @@
 		DF8AB7D424FD9FFF00804253 /* CookbookCollectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB7D324FD9FFF00804253 /* CookbookCollectionsView.swift */; };
 		DF8AB7D624FDA3F500804253 /* MyCookbookCollectionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF8AB7D524FDA3F500804253 /* MyCookbookCollectionsVC.swift */; };
 		DF94713B2501755A00C08643 /* CkbkCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF94713A2501755A00C08643 /* CkbkCVCell.swift */; };
+		DFCFB5CE254E0F7400B17724 /* FavRecipesDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFCFB5CD254E0F7400B17724 /* FavRecipesDelegate.swift */; };
 		DFE7935823BD4E6600D5B229 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFE7935723BD4E6600D5B229 /* Favorite.swift */; };
 		DFEE82D0236FADB6000FDE8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */; };
 		DFEE82D2236FADB6000FDE8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFEE82D1236FADB6000FDE8B /* SceneDelegate.swift */; };
@@ -123,6 +124,7 @@
 		DF8AB7D324FD9FFF00804253 /* CookbookCollectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookbookCollectionsView.swift; sourceTree = "<group>"; };
 		DF8AB7D524FDA3F500804253 /* MyCookbookCollectionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCookbookCollectionsVC.swift; sourceTree = "<group>"; };
 		DF94713A2501755A00C08643 /* CkbkCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CkbkCVCell.swift; sourceTree = "<group>"; };
+		DFCFB5CD254E0F7400B17724 /* FavRecipesDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavRecipesDelegate.swift; sourceTree = "<group>"; };
 		DFE7935723BD4E6600D5B229 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		DFEE82CC236FADB6000FDE8B /* RecipeMatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RecipeMatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFEE82CF236FADB6000FDE8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -236,6 +238,7 @@
 				DF35F01123946E5300638254 /* Network */,
 				DF6C0CD523AF286C004BF388 /* String+Validation.swift */,
 				DFF5DC8123B2E3E300DB2B24 /* ButtonProtocol.swift */,
+				DFCFB5CD254E0F7400B17724 /* FavRecipesDelegate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				DF6C0CD123AF20B9004BF388 /* FirestoreService.swift in Sources */,
 				DF399A9324A815FE006D1560 /* AddOrCreateView.swift in Sources */,
 				DFF5DC8823B4376B00DB2B24 /* FavRecipesView.swift in Sources */,
+				DFCFB5CE254E0F7400B17724 /* FavRecipesDelegate.swift in Sources */,
 				DF35F00F23946E3700638254 /* AppError.swift in Sources */,
 				DF325B7E23A1766C00F112B5 /* RecipesCollViewCell.swift in Sources */,
 				DF2DFC4F24E2339B009247F3 /* CookbookCollection.swift in Sources */,
