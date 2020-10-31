@@ -114,3 +114,10 @@ extension FavRecipesVC: HeartButtonDelegate {
     func deleteFromPersistance(tag: Int) {
     }
 }
+
+extension FavRecipesVC: FavRecipesDelegate {
+    func reloadFavorites() {
+        //print("delegate is called")
+        getUserFavorites()
+    }
+}

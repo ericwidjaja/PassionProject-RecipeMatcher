@@ -5,6 +5,6 @@
 
 import Foundation
 
-protocol FaveRecipesDelegate: AnyObject {
+protocol FavRecipesDelegate: AnyObject {
     func reloadFavorites()
 }
