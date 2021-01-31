@@ -96,7 +96,7 @@ class RecipeDetailVC: UIViewController {
     
     func showSafariVC(for cookInstUrl: String) {
         guard let url = URL(string: cookInstUrl)
-            else {return}
+            else { return }
         
         let safariVC = SFSafariViewController(url: url)
         present(safariVC, animated: true)
