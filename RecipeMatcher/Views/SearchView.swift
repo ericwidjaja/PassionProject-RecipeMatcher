@@ -17,11 +17,11 @@ class SearchView: UIView {
     lazy var ingredientTextField: UITextField = {
         let ingredientTxtField = UITextField()
         ingredientTxtField.placeholder = "Please enter two or more ingredients"
-        ingredientTxtField.font = UIFont(name: "Noteworthy-Bold", size: 18)
+        ingredientTxtField.font = UIFont(name: "Noteworthy-Bold", size: 20)
         ingredientTxtField.borderStyle = .roundedRect
         ingredientTxtField.textAlignment = .center
-        ingredientTxtField.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        ingredientTxtField.backgroundColor = .clear
+        ingredientTxtField.textColor = .white
+        ingredientTxtField.backgroundColor = UIColor(displayP3Red: 50/255, green: 60/255, blue: 100/255, alpha: 0.275)
         ingredientTxtField.autocorrectionType = .yes
         return ingredientTxtField
         
